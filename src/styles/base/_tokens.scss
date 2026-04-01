@@ -1,0 +1,19 @@
+:root {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-strong: #ffffff;
+  --color-text: #111111;
+  --color-text-soft: #5f5b57;
+  --color-line: rgba(17, 17, 17, 0.12);
+  --color-accent: #f27a24;
+  --color-accent-deep: #d95d0a;
+  --color-shadow: rgba(17, 17, 17, 0.08);
+  --shell: min(1480px, calc(100vw - 12px));
+  --radius-sm: 16px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+  --transition: 180ms ease;
+  --font-body: 'Manrope', sans-serif;
+  --font-display: 'Manrope', sans-serif;
+}
