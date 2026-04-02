@@ -1,5 +1,32 @@
 import logoSymbol from '../../assets/logo-symbol.svg'
 
+const INDUSTRY_SLIDE_VISUALS = [
+  {
+    match: /склади|логістик|warehouse|logistics/i,
+    image: '/images/industry-logistics.jpg',
+    alt: 'Працівники на складі та в логістиці',
+    label: 'Logistics',
+  },
+  {
+    match: /будівницт/i,
+    image: '/images/industry-construction.jpg',
+    alt: 'Працівники на будівельному об’єкті',
+    label: 'Construction',
+  },
+  {
+    match: /готелі|сервіс|hotel|service|hospitality/i,
+    image: '/images/industry-hospitality.jpg',
+    alt: 'Персонал у сфері готелів та сервісу',
+    label: 'Service',
+  },
+  {
+    match: /виробництв|manufacturing|factory/i,
+    image: '/images/industry-manufacturing.jpg',
+    alt: 'Працівники на виробництві',
+    label: 'Manufacturing',
+  },
+]
+
 function renderLeadForm(content, type = 'lead') {
   return `
     <form class="stack card card--form" data-form data-form-type="${type}">
@@ -101,6 +128,39 @@ function renderComparisonCard(card) {
   `
 }
 
+function getIndustryVisual(item) {
+  const title = typeof item === 'string' ? item : item.title
+
+  return (
+    INDUSTRY_SLIDE_VISUALS.find((visual) => visual.match.test(title)) ?? {
+      image: '/images/industry-logistics.jpg',
+      alt: title,
+      label: 'Operations',
+    }
+  )
+}
+
+function renderIndustrySlide(item) {
+  const title = typeof item === 'string' ? item : item.title
+  const text =
+    typeof item === 'string'
+      ? 'Окремий візуальний кейс для цієї вертикалі можна масштабувати під SEO-сторінки, квіз і персоналізовані CTA.'
+      : item.text
+  const visual = getIndustryVisual(item)
+
+  return `
+    <article class="industry-slide">
+      <div class="industry-slide__copy">
+        <h3>${title}</h3>
+        <p>${text}</p>
+      </div>
+      <div class="industry-slide__media">
+        <img src="${visual.image}" alt="${visual.alt}" loading="lazy" />
+      </div>
+    </article>
+  `
+}
+
 export function renderPage(content, pageKey) {
   if (pageKey === 'home') {
     const comparisonCards = content.home.comparison.cards
@@ -134,7 +194,7 @@ export function renderPage(content, pageKey) {
           </div>
           <p class="hero__lead">${content.home.hero.lead}</p>
           <div class="hero__cta">
-            <a class="button" href="#quiz">${content.navigation.primaryCta}</a>
+            <button class="button" type="button" data-open-modal="hero-quiz">${content.navigation.primaryCta}</button>
             <a class="button button--hero-secondary" href="#cases">Приклади проектів</a>
           </div>
           ${
@@ -194,20 +254,19 @@ export function renderPage(content, pageKey) {
       </section>
 
       <section class="section section--muted" data-reveal>
-        <div class="shell">
-          <p class="eyebrow">${content.home.industries.eyebrow ?? 'Industries'}</p>
-          <h2>${content.home.industries.title}</h2>
-          ${content.home.industries.lead ? `<p class="lead">${content.home.industries.lead}</p>` : ''}
-          <div class="card-grid">
-            ${renderCardList(
-              industryItems,
-              (item) => `
-                <article class="card">
-                  <h3>${typeof item === 'string' ? item : item.title}</h3>
-                  <p>${typeof item === 'string' ? 'Dedicated SEO page structure and reusable benefit blocks are ready for this vertical.' : item.text}</p>
-                </article>
-              `,
-            )}
+        <div class="shell industries-showcase">
+          <div class="industries-showcase__head">
+            <h2>ДЛЯ ЯКИХ СФЕР ПІДХОДИТЬ ТАКА МОДЕЛЬ НАЙМУ</h2>
+            <p class="lead">Найчастіше підприємства використовують таку модель для операційної роботи на виробництві, складах, будівництві та у сфері сервісу.</p>
+          </div>
+          <div class="industries-slider" data-industry-slider>
+            <div class="industries-slider__controls">
+              <button class="industries-slider__button" type="button" data-industry-slider-prev aria-label="Попередній слайд">←</button>
+              <button class="industries-slider__button" type="button" data-industry-slider-next aria-label="Наступний слайд">→</button>
+            </div>
+            <div class="industries-slider__track" data-industry-slider-track>
+              ${renderCardList(industryItems, (item) => renderIndustrySlide(item))}
+            </div>
           </div>
         </div>
       </section>
@@ -219,7 +278,7 @@ export function renderPage(content, pageKey) {
             <h2>${content.home.calculator?.title ?? content.quiz.title}</h2>
             <p class="lead">${content.home.calculator?.lead ?? 'Step-based mobile-friendly flow with analytics events and a single submission payload.'}</p>
           </div>
-          <div data-quiz></div>
+          <div data-quiz data-quiz-source="page_quiz"></div>
         </div>
       </section>
 

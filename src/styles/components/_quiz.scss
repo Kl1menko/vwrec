@@ -28,6 +28,7 @@
 
 .quiz-option {
   display: block;
+  cursor: pointer;
 }
 
 .quiz-option input {
@@ -41,15 +42,49 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+@media (hover: hover) {
+  .quiz-option:hover span {
+    transform: translateY(-1px);
+    border-color: rgba(242, 122, 36, 0.44);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+  }
+}
+
+.quiz-option input:focus-visible + span {
+  border-color: rgba(242, 122, 36, 0.88);
+  box-shadow: 0 0 0 3px rgba(242, 122, 36, 0.2);
 }
 
 .quiz-option input:checked + span {
   border-color: rgba(242, 122, 36, 0.8);
   background: rgba(242, 122, 36, 0.18);
+  box-shadow: 0 14px 30px rgba(242, 122, 36, 0.14);
 }
 
 .quiz-card .field input {
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
   border-color: rgba(255, 255, 255, 0.12);
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.quiz-card .field input:hover {
+  border-color: rgba(242, 122, 36, 0.44);
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.quiz-card .field input:focus-visible {
+  border-color: rgba(242, 122, 36, 0.88);
+  box-shadow: 0 0 0 3px rgba(242, 122, 36, 0.18);
 }

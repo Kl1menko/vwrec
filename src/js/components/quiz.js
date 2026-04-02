@@ -1,6 +1,6 @@
 import { submitLead } from '../services/forms.js'
 import { trackEvent } from '../services/analytics.js'
-import { createElementFromHTML, qs } from '../utils/dom.js'
+import { createElementFromHTML, qs, qsa } from '../utils/dom.js'
 
 function getStepValue(step, container) {
   if (step.type === 'options') {
@@ -52,10 +52,8 @@ function renderFields(step, state) {
   `
 }
 
-export function initQuiz(content) {
-  const root = qs('[data-quiz]')
-  if (!root) return
-
+function initQuizInstance(root, content) {
+  const quizSource = root.dataset.quizSource ?? 'quiz'
   const state = {}
   let currentStep = 0
 
@@ -92,10 +90,15 @@ export function initQuiz(content) {
       }
 
       state[step.id] = value
-      trackEvent(`quiz_step_${currentStep + 1}_complete`, { step: step.id })
+      trackEvent(`quiz_step_${currentStep + 1}_complete`, { step: step.id, quizSource })
 
       if (!isLastStep) {
-        if (currentStep === 0) trackEvent('quiz_start', { locale: document.body.dataset.locale })
+        if (currentStep === 0) {
+          trackEvent('quiz_start', {
+            locale: document.body.dataset.locale,
+            quizSource,
+          })
+        }
         currentStep += 1
         draw()
         return
@@ -103,12 +106,15 @@ export function initQuiz(content) {
 
       try {
         await submitLead({
-          source: 'quiz',
+          source: quizSource,
           locale: document.body.dataset.locale,
           page: document.body.dataset.page,
           answers: state,
         })
-        trackEvent('quiz_submit', { locale: document.body.dataset.locale })
+        trackEvent('quiz_submit', {
+          locale: document.body.dataset.locale,
+          quizSource,
+        })
         root.replaceChildren(
           createElementFromHTML(`
             <div class="quiz-card quiz-card--success">
@@ -126,4 +132,11 @@ export function initQuiz(content) {
   }
 
   draw()
+}
+
+export function initQuiz(content) {
+  const roots = qsa('[data-quiz]')
+  if (!roots.length) return
+
+  roots.forEach((root) => initQuizInstance(root, content))
 }

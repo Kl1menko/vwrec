@@ -21,6 +21,15 @@
   box-shadow: 0 20px 80px rgba(17, 17, 17, 0.2);
 }
 
+.modal__dialog--quiz {
+  width: min(100%, 640px);
+}
+
+.modal__dialog--quiz > p:not(.eyebrow) {
+  margin-bottom: 20px;
+  color: var(--color-text-soft);
+}
+
 .modal__close {
   position: absolute;
   top: 16px;

@@ -43,7 +43,7 @@ ukContent.home = {
       { value: 100, suffix: '%', label: 'супровід документів і приїзду' },
     ],
     video: {
-      src: '',
+      src: '/videos/international-recruitment-overview.mp4',
       poster: '',
       type: 'video/mp4',
     },

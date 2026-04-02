@@ -54,34 +54,54 @@ export function initHeroGlobe() {
   if (!canvas || !stage) return
 
   let width = 0
+  let globeSize = 0
   let currentPhi = 1.12
   let currentTheta = 0.34
   let pointerActive = false
   let lastX = 0
   let lastY = 0
   let frameId = 0
+  let resizeFrameId = 0
+  let isVisible = false
   let globe
 
   const markers = mapMarkers()
   const arcs = mapArcs()
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+  const getRenderConfig = (size) => {
+    const isCompact = window.matchMedia('(max-width: 767px)').matches
+    const devicePixelRatio = Math.min(window.devicePixelRatio ?? 1, isCompact ? 1.25 : 1.6)
+    const canvasSize = Math.round(size * devicePixelRatio)
+
+    return {
+      devicePixelRatio,
+      canvasSize,
+      mapSamples: isCompact ? 7000 : 11000,
+    }
+  }
+
   const render = () => {
     const size = stage.offsetWidth
     if (!size) return
 
+    if (Math.abs(size - globeSize) < 2 && globe) return
+
     width = size
+    globeSize = size
     globe?.destroy()
 
+    const { devicePixelRatio, canvasSize, mapSamples } = getRenderConfig(size)
+
     globe = createGlobe(canvas, {
-      devicePixelRatio: Math.min(window.devicePixelRatio ?? 1, 2),
-      width: size * 2,
-      height: size * 2,
+      devicePixelRatio,
+      width: canvasSize,
+      height: canvasSize,
       phi: currentPhi,
       theta: currentTheta,
       dark: 0,
       diffuse: 1.15,
-      mapSamples: 22000,
+      mapSamples,
       mapBrightness: 5.2,
       mapBaseBrightness: 0.05,
       baseColor: [1, 1, 1],
@@ -99,7 +119,7 @@ export function initHeroGlobe() {
   }
 
   const animate = () => {
-    if (globe && !pointerActive && !prefersReducedMotion) {
+    if (globe && isVisible && !pointerActive && !prefersReducedMotion && !document.hidden) {
       currentPhi += 0.00115
       globe.update({ phi: currentPhi, theta: currentTheta })
     }
@@ -136,8 +156,22 @@ export function initHeroGlobe() {
   window.addEventListener('pointerup', stopPointer)
   window.addEventListener('pointercancel', stopPointer)
 
-  const resizeObserver = new ResizeObserver(() => render())
+  const resizeObserver = new ResizeObserver(() => {
+    window.cancelAnimationFrame(resizeFrameId)
+    resizeFrameId = window.requestAnimationFrame(render)
+  })
   resizeObserver.observe(stage)
+
+  const visibilityObserver = new IntersectionObserver(
+    (entries) => {
+      isVisible = entries.some((entry) => entry.isIntersecting)
+    },
+    {
+      threshold: 0.1,
+    },
+  )
+
+  visibilityObserver.observe(stage)
 
   render()
   animate()
@@ -146,7 +180,9 @@ export function initHeroGlobe() {
     'beforeunload',
     () => {
       window.cancelAnimationFrame(frameId)
+      window.cancelAnimationFrame(resizeFrameId)
       resizeObserver.disconnect()
+      visibilityObserver.disconnect()
       globe?.destroy()
     },
     { once: true },

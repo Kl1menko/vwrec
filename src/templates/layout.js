@@ -49,6 +49,19 @@ function renderVideoModal() {
   `
 }
 
+function renderHeroQuizModal(content) {
+  return `
+    <div class="modal" data-modal="hero-quiz">
+      <div class="modal__dialog modal__dialog--quiz">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <h3>${content.home.calculator?.title ?? content.quiz.title}</h3>
+        <p>${content.home.calculator?.lead ?? 'Step-based mobile-friendly flow with analytics events and a single submission payload.'}</p>
+        <div data-quiz data-quiz-source="hero_quiz"></div>
+      </div>
+    </div>
+  `
+}
+
 export function renderLayout({ content, locale, pageKey, mainContent }) {
   return `
     ${renderHeader(content, locale, pageKey)}
@@ -58,6 +71,7 @@ export function renderLayout({ content, locale, pageKey, mainContent }) {
     ${renderFooter(locale)}
     ${renderModal(content.forms.callback.title, 'callback', 'Request callback')}
     ${renderModal(content.forms.report.title, 'report', 'Get report')}
+    ${renderHeroQuizModal(content)}
     ${renderVideoModal()}
   `
 }

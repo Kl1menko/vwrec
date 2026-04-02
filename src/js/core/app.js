@@ -9,6 +9,7 @@ import { initRevealAnimations } from '../components/animations.js'
 import { initHeroGlobe } from '../components/globe.js'
 import { initCounters } from '../components/counters.js'
 import { initHeroVideo } from '../components/hero-video.js'
+import { initIndustrySlider } from '../components/industry-slider.js'
 import { renderPage } from '../pages/render-page.js'
 import { renderLayout } from '../../templates/layout.js'
 
@@ -42,4 +43,5 @@ export function initApp() {
   initHeroGlobe()
   initCounters()
   initHeroVideo()
+  initIndustrySlider()
 }
