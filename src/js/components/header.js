@@ -28,15 +28,15 @@ export function renderHeader(content, locale, pageKey) {
   return `
     <header class="site-header">
       <div class="shell site-header__inner">
-        <a class="brand-mark" href="${buildPageUrl(locale, 'home')}" aria-label="VW Recruit home">
+        <a class="brand-mark" href="${buildPageUrl(locale, 'home')}" aria-label="${content.brand?.homeAriaLabel ?? 'VW Recruit home'}">
           <img class="brand-mark__logo" src="${logoSymbol}" alt="VW Recruit logo" width="82" height="101" />
           <span class="brand-mark__text">
             <strong>VW Recruit</strong>
-            <small>International hiring partner</small>
+            <small>${content.brand?.tagline ?? 'International hiring partner'}</small>
           </span>
         </a>
 
-        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${content.ui?.openMenu ?? 'Open menu'}">
           <span class="menu-toggle__lines" aria-hidden="true">
             <span></span>
             <span></span>
@@ -45,7 +45,7 @@ export function renderHeader(content, locale, pageKey) {
         </button>
 
         <div class="site-header__panel" id="site-nav" data-menu-panel>
-          <nav class="site-nav" aria-label="Primary">
+          <nav class="site-nav" aria-label="${content.ui?.primaryNav ?? 'Primary'}">
             ${navLinks}
           </nav>
 

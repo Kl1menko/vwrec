@@ -52,12 +52,24 @@ function renderFields(step, state) {
   `
 }
 
+function setQuizSuccessState(root, isSuccess) {
+  const modal = root.closest('[data-modal]')
+  const dialog = root.closest('.modal__dialog--quiz')
+
+  modal?.classList.toggle('modal--quiz-success', isSuccess)
+  dialog?.classList.toggle('is-success', isSuccess)
+  root.classList.toggle('is-success', isSuccess)
+}
+
 function initQuizInstance(root, content) {
   const quizSource = root.dataset.quizSource ?? 'quiz'
+  const ui = content.ui ?? {}
   const state = {}
   let currentStep = 0
 
   const draw = () => {
+    setQuizSuccessState(root, false)
+
     const step = content.quiz.steps[currentStep]
     const isLastStep = currentStep === content.quiz.steps.length - 1
 
@@ -69,8 +81,8 @@ function initQuizInstance(root, content) {
           ${step.type === 'options' ? renderOptions(step, state) : renderFields(step, state)}
         </div>
         <div class="quiz-actions">
-          <button class="button button--ghost" type="button" data-quiz-back ${currentStep === 0 ? 'disabled' : ''}>Back</button>
-          <button class="button" type="button" data-quiz-next>${isLastStep ? 'Submit' : 'Continue'}</button>
+          <button class="button button--ghost" type="button" data-quiz-back ${currentStep === 0 ? 'disabled' : ''}>${ui.quizBack ?? 'Back'}</button>
+          <button class="button" type="button" data-quiz-next>${isLastStep ? ui.quizSubmit ?? 'Submit' : ui.quizContinue ?? 'Continue'}</button>
         </div>
         <p class="form-status" data-quiz-status></p>
       </div>
@@ -85,7 +97,7 @@ function initQuizInstance(root, content) {
       const value = getStepValue(step, root)
 
       if (!isStepValid(step, value)) {
-        qs('[data-quiz-status]', root).textContent = 'Please complete the current step.'
+        qs('[data-quiz-status]', root).textContent = ui.quizValidationError ?? 'Please complete the current step.'
         return
       }
 
@@ -115,10 +127,14 @@ function initQuizInstance(root, content) {
           locale: document.body.dataset.locale,
           quizSource,
         })
+        setQuizSuccessState(root, true)
         root.replaceChildren(
           createElementFromHTML(`
             <div class="quiz-card quiz-card--success">
-              <p class="eyebrow">Ready</p>
+              <div class="quiz-card__success-icon" aria-hidden="true">
+                <span>✓</span>
+              </div>
+              <p class="eyebrow">${ui.quizReady ?? 'Ready'}</p>
               <h3>${content.quiz.completionTitle}</h3>
               <p>${content.quiz.completionLead}</p>
             </div>
@@ -126,7 +142,7 @@ function initQuizInstance(root, content) {
         )
       } catch (error) {
         console.error(error)
-        qs('[data-quiz-status]', root).textContent = 'Submission failed. Please try again.'
+        qs('[data-quiz-status]', root).textContent = ui.quizSubmitError ?? 'Submission failed. Please try again.'
       }
     })
   }

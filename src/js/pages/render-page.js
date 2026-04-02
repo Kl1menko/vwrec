@@ -1,4 +1,5 @@
 import logoSymbol from '../../assets/logo-symbol.svg'
+import { buildPageUrl } from '../core/site-config.js'
 
 const INDUSTRY_SLIDE_VISUALS = [
   {
@@ -28,26 +29,28 @@ const INDUSTRY_SLIDE_VISUALS = [
 ]
 
 function renderLeadForm(content, type = 'lead') {
+  const ui = content.ui ?? {}
+
   return `
     <form class="stack card card--form" data-form data-form-type="${type}">
       <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
       <label class="field">
-        <span>Name *</span>
+        <span>${ui.fieldName ?? 'Name'} *</span>
         <input type="text" name="name" required />
       </label>
       <label class="field">
-        <span>Company *</span>
+        <span>${ui.fieldCompany ?? 'Company'} *</span>
         <input type="text" name="company" required />
       </label>
       <label class="field">
-        <span>Email *</span>
+        <span>${ui.fieldEmail ?? 'Email'} *</span>
         <input type="email" name="email" required />
       </label>
       <label class="field">
-        <span>Phone</span>
+        <span>${ui.fieldPhone ?? 'Phone'}</span>
         <input type="text" name="phone" />
       </label>
-      <button class="button" type="submit">Send request</button>
+      <button class="button" type="submit">${ui.sendRequest ?? 'Send request'}</button>
       <p class="form-status" data-form-status></p>
     </form>
   `
@@ -162,6 +165,8 @@ function renderIndustrySlide(item) {
 }
 
 export function renderPage(content, pageKey) {
+  const ui = content.ui ?? {}
+
   if (pageKey === 'home') {
     const comparisonCards = content.home.comparison.cards
     const industryItems = content.home.industries.items
@@ -195,7 +200,7 @@ export function renderPage(content, pageKey) {
           <p class="hero__lead">${content.home.hero.lead}</p>
           <div class="hero__cta">
             <button class="button" type="button" data-open-modal="hero-quiz">${content.navigation.primaryCta}</button>
-            <a class="button button--hero-secondary" href="#cases">Приклади проектів</a>
+            <a class="button button--hero-secondary" href="${buildPageUrl(content.locale.code, 'cases')}">${ui.projectsExamples ?? 'Project examples'}</a>
           </div>
           ${
             content.home.hero.stats?.length
@@ -229,7 +234,7 @@ export function renderPage(content, pageKey) {
                   >
                     ${content.home.hero.video.src ? `<source src="${content.home.hero.video.src}" type="${content.home.hero.video.type ?? 'video/mp4'}" />` : ''}
                   </video>
-                  <button class="hero-video__play" type="button" aria-label="Play video" data-hero-video-trigger></button>
+                  <button class="hero-video__play" type="button" aria-label="${ui.videoPlay ?? 'Play video'}" data-hero-video-trigger></button>
                 </div>
               `
               : ''
@@ -257,7 +262,7 @@ export function renderPage(content, pageKey) {
         <div class="shell industries-showcase">
           <div class="industries-showcase__head">
             <h2>ДЛЯ ЯКИХ СФЕР ПІДХОДИТЬ ТАКА МОДЕЛЬ НАЙМУ</h2>
-            <p class="lead">Найчастіше підприємства використовують таку модель для операційної роботи на виробництві, складах, будівництві та у сфері сервісу.</p>
+            <p class="lead">${ui.industriesLead ?? 'Companies most often use this hiring model for operational roles in manufacturing, warehouses, construction, and service.'}</p>
           </div>
           <div class="industries-slider" data-industry-slider>
             <div class="industries-slider__controls">
@@ -274,7 +279,6 @@ export function renderPage(content, pageKey) {
       <section class="section" id="quiz" data-reveal>
         <div class="shell split split--hero">
           <div>
-            <p class="eyebrow">${content.home.calculator?.eyebrow ?? 'Quiz'}</p>
             <h2>${content.home.calculator?.title ?? content.quiz.title}</h2>
             <p class="lead">${content.home.calculator?.lead ?? 'Step-based mobile-friendly flow with analytics events and a single submission payload.'}</p>
           </div>
@@ -287,16 +291,33 @@ export function renderPage(content, pageKey) {
           ? `
             <section class="section section--muted" id="cases" data-reveal>
               <div class="shell">
-                <p class="eyebrow">${content.home.casesSection.eyebrow}</p>
-                <h2>${content.home.casesSection.title}</h2>
-                <div class="card-grid">
+                <div class="cases-section__head">
+                  <h2>${content.home.casesSection.title}</h2>
+                </div>
+                <div class="cases-list">
                   ${renderCardList(
                     caseItems,
                     (item) => `
-                      <article class="card showcase-card">
-                        <p class="eyebrow">Case study</p>
-                        <h3>${item}</h3>
-                        <p>Окремий SEO-friendly URL для кейсу, результатів, термінів і CTA.</p>
+                      <article class="case-card">
+                        <div class="case-card__content">
+                          <p class="eyebrow">${ui.caseStudy ?? 'Case study'}</p>
+                          <h3>${typeof item === 'string' ? item : item.title}</h3>
+                          <p class="case-card__subtitle">${typeof item === 'string' ? 'Короткий опис кейсу' : item.subtitle}</p>
+                          <p class="case-card__problem">${typeof item === 'string' ? 'Окремий SEO-friendly URL для кейсу, результатів, термінів і CTA.' : item.problem}</p>
+                          <div class="button-row">
+                            <a class="button button--ghost case-card__button" href="${buildPageUrl(content.locale.code, 'cases')}">
+                              <span>${ui.caseViewLabel ?? 'View case'}</span>
+                              <span class="case-card__button-icon" aria-hidden="true">→</span>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="case-card__media">
+                          <img
+                            src="${typeof item === 'string' ? '/images/industry-logistics.jpg' : item.image}"
+                            alt="${typeof item === 'string' ? item : item.alt ?? item.title}"
+                            loading="lazy"
+                          />
+                        </div>
                       </article>
                     `,
                   )}
@@ -310,7 +331,7 @@ export function renderPage(content, pageKey) {
       <section class="section section--accent" data-reveal>
         <div class="shell split">
           <div>
-            <p class="eyebrow">${content.home.process.eyebrow ?? 'Process'}</p>
+            <p class="eyebrow">${content.home.process.eyebrow ?? ui.processEyebrow ?? 'Process'}</p>
             <h2>${content.home.process.title}</h2>
             ${content.home.process.intro ? `<p class="lead">${content.home.process.intro}</p>` : ''}
           </div>
@@ -424,9 +445,9 @@ export function renderPage(content, pageKey) {
                     reelItems,
                     (item) => `
                       <article class="card showcase-card">
-                        <p class="eyebrow">Video</p>
+                        <p class="eyebrow">${ui.video ?? 'Video'}</p>
                         <h3>${item}</h3>
-                        <p>Місце для reel або відео у popup-modal після підключення джерел.</p>
+                        <p>${ui.reelPlaceholder ?? 'Space for a reel or video in a popup modal after connecting the sources.'}</p>
                       </article>
                     `,
                   )}
@@ -440,7 +461,7 @@ export function renderPage(content, pageKey) {
       <section class="section" data-reveal>
         <div class="shell split">
           <div>
-            <p class="eyebrow">Lead capture</p>
+            <p class="eyebrow">${ui.leadCaptureEyebrow ?? 'Lead capture'}</p>
             <h2>${content.forms.lead.title}</h2>
             <p class="lead">${content.home.finalCta.lead}</p>
           </div>
@@ -451,7 +472,7 @@ export function renderPage(content, pageKey) {
       <section class="section section--muted" data-reveal>
         <div class="shell split">
           <div>
-            <p class="eyebrow">FAQ</p>
+            <p class="eyebrow">${ui.faqEyebrow ?? 'FAQ'}</p>
             <h2>${content.home.faq.title}</h2>
           </div>
           <div class="stack">
@@ -463,13 +484,13 @@ export function renderPage(content, pageKey) {
       <section class="section" data-reveal>
         <div class="shell cta-banner">
           <div>
-            <p class="eyebrow">Final CTA</p>
+            <p class="eyebrow">${ui.finalCtaEyebrow ?? 'Final CTA'}</p>
             <h2>${content.home.finalCta.title}</h2>
             <p>${content.home.finalCta.lead}</p>
           </div>
           <div class="button-row">
-            <button class="button" type="button" data-open-modal="report">Download report</button>
-            <a class="button button--ghost" href="/${document.body.dataset.locale}/contacts/">Open contacts page</a>
+            <button class="button" type="button" data-open-modal="report">${ui.downloadReport ?? 'Download report'}</button>
+            <a class="button button--ghost" href="${buildPageUrl(content.locale.code, 'contacts')}">${ui.openContactsPage ?? 'Open contacts page'}</a>
           </div>
         </div>
       </section>
@@ -501,7 +522,7 @@ export function renderPage(content, pageKey) {
           <div class="line-card">Ready for localized metadata and content expansion</div>
           <div class="line-card">Built as a separate SEO-friendly route per locale</div>
         </div>
-        ${includeForm ? renderLeadForm(content, pageKey === 'report' ? 'report' : 'contact') : '<div class="card"><p>Legal copy placeholder. Replace with approved content before launch.</p></div>'}
+        ${includeForm ? renderLeadForm(content, pageKey === 'report' ? 'report' : 'contact') : `<div class="card"><p>${ui.legalPlaceholder ?? 'Legal copy placeholder. Replace with approved content before launch.'}</p></div>`}
       </div>
     </section>
     ${

@@ -58,6 +58,8 @@ export function initHeroGlobe() {
   let currentPhi = 1.12
   let currentTheta = 0.34
   let pointerActive = false
+  let activePointerId = null
+  let activePointerType = 'mouse'
   let lastX = 0
   let lastY = 0
   let frameId = 0
@@ -128,28 +130,40 @@ export function initHeroGlobe() {
   }
 
   const onPointerMove = (event) => {
-    if (!pointerActive || !globe || !width) return
+    if (!pointerActive || !globe || !width || event.pointerId !== activePointerId) return
 
     const deltaX = event.clientX - lastX
     const deltaY = event.clientY - lastY
     lastX = event.clientX
     lastY = event.clientY
 
-    currentPhi += deltaX / width * 2.2
-    currentTheta = Math.max(-0.45, Math.min(0.45, currentTheta + deltaY / width * 1.4))
+    const isTouchInput = activePointerType === 'touch'
+    const phiStrength = isTouchInput ? 3.9 : 2.2
+    const thetaStrength = isTouchInput ? 2.1 : 1.4
+
+    currentPhi += deltaX / width * phiStrength
+    currentTheta = Math.max(-0.45, Math.min(0.45, currentTheta + deltaY / width * thetaStrength))
     globe.update({ phi: currentPhi, theta: currentTheta })
   }
 
-  const stopPointer = () => {
+  const stopPointer = (event) => {
+    if (event && event.pointerId !== activePointerId) return
+
     pointerActive = false
+    activePointerId = null
     stage.classList.remove('is-dragging')
   }
 
   stage.addEventListener('pointerdown', (event) => {
+    if (!event.isPrimary) return
+
     pointerActive = true
+    activePointerId = event.pointerId
+    activePointerType = event.pointerType || 'mouse'
     lastX = event.clientX
     lastY = event.clientY
     stage.classList.add('is-dragging')
+    stage.setPointerCapture?.(event.pointerId)
   })
 
   window.addEventListener('pointermove', onPointerMove)

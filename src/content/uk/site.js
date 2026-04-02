@@ -132,7 +132,29 @@ ukContent.home = {
   casesSection: {
     eyebrow: 'Наші проєкти',
     title: 'Наші проєкти підбору працівників',
-    items: ['Кейс 1', 'Кейс 2', 'Кейс 3'],
+    items: [
+      {
+        title: 'Delta Pack',
+        subtitle: 'Виробниче підприємство, Центральна Європа',
+        problem: 'Закрили дефіцит 32 працівників на лінію пакування після затяжного локального найму та високої плинності.',
+        image: '/images/industry-manufacturing.jpg',
+        alt: 'Працівники на виробничій лінії',
+      },
+      {
+        title: 'Nord Cargo Hub',
+        subtitle: 'Складський комплекс та логістика',
+        problem: 'Сформували змінну команду для комплектації та сортування, коли бізнес не встигав покривати пікові навантаження.',
+        image: '/images/industry-logistics.jpg',
+        alt: 'Працівники на складі та в логістиці',
+      },
+      {
+        title: 'Urban Build Group',
+        subtitle: 'Будівельний підрядник',
+        problem: 'Підсилили об’єкти монтажниками та підсобними працівниками, щоб не зривати строки запуску нового етапу будівництва.',
+        image: '/images/industry-construction.jpg',
+        alt: 'Працівники на будівельному майданчику',
+      },
+    ],
   },
   process: {
     eyebrow: 'Що відбувається після запиту',
@@ -247,6 +269,49 @@ ukContent.forms.callback.success = 'Дякуємо. Ваш запит на дз�
 ukContent.forms.report.title = 'Отримати звіт'
 ukContent.forms.report.success = 'Дякуємо. Форма на отримання звіту успішно відправлена.'
 ukContent.forms.contact.title = 'Надіслати запит'
+ukContent.brand.tagline = 'Міжнародний партнер із найму'
+ukContent.brand.homeAriaLabel = 'VW Recruit головна'
+
+ukContent.ui.modalClose = 'Закрити модальне вікно'
+ukContent.ui.leadCapture = 'Збір заявки'
+ukContent.ui.video = 'Відео'
+ukContent.ui.videoPlay = 'Відтворити відео'
+ukContent.ui.openMenu = 'Відкрити меню'
+ukContent.ui.primaryNav = 'Основна навігація'
+ukContent.ui.fieldName = 'Ім’я'
+ukContent.ui.fieldCompany = 'Компанія'
+ukContent.ui.fieldEmail = 'Email'
+ukContent.ui.fieldPhone = 'Телефон'
+ukContent.ui.sendRequest = 'Надіслати запит'
+ukContent.ui.requestCallback = 'Забронювати дзвінок'
+ukContent.ui.getReport = 'Отримати звіт'
+ukContent.ui.bookCall = 'Забронювати дзвінок'
+ukContent.ui.quizEyebrow = 'Квіз'
+ukContent.ui.quizContinue = 'Продовжити'
+ukContent.ui.quizBack = 'Назад'
+ukContent.ui.quizSubmit = 'Надіслати'
+ukContent.ui.quizReady = 'Готово'
+ukContent.ui.quizValidationError = 'Будь ласка, заповніть поточний крок.'
+ukContent.ui.quizSubmitError = 'Не вдалося відправити форму. Спробуйте ще раз.'
+ukContent.ui.processEyebrow = 'Процес'
+ukContent.ui.caseStudy = 'Кейс'
+ukContent.ui.caseViewLabel = 'Дивитися кейс'
+ukContent.ui.leadCaptureEyebrow = 'Збір заявки'
+ukContent.ui.faqEyebrow = 'Поширені запитання'
+ukContent.ui.finalCtaEyebrow = 'Фінальний CTA'
+ukContent.ui.downloadReport = 'Завантажити звіт'
+ukContent.ui.openContactsPage = 'Відкрити сторінку контактів'
+ukContent.ui.projectsExamples = 'Приклади проєктів'
+ukContent.ui.reelPlaceholder = 'Місце для reel або відео в popup-модалці після підключення джерел.'
+ukContent.ui.industriesLead =
+  'Найчастіше підприємства використовують таку модель для операційної роботи на виробництві, складах, будівництві та у сфері сервісу.'
+ukContent.ui.legalPlaceholder = 'Тут буде юридичний текст. Замініть його на погоджену фінальну версію перед запуском.'
+ukContent.ui.footerDescription =
+  'Мультимовний B2B-сайт для міжнародного рекрутингу: лідогенерація, кейси, квізи та SEO-масштабування.'
+ukContent.ui.footerCorePages = 'Основні сторінки'
+ukContent.ui.footerLegal = 'Юридична інформація'
+ukContent.ui.privacyPolicy = 'Політика конфіденційності'
+ukContent.ui.termsAndConditions = 'Умови використання'
 
 ukContent.quiz.title = 'Розрахунок підбору'
 ukContent.quiz.progressLabel = 'Крок'

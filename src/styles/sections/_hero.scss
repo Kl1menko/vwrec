@@ -28,6 +28,8 @@
   border-radius: 50%;
   cursor: grab;
   pointer-events: auto;
+  touch-action: none;
+  user-select: none;
   opacity: 0.58;
   filter: drop-shadow(0 16px 28px rgba(17, 17, 17, 0.08));
 }
