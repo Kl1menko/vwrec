@@ -69,9 +69,12 @@
   letter-spacing: -0.03em;
 }
 
-.brand-mark small,
-.site-footer__text {
+.brand-mark small {
   color: var(--color-text-soft);
+}
+
+.site-footer__text {
+  color: #7a736d;
 }
 
 .brand-mark small {
@@ -395,6 +398,32 @@
   border-top: 1px solid var(--color-line);
 }
 
+.site-footer__brand {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.site-footer__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+}
+
+.site-footer__brand-mark img {
+  width: 34px;
+  height: auto;
+  display: block;
+}
+
+.site-footer__brand-mark span {
+  color: var(--color-text);
+  font-size: 1.06rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
 .footer-links {
   display: grid;
   gap: 8px;
@@ -505,6 +534,18 @@
   .brand-mark strong {
     font-size: 0.96rem;
     letter-spacing: -0.04em;
+  }
+
+  .site-footer__brand-mark {
+    gap: 10px;
+  }
+
+  .site-footer__brand-mark img {
+    width: 30px;
+  }
+
+  .site-footer__brand-mark span {
+    font-size: 1rem;
   }
 
   .brand-mark small {

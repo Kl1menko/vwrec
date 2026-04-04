@@ -1,13 +1,17 @@
 import { buildPageUrl } from '../core/site-config.js'
+import logoSymbol from '../../assets/logo-symbol.svg'
 
 export function renderFooter(content, locale) {
   return `
     <footer class="site-footer">
       <div class="shell site-footer__grid">
-        <div>
-          <p class="site-footer__title">VW Recruit</p>
+        <div class="site-footer__brand">
+          <div class="site-footer__brand-mark" aria-hidden="true">
+            <img src="${logoSymbol}" alt="" loading="lazy" />
+            <span>VW Recruit</span>
+          </div>
           <p class="site-footer__text">
-            ${content.ui?.footerDescription ?? 'Mobile-first starter for multilingual B2B recruitment pages, case studies, lead flows, and SEO expansion.'}
+            ${content.ui?.footerDescription ?? 'International recruitment partner for businesses that need stable operational teams, transparent processes, and faster hiring launch.'}
           </p>
         </div>
         <div>

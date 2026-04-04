@@ -28,6 +28,14 @@
   font-size: 0.92rem;
 }
 
+.form-status[data-state='loading'] {
+  color: #5f5b57;
+}
+
+.form-status[data-state='success'] {
+  color: #178a5a;
+}
+
 .form-status[data-state='error'] {
   color: #b22a00;
 }

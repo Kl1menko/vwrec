@@ -165,7 +165,7 @@ export function createLocaleContent({
       },
       report: {
         title: 'Get the report',
-        success: 'Thanks. The report delivery flow is ready to connect to your file and Google workflow.',
+        success: 'Thanks. We received your request and will send the PDF report to your email shortly.',
       },
       contact: {
         title: 'Send a message',

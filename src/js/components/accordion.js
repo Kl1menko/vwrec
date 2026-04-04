@@ -4,7 +4,8 @@ export function initAccordion() {
   qsa('[data-accordion-trigger]').forEach((button) => {
     button.addEventListener('click', () => {
       const item = button.closest('[data-accordion-item]')
-      item?.classList.toggle('is-open')
+      const isOpen = item?.classList.toggle('is-open')
+      button.setAttribute('aria-expanded', String(Boolean(isOpen)))
     })
   })
 }

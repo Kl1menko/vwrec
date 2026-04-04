@@ -37,12 +37,17 @@ function renderModal(content, title, formType, buttonLabel) {
 function renderVideoModal(content) {
   return `
     <div class="modal" data-modal="video">
-      <div class="modal__dialog">
+      <div class="modal__dialog modal__dialog--video">
         <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
-        <p class="eyebrow">${content.ui?.video ?? 'Video'}</p>
-        <h3>Презентація VW Recruit</h3>
-        <div class="card">
-          <p>Місце для вашого відео. Після отримання файлу або посилання я підключу повноцінний плеєр у це вікно.</p>
+        <h3 data-video-modal-title>Презентація VW Recruit</h3>
+        <div class="video-modal__player">
+          <video
+            class="video-modal__media"
+            data-video-modal-media
+            controls
+            playsinline
+            preload="metadata"
+          ></video>
         </div>
       </div>
     </div>
@@ -62,6 +67,35 @@ function renderHeroQuizModal(content) {
   `
 }
 
+function renderReportSuccessModal(content) {
+  return `
+    <div class="modal" data-modal="report-success">
+      <div class="modal__dialog modal__dialog--success">
+        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
+        <div class="success-modal__icon" aria-hidden="true">
+          <span></span>
+        </div>
+        <h3>${content.forms.report.title}</h3>
+        <p>${content.forms.report.success}</p>
+      </div>
+    </div>
+  `
+}
+
+function renderFormSuccessModal(content) {
+  return `
+    <div class="modal" data-modal="form-success">
+      <div class="modal__dialog modal__dialog--success">
+        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
+        <div class="success-modal__icon" aria-hidden="true">
+          <span></span>
+        </div>
+        <p class="success-modal__headline" data-form-success-message>${content.forms.lead.success}</p>
+      </div>
+    </div>
+  `
+}
+
 export function renderLayout({ content, locale, pageKey, mainContent }) {
   return `
     ${renderHeader(content, locale, pageKey)}
@@ -71,6 +105,8 @@ export function renderLayout({ content, locale, pageKey, mainContent }) {
     ${renderFooter(content, locale)}
     ${renderModal(content, content.forms.callback.title, 'callback', content.ui?.requestCallback ?? 'Request callback')}
     ${renderModal(content, content.forms.report.title, 'report', content.ui?.getReport ?? 'Get report')}
+    ${renderReportSuccessModal(content)}
+    ${renderFormSuccessModal(content)}
     ${renderHeroQuizModal(content)}
     ${renderVideoModal(content)}
   `
