@@ -6,7 +6,6 @@ function renderModal(content, title, formType, buttonLabel) {
     <div class="modal" data-modal="${formType}">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
-        <p class="eyebrow">${content.ui?.leadCapture ?? 'Lead capture'}</p>
         <h3>${title}</h3>
         <form class="stack" data-form data-form-type="${formType}">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
