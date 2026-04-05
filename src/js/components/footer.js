@@ -1,5 +1,6 @@
 import { buildPageUrl } from '../core/site-config.js'
-import logoSymbol from '../../assets/logo-symbol.svg'
+
+const logoSymbol = '/logo-symbol.svg'
 
 export function renderFooter(content, locale) {
   return `

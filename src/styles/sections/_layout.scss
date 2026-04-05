@@ -2,8 +2,19 @@
   padding-top: 56px;
 }
 
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 14% 22%, rgba(242, 122, 36, 0.14), transparent 28%),
+    radial-gradient(circle at 84% 8%, rgba(242, 122, 36, 0.08), transparent 20%);
+  pointer-events: none;
+}
+
 .page-hero .shell,
 .section .shell {
+  position: relative;
   display: grid;
   gap: 24px;
 }

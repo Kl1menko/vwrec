@@ -36,6 +36,23 @@ export const PAGE_LOOKUP = Object.fromEntries(
   PAGE_DEFINITIONS.map((page) => [page.key, page]),
 )
 
+export const PAGE_CONTENT_KEYS = {
+  home: 'home',
+  services: 'services',
+  industries: 'industries',
+  cases: 'cases',
+  report: 'report',
+  about: 'about',
+  contacts: 'contacts',
+  faq: 'faqPage',
+  'privacy-policy': 'privacy',
+  terms: 'terms',
+}
+
+export function resolvePageContentKey(pageKey) {
+  return PAGE_CONTENT_KEYS[pageKey] ?? 'about'
+}
+
 export function buildPageUrl(locale, pageKey) {
   const page = PAGE_LOOKUP[pageKey]
 

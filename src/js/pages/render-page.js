@@ -1,32 +1,91 @@
-import logoSymbol from '../../assets/logo-symbol.svg'
 import { buildPageUrl } from '../core/site-config.js'
+
+const logoSymbol = '/logo-symbol.svg'
+
+function renderBeamIcon(type) {
+  const icons = {
+    brief: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8"/><path d="M9 3v3"/><path d="M15 3v3"/><rect x="4" y="6" width="16" height="14" rx="3"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>`,
+    search: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/></svg>`,
+    approval: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12.75 11.25 15 15 9.75"/><circle cx="12" cy="12" r="8"/></svg>`,
+    documents: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>`,
+    arrival: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-7 9 7"/><path d="M5 10.5V20h14v-9.5"/><path d="M9 20v-5h6v5"/></svg>`,
+    user: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-1.5a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4V21"/><circle cx="12" cy="8" r="4"/></svg>`,
+  }
+
+  return icons[type] ?? icons.brief
+}
 
 const INDUSTRY_SLIDE_VISUALS = [
   {
     match: /склади|логістик|warehouse|logistics/i,
     image: '/images/industry-logistics.jpg',
-    alt: 'Працівники на складі та в логістиці',
-    label: 'Logistics',
+    altKey: 'industryVisualLogisticsAlt',
   },
   {
     match: /будівницт/i,
     image: '/images/industry-construction.jpg',
-    alt: 'Працівники на будівельному об’єкті',
-    label: 'Construction',
+    altKey: 'industryVisualConstructionAlt',
   },
   {
     match: /готелі|сервіс|hotel|service|hospitality/i,
     image: '/images/industry-hospitality.jpg',
-    alt: 'Персонал у сфері готелів та сервісу',
-    label: 'Service',
+    altKey: 'industryVisualHospitalityAlt',
   },
   {
     match: /виробництв|manufacturing|factory/i,
     image: '/images/industry-manufacturing.jpg',
-    alt: 'Працівники на виробництві',
-    label: 'Manufacturing',
+    altKey: 'industryVisualManufacturingAlt',
   },
 ]
+
+function buildServicesFitCards(roles, ui = {}) {
+  const presets = [
+    {
+      score: 96,
+      metrics: [94, 92, 97],
+      text:
+        'Найсильніше працює там, де важливі повторювані зміни, дисципліна виходу і швидке масштабування без провалів у запуску.',
+    },
+    {
+      score: 93,
+      metrics: [91, 89, 95],
+      text:
+        'Добре заходить для сезонних піків, зростання обсягів і операцій, де бізнесу критично потрібен ритмічний запуск людей.',
+    },
+    {
+      score: 89,
+      metrics: [84, 88, 90],
+      text:
+        'Підходить для проєктів із жорсткими дедлайнами, де потрібно поєднати рекрутинг, документи та прибуття без хаосу.',
+    },
+    {
+      score: 87,
+      metrics: [86, 83, 92],
+      text:
+        'Показує хороший результат у сервісних командах, де критичні зрозумілий маршрут, швидка адаптація і стабільність старту.',
+    },
+  ]
+
+  const metricLabels = [
+    ui.servicesFitMetricOne ?? 'Launch speed',
+    ui.servicesFitMetricTwo ?? 'Retention',
+    ui.servicesFitMetricThree ?? 'Process clarity',
+  ]
+
+  return (roles ?? []).map((item, index) => {
+    const preset = presets[index] ?? presets[presets.length - 1]
+
+    return {
+      title: item,
+      text: preset.text,
+      score: preset.score,
+      metrics: metricLabels.map((label, metricIndex) => ({
+        label,
+        value: preset.metrics[metricIndex],
+      })),
+    }
+  })
+}
 
 function renderLeadForm(content, type = 'lead') {
   const ui = content.ui ?? {}
@@ -61,6 +120,42 @@ function renderLeadForm(content, type = 'lead') {
       <button class="button" type="submit">${ui.sendRequest ?? 'Send request'}</button>
       <p class="form-status" data-form-status></p>
     </form>
+  `
+}
+
+function renderServicesLeadForm(content) {
+  const ui = content.ui ?? {}
+  const servicesForm = content.services?.form ?? {}
+
+  return `
+    <div class="services-form-card card card--form">
+      <div class="services-form-card__head">
+        <h3>${servicesForm.title ?? content.forms.lead.title}</h3>
+        <p>${servicesForm.lead ?? ''}</p>
+      </div>
+      <form class="stack" data-form data-form-type="lead">
+        <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+        <label class="field">
+          <span>${ui.fieldName ?? 'Name'} *</span>
+          <input type="text" name="name" required />
+        </label>
+        <label class="field">
+          <span>${ui.fieldCompany ?? 'Company'} *</span>
+          <input type="text" name="company" required />
+        </label>
+        <label class="field">
+          <span>${ui.fieldEmail ?? 'Email'} *</span>
+          <input type="email" name="email" required />
+        </label>
+        <label class="field">
+          <span>${ui.fieldPhone ?? 'Phone'}</span>
+          <input type="text" name="phone" />
+        </label>
+        <button class="button services-form-card__button" type="submit">${servicesForm.button ?? ui.sendRequest ?? 'Send request'}</button>
+        <p class="services-form-card__note">${servicesForm.note ?? ''}</p>
+        <p class="form-status" data-form-status></p>
+      </form>
+    </div>
   `
 }
 
@@ -126,13 +221,13 @@ function renderFaq(items) {
     .join('')
 }
 
-function renderComparisonCard(card) {
+function renderComparisonCard(card, content) {
   const variant = card.variant ?? 'default'
   const isBrand = variant === 'brand'
   const amount = card.amount ? `<div class="comparison-card__price"><strong>${card.amount}</strong>${card.period ? `<span>${card.period}</span>` : ''}</div>` : ''
   const note = card.note ? `<p class="comparison-card__note">${card.note}</p>` : ''
   const cta = isBrand
-    ? `<div class="comparison-card__actions"><a class="button" href="#quiz">Прорахувати підбір</a></div>`
+    ? `<div class="comparison-card__actions"><a class="button" href="#quiz">${content.home.comparison.cta ?? content.ui?.comparisonCardCta ?? 'Calculate hiring cost'}</a></div>`
     : ''
   const rows = renderCardList(
     card.rows,
@@ -167,25 +262,23 @@ function renderComparisonCard(card) {
   `
 }
 
-function getIndustryVisual(item) {
+function getIndustryVisual(item, ui = {}) {
   const title = typeof item === 'string' ? item : item.title
+  const visual = INDUSTRY_SLIDE_VISUALS.find((entry) => entry.match.test(title))
 
-  return (
-    INDUSTRY_SLIDE_VISUALS.find((visual) => visual.match.test(title)) ?? {
-      image: '/images/industry-logistics.jpg',
-      alt: title,
-      label: 'Operations',
-    }
-  )
+  return {
+    image: visual?.image ?? '/images/industry-logistics.jpg',
+    alt: visual ? ui[visual.altKey] ?? title : title,
+  }
 }
 
-function renderIndustrySlide(item) {
+function renderIndustrySlide(item, ui = {}) {
   const title = typeof item === 'string' ? item : item.title
   const text =
     typeof item === 'string'
-      ? 'Окремий візуальний кейс для цієї вертикалі можна масштабувати під SEO-сторінки, квіз і персоналізовані CTA.'
+      ? ui.industrySlidePlaceholder ?? 'This vertical can be expanded into SEO pages, quiz paths, and personalized CTAs.'
       : item.text
-  const visual = getIndustryVisual(item)
+  const visual = getIndustryVisual(item, ui)
 
   return `
     <article class="industry-slide">
@@ -200,14 +293,14 @@ function renderIndustrySlide(item) {
   `
 }
 
-function getGuaranteeCardMeta(item, index) {
+function getGuaranteeCardMeta(item, index, ui = {}) {
   const title = item.title ?? ''
 
   if (/легаль|legal/i.test(title)) {
     return {
       label: 'Legal shield',
       metric: '100%',
-      delta: 'Квоти, дозволи, візи',
+      delta: ui.guaranteesLegalDelta ?? 'Quotas, permits, visas',
       variant: 'compliance',
     }
   }
@@ -215,8 +308,8 @@ function getGuaranteeCardMeta(item, index) {
   if (/заміна|replace/i.test(title)) {
     return {
       label: 'Replacement',
-      metric: '0 грн',
-      delta: 'Швидка заміна в гарантії',
+      metric: ui.guaranteesReplacementMetric ?? 'No fee',
+      delta: ui.guaranteesReplacementDelta ?? 'Fast replacement under guarantee',
       variant: 'replacement',
     }
   }
@@ -224,8 +317,8 @@ function getGuaranteeCardMeta(item, index) {
   if (/супровід|support|ключ/i.test(title)) {
     return {
       label: 'Full support',
-      metric: 'Під ключ',
-      delta: 'Від відбору до зміни',
+      metric: ui.guaranteesSupportMetric ?? 'Turnkey',
+      delta: ui.guaranteesSupportDelta ?? 'From sourcing to first shift',
       variant: 'support',
     }
   }
@@ -233,12 +326,12 @@ function getGuaranteeCardMeta(item, index) {
   return {
     label: `Benefit 0${index + 1}`,
     metric: `${index + 1}00%`,
-    delta: 'Перевага VW Recruit',
+    delta: ui.guaranteesFallbackDelta ?? 'VW Recruit advantage',
     variant: 'compliance',
   }
 }
 
-function renderGuaranteeVisual(variant) {
+function renderGuaranteeVisual(variant, ui = {}) {
   if (variant === 'replacement') {
     return `
       <div class="guarantee-card__replacement-scene" aria-hidden="true">
@@ -283,7 +376,7 @@ function renderGuaranteeVisual(variant) {
       <div class="guarantee-card__support-scene" aria-hidden="true">
         <div class="guarantee-card__support-step">
           <strong>01</strong>
-          <span>Відбір</span>
+          <span>${ui.guaranteeSupportStepOne ?? 'Selection'}</span>
         </div>
         <div class="guarantee-card__support-path">
           <span></span>
@@ -292,9 +385,9 @@ function renderGuaranteeVisual(variant) {
         </div>
         <div class="guarantee-card__support-step guarantee-card__support-step--accent">
           <strong>02</strong>
-          <span>Приїзд</span>
+          <span>${ui.guaranteeSupportStepTwo ?? 'Arrival'}</span>
         </div>
-        <div class="guarantee-card__support-note">Старт зміни</div>
+        <div class="guarantee-card__support-note">${ui.guaranteeSupportNote ?? 'First shift start'}</div>
       </div>
     `
   }
@@ -307,16 +400,16 @@ function renderGuaranteeVisual(variant) {
         <span class="guarantee-card__doc-line guarantee-card__doc-line--medium"></span>
       </div>
       <div class="guarantee-card__checklist">
-        <span class="guarantee-card__checklist-item is-done">Квоти</span>
-        <span class="guarantee-card__checklist-item is-done">Permit</span>
-        <span class="guarantee-card__checklist-item is-done">Visa</span>
+        <span class="guarantee-card__checklist-item is-done">${ui.guaranteeChecklistQuota ?? 'Quotas'}</span>
+        <span class="guarantee-card__checklist-item is-done">${ui.guaranteeChecklistPermit ?? 'Permit'}</span>
+        <span class="guarantee-card__checklist-item is-done">${ui.guaranteeChecklistVisa ?? 'Visa'}</span>
       </div>
     </div>
   `
 }
 
-function renderGuaranteeCard(item, index) {
-  const meta = getGuaranteeCardMeta(item, index)
+function renderGuaranteeCard(item, index, ui = {}) {
+  const meta = getGuaranteeCardMeta(item, index, ui)
 
   return `
     <article class="guarantee-card guarantee-card--${meta.variant}">
@@ -326,7 +419,7 @@ function renderGuaranteeCard(item, index) {
       <div class="guarantee-card__metric">${meta.metric}</div>
       <div class="guarantee-card__delta">${meta.delta}</div>
       <div class="guarantee-card__visual">
-        ${renderGuaranteeVisual(meta.variant)}
+        ${renderGuaranteeVisual(meta.variant, ui)}
       </div>
       <div class="guarantee-card__copy">
         <p>${item.text}</p>
@@ -335,8 +428,11 @@ function renderGuaranteeCard(item, index) {
   `
 }
 
-function getReviewMetricMeta(item, index) {
-  const source = typeof item === 'string' ? { value: '7 РОКІВ', label: item.replace('7 років ', '') } : item
+function getReviewMetricMeta(item, index, ui = {}) {
+  const source =
+    typeof item === 'string'
+      ? { value: ui.reviewFallbackValue ?? '7 YEARS', label: item.replace(ui.reviewLabelPrefix ?? '7 years ', '') }
+      : item
   const text = `${source.value ?? ''} ${source.label ?? ''}`.toLowerCase()
 
   if (/досвід|рекрутинг|experience/.test(text)) {
@@ -453,6 +549,815 @@ function renderMediaInsightCard(item, index, ui) {
   `
 }
 
+function renderServicesPage(content, ui) {
+  const services = content.services
+  const metrics = services.metrics ?? []
+  const heroBadges = services.heroBadges ?? metrics
+  const segments = services.segments ?? []
+  const pillars = services.pillars ?? []
+  const beam = services.beam ?? {}
+  const timeline = services.timeline ?? []
+  const deliverables = services.deliverables ?? []
+  const offerCards = services.offerCards ?? []
+  const roles = services.roles ?? []
+  const fitCards = buildServicesFitCards(roles, ui)
+  const trust = services.trust ?? []
+
+  return `
+    <section class="services-hero" data-reveal>
+      <div class="shell services-hero__grid">
+        <div class="services-hero__copy">
+          <h1>${services.title}</h1>
+          <p class="lead">${services.lead}</p>
+          <div class="button-row services-hero__actions">
+            <button class="button" type="button" data-open-modal="callback">${services.cta ?? content.navigation.secondaryCta}</button>
+            <a class="button button--ghost" href="#services-form">${ui.servicesHeroGhostCta ?? 'View service terms'}</a>
+          </div>
+        </div>
+        <div class="services-hero__panel">
+          <div class="services-hero-visual" aria-hidden="true">
+            <div class="services-hero-visual__orbit services-hero-visual__orbit--one"></div>
+            <div class="services-hero-visual__orbit services-hero-visual__orbit--two"></div>
+            <div class="services-hero-visual__card">
+              <div class="services-hero-visual__card-brand">
+                <img src="${logoSymbol}" alt="" loading="eager" />
+              </div>
+              <div class="services-hero-visual__card-lines">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            ${renderCardList(
+              heroBadges.slice(0, 4),
+              (item, index) => `
+                <article class="services-hero-badge services-hero-badge--${index + 1}">
+                  <strong>${
+                    /^\d+$/.test(String(item.value))
+                      ? `<span data-counter-target="${item.value}" data-counter-duration="1400">0</span>${item.suffix ? `<em>${item.suffix}</em>` : ''}`
+                      : `${item.value}${item.suffix ? `<em>${item.suffix}</em>` : ''}`
+                  }</strong>
+                  <p>${item.label}</p>
+                </article>
+              `,
+            )}
+          </div>
+          <div class="services-hero__panel-copy">
+            <strong>${ui.servicesHeroPanelTitle ?? 'Sourcing, documents, logistics, and team launch in one process'}</strong>
+            <p>${ui.servicesHeroPanelText ?? 'The route is designed so the business sees a predictable launch path and the candidate understands each step.'}</p>
+          </div>
+        </div>
+        <p class="services-hero__intro">${services.intro ?? ''}</p>
+      </div>
+    </section>
+
+    <section class="section services-segments" data-reveal>
+      <div class="shell services-segments__grid">
+        ${renderCardList(
+          segments,
+          (item) => `
+            <article class="services-segment-card services-segment-card--${item.variant === 'candidate' ? 'b2c' : 'b2b'}">
+              <span class="services-segment-card__label">${item.badge ?? (item.variant === 'candidate' ? 'B2C' : 'B2B')}</span>
+              <h2>${item.title}</h2>
+              <p>${item.text}</p>
+              <button class="button${item.variant === 'candidate' ? ' button--ghost' : ' button--white'}" type="button" data-open-modal="callback">${item.cta}</button>
+            </article>
+          `,
+        )}
+      </div>
+    </section>
+
+    <section class="section services-pillars-section" data-reveal>
+      <div class="shell">
+        <div class="services-pillars">
+          <div class="services-pillars__head">
+            <div class="services-pillars__heading">
+              <p class="eyebrow">${ui.servicesPillarsEyebrow ?? 'What we cover'}</p>
+              <h2>${ui.servicesPillarsTitle ?? 'The service is built not as a resume search, but as a full route to launch people into work'}</h2>
+            </div>
+          </div>
+          <div class="services-pillars__grid">
+            ${renderCardList(
+              pillars,
+              (item, index) => {
+                const icons = [
+                  `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m21 21-4.35-4.35"/><circle cx="10" cy="9" r="2.5"/><path d="M7.5 14.5c.8-1 1.6-1.5 2.5-1.5s1.7.5 2.5 1.5"/></svg>`,
+                  `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>`,
+                  `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+                ]
+                return `
+                  <article class="services-pillar-card">
+                    <div class="services-pillar-card__top">
+                      <div class="services-pillar-card__icon">${icons[index] ?? ''}</div>
+                      <span class="services-pillar-card__index">0${index + 1}</span>
+                    </div>
+                    <h3>${item.title}</h3>
+                    <p>${item.text}</p>
+                  </article>
+                `
+              },
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted" data-reveal>
+      <div class="shell services-offer">
+        <div class="services-section-heading services-section-heading--wide">
+          <h2>${ui.servicesOfferTitle ?? 'A model where the business gets a managed result and the candidate sees a transparent process'}</h2>
+        </div>
+        <div class="services-offer__layout">
+          <div class="services-offer-visual" aria-hidden="true">
+            <div class="services-offer-visual__glow"></div>
+            <div class="services-offer-visual__chips">
+              <span class="services-offer-visual__chip services-offer-visual__chip--top">${ui.servicesOfferVisualPrimary ?? 'Employer route'}</span>
+              <span class="services-offer-visual__chip services-offer-visual__chip--bottom">${ui.servicesOfferVisualSecondary ?? 'Candidate route'}</span>
+            </div>
+            <div class="services-offer-visual__panel">
+              <div class="services-offer-visual__panel-head">
+                <span class="services-offer-visual__panel-label">${ui.servicesOfferVisualLabel ?? 'VW Recruit flow'}</span>
+                <div class="services-offer-visual__panel-status">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="services-offer-visual__messages">
+                ${
+                  offerCards[0]
+                    ? `
+                      <div class="services-offer-visual__message services-offer-visual__message--brand">
+                        <strong>${offerCards[0].title}</strong>
+                        <p>${offerCards[0].text}</p>
+                      </div>
+                    `
+                    : ''
+                }
+                ${
+                  offerCards[1]
+                    ? `
+                      <div class="services-offer-visual__message services-offer-visual__message--light">
+                        <strong>${offerCards[1].title}</strong>
+                        <p>${offerCards[1].text}</p>
+                      </div>
+                    `
+                    : ''
+                }
+                <div class="services-offer-visual__metrics">
+                  ${renderCardList(
+                    heroBadges.slice(0, 2),
+                    (item) => `
+                      <div class="services-offer-visual__metric">
+                        <strong>${item.value}${item.suffix ?? ''}</strong>
+                        <span>${item.label}</span>
+                      </div>
+                    `,
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="services-offer__stack">
+            ${renderCardList(
+              offerCards,
+              (item, index) => `
+                <article class="services-offer-card${index === 0 ? ' is-active' : ''}">
+                  <div class="services-offer-card__head">
+                    <span class="services-offer-card__icon" aria-hidden="true"></span>
+                    <h3>${item.title}</h3>
+                  </div>
+                  <p>${item.text}</p>
+                </article>
+              `,
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-reveal>
+      <div class="shell services-beam">
+        <div class="services-section-heading services-section-heading--wide services-beam__heading">
+          <h2>${beam.title ?? services.promise?.title ?? ''}</h2>
+        </div>
+        <div class="services-beam__board" data-animated-beam>
+          <svg class="services-beam__svg" data-beam-svg aria-hidden="true"></svg>
+          <div class="services-beam__layout">
+            <div class="services-beam__column services-beam__column--inputs">
+              ${renderCardList(
+                (beam.steps ?? timeline.map((item) => item.title)).slice(0, 5),
+                (item, index) => `
+                  <div class="services-beam-node" data-beam-node>
+                    <div class="services-beam-node__circle" data-beam-anchor>
+                      ${renderBeamIcon(['brief', 'search', 'approval', 'documents', 'arrival'][index])}
+                    </div>
+                    <span class="services-beam-node__label">${typeof item === 'string' ? item : item.title}</span>
+                  </div>
+                `,
+              )}
+            </div>
+            <div class="services-beam__column services-beam__column--center">
+              <div class="services-beam-core" data-beam-center>
+                <div class="services-beam-core__mark" data-beam-anchor>
+                  <img src="${logoSymbol}" alt="" loading="lazy" />
+                </div>
+                <span class="services-beam-core__label">${beam.centerLabel ?? 'Processing'}</span>
+              </div>
+            </div>
+            <div class="services-beam__column services-beam__column--output">
+              <div class="services-beam-output" data-beam-output>
+                <div class="services-beam-output__circle" data-beam-anchor>
+                  ${renderBeamIcon('user')}
+                </div>
+                <span class="services-beam-output__label">${beam.outputLabel ?? 'Team launch'}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-reveal>
+      <div class="shell services-route">
+        <div class="services-route__board">
+          <div class="services-route__intro">
+            <h2>${ui.servicesRouteTitle ?? 'A transparent route from request to workers starting their shifts'}</h2>
+            <p class="lead">${ui.servicesRouteLead ?? services.promise?.text ?? ''}</p>
+          </div>
+          <div class="services-route__grid">
+            ${renderCardList(
+              timeline,
+              (item, index) => `
+                <article class="services-route-step">
+                  <div class="services-route-step__rail" aria-hidden="true">
+                    <span class="services-route-step__number">0${index + 1}</span>
+                    ${index < timeline.length - 1 ? '<span class="services-route-step__line"></span>' : ''}
+                  </div>
+                  <div class="services-route-step__body">
+                    <h3>${item.title}</h3>
+                    <p>${item.text}</p>
+                  </div>
+                </article>
+              `,
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-reveal>
+        <div class="shell services-proof">
+        <div class="services-proof__board">
+          <div class="services-proof__copy">
+            <h2>${ui.servicesProofTitle ?? 'Not just sourcing, but a managed service with a clear result at every stage'}</h2>
+            <div class="services-proof__trust">
+              ${renderCardList(
+                trust,
+                (item) => `
+                  <div class="services-proof__trust-item">
+                    <span aria-hidden="true"></span>
+                    <p>${item}</p>
+                  </div>
+                `,
+              )}
+            </div>
+          </div>
+          <div class="services-proof__list">
+            ${renderCardList(
+              deliverables,
+              (item) => `
+                <div class="services-proof-item">
+                  <span class="services-proof-item__icon" aria-hidden="true"></span>
+                  <p>${item}</p>
+                </div>
+              `,
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--accent" data-reveal>
+      <div class="shell services-fit">
+        <div class="services-fit__copy">
+          <h2>${ui.servicesFitTitle ?? 'Roles and niches where international recruitment delivers the strongest operational impact'}</h2>
+          <p class="lead">${ui.servicesFitLead ?? services.promise?.title ?? ''}</p>
+        </div>
+        <div class="services-fit__grid">
+          ${renderCardList(
+            fitCards,
+            (item) => `
+              <article class="services-fit-card">
+                <div class="services-fit-card__head">
+                  <div class="services-fit-card__score" data-fit-score="${item.score}" style="--fit-progress:0;">
+                    <div class="services-fit-card__score-ring"></div>
+                    <div class="services-fit-card__score-value">
+                      <strong data-fit-score-value>0</strong>
+                      <span>%</span>
+                    </div>
+                  </div>
+                  <div class="services-fit-card__copy-head">
+                    <h3>${item.title}</h3>
+                  </div>
+                </div>
+                <div class="services-fit-card__metrics">
+                  ${renderCardList(
+                    item.metrics,
+                    (metric) => `
+                      <div class="services-fit-card__metric">
+                        <div class="services-fit-card__metric-top">
+                          <span>${metric.label}</span>
+                          <strong>${metric.value}%</strong>
+                        </div>
+                        <span class="services-fit-card__metric-bar" data-fit-bar="${metric.value}" style="--fit-bar-progress:0;"></span>
+                      </div>
+                    `,
+                  )}
+                </div>
+                <p>${item.text}</p>
+              </article>
+            `,
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services-form" data-reveal>
+      <div class="shell services-lead">
+        <div class="services-lead__copy">
+          <h2>${content.services?.form?.title ?? content.forms.lead.title}</h2>
+        </div>
+        ${renderServicesLeadForm(content)}
+      </div>
+    </section>
+  `
+}
+
+function renderCasesPage(content, ui) {
+  const cases = content.cases ?? {}
+  const stats = cases.stats ?? []
+  const featured = cases.featured ?? content.home.casesSection?.items ?? []
+  const framework = cases.framework ?? []
+  const checklist = cases.checklist ?? []
+
+  return `
+    <section class="page-hero cases-page-hero">
+      <div class="shell cases-page-hero__grid">
+        <div class="cases-page-hero__copy">
+          <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
+          <h1>${cases.title}</h1>
+          <p class="lead">${cases.lead}</p>
+          <p class="cases-page-hero__intro">${cases.intro ?? ''}</p>
+        </div>
+        ${
+          stats.length
+            ? `
+              <div class="cases-page-hero__stats">
+                ${renderCardList(
+                  stats,
+                  (item, index) => `
+                    <article class="cases-stat-card cases-stat-card--${index + 1}">
+                      <strong>${item.value}</strong>
+                      <span>${item.label}</span>
+                    </article>
+                  `,
+                )}
+              </div>
+            `
+            : ''
+        }
+      </div>
+    </section>
+
+    <section class="section section--muted cases-page-section" data-reveal>
+      <div class="shell cases-page__featured">
+        <div class="cases-section__head cases-section__head--left">
+          <h2>${cases.title}</h2>
+          <p>${cases.lead}</p>
+        </div>
+        <div class="cases-list">
+          ${renderCardList(
+            featured,
+            (item) => `
+              <article class="case-card case-card--seo">
+                <div class="case-card__content">
+                  <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case study'}</p>
+                  <h3>${item.title}</h3>
+                  <p class="case-card__subtitle">${item.subtitle ?? ''}</p>
+                  <p class="case-card__problem">${item.problem ?? ''}</p>
+                  <div class="case-card__insights">
+                    <div class="case-card__insight">
+                      <span>${cases.routeLabel ?? 'Route'}</span>
+                      <p>${item.solution ?? ''}</p>
+                    </div>
+                    <div class="case-card__insight">
+                      <span>${cases.outcomeLabel ?? 'Outcome'}</span>
+                      <p>${item.result ?? ''}</p>
+                    </div>
+                  </div>
+                  ${
+                    item.metrics?.length
+                      ? `
+                        <div class="case-card__metrics">
+                          ${renderCardList(
+                            item.metrics,
+                            (metric) => `
+                              <div class="case-card__metric">
+                                <span>${metric.label}</span>
+                                <strong>${metric.value}</strong>
+                              </div>
+                            `,
+                          )}
+                        </div>
+                      `
+                      : ''
+                  }
+                  ${item.timeline ? `<div class="case-card__timeline">${item.timeline}</div>` : ''}
+                </div>
+                <div class="case-card__media">
+                  <img src="${item.image}" alt="${item.alt ?? item.title}" loading="lazy" />
+                </div>
+              </article>
+            `,
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="section cases-page-section" data-reveal>
+      <div class="shell cases-framework">
+        <div class="cases-framework__copy">
+          <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
+          <h2>${cases.frameworkTitle ?? ''}</h2>
+          <p class="lead">${cases.frameworkLead ?? ''}</p>
+        </div>
+        <div class="cases-framework__grid">
+          ${renderCardList(
+            framework,
+            (item, index) => `
+              <article class="cases-framework-card">
+                <span class="cases-framework-card__index">0${index + 1}</span>
+                <h3>${item.title}</h3>
+                <p>${item.text}</p>
+              </article>
+            `,
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted cases-page-section" data-reveal>
+      <div class="shell cases-checklist">
+        <div class="cases-checklist__panel">
+          <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
+          <h2>${cases.checklistTitle ?? ''}</h2>
+          <div class="cases-checklist__items">
+            ${renderCardList(
+              checklist,
+              (item, index) => `
+                <div class="cases-checklist__item">
+                  <span class="cases-checklist__item-index">0${index + 1}</span>
+                  <p>${item}</p>
+                </div>
+              `,
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cases-page-section" data-reveal>
+      <div class="shell split split--hero cases-cta">
+        <div class="cases-cta__copy">
+          <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
+          <h2>${cases.ctaTitle ?? content.forms.lead.title}</h2>
+          <p class="lead">${cases.ctaLead ?? content.home.finalCta?.lead ?? ''}</p>
+        </div>
+        ${renderLeadForm(content)}
+      </div>
+    </section>
+  `
+}
+
+function renderIndustriesPage(content, ui) {
+  const industries = content.industries ?? {}
+  const stats = industries.stats ?? []
+  const sectors = industries.sectors ?? content.home.industries.items ?? []
+  const framework = industries.framework ?? []
+  const fitSignals = industries.fitSignals ?? []
+
+  return `
+    <section class="page-hero industries-page-hero">
+      <div class="shell">
+        <div class="industries-page-hero__copy">
+          <h1>${industries.title}</h1>
+        </div>
+        <div
+          class="industries-hero-ripple"
+          data-ripple
+          data-ripple-size="170"
+          data-ripple-opacity="0.16"
+          data-ripple-count="6"
+        >
+          <p class="industries-hero-ripple__text">VW Recruit</p>
+        </div>
+        ${
+          stats.length
+            ? `
+              <div class="hero__stats industries-page-hero__stats">
+                ${renderCardList(
+                  stats,
+                  (item) => `
+                    <article class="hero-stat-card industries-stat-card">
+                      <div class="hero-stat-card__value">
+                        <strong>${item.value}</strong>
+                      </div>
+                      <p>${item.label}</p>
+                    </article>
+                  `,
+                )}
+              </div>
+            `
+            : ''
+        }
+      </div>
+    </section>
+
+    <section class="section section--muted industries-page-section" data-reveal>
+      <div class="shell industries-page__sectors">
+        <div class="industries-page__head">
+          <h2>${industries.title}</h2>
+          <p>${industries.lead}</p>
+        </div>
+        <div class="industries-page__grid">
+          ${renderCardList(
+            sectors,
+            (item) => `
+              <article class="industry-sector-card">
+                <div class="industry-sector-card__copy">
+                  <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
+                  <h3>${typeof item === 'string' ? item : item.title}</h3>
+                  <p class="industry-sector-card__text">${typeof item === 'string' ? item : item.text ?? ''}</p>
+                  ${
+                    item.tags?.length
+                      ? `
+                        <div class="industry-sector-card__tags">
+                          ${renderCardList(
+                            item.tags,
+                            (tag) => `<span class="industry-sector-card__tag">${tag}</span>`,
+                          )}
+                        </div>
+                      `
+                      : ''
+                  }
+                  ${
+                    item.points?.length
+                      ? `
+                        <div class="industry-sector-card__points">
+                          ${renderCardList(
+                            item.points,
+                            (point) => `
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>${point}</p>
+                              </div>
+                            `,
+                          )}
+                        </div>
+                      `
+                      : ''
+                  }
+                </div>
+                <div class="industry-sector-card__media">
+                  <img
+                    src="${typeof item === 'string' ? getIndustryVisual(item, ui).image : item.image ?? getIndustryVisual(item, ui).image}"
+                    alt="${typeof item === 'string' ? getIndustryVisual(item, ui).alt : item.alt ?? item.title}"
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            `,
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="section industries-page-section" data-reveal>
+      <div class="shell industries-framework">
+        <div class="industries-framework__copy">
+          <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
+          <h2>${industries.frameworkTitle ?? ''}</h2>
+          <p class="lead">${industries.frameworkLead ?? ''}</p>
+        </div>
+        <div class="industries-framework__grid">
+          ${renderCardList(
+            framework,
+            (item, index) => `
+              <article class="industries-framework-card">
+                <span class="industries-framework-card__index">0${index + 1}</span>
+                <h3>${item.title}</h3>
+                <p>${item.text}</p>
+              </article>
+            `,
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted industries-page-section" data-reveal>
+      <div class="shell industries-fit">
+        <div class="industries-fit__panel">
+          <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
+          <h2>${industries.fitTitle ?? ''}</h2>
+          <p class="lead">${industries.fitLead ?? ''}</p>
+          <div class="industries-fit__items">
+            ${renderCardList(
+              fitSignals,
+              (item, index) => `
+                <div class="industries-fit__item">
+                  <span class="industries-fit__item-index">0${index + 1}</span>
+                  <p>${item}</p>
+                </div>
+              `,
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section industries-page-section" data-reveal>
+      <div class="shell split split--hero industries-cta">
+        <div class="industries-cta__copy">
+          <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
+          <h2>${industries.ctaTitle ?? content.forms.lead.title}</h2>
+          <p class="lead">${industries.ctaLead ?? content.home.finalCta?.lead ?? ''}</p>
+        </div>
+        ${renderLeadForm(content)}
+      </div>
+    </section>
+  `
+}
+
+function renderReportPage(content, ui) {
+  const report = content.report ?? {}
+  const stats = report.stats ?? []
+  const points = report.points ?? content.home.reportBlock?.points ?? []
+  const benefits = report.benefits ?? []
+  const trustPoints = report.trustPoints ?? []
+  const faqItems = report.faq ?? []
+
+  return `
+    <section class="page-hero report-page-hero">
+      <div class="shell report-page-hero__grid">
+        <div class="report-page-hero__copy">
+          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
+          <h1>${report.title}</h1>
+          <p class="lead">${report.lead}</p>
+          <p class="report-page-hero__intro">${report.intro ?? ''}</p>
+        </div>
+        ${
+          stats.length
+            ? `
+              <div class="report-page-hero__stats">
+                ${renderCardList(
+                  stats,
+                  (item, index) => `
+                    <article class="report-stat-card report-stat-card--${index + 1}">
+                      <strong>${item.value}</strong>
+                      <span>${item.label}</span>
+                    </article>
+                  `,
+                )}
+              </div>
+            `
+            : ''
+        }
+      </div>
+    </section>
+
+    <section class="section section--muted report-page-section" data-reveal>
+      <div class="shell report-capture">
+        <div class="report-capture__content">
+          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
+          <h2>${report.pointsTitle ?? report.title}</h2>
+          <p class="lead">${report.lead}</p>
+          <div class="report-capture__points">
+            ${renderCardList(
+              points,
+              (item, index) => `
+                <article class="report-capture__point">
+                  <span class="report-capture__point-index">0${index + 1}</span>
+                  <p>${item}</p>
+                </article>
+              `,
+            )}
+          </div>
+        </div>
+        <div class="report-capture__panel">
+          <div class="report-capture__panel-copy">
+            <strong>${report.formTitle ?? ui.reportPanelTitle ?? 'Get the report'}</strong>
+            <p>${report.formLead ?? ui.reportPanelText ?? ''}</p>
+          </div>
+          <div class="report-capture__panel-card" aria-hidden="true">
+            <div class="report-capture__panel-card-sheet">
+              <span class="report-capture__panel-card-kicker">${ui.reportPanelKicker ?? 'VW Recruit / Insight'}</span>
+              <strong>${ui.reportPanelReportTitle ?? 'Labor market 2026'}</strong>
+              <p>${ui.reportPanelReportText ?? 'International workforce integration for businesses facing labor shortages'}</p>
+            </div>
+            <div class="report-capture__panel-card-badge">
+              <span>${ui.reportPanelGuide ?? 'Guide'}</span>
+            </div>
+          </div>
+          ${renderReportCaptureForm({
+            ...content,
+            home: {
+              ...content.home,
+              reportBlock: {
+                ...(content.home?.reportBlock ?? {}),
+                cta: report.formTitle ?? content.forms.report.title,
+              },
+            },
+          })}
+          ${report.formNote ? `<p class="report-page-form-note">${report.formNote}</p>` : ''}
+        </div>
+      </div>
+    </section>
+
+    <section class="section report-page-section" data-reveal>
+      <div class="shell report-benefits">
+        <div class="report-benefits__copy">
+          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
+          <h2>${report.benefitsTitle ?? ''}</h2>
+          <p class="lead">${report.benefitsLead ?? ''}</p>
+        </div>
+        <div class="report-benefits__grid">
+          ${renderCardList(
+            benefits,
+            (item, index) => `
+              <article class="report-benefit-card">
+                <span class="report-benefit-card__index">0${index + 1}</span>
+                <h3>${item.title}</h3>
+                <p>${item.text}</p>
+              </article>
+            `,
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted report-page-section" data-reveal>
+      <div class="shell report-trust">
+        <div class="report-trust__panel">
+          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
+          <h2>${report.trustTitle ?? ''}</h2>
+          <p class="lead">${report.trustLead ?? ''}</p>
+          <div class="report-trust__items">
+            ${renderCardList(
+              trustPoints,
+              (item, index) => `
+                <div class="report-trust__item">
+                  <span class="report-trust__item-index">0${index + 1}</span>
+                  <p>${item}</p>
+                </div>
+              `,
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    ${
+      faqItems.length
+        ? `
+          <section class="section report-page-section" data-reveal>
+            <div class="shell report-faq">
+              <div class="report-faq__copy">
+                <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
+                <h2>${report.faqTitle ?? ''}</h2>
+              </div>
+              <div class="stack">
+                ${renderFaq(faqItems)}
+              </div>
+            </div>
+          </section>
+        `
+        : ''
+    }
+
+    <section class="section report-page-section" data-reveal>
+      <div class="shell split split--hero report-cta">
+        <div class="report-cta__copy">
+          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
+          <h2>${report.ctaTitle ?? content.forms.report.title}</h2>
+          <p class="lead">${report.ctaLead ?? ''}</p>
+        </div>
+        ${renderLeadForm(content, 'report')}
+      </div>
+    </section>
+  `
+}
+
 export function renderPage(content, pageKey) {
   const ui = content.ui ?? {}
 
@@ -540,7 +1445,7 @@ export function renderPage(content, pageKey) {
             ${comparisonCards
               ? renderCardList(
                   comparisonCards,
-                  (card) => renderComparisonCard(card),
+                  (card) => renderComparisonCard(card, content),
                 )
               : content.home.comparison.items.map((item) => `<div class="line-card">${item}</div>`).join('')}
           </div>
@@ -550,16 +1455,16 @@ export function renderPage(content, pageKey) {
       <section class="section section--muted" data-reveal>
         <div class="shell industries-showcase">
           <div class="industries-showcase__head">
-            <h2>ДЛЯ ЯКИХ СФЕР ПІДХОДИТЬ ТАКА МОДЕЛЬ НАЙМУ</h2>
+            <h2>${ui.industriesSectionTitle ?? 'WHICH INDUSTRIES THIS HIRING MODEL FITS'}</h2>
             <p class="lead">${ui.industriesLead ?? 'Companies most often use this hiring model for operational roles in manufacturing, warehouses, construction, and service.'}</p>
           </div>
           <div class="industries-slider" data-industry-slider>
             <div class="industries-slider__controls">
-              <button class="industries-slider__button" type="button" data-industry-slider-prev aria-label="Попередній слайд">←</button>
-              <button class="industries-slider__button" type="button" data-industry-slider-next aria-label="Наступний слайд">→</button>
+              <button class="industries-slider__button" type="button" data-industry-slider-prev aria-label="${ui.industrySliderPrev ?? 'Previous slide'}">←</button>
+              <button class="industries-slider__button" type="button" data-industry-slider-next aria-label="${ui.industrySliderNext ?? 'Next slide'}">→</button>
             </div>
             <div class="industries-slider__track" data-industry-slider-track>
-              ${renderCardList(industryItems, (item) => renderIndustrySlide(item))}
+              ${renderCardList(industryItems, (item) => renderIndustrySlide(item, ui))}
             </div>
           </div>
         </div>
@@ -569,7 +1474,7 @@ export function renderPage(content, pageKey) {
         <div class="shell split split--hero">
           <div>
             <h2>${content.home.calculator?.title ?? content.quiz.title}</h2>
-            <p class="lead">${content.home.calculator?.lead ?? 'Step-based mobile-friendly flow with analytics events and a single submission payload.'}</p>
+            <p class="lead">${content.home.calculator?.lead ?? ui.quizSectionLead ?? 'Step-based mobile-friendly flow with analytics events and a single submission payload.'}</p>
           </div>
           <div data-quiz data-quiz-source="page_quiz"></div>
         </div>
@@ -591,8 +1496,8 @@ export function renderPage(content, pageKey) {
                         <div class="case-card__content">
                           <p class="eyebrow">${ui.caseStudy ?? 'Case study'}</p>
                           <h3>${typeof item === 'string' ? item : item.title}</h3>
-                          <p class="case-card__subtitle">${typeof item === 'string' ? 'Короткий опис кейсу' : item.subtitle}</p>
-                          <p class="case-card__problem">${typeof item === 'string' ? 'Окремий SEO-friendly URL для кейсу, результатів, термінів і CTA.' : item.problem}</p>
+                          <p class="case-card__subtitle">${typeof item === 'string' ? ui.caseSubtitlePlaceholder ?? 'Short case summary' : item.subtitle}</p>
+                          <p class="case-card__problem">${typeof item === 'string' ? ui.caseProblemPlaceholder ?? 'Separate SEO-friendly URL for the case, results, timing, and CTA.' : item.problem}</p>
                           <div class="button-row">
                             <a class="button button--ghost case-card__button" href="${buildPageUrl(content.locale.code, 'cases')}">
                               <span>${ui.caseViewLabel ?? 'View case'}</span>
@@ -630,7 +1535,7 @@ export function renderPage(content, pageKey) {
                 (step, index) => `
                   <div class="process-flow__rail-step${index === content.home.process.steps.length - 1 ? ' is-current' : ''}">
                     <span class="process-flow__rail-badge">${index + 1}</span>
-                    <span class="process-flow__rail-title">${typeof step === 'string' ? `Крок ${index + 1}` : step.title}</span>
+                    <span class="process-flow__rail-title">${typeof step === 'string' ? `${ui.processStepLabel ?? 'Step'} ${index + 1}` : step.title}</span>
                   </div>
                 `,
               )}
@@ -648,7 +1553,7 @@ export function renderPage(content, pageKey) {
                       <span class="process-card__preview-line"></span>
                       <span class="process-card__preview-line process-card__preview-line--medium"></span>
                     </div>
-                    <h3>${typeof step === 'string' ? `Крок ${index + 1}` : step.title}</h3>
+                    <h3>${typeof step === 'string' ? `${ui.processStepLabel ?? 'Step'} ${index + 1}` : step.title}</h3>
                     <p>${typeof step === 'string' ? step : step.text}</p>
                   </article>
                 `,
@@ -667,7 +1572,7 @@ export function renderPage(content, pageKey) {
                 <div class="card-grid guarantees-grid">
                   ${renderCardList(
                     guaranteeItems,
-                    (item, index) => renderGuaranteeCard(item, index),
+                    (item, index) => renderGuaranteeCard(item, index, ui),
                   )}
                 </div>
               </div>
@@ -698,17 +1603,17 @@ export function renderPage(content, pageKey) {
                 </div>
                 <div class="report-capture__panel">
                   <div class="report-capture__panel-copy">
-                    <strong>Отримайте матеріал на email</strong>
-                    <p>Залиште контакти, і ми надішлемо корисний матеріал по темі міжнародного найму та оптимізації витрат на персонал.</p>
+                    <strong>${ui.reportPanelTitle ?? 'Get the material by email'}</strong>
+                    <p>${ui.reportPanelText ?? 'Leave your contact details and we will send a useful resource about international hiring and payroll optimization.'}</p>
                   </div>
                   <div class="report-capture__panel-card" aria-hidden="true">
                     <div class="report-capture__panel-card-sheet">
-                      <span class="report-capture__panel-card-kicker">VW Recruit / Insight</span>
-                      <strong>Ринок праці 2026</strong>
-                      <p>Інтеграція міжнародного персоналу для бізнесу з дефіцитом кадрів</p>
+                      <span class="report-capture__panel-card-kicker">${ui.reportPanelKicker ?? 'VW Recruit / Insight'}</span>
+                      <strong>${ui.reportPanelReportTitle ?? 'Labor market 2026'}</strong>
+                      <p>${ui.reportPanelReportText ?? 'International workforce integration for businesses facing labor shortages'}</p>
                     </div>
                     <div class="report-capture__panel-card-badge">
-                      <span>Guide</span>
+                      <span>${ui.reportPanelGuide ?? 'Guide'}</span>
                     </div>
                   </div>
                   ${renderReportCaptureForm(content)}
@@ -727,8 +1632,8 @@ export function renderPage(content, pageKey) {
                 <h2>${content.home.reviews.title}</h2>
                 <div class="reviews-slider" data-reviews-slider>
                   <div class="reviews-slider__controls">
-                    <button class="reviews-slider__button" type="button" data-reviews-slider-prev aria-label="Попередній відгук">←</button>
-                    <button class="reviews-slider__button" type="button" data-reviews-slider-next aria-label="Наступний відгук">→</button>
+                    <button class="reviews-slider__button" type="button" data-reviews-slider-prev aria-label="${ui.reviewsPrev ?? 'Previous review'}">←</button>
+                    <button class="reviews-slider__button" type="button" data-reviews-slider-next aria-label="${ui.reviewsNext ?? 'Next review'}">→</button>
                   </div>
                   <div class="reviews-slider__track" data-reviews-slider-track>
                     ${renderCardList(
@@ -749,7 +1654,7 @@ export function renderPage(content, pageKey) {
                   ${renderCardList(
                     reviewMetrics,
                     (item, index) => {
-                      const meta = getReviewMetricMeta(item, index)
+                      const meta = getReviewMetricMeta(item, index, ui)
 
                       return `
                         <article class="reviews-fact reviews-fact--${meta.icon}">
@@ -757,7 +1662,7 @@ export function renderPage(content, pageKey) {
                             ${renderReviewMetricIcon(meta.icon)}
                           </div>
                           <div class="reviews-fact__copy">
-                            <strong>${meta.value ?? '7 РОКІВ'}</strong>
+                            <strong>${meta.value ?? ui.reviewFallbackValue ?? '7 YEARS'}</strong>
                             <span>${meta.label ?? ''}</span>
                           </div>
                         </article>
@@ -828,10 +1733,23 @@ export function renderPage(content, pageKey) {
     `
   }
 
+  if (pageKey === 'services') {
+    return renderServicesPage(content, ui)
+  }
+
+  if (pageKey === 'cases') {
+    return renderCasesPage(content, ui)
+  }
+
+  if (pageKey === 'industries') {
+    return renderIndustriesPage(content, ui)
+  }
+
+  if (pageKey === 'report') {
+    return renderReportPage(content, ui)
+  }
+
   const contentMap = {
-    services: content.services,
-    industries: content.industries,
-    cases: content.cases,
     report: content.report,
     about: content.about,
     contacts: content.contacts,

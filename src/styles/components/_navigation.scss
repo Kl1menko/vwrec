@@ -40,6 +40,16 @@
   backdrop-filter: blur(18px);
 }
 
+body[data-page='services'] .site-header::before {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body[data-page='services'] .site-header__inner {
+  background: #ffffff;
+  backdrop-filter: none;
+}
+
 .brand-mark {
   gap: 10px;
   min-width: 0;

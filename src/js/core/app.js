@@ -1,49 +1,54 @@
-import { CONTENT } from '../../content/index.js'
 import { initAccordion } from '../components/accordion.js'
 import { initForms } from '../components/forms.js'
+import { initAnimatedBeam } from '../components/animated-beam.js'
 import { initLanguageSwitcher } from '../components/language-switcher.js'
 import { initMobileMenu } from '../components/mobile-menu.js'
 import { initModals } from '../components/modal.js'
 import { initQuiz } from '../components/quiz.js'
 import { initRevealAnimations } from '../components/animations.js'
-import { initHeroGlobe } from '../components/globe.js'
 import { initCounters } from '../components/counters.js'
 import { initHeroVideo } from '../components/hero-video.js'
 import { initIndustrySlider } from '../components/industry-slider.js'
 import { initReviewsSlider } from '../components/reviews-slider.js'
-import { renderPage } from '../pages/render-page.js'
-import { renderLayout } from '../../templates/layout.js'
+import { initRipple } from '../components/ripple.js'
+import { initServicesFit } from '../components/services-fit.js'
 
-function getContent(locale) {
-  return CONTENT[locale] ?? CONTENT.en
+function getEmbeddedContent() {
+  const node = document.querySelector('#page-content')
+  if (!node?.textContent) return null
+
+  try {
+    return JSON.parse(node.textContent)
+  } catch (error) {
+    console.error('[content] Failed to parse embedded page content.', error)
+    return null
+  }
 }
 
-export function initApp() {
-  const locale = document.body.dataset.locale ?? 'en'
-  const pageKey = document.body.dataset.page ?? 'home'
-  const content = getContent(locale)
-  const app = document.querySelector('#app')
-
-  document.title = `${content.site.title} | ${pageKey === 'home' ? content.home.meta.title : content[pageKey]?.title ?? 'Page'}`
-  document.documentElement.lang = locale
-
-  app.innerHTML = renderLayout({
-    content,
-    locale,
-    pageKey,
-    mainContent: renderPage(content, pageKey),
-  })
+export async function initApp() {
+  const content = getEmbeddedContent()
 
   initMobileMenu()
   initLanguageSwitcher()
-  initForms(content)
+  if (content) {
+    initForms(content)
+  }
   initAccordion()
   initModals()
-  initQuiz(content)
+  if (content) {
+    initQuiz(content)
+  }
   initRevealAnimations()
-  initHeroGlobe()
   initCounters()
   initHeroVideo()
   initIndustrySlider()
   initReviewsSlider()
+  initRipple()
+  initAnimatedBeam()
+  initServicesFit()
+
+  if (document.querySelector('[data-hero-globe-canvas]')) {
+    const { initHeroGlobe } = await import('../components/globe.js')
+    initHeroGlobe()
+  }
 }

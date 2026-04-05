@@ -5,7 +5,7 @@ export const enContent = createLocaleContent({
   name: 'English',
   nativeName: 'English',
   translated: true,
-  heroTitle: 'Reduce staffing costs and close labor shortages with international hiring support.',
+  heroTitle: 'Reduce staffing pressure and launch operational teams with international hiring support.',
   heroLead:
-    'This starter architecture is ready for multilingual SEO pages, lead capture, quizzes, case studies, and Google-based form workflows.',
+    'For employers in manufacturing, logistics, construction, and service operations, we build a clearer route to hiring, documents, arrival, and team launch.',
 })

@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="pl">
   <head>
+    
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="VW Recruit Starter" />
@@ -9,12 +11,695 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <title>VW Recruit | Industries</title>
+  
+    <title>VW Recruit | International hiring solutions for industries facing the most staffing pressure</title>
+    <meta name="description" content="Explore international hiring solutions for manufacturing, construction, warehousing, hospitality, and other operational teams facing labor shortages." />
+    
+    <style>
+      html.page-loading {
+        background: #fafafa;
+      }
+
+      html.page-loading body {
+        overflow: hidden;
+      }
+
+      #app,
+      #portal-root {
+        opacity: 1;
+        transition: opacity 280ms ease;
+      }
+
+      html.page-loading #app,
+      html.page-loading #portal-root {
+        opacity: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .page-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: var(--color-bg, #fafafa);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 240ms ease,
+          visibility 240ms ease;
+      }
+
+      html.page-loading .page-loader {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .page-loader__logo-wrap {
+        display: grid;
+        place-items: center;
+      }
+
+      .page-loader__logo {
+        width: clamp(72px, 9vw, 104px);
+        height: auto;
+        animation: page-loader-pulse 1.8s ease-in-out infinite;
+        transform-origin: center;
+        filter: drop-shadow(0 14px 28px rgba(242, 122, 36, 0.16));
+      }
+
+      @keyframes page-loader-pulse {
+        0%,
+        100% {
+          transform: scale(0.94);
+        }
+
+        50% {
+          transform: scale(1.04);
+        }
+      }
+    </style>
+  
+    
+    <script>
+      document.documentElement.classList.add('page-loading');
+      window.addEventListener('load', () => {
+        document.documentElement.classList.remove('page-loading');
+      }, { once: true });
+    </script>
+  
     <script type="module" src="/src/main.js"></script>
+  
   </head>
   <body data-locale="pl" data-page="industries">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <div id="app"></div>
-    <div id="portal-root"></div>
+    
+      <a class="skip-link" href="#main-content">Skip to content</a>
+      <div class="page-loader" aria-hidden="true">
+        <div class="page-loader__logo-wrap">
+          <img class="page-loader__logo" src="/logo-symbol-loader.svg" alt="" width="104" height="128" />
+        </div>
+      </div>
+      <div id="app">
+    
+    <header class="site-header">
+      <div class="shell site-header__inner">
+        <a class="brand-mark" href="/pl/" aria-label="VW Recruit home">
+          <img class="brand-mark__logo" src="/logo-symbol.svg" alt="VW Recruit logo" width="82" height="101" />
+          <span class="brand-mark__text">
+            <strong>VW Recruit</strong>
+            <small>International hiring partner</small>
+          </span>
+        </a>
+
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span class="menu-toggle__lines" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <div class="site-header__panel" id="site-nav" data-menu-panel>
+          <nav class="site-nav" aria-label="Primary">
+            
+        <a class="nav-link" href="/pl/">Home</a>
+      
+        <a class="nav-link" href="/pl/services/">Services</a>
+      
+        <a class="nav-link is-active" href="/pl/industries/">Industries</a>
+      
+        <a class="nav-link" href="/pl/cases/">Cases</a>
+      
+        <a class="nav-link" href="/pl/report/">Report</a>
+      
+        <a class="nav-link" href="/pl/contacts/">Contacts</a>
+      
+          </nav>
+
+          <div class="site-header__actions">
+            <div class="language-switcher" data-language-switcher>
+              <button
+                class="language-switcher__trigger"
+                type="button"
+                data-language-trigger
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/pl.svg" alt="" /></span>
+                <span class="language-switcher__value">PL</span>
+                <span class="language-switcher__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="language-switcher__menu" data-language-menu>
+                
+        <a class="language-switcher__option" href="/uk/industries/">
+          <span class="language-switcher__code">UA</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/ua.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Українська</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/en/industries/">
+          <span class="language-switcher__code">EN</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/gb.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">English</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/cs/industries/">
+          <span class="language-switcher__code">CZ</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/cz.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Čeština</span>
+        </a>
+      
+        <a class="language-switcher__option is-active" href="/pl/industries/">
+          <span class="language-switcher__code">PL</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/pl.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Polski</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/sk/industries/">
+          <span class="language-switcher__code">SK</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/sk.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Slovenčina</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/de/industries/">
+          <span class="language-switcher__code">DE</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/de.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Deutsch</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/lt/industries/">
+          <span class="language-switcher__code">LT</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/lt.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Lietuvių</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/et/industries/">
+          <span class="language-switcher__code">EE</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/ee.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Eesti</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/hu/industries/">
+          <span class="language-switcher__code">HU</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/hu.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Magyar</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/hr/industries/">
+          <span class="language-switcher__code">HR</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/hr.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Hrvatski</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/ro/industries/">
+          <span class="language-switcher__code">RO</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/ro.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Română</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/bg/industries/">
+          <span class="language-switcher__code">BG</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/bg.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Български</span>
+        </a>
+      
+              </div>
+            </div>
+            <button class="button button--ghost" type="button" data-open-modal="callback">
+              Book a call
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <main id="main-content">
+      
+    <section class="page-hero industries-page-hero">
+      <div class="shell">
+        <div class="industries-page-hero__copy">
+          <h1>International hiring solutions for industries facing the most staffing pressure</h1>
+        </div>
+        <div
+          class="industries-hero-ripple"
+          data-ripple
+          data-ripple-size="170"
+          data-ripple-opacity="0.16"
+          data-ripple-count="6"
+        >
+          <p class="industries-hero-ripple__text">VW Recruit</p>
+        </div>
+        
+              <div class="hero__stats industries-page-hero__stats">
+                
+                    <article class="hero-stat-card industries-stat-card">
+                      <div class="hero-stat-card__value">
+                        <strong>4</strong>
+                      </div>
+                      <p>priority sectors</p>
+                    </article>
+                  
+                    <article class="hero-stat-card industries-stat-card">
+                      <div class="hero-stat-card__value">
+                        <strong>1</strong>
+                      </div>
+                      <p>launch model across all pages</p>
+                    </article>
+                  
+                    <article class="hero-stat-card industries-stat-card">
+                      <div class="hero-stat-card__value">
+                        <strong>3</strong>
+                      </div>
+                      <p>stages under control</p>
+                    </article>
+                  
+              </div>
+            
+      </div>
+    </section>
+
+    <section class="section section--muted industries-page-section" data-reveal>
+      <div class="shell industries-page__sectors">
+        <div class="industries-page__head">
+          <h2>International hiring solutions for industries facing the most staffing pressure</h2>
+          <p>See how international recruitment fits manufacturing, construction, warehousing, hospitality, and other operational sectors where hiring delays affect output.</p>
+        </div>
+        <div class="industries-page__grid">
+          
+              <article class="industry-sector-card">
+                <div class="industry-sector-card__copy">
+                  <p class="eyebrow">Industries</p>
+                  <h3>Manufacturing</h3>
+                  <p class="industry-sector-card__text">Stable teams for production lines, packaging, sorting, and support operations where continuity and shift discipline matter.</p>
+                  
+                        <div class="industry-sector-card__tags">
+                          <span class="industry-sector-card__tag">Production lines</span><span class="industry-sector-card__tag">Packaging</span><span class="industry-sector-card__tag">Sorting</span>
+                        </div>
+                      
+                  
+                        <div class="industry-sector-card__points">
+                          
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Support for repetitive operational roles</p>
+                              </div>
+                            
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Faster candidate launch for shift-based work</p>
+                              </div>
+                            
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Clear route from sourcing to arrival</p>
+                              </div>
+                            
+                        </div>
+                      
+                </div>
+                <div class="industry-sector-card__media">
+                  <img
+                    src="/images/industry-manufacturing.jpg"
+                    alt="Workers in manufacturing"
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            
+              <article class="industry-sector-card">
+                <div class="industry-sector-card__copy">
+                  <p class="eyebrow">Industries</p>
+                  <h3>Construction</h3>
+                  <p class="industry-sector-card__text">Recruitment support for contractors and active sites that need assembly, support, and site reinforcement without timeline slips.</p>
+                  
+                        <div class="industry-sector-card__tags">
+                          <span class="industry-sector-card__tag">Assemblers</span><span class="industry-sector-card__tag">Support roles</span><span class="industry-sector-card__tag">Site teams</span>
+                        </div>
+                      
+                  
+                        <div class="industry-sector-card__points">
+                          
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Built around project deadlines</p>
+                              </div>
+                            
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Permit and logistics coordination</p>
+                              </div>
+                            
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Operational reinforcement for active sites</p>
+                              </div>
+                            
+                        </div>
+                      
+                </div>
+                <div class="industry-sector-card__media">
+                  <img
+                    src="/images/industry-construction.jpg"
+                    alt="Workers at a construction site"
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            
+              <article class="industry-sector-card">
+                <div class="industry-sector-card__copy">
+                  <p class="eyebrow">Industries</p>
+                  <h3>Warehouses & Logistics</h3>
+                  <p class="industry-sector-card__text">Teams for picking, sorting, packing, and goods movement when peaks and seasonal volumes create staffing pressure.</p>
+                  
+                        <div class="industry-sector-card__tags">
+                          <span class="industry-sector-card__tag">Picking</span><span class="industry-sector-card__tag">Sorting</span><span class="industry-sector-card__tag">Goods movement</span>
+                        </div>
+                      
+                  
+                        <div class="industry-sector-card__points">
+                          
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Designed for shift operations and peaks</p>
+                              </div>
+                            
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Predictable arrival planning</p>
+                              </div>
+                            
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Shortlist speed for warehouse needs</p>
+                              </div>
+                            
+                        </div>
+                      
+                </div>
+                <div class="industry-sector-card__media">
+                  <img
+                    src="/images/industry-logistics.jpg"
+                    alt="Workers in warehouse and logistics operations"
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            
+              <article class="industry-sector-card">
+                <div class="industry-sector-card__copy">
+                  <p class="eyebrow">Industries</p>
+                  <h3>Hotels & Service</h3>
+                  <p class="industry-sector-card__text">Staffing model for housekeeping, kitchens, and service operations where reliability and onboarding speed are critical.</p>
+                  
+                        <div class="industry-sector-card__tags">
+                          <span class="industry-sector-card__tag">Housekeeping</span><span class="industry-sector-card__tag">Kitchen teams</span><span class="industry-sector-card__tag">Service staff</span>
+                        </div>
+                      
+                  
+                        <div class="industry-sector-card__points">
+                          
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Clear legal employment route</p>
+                              </div>
+                            
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Support for service-focused team launch</p>
+                              </div>
+                            
+                              <div class="industry-sector-card__point">
+                                <span aria-hidden="true"></span>
+                                <p>Fast adaptation for operational roles</p>
+                              </div>
+                            
+                        </div>
+                      
+                </div>
+                <div class="industry-sector-card__media">
+                  <img
+                    src="/images/industry-hospitality.jpg"
+                    alt="Hotel and service staff"
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            
+        </div>
+      </div>
+    </section>
+
+    <section class="section industries-page-section" data-reveal>
+      <div class="shell industries-framework">
+        <div class="industries-framework__copy">
+          <p class="eyebrow">Industries</p>
+          <h2>What makes this industries page useful to employers</h2>
+          <p class="lead">A strong industries page should do more than list sectors. It should help an employer see their staffing problem, understand the route, and decide whether to take the next step.</p>
+        </div>
+        <div class="industries-framework__grid">
+          
+              <article class="industries-framework-card">
+                <span class="industries-framework-card__index">01</span>
+                <h3>Map the business context</h3>
+                <p>Each block should connect the industry to real staffing pressure: seasonality, scaling, turnover, or launch deadlines.</p>
+              </article>
+            
+              <article class="industries-framework-card">
+                <span class="industries-framework-card__index">02</span>
+                <h3>Explain why the model fits</h3>
+                <p>Clarify what the sector actually needs from recruitment, documents, logistics, and startup support.</p>
+              </article>
+            
+              <article class="industries-framework-card">
+                <span class="industries-framework-card__index">03</span>
+                <h3>Open the path to deeper pages</h3>
+                <p>Use this page as the parent for future vertical pages, case studies, and industry-specific CTAs.</p>
+              </article>
+            
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted industries-page-section" data-reveal>
+      <div class="shell industries-fit">
+        <div class="industries-fit__panel">
+          <p class="eyebrow">Industries</p>
+          <h2>Signals that the model is a fit</h2>
+          <p class="lead">These patterns usually indicate that a business should explore international recruitment instead of relying only on repeated local hiring.</p>
+          <div class="industries-fit__items">
+            
+                <div class="industries-fit__item">
+                  <span class="industries-fit__item-index">01</span>
+                  <p>High turnover in line, warehouse, or support roles</p>
+                </div>
+              
+                <div class="industries-fit__item">
+                  <span class="industries-fit__item-index">02</span>
+                  <p>Seasonal peaks or expansion plans that local hiring cannot absorb</p>
+                </div>
+              
+                <div class="industries-fit__item">
+                  <span class="industries-fit__item-index">03</span>
+                  <p>Repeated launch delays because the team is never complete</p>
+                </div>
+              
+                <div class="industries-fit__item">
+                  <span class="industries-fit__item-index">04</span>
+                  <p>Need for a more predictable route from request to first shift</p>
+                </div>
+              
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section industries-page-section" data-reveal>
+      <div class="shell split split--hero industries-cta">
+        <div class="industries-cta__copy">
+          <p class="eyebrow">Industries</p>
+          <h2>Need a hiring plan built around your industry?</h2>
+          <p class="lead">Tell us where staffing pressure is hurting operations most, and we will map the right hiring route, timing, and next step for your team.</p>
+        </div>
+        
+    <form class="stack card card--form" data-form data-form-type="lead">
+      
+          <div class="lead-form__brand" aria-hidden="true">
+            <img src="/logo-symbol.svg" alt="" loading="lazy" />
+            <span>VW Recruit</span>
+          </div>
+        
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Name *</span>
+        <input type="text" name="name" required />
+      </label>
+      <label class="field">
+        <span>Company *</span>
+        <input type="text" name="company" required />
+      </label>
+      <label class="field">
+        <span>Email *</span>
+        <input type="email" name="email" required />
+      </label>
+      <label class="field">
+        <span>Phone</span>
+        <input type="text" name="phone" />
+      </label>
+      <button class="button" type="submit">Send request</button>
+      <p class="form-status" data-form-status></p>
+    </form>
+  
+      </div>
+    </section>
+  
+    </main>
+    
+    <footer class="site-footer">
+      <div class="shell site-footer__grid">
+        <div class="site-footer__brand">
+          <div class="site-footer__brand-mark" aria-hidden="true">
+            <img src="/logo-symbol.svg" alt="" loading="lazy" />
+            <span>VW Recruit</span>
+          </div>
+          <p class="site-footer__text">
+            Mobile-first starter for multilingual B2B recruitment pages, case studies, lead flows, and SEO expansion.
+          </p>
+        </div>
+        <div>
+          <p class="site-footer__title">Core pages</p>
+          <div class="footer-links">
+            <a href="/pl/services/">Services</a>
+            <a href="/pl/industries/">Industries</a>
+            <a href="/pl/cases/">Cases</a>
+            <a href="/pl/report/">Report</a>
+          </div>
+        </div>
+        <div>
+          <p class="site-footer__title">Legal</p>
+          <div class="footer-links">
+            <a href="/pl/privacy-policy/">Privacy policy</a>
+            <a href="/pl/terms/">Terms & conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+    
+    <div class="modal" data-modal="callback">
+      <div class="modal__dialog">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <h3>Book a callback</h3>
+        <form class="stack" data-form data-form-type="callback">
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <label class="field">
+            <span>Name *</span>
+            <input type="text" name="name" required />
+          </label>
+          <label class="field">
+            <span>Company *</span>
+            <input type="text" name="company" required />
+          </label>
+          <label class="field">
+            <span>Email *</span>
+            <input type="email" name="email" required />
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input type="text" name="phone" />
+          </label>
+          <button class="button" type="submit">Request callback</button>
+          <p class="form-status" data-form-status></p>
+        </form>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="report">
+      <div class="modal__dialog">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <h3>Download the report</h3>
+        <form class="stack" data-form data-form-type="report">
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <label class="field">
+            <span>Name *</span>
+            <input type="text" name="name" required />
+          </label>
+          <label class="field">
+            <span>Company *</span>
+            <input type="text" name="company" required />
+          </label>
+          <label class="field">
+            <span>Email *</span>
+            <input type="email" name="email" required />
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input type="text" name="phone" />
+          </label>
+          <button class="button" type="submit">Get report</button>
+          <p class="form-status" data-form-status></p>
+        </form>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="report-success">
+      <div class="modal__dialog modal__dialog--success">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <div class="success-modal__icon" aria-hidden="true">
+          <span></span>
+        </div>
+        <h3>Download the report</h3>
+        <p>Thanks. We received your request and will send the PDF report to your email shortly.</p>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="form-success">
+      <div class="modal__dialog modal__dialog--success">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <div class="success-modal__icon" aria-hidden="true">
+          <span></span>
+        </div>
+        <p class="success-modal__headline" data-form-success-message>Thanks. Your request has been captured and is ready for Google-based delivery integration.</p>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="hero-quiz">
+      <div class="modal__dialog modal__dialog--quiz">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <h3>Hiring calculator</h3>
+        <p>Step-based mobile-friendly flow with analytics events and a single submission payload.</p>
+        <div data-quiz data-quiz-source="hero_quiz"></div>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="video">
+      <div class="modal__dialog modal__dialog--video">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <h3 data-video-modal-title>Презентація VW Recruit</h3>
+        <div class="video-modal__player">
+          <video
+            class="video-modal__media"
+            data-video-modal-media
+            controls
+            playsinline
+            preload="metadata"
+          ></video>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+      <script id="page-content" type="application/json">{"forms":{"lead":{"title":"Request hiring proposal","success":"Thanks. Your request has been captured and is ready for Google-based delivery integration."},"callback":{"title":"Book a callback","success":"Thanks. We saved your callback request."},"report":{"title":"Download the report","success":"Thanks. We received your request and will send the PDF report to your email shortly."},"contact":{"title":"Send a message","success":"Thanks. Your message was queued for the contact flow."}},"quiz":{"title":"Hiring calculator","progressLabel":"Step","completionTitle":"Your request is ready","completionLead":"The quiz flow is connected to a single payload structure, so it can be sent to Apps Script, Google Forms, or a Sheet-backed endpoint.","steps":[{"id":"industry","label":"Which industry do you need workers for?","type":"options","options":["Manufacturing","Construction","Warehouses & Logistics","Hotels & Service","Other"]},{"id":"teamSize","label":"How many workers do you need?","type":"options","options":["1–10","11–30","31–50","50+"]},{"id":"timeline","label":"When do you need the team to start?","type":"options","options":["Urgently","Within 2–4 weeks","Within 1–2 months","Just exploring options"]},{"id":"location","label":"Where is your business located?","type":"text","fields":[{"name":"country","label":"Country","required":true},{"name":"city","label":"City","required":false}]},{"id":"problem","label":"What is the biggest hiring problem right now?","type":"options","options":["High salary costs","Staff shortage","Turnover","Seasonal peaks","Scaling production","Other"]},{"id":"contact","label":"Where should we send your estimate?","type":"text","fields":[{"name":"name","label":"Name","required":true},{"name":"company","label":"Company","required":true},{"name":"phone","label":"Phone","required":true},{"name":"email","label":"Email","required":true}]}]},"ui":{"modalClose":"Close modal","leadCapture":"Lead capture","video":"Video","videoPlay":"Play video","openMenu":"Open menu","primaryNav":"Primary","fieldName":"Name","fieldCompany":"Company","fieldEmail":"Email","fieldPhone":"Phone","sendRequest":"Send request","requestCallback":"Request callback","getReport":"Get report","bookCall":"Book a call","quizEyebrow":"Quiz","quizContinue":"Continue","quizBack":"Back","quizSubmit":"Submit","quizReady":"Ready","quizValidationError":"Please complete the current step.","quizSubmitError":"Submission failed. Please try again.","processEyebrow":"Process","caseStudy":"Case study","caseViewLabel":"View case","leadCaptureEyebrow":"Lead capture","faqEyebrow":"FAQ","finalCtaEyebrow":"Final CTA","downloadReport":"Download report","openContactsPage":"Open contacts page","projectsExamples":"Project examples","reelPlaceholder":"Space for a reel or video in a popup modal after connecting the sources.","industriesLead":"Companies most often use this hiring model for operational roles in manufacturing, warehouses, construction, and service.","legalPlaceholder":"Legal copy placeholder. Replace with approved content before launch.","footerDescription":"Mobile-first starter for multilingual B2B recruitment pages, case studies, lead flows, and SEO expansion.","footerCorePages":"Core pages","footerLegal":"Legal","privacyPolicy":"Privacy policy","termsAndConditions":"Terms & conditions","formRequiredError":"Please complete the required form fields.","formSubmittingButton":"Sending...","formSubmittingStatus":"Sending form...","formSubmitError":"Submission failed. Please try again.","industryVisualLogisticsAlt":"Workers in warehouse and logistics operations","industryVisualConstructionAlt":"Workers at a construction site","industryVisualHospitalityAlt":"Hotel and service staff","industryVisualManufacturingAlt":"Workers in manufacturing","industrySlidePlaceholder":"This vertical can be expanded into SEO pages, quiz paths, and personalized CTAs.","comparisonCardCta":"Calculate hiring cost","guaranteesLegalDelta":"Quotas, permits, visas","guaranteesReplacementMetric":"No fee","guaranteesReplacementDelta":"Fast replacement under guarantee","guaranteesSupportMetric":"Turnkey","guaranteesSupportDelta":"From sourcing to first shift","guaranteesFallbackDelta":"VW Recruit advantage","guaranteeSupportStepOne":"Selection","guaranteeSupportStepTwo":"Arrival","guaranteeSupportNote":"First shift start","guaranteeChecklistQuota":"Quotas","guaranteeChecklistPermit":"Permit","guaranteeChecklistVisa":"Visa","reviewFallbackValue":"7 YEARS","reviewLabelPrefix":"7 years ","servicesShortRequestEyebrow":"Quick request","servicesHeroGhostCta":"View service terms","servicesHeroPanelTitle":"Sourcing, documents, logistics, and team launch in one process","servicesHeroPanelText":"The route is structured so the employer sees a predictable launch path, while every stage from sourcing to arrival stays coordinated in one process.","servicesPillarsEyebrow":"What we cover","servicesPillarsTitle":"The service is built not as a resume search, but as a full route to launch people into work","servicesOfferEyebrow":"What both sides get","servicesOfferTitle":"A model where the business gets a managed result and the candidate sees a transparent process","servicesOfferVisualLabel":"VW Recruit flow","servicesOfferVisualPrimary":"Employer route","servicesOfferVisualSecondary":"Candidate route","servicesBeamEyebrow":"Process map","servicesRouteEyebrow":"How cooperation works","servicesRouteTitle":"A transparent route from request to workers starting their shifts","servicesProofEyebrow":"Why it converts","servicesProofTitle":"Not just candidate sourcing, but a managed service with a clear result at every stage","servicesFitEyebrow":"Where it works best","servicesFitTitle":"Roles and niches where international recruitment delivers the strongest operational impact","servicesFitLead":"Each card highlights where the model gives the fastest operational return, the cleanest launch rhythm, and the strongest staffing stability.","servicesFitScoreLabel":"fit score","servicesFitMetricOne":"Launch speed","servicesFitMetricTwo":"Retention","servicesFitMetricThree":"Process clarity","servicesLeadEyebrow":"Start the conversation","servicesLeadText":"For employers, this is a fast way to understand how to launch hiring. For candidates, it is a chance to get a clear explanation of the employment route and documents.","industriesSectionTitle":"WHICH INDUSTRIES THIS HIRING MODEL FITS","industrySliderPrev":"Previous slide","industrySliderNext":"Next slide","quizSectionLead":"Step-based mobile-friendly flow with analytics events and a single submission payload.","caseSubtitlePlaceholder":"Short case summary","caseProblemPlaceholder":"Separate SEO-friendly URL for the case, results, timing, and CTA.","processStepLabel":"Step","reportPanelTitle":"Get the material by email","reportPanelText":"Leave your contact details and we will send a useful resource about international hiring and payroll optimization.","reportPanelKicker":"VW Recruit / Insight","reportPanelReportTitle":"Labor market 2026","reportPanelReportText":"International workforce integration for businesses facing labor shortages","reportPanelGuide":"PDF","reviewsPrev":"Previous review","reviewsNext":"Next review"}}</script>
+      <div id="portal-root"></div>
+    
   </body>
 </html>

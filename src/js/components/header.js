@@ -1,5 +1,6 @@
 import { buildPageUrl, LOCALE_META } from '../core/site-config.js'
-import logoSymbol from '../../assets/logo-symbol.svg'
+
+const logoSymbol = '/logo-symbol.svg'
 
 function renderLanguageOptions(currentLocale, pageKey) {
   return Object.entries(LOCALE_META)

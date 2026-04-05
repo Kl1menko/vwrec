@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="lt">
   <head>
+    
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="VW Recruit Starter" />
@@ -9,12 +11,421 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <title>VW Recruit | Contacts</title>
+  
+    <title>VW Recruit | Talk to the VW Recruit team</title>
+    <meta name="description" content="Add contact channels, quick lead form, messenger links, and call booking options." />
+    
+    <style>
+      html.page-loading {
+        background: #fafafa;
+      }
+
+      html.page-loading body {
+        overflow: hidden;
+      }
+
+      #app,
+      #portal-root {
+        opacity: 1;
+        transition: opacity 280ms ease;
+      }
+
+      html.page-loading #app,
+      html.page-loading #portal-root {
+        opacity: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .page-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: var(--color-bg, #fafafa);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 240ms ease,
+          visibility 240ms ease;
+      }
+
+      html.page-loading .page-loader {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .page-loader__logo-wrap {
+        display: grid;
+        place-items: center;
+      }
+
+      .page-loader__logo {
+        width: clamp(72px, 9vw, 104px);
+        height: auto;
+        animation: page-loader-pulse 1.8s ease-in-out infinite;
+        transform-origin: center;
+        filter: drop-shadow(0 14px 28px rgba(242, 122, 36, 0.16));
+      }
+
+      @keyframes page-loader-pulse {
+        0%,
+        100% {
+          transform: scale(0.94);
+        }
+
+        50% {
+          transform: scale(1.04);
+        }
+      }
+    </style>
+  
+    
+    <script>
+      document.documentElement.classList.add('page-loading');
+      window.addEventListener('load', () => {
+        document.documentElement.classList.remove('page-loading');
+      }, { once: true });
+    </script>
+  
     <script type="module" src="/src/main.js"></script>
+  
   </head>
   <body data-locale="lt" data-page="contacts">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <div id="app"></div>
-    <div id="portal-root"></div>
+    
+      <a class="skip-link" href="#main-content">Skip to content</a>
+      <div class="page-loader" aria-hidden="true">
+        <div class="page-loader__logo-wrap">
+          <img class="page-loader__logo" src="/logo-symbol-loader.svg" alt="" width="104" height="128" />
+        </div>
+      </div>
+      <div id="app">
+    
+    <header class="site-header">
+      <div class="shell site-header__inner">
+        <a class="brand-mark" href="/lt/" aria-label="VW Recruit home">
+          <img class="brand-mark__logo" src="/logo-symbol.svg" alt="VW Recruit logo" width="82" height="101" />
+          <span class="brand-mark__text">
+            <strong>VW Recruit</strong>
+            <small>International hiring partner</small>
+          </span>
+        </a>
+
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span class="menu-toggle__lines" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <div class="site-header__panel" id="site-nav" data-menu-panel>
+          <nav class="site-nav" aria-label="Primary">
+            
+        <a class="nav-link" href="/lt/">Home</a>
+      
+        <a class="nav-link" href="/lt/services/">Services</a>
+      
+        <a class="nav-link" href="/lt/industries/">Industries</a>
+      
+        <a class="nav-link" href="/lt/cases/">Cases</a>
+      
+        <a class="nav-link" href="/lt/report/">Report</a>
+      
+        <a class="nav-link is-active" href="/lt/contacts/">Contacts</a>
+      
+          </nav>
+
+          <div class="site-header__actions">
+            <div class="language-switcher" data-language-switcher>
+              <button
+                class="language-switcher__trigger"
+                type="button"
+                data-language-trigger
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/lt.svg" alt="" /></span>
+                <span class="language-switcher__value">LT</span>
+                <span class="language-switcher__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="language-switcher__menu" data-language-menu>
+                
+        <a class="language-switcher__option" href="/uk/contacts/">
+          <span class="language-switcher__code">UA</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/ua.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Українська</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/en/contacts/">
+          <span class="language-switcher__code">EN</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/gb.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">English</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/cs/contacts/">
+          <span class="language-switcher__code">CZ</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/cz.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Čeština</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/pl/contacts/">
+          <span class="language-switcher__code">PL</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/pl.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Polski</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/sk/contacts/">
+          <span class="language-switcher__code">SK</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/sk.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Slovenčina</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/de/contacts/">
+          <span class="language-switcher__code">DE</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/de.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Deutsch</span>
+        </a>
+      
+        <a class="language-switcher__option is-active" href="/lt/contacts/">
+          <span class="language-switcher__code">LT</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/lt.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Lietuvių</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/et/contacts/">
+          <span class="language-switcher__code">EE</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/ee.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Eesti</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/hu/contacts/">
+          <span class="language-switcher__code">HU</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/hu.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Magyar</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/hr/contacts/">
+          <span class="language-switcher__code">HR</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/hr.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Hrvatski</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/ro/contacts/">
+          <span class="language-switcher__code">RO</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/ro.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Română</span>
+        </a>
+      
+        <a class="language-switcher__option" href="/bg/contacts/">
+          <span class="language-switcher__code">BG</span>
+          <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/bg.svg" alt="" loading="lazy" /></span>
+          <span class="language-switcher__label">Български</span>
+        </a>
+      
+              </div>
+            </div>
+            <button class="button button--ghost" type="button" data-open-modal="callback">
+              Book a call
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <main id="main-content">
+      
+    
+    <section class="page-hero">
+      <div class="shell">
+        <p class="eyebrow">VW Recruit / contacts</p>
+        <h1>Talk to the VW Recruit team</h1>
+        <p class="lead">Add contact channels, quick lead form, messenger links, and call booking options.</p>
+      </div>
+    </section>
+  
+    <section class="section">
+      <div class="shell split">
+        <div class="stack">
+          <div class="line-card">Starter page template for <strong>contacts</strong></div>
+          <div class="line-card">Ready for localized metadata and content expansion</div>
+          <div class="line-card">Built as a separate SEO-friendly route per locale</div>
+        </div>
+        
+    <form class="stack card card--form" data-form data-form-type="contact">
+      
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Name *</span>
+        <input type="text" name="name" required />
+      </label>
+      <label class="field">
+        <span>Company *</span>
+        <input type="text" name="company" required />
+      </label>
+      <label class="field">
+        <span>Email *</span>
+        <input type="email" name="email" required />
+      </label>
+      <label class="field">
+        <span>Phone</span>
+        <input type="text" name="phone" />
+      </label>
+      <button class="button" type="submit">Send request</button>
+      <p class="form-status" data-form-status></p>
+    </form>
+  
+      </div>
+    </section>
+    
+  
+    </main>
+    
+    <footer class="site-footer">
+      <div class="shell site-footer__grid">
+        <div class="site-footer__brand">
+          <div class="site-footer__brand-mark" aria-hidden="true">
+            <img src="/logo-symbol.svg" alt="" loading="lazy" />
+            <span>VW Recruit</span>
+          </div>
+          <p class="site-footer__text">
+            Mobile-first starter for multilingual B2B recruitment pages, case studies, lead flows, and SEO expansion.
+          </p>
+        </div>
+        <div>
+          <p class="site-footer__title">Core pages</p>
+          <div class="footer-links">
+            <a href="/lt/services/">Services</a>
+            <a href="/lt/industries/">Industries</a>
+            <a href="/lt/cases/">Cases</a>
+            <a href="/lt/report/">Report</a>
+          </div>
+        </div>
+        <div>
+          <p class="site-footer__title">Legal</p>
+          <div class="footer-links">
+            <a href="/lt/privacy-policy/">Privacy policy</a>
+            <a href="/lt/terms/">Terms & conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+    
+    <div class="modal" data-modal="callback">
+      <div class="modal__dialog">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <h3>Book a callback</h3>
+        <form class="stack" data-form data-form-type="callback">
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <label class="field">
+            <span>Name *</span>
+            <input type="text" name="name" required />
+          </label>
+          <label class="field">
+            <span>Company *</span>
+            <input type="text" name="company" required />
+          </label>
+          <label class="field">
+            <span>Email *</span>
+            <input type="email" name="email" required />
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input type="text" name="phone" />
+          </label>
+          <button class="button" type="submit">Request callback</button>
+          <p class="form-status" data-form-status></p>
+        </form>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="report">
+      <div class="modal__dialog">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <h3>Download the report</h3>
+        <form class="stack" data-form data-form-type="report">
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <label class="field">
+            <span>Name *</span>
+            <input type="text" name="name" required />
+          </label>
+          <label class="field">
+            <span>Company *</span>
+            <input type="text" name="company" required />
+          </label>
+          <label class="field">
+            <span>Email *</span>
+            <input type="email" name="email" required />
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input type="text" name="phone" />
+          </label>
+          <button class="button" type="submit">Get report</button>
+          <p class="form-status" data-form-status></p>
+        </form>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="report-success">
+      <div class="modal__dialog modal__dialog--success">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <div class="success-modal__icon" aria-hidden="true">
+          <span></span>
+        </div>
+        <h3>Download the report</h3>
+        <p>Thanks. We received your request and will send the PDF report to your email shortly.</p>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="form-success">
+      <div class="modal__dialog modal__dialog--success">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <div class="success-modal__icon" aria-hidden="true">
+          <span></span>
+        </div>
+        <p class="success-modal__headline" data-form-success-message>Thanks. Your request has been captured and is ready for Google-based delivery integration.</p>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="hero-quiz">
+      <div class="modal__dialog modal__dialog--quiz">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <h3>Hiring calculator</h3>
+        <p>Step-based mobile-friendly flow with analytics events and a single submission payload.</p>
+        <div data-quiz data-quiz-source="hero_quiz"></div>
+      </div>
+    </div>
+  
+    
+    <div class="modal" data-modal="video">
+      <div class="modal__dialog modal__dialog--video">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        <h3 data-video-modal-title>Презентація VW Recruit</h3>
+        <div class="video-modal__player">
+          <video
+            class="video-modal__media"
+            data-video-modal-media
+            controls
+            playsinline
+            preload="metadata"
+          ></video>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+      <script id="page-content" type="application/json">{"forms":{"lead":{"title":"Request hiring proposal","success":"Thanks. Your request has been captured and is ready for Google-based delivery integration."},"callback":{"title":"Book a callback","success":"Thanks. We saved your callback request."},"report":{"title":"Download the report","success":"Thanks. We received your request and will send the PDF report to your email shortly."},"contact":{"title":"Send a message","success":"Thanks. Your message was queued for the contact flow."}},"quiz":{"title":"Hiring calculator","progressLabel":"Step","completionTitle":"Your request is ready","completionLead":"The quiz flow is connected to a single payload structure, so it can be sent to Apps Script, Google Forms, or a Sheet-backed endpoint.","steps":[{"id":"industry","label":"Which industry do you need workers for?","type":"options","options":["Manufacturing","Construction","Warehouses & Logistics","Hotels & Service","Other"]},{"id":"teamSize","label":"How many workers do you need?","type":"options","options":["1–10","11–30","31–50","50+"]},{"id":"timeline","label":"When do you need the team to start?","type":"options","options":["Urgently","Within 2–4 weeks","Within 1–2 months","Just exploring options"]},{"id":"location","label":"Where is your business located?","type":"text","fields":[{"name":"country","label":"Country","required":true},{"name":"city","label":"City","required":false}]},{"id":"problem","label":"What is the biggest hiring problem right now?","type":"options","options":["High salary costs","Staff shortage","Turnover","Seasonal peaks","Scaling production","Other"]},{"id":"contact","label":"Where should we send your estimate?","type":"text","fields":[{"name":"name","label":"Name","required":true},{"name":"company","label":"Company","required":true},{"name":"phone","label":"Phone","required":true},{"name":"email","label":"Email","required":true}]}]},"ui":{"modalClose":"Close modal","leadCapture":"Lead capture","video":"Video","videoPlay":"Play video","openMenu":"Open menu","primaryNav":"Primary","fieldName":"Name","fieldCompany":"Company","fieldEmail":"Email","fieldPhone":"Phone","sendRequest":"Send request","requestCallback":"Request callback","getReport":"Get report","bookCall":"Book a call","quizEyebrow":"Quiz","quizContinue":"Continue","quizBack":"Back","quizSubmit":"Submit","quizReady":"Ready","quizValidationError":"Please complete the current step.","quizSubmitError":"Submission failed. Please try again.","processEyebrow":"Process","caseStudy":"Case study","caseViewLabel":"View case","leadCaptureEyebrow":"Lead capture","faqEyebrow":"FAQ","finalCtaEyebrow":"Final CTA","downloadReport":"Download report","openContactsPage":"Open contacts page","projectsExamples":"Project examples","reelPlaceholder":"Space for a reel or video in a popup modal after connecting the sources.","industriesLead":"Companies most often use this hiring model for operational roles in manufacturing, warehouses, construction, and service.","legalPlaceholder":"Legal copy placeholder. Replace with approved content before launch.","footerDescription":"Mobile-first starter for multilingual B2B recruitment pages, case studies, lead flows, and SEO expansion.","footerCorePages":"Core pages","footerLegal":"Legal","privacyPolicy":"Privacy policy","termsAndConditions":"Terms & conditions","formRequiredError":"Please complete the required form fields.","formSubmittingButton":"Sending...","formSubmittingStatus":"Sending form...","formSubmitError":"Submission failed. Please try again.","industryVisualLogisticsAlt":"Workers in warehouse and logistics operations","industryVisualConstructionAlt":"Workers at a construction site","industryVisualHospitalityAlt":"Hotel and service staff","industryVisualManufacturingAlt":"Workers in manufacturing","industrySlidePlaceholder":"This vertical can be expanded into SEO pages, quiz paths, and personalized CTAs.","comparisonCardCta":"Calculate hiring cost","guaranteesLegalDelta":"Quotas, permits, visas","guaranteesReplacementMetric":"No fee","guaranteesReplacementDelta":"Fast replacement under guarantee","guaranteesSupportMetric":"Turnkey","guaranteesSupportDelta":"From sourcing to first shift","guaranteesFallbackDelta":"VW Recruit advantage","guaranteeSupportStepOne":"Selection","guaranteeSupportStepTwo":"Arrival","guaranteeSupportNote":"First shift start","guaranteeChecklistQuota":"Quotas","guaranteeChecklistPermit":"Permit","guaranteeChecklistVisa":"Visa","reviewFallbackValue":"7 YEARS","reviewLabelPrefix":"7 years ","servicesShortRequestEyebrow":"Quick request","servicesHeroGhostCta":"View service terms","servicesHeroPanelTitle":"Sourcing, documents, logistics, and team launch in one process","servicesHeroPanelText":"The route is structured so the employer sees a predictable launch path, while every stage from sourcing to arrival stays coordinated in one process.","servicesPillarsEyebrow":"What we cover","servicesPillarsTitle":"The service is built not as a resume search, but as a full route to launch people into work","servicesOfferEyebrow":"What both sides get","servicesOfferTitle":"A model where the business gets a managed result and the candidate sees a transparent process","servicesOfferVisualLabel":"VW Recruit flow","servicesOfferVisualPrimary":"Employer route","servicesOfferVisualSecondary":"Candidate route","servicesBeamEyebrow":"Process map","servicesRouteEyebrow":"How cooperation works","servicesRouteTitle":"A transparent route from request to workers starting their shifts","servicesProofEyebrow":"Why it converts","servicesProofTitle":"Not just candidate sourcing, but a managed service with a clear result at every stage","servicesFitEyebrow":"Where it works best","servicesFitTitle":"Roles and niches where international recruitment delivers the strongest operational impact","servicesFitLead":"Each card highlights where the model gives the fastest operational return, the cleanest launch rhythm, and the strongest staffing stability.","servicesFitScoreLabel":"fit score","servicesFitMetricOne":"Launch speed","servicesFitMetricTwo":"Retention","servicesFitMetricThree":"Process clarity","servicesLeadEyebrow":"Start the conversation","servicesLeadText":"For employers, this is a fast way to understand how to launch hiring. For candidates, it is a chance to get a clear explanation of the employment route and documents.","industriesSectionTitle":"WHICH INDUSTRIES THIS HIRING MODEL FITS","industrySliderPrev":"Previous slide","industrySliderNext":"Next slide","quizSectionLead":"Step-based mobile-friendly flow with analytics events and a single submission payload.","caseSubtitlePlaceholder":"Short case summary","caseProblemPlaceholder":"Separate SEO-friendly URL for the case, results, timing, and CTA.","processStepLabel":"Step","reportPanelTitle":"Get the material by email","reportPanelText":"Leave your contact details and we will send a useful resource about international hiring and payroll optimization.","reportPanelKicker":"VW Recruit / Insight","reportPanelReportTitle":"Labor market 2026","reportPanelReportText":"International workforce integration for businesses facing labor shortages","reportPanelGuide":"PDF","reviewsPrev":"Previous review","reviewsNext":"Next review"}}</script>
+      <div id="portal-root"></div>
+    
   </body>
 </html>

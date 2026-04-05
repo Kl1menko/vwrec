@@ -65,6 +65,7 @@ export function initHeroGlobe() {
   let frameId = 0
   let resizeFrameId = 0
   let isVisible = false
+  let isAnimating = false
   let globe
 
   const markers = mapMarkers()
@@ -126,7 +127,35 @@ export function initHeroGlobe() {
       globe.update({ phi: currentPhi, theta: currentTheta })
     }
 
+    if (!isAnimating) {
+      frameId = 0
+      return
+    }
+
     frameId = window.requestAnimationFrame(animate)
+  }
+
+  const startAnimation = () => {
+    if (isAnimating || prefersReducedMotion || document.hidden || !isVisible) return
+    isAnimating = true
+    frameId = window.requestAnimationFrame(animate)
+  }
+
+  const stopAnimation = () => {
+    isAnimating = false
+    if (frameId) {
+      window.cancelAnimationFrame(frameId)
+      frameId = 0
+    }
+  }
+
+  const syncAnimationState = () => {
+    if (isVisible && !prefersReducedMotion && !document.hidden) {
+      startAnimation()
+      return
+    }
+
+    stopAnimation()
   }
 
   const onPointerMove = (event) => {
@@ -179,6 +208,7 @@ export function initHeroGlobe() {
   const visibilityObserver = new IntersectionObserver(
     (entries) => {
       isVisible = entries.some((entry) => entry.isIntersecting)
+      syncAnimationState()
     },
     {
       threshold: 0.1,
@@ -188,12 +218,14 @@ export function initHeroGlobe() {
   visibilityObserver.observe(stage)
 
   render()
-  animate()
+  syncAnimationState()
+
+  document.addEventListener('visibilitychange', syncAnimationState)
 
   window.addEventListener(
     'beforeunload',
     () => {
-      window.cancelAnimationFrame(frameId)
+      stopAnimation()
       window.cancelAnimationFrame(resizeFrameId)
       resizeObserver.disconnect()
       visibilityObserver.disconnect()
