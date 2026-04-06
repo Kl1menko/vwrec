@@ -227,7 +227,60 @@ function createRedirectHtml() {
       <title>${SITE_NAME}</title>
     `,
     body: `
-      <p>Redirecting to <a href="/${DEFAULT_LOCALE}/">/${DEFAULT_LOCALE}/</a>...</p>
+      <style>
+        body {
+          margin: 0;
+          min-height: 100vh;
+          display: grid;
+          place-items: center;
+          background: #fafafa;
+          color: #111111;
+          font-family: Inter, sans-serif;
+        }
+
+        .redirect-loader {
+          display: grid;
+          justify-items: center;
+          gap: 18px;
+          padding: 24px;
+          text-align: center;
+        }
+
+        .redirect-loader__logo {
+          width: 60px;
+          height: auto;
+        }
+
+        .redirect-loader__spinner {
+          width: 34px;
+          height: 34px;
+          border-radius: 999px;
+          border: 2px solid rgba(242, 122, 36, 0.18);
+          border-top-color: #f27a24;
+          animation: redirect-spin 0.8s linear infinite;
+        }
+
+        .redirect-loader__text {
+          font-size: 0.92rem;
+          line-height: 1.5;
+          color: #5f5b57;
+        }
+
+        .redirect-loader__text a {
+          color: #d95d0a;
+        }
+
+        @keyframes redirect-spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+      <div class="redirect-loader" aria-live="polite">
+        <img class="redirect-loader__logo" src="/logo-symbol-loader.svg" alt="" width="60" height="74" />
+        <div class="redirect-loader__spinner" aria-hidden="true"></div>
+        <p class="redirect-loader__text">Redirecting to <a href="/${DEFAULT_LOCALE}/">/${DEFAULT_LOCALE}/</a>...</p>
+      </div>
     `,
   })
 }

@@ -241,7 +241,6 @@
       
     <section class="page-hero cases-page-hero">
       <div class="shell">
-        <p class="cases-hero__label">Case studies</p>
         <h1 class="cases-hero__title">Recruitment case studies that show the route, timeline, and business outcome</h1>
         <p class="cases-hero__desc">Review real hiring scenarios that show what the employer needed, how the launch was structured, and what operational result the project was built to deliver.</p>
         
@@ -425,29 +424,63 @@
         <h2 class="convincing-section__title">What makes a case study persuasive</h2>
         <div class="animated-list">
           
-              <div class="animated-list__item">
+              <article class="animated-list__item">
+                <div class="animated-list__step">Крок 1</div>
+                <div class="animated-list__visual animated-list__visual--challenge" aria-hidden="true">
+                  <span class="animated-list__visual-orb animated-list__visual-orb--a"></span>
+                  <span class="animated-list__visual-orb animated-list__visual-orb--b"></span>
+                  
+                        <span class="animated-list__visual-panel animated-list__visual-panel--tall"></span>
+                        <span class="animated-list__visual-panel animated-list__visual-panel--wide"></span>
+                        <span class="animated-list__visual-chip"></span>
+                      
+                  <span class="animated-list__connector"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 7 6 5-6 5"></path></svg></span>
+                </div>
                 <div class="animated-list__num">01</div>
                 <div class="animated-list__content">
                   <h3 class="animated-list__heading">Clear starting problem</h3>
                   <p class="animated-list__desc">Show where local hiring, turnover, or seasonal pressure created a business bottleneck.</p>
                 </div>
-              </div>
+              </article>
             
-              <div class="animated-list__item">
+              <article class="animated-list__item">
+                <div class="animated-list__step">Крок 2</div>
+                <div class="animated-list__visual animated-list__visual--flow" aria-hidden="true">
+                  <span class="animated-list__visual-orb animated-list__visual-orb--a"></span>
+                  <span class="animated-list__visual-orb animated-list__visual-orb--b"></span>
+                  
+                          <span class="animated-list__visual-line animated-list__visual-line--one"></span>
+                          <span class="animated-list__visual-line animated-list__visual-line--two"></span>
+                          <span class="animated-list__visual-node animated-list__visual-node--start"></span>
+                          <span class="animated-list__visual-node animated-list__visual-node--end"></span>
+                        
+                  <span class="animated-list__connector"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 7 6 5-6 5"></path></svg></span>
+                </div>
                 <div class="animated-list__num">02</div>
                 <div class="animated-list__content">
                   <h3 class="animated-list__heading">Transparent launch route</h3>
                   <p class="animated-list__desc">Explain how sourcing, documents, travel, and startup were coordinated in one model.</p>
                 </div>
-              </div>
+              </article>
             
-              <div class="animated-list__item">
+              <article class="animated-list__item">
+                <div class="animated-list__step">Крок 3</div>
+                <div class="animated-list__visual animated-list__visual--result" aria-hidden="true">
+                  <span class="animated-list__visual-orb animated-list__visual-orb--a"></span>
+                  <span class="animated-list__visual-orb animated-list__visual-orb--b"></span>
+                  
+                          <span class="animated-list__visual-stack animated-list__visual-stack--back"></span>
+                          <span class="animated-list__visual-stack animated-list__visual-stack--front"></span>
+                          <span class="animated-list__visual-badge"></span>
+                        
+                  
+                </div>
                 <div class="animated-list__num">03</div>
                 <div class="animated-list__content">
                   <h3 class="animated-list__heading">Operational outcome</h3>
                   <p class="animated-list__desc">Translate the project into staffing continuity, launch speed, and better predictability for the site.</p>
                 </div>
-              </div>
+              </article>
             
         </div>
       </div>
@@ -460,10 +493,35 @@
             <h2 class="cases-cta__title">Need a similar hiring route for your team?</h2>
             <p class="cases-cta__desc">Share your staffing gap and we will map the right recruitment route, launch timing, and next operational step for your business.</p>
           </div>
-          <button class="cases-cta__btn" type="button" data-open-modal="callback">
-            Request callback
-            <svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M8.146 3.146a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 8H2.5a.5.5 0 0 1 0-1h8.793L8.146 3.854a.5.5 0 0 1 0-.708z" fill="currentColor"/></svg>
-          </button>
+          
+    <div class="report-form__card report-form__card--embedded">
+      <div class="report-form__card-inner">
+        <h3 class="report-form__card-title">Request hiring proposal</h3>
+        <form class="report-form__fields" data-form data-form-type="lead">
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <label class="report-form__field">
+            <span>Name *</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="report-form__field">
+            <span>Company *</span>
+            <input type="text" name="company" autocomplete="organization" required />
+          </label>
+          <label class="report-form__field">
+            <span>Email *</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="report-form__field">
+            <span>Phone</span>
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+          <button class="report-form__submit" type="submit">Send request</button>
+          <p class="form-status" data-form-status role="status" hidden></p>
+        </form>
+        <p class="report-form__note">Share your staffing gap and we will map the right recruitment route, launch timing, and next operational step for your business.</p>
+      </div>
+    </div>
+  
         </div>
       </div>
     </section>
@@ -504,8 +562,8 @@
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Book a callback</h3>
-        <form class="stack" data-form data-form-type="callback">
+        <h3 class="modal__title">Book a callback</h3>
+        <form class="modal__form" data-form data-form-type="callback">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -523,7 +581,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Request callback</button>
+          <button class="button modal__submit" type="submit">Request callback</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
@@ -533,8 +591,8 @@
     <div class="modal" data-modal="report">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Download the report</h3>
-        <form class="stack" data-form data-form-type="report">
+        <h3 class="modal__title">Download the report</h3>
+        <form class="modal__form" data-form data-form-type="report">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -552,7 +610,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Get report</button>
+          <button class="button modal__submit" type="submit">Get report</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>

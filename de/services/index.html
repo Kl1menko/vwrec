@@ -280,10 +280,6 @@
                 </article>
               
           </div>
-          <div class="services-hero__panel-copy">
-            <strong>Sourcing, documents, logistics, and team launch in one process</strong>
-            <p>The route is structured so the employer sees a predictable launch path, while every stage from sourcing to arrival stays coordinated in one process.</p>
-          </div>
         </div>
         <p class="services-hero__intro">This service model is built for employers who need more than candidate sourcing. It covers the full route from staffing request to first shift, with clearer timing, lower coordination pressure, and one accountable process.</p>
       </div>
@@ -837,8 +833,8 @@
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Book a callback</h3>
-        <form class="stack" data-form data-form-type="callback">
+        <h3 class="modal__title">Book a callback</h3>
+        <form class="modal__form" data-form data-form-type="callback">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -856,7 +852,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Request callback</button>
+          <button class="button modal__submit" type="submit">Request callback</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
@@ -866,8 +862,8 @@
     <div class="modal" data-modal="report">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Download the report</h3>
-        <form class="stack" data-form data-form-type="report">
+        <h3 class="modal__title">Download the report</h3>
+        <form class="modal__form" data-form data-form-type="report">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -885,7 +881,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Get report</button>
+          <button class="button modal__submit" type="submit">Get report</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>

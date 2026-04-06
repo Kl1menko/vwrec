@@ -13,20 +13,17 @@
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(250, 248, 244, 0.72) 100%);
   border-block: 1px solid var(--color-line);
-  backdrop-filter: blur(6px);
 }
 
 .section--accent {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(246, 242, 235, 0.84) 100%);
   border-block: 1px solid var(--color-line);
-  backdrop-filter: blur(6px);
 }
 
 body[data-page='home'] .section--muted,
 body[data-page='home'] .section--accent {
   background: transparent;
-  backdrop-filter: none;
 }
 
 .eyebrow {

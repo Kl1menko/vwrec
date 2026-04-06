@@ -256,28 +256,33 @@
           <div class="line-card">Built as a separate SEO-friendly route per locale</div>
         </div>
         
-    <form class="stack card card--form" data-form data-form-type="contact">
-      
-      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-      <label class="field">
-        <span>Name *</span>
-        <input type="text" name="name" autocomplete="name" required />
-      </label>
-      <label class="field">
-        <span>Company *</span>
-        <input type="text" name="company" autocomplete="organization" required />
-      </label>
-      <label class="field">
-        <span>Email *</span>
-        <input type="email" name="email" autocomplete="email" required />
-      </label>
-      <label class="field">
-        <span>Phone</span>
-        <input type="tel" name="phone" autocomplete="tel" />
-      </label>
-      <button class="button" type="submit">Send request</button>
-      <p class="form-status" data-form-status role="status" hidden></p>
-    </form>
+    <div class="report-form__card report-form__card--embedded">
+      <div class="report-form__card-inner">
+        <h3 class="report-form__card-title">Send a message</h3>
+        <form class="report-form__fields" data-form data-form-type="contact">
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <label class="report-form__field">
+            <span>Name *</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="report-form__field">
+            <span>Company *</span>
+            <input type="text" name="company" autocomplete="organization" required />
+          </label>
+          <label class="report-form__field">
+            <span>Email *</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="report-form__field">
+            <span>Phone</span>
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+          <button class="report-form__submit" type="submit">Send request</button>
+          <p class="form-status" data-form-status role="status" hidden></p>
+        </form>
+        <p class="report-form__note">Cluster content by legal questions, timelines, housing, language barriers, guarantees, and replacement terms.</p>
+      </div>
+    </div>
   
       </div>
     </section>
@@ -373,8 +378,8 @@
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Book a callback</h3>
-        <form class="stack" data-form data-form-type="callback">
+        <h3 class="modal__title">Book a callback</h3>
+        <form class="modal__form" data-form data-form-type="callback">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -392,7 +397,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Request callback</button>
+          <button class="button modal__submit" type="submit">Request callback</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
@@ -402,8 +407,8 @@
     <div class="modal" data-modal="report">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Download the report</h3>
-        <form class="stack" data-form data-form-type="report">
+        <h3 class="modal__title">Download the report</h3>
+        <form class="modal__form" data-form data-form-type="report">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -421,7 +426,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Get report</button>
+          <button class="button modal__submit" type="submit">Get report</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>

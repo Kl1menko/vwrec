@@ -6,8 +6,8 @@ function renderModal(content, title, formType, buttonLabel) {
     <div class="modal" data-modal="${formType}">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
-        <h3>${title}</h3>
-        <form class="stack" data-form data-form-type="${formType}">
+        <h3 class="modal__title">${title}</h3>
+        <form class="modal__form" data-form data-form-type="${formType}">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>${content.ui?.fieldName ?? 'Name'} *</span>
@@ -25,7 +25,7 @@ function renderModal(content, title, formType, buttonLabel) {
             <span>${content.ui?.fieldPhone ?? 'Phone'}</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">${buttonLabel}</button>
+          <button class="button modal__submit" type="submit">${buttonLabel}</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>

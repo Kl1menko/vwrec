@@ -285,10 +285,6 @@
                 </article>
               
           </div>
-          <div class="services-hero__panel-copy">
-            <strong>Підбір, документи, логістика та запуск команди в одному процесі</strong>
-            <p>Весь маршрут побудований так, щоб бізнес бачив прогнозовані етапи запуску, а кандидат розумів, що відбувається на кожному кроці.</p>
-          </div>
         </div>
         
       </div>
@@ -881,8 +877,8 @@
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">×</button>
-        <h3>Забронювати дзвінок</h3>
-        <form class="stack" data-form data-form-type="callback">
+        <h3 class="modal__title">Забронювати дзвінок</h3>
+        <form class="modal__form" data-form data-form-type="callback">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Ім’я *</span>
@@ -900,7 +896,7 @@
             <span>Телефон</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Забронювати дзвінок</button>
+          <button class="button modal__submit" type="submit">Забронювати дзвінок</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
@@ -910,8 +906,8 @@
     <div class="modal" data-modal="report">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">×</button>
-        <h3>Отримати звіт</h3>
-        <form class="stack" data-form data-form-type="report">
+        <h3 class="modal__title">Отримати звіт</h3>
+        <form class="modal__form" data-form data-form-type="report">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Ім’я *</span>
@@ -929,7 +925,7 @@
             <span>Телефон</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Отримати звіт</button>
+          <button class="button modal__submit" type="submit">Отримати звіт</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>

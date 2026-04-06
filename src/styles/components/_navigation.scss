@@ -12,8 +12,6 @@
   inset: 0 0 auto;
   height: calc(100% + 18px);
   background: rgba(250, 250, 250, 0.52);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 68%, transparent 100%);
   pointer-events: none;
 }
@@ -37,17 +35,13 @@
   border-radius: 26px;
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 14px 38px rgba(17, 17, 17, 0.08);
-  backdrop-filter: blur(18px);
 }
 
 body[data-page='services'] .site-header::before {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
 }
 
 body[data-page='services'] .site-header__inner {
   background: #ffffff;
-  backdrop-filter: none;
 }
 
 .brand-mark {
@@ -108,7 +102,6 @@ body[data-page='services'] .site-header__inner {
   padding: 0;
   background: transparent;
   box-shadow: none;
-  backdrop-filter: none;
   font-weight: 700;
 }
 
@@ -210,7 +203,6 @@ body[data-page='services'] .site-header__inner {
   box-shadow:
     0 10px 24px rgba(17, 17, 17, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(14px);
 }
 
 .site-header__actions {
@@ -372,7 +364,6 @@ body[data-page='services'] .site-header__inner {
   box-shadow:
     0 10px 24px rgba(17, 17, 17, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(14px);
 }
 
 .site-header .button {
@@ -392,7 +383,6 @@ body[data-page='services'] .site-header__inner {
   background: #ffffff;
   border-color: var(--color-line);
   box-shadow: none;
-  backdrop-filter: none;
   color: var(--color-text);
 }
 
@@ -528,7 +518,6 @@ body[data-page='services'] .site-header__inner {
     border-radius: 24px;
     background: rgba(255, 255, 255, 0.98);
     box-shadow: 0 8px 18px rgba(17, 17, 17, 0.06);
-    backdrop-filter: none;
   }
 
   .brand-mark {
@@ -593,7 +582,6 @@ body[data-page='services'] .site-header__inner {
   .nav-link.is-active {
     background: #f2f4f6;
     box-shadow: none;
-    backdrop-filter: none;
   }
 
   .site-header__actions {
@@ -623,7 +611,6 @@ body[data-page='services'] .site-header__inner {
   .site-header .button,
   .site-header .language-switcher__trigger {
     box-shadow: none;
-    backdrop-filter: none;
   }
 
   .site-header .button {
@@ -631,6 +618,10 @@ body[data-page='services'] .site-header__inner {
   }
 
   body.has-mobile-menu-open .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 80;
   }
 }

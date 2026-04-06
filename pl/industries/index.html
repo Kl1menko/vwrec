@@ -403,26 +403,36 @@
     <section class="section industries-page-section" data-reveal>
       <div class="shell industries-framework">
         <div class="industries-framework__copy">
-          <p class="eyebrow">Industries</p>
-          <h2>What makes this industries page useful to employers</h2>
-          <p class="lead">A strong industries page should do more than list sectors. It should help an employer see their staffing problem, understand the route, and decide whether to take the next step.</p>
+          <div class="industries-framework__copy-inner">
+            <h2>What makes this industries page useful to employers</h2>
+            <p class="lead">A strong industries page should do more than list sectors. It should help an employer see their staffing problem, understand the route, and decide whether to take the next step.</p>
+          </div>
         </div>
         <div class="industries-framework__grid">
           
               <article class="industries-framework-card">
-                <span class="industries-framework-card__index">01</span>
+                <div class="industries-framework-card__top">
+                  <span class="industries-framework-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M12 4v16"/></svg></span>
+                  <span class="industries-framework-card__index">01</span>
+                </div>
                 <h3>Map the business context</h3>
                 <p>Each block should connect the industry to real staffing pressure: seasonality, scaling, turnover, or launch deadlines.</p>
               </article>
             
               <article class="industries-framework-card">
-                <span class="industries-framework-card__index">02</span>
+                <div class="industries-framework-card__top">
+                  <span class="industries-framework-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M12 4v16"/></svg></span>
+                  <span class="industries-framework-card__index">02</span>
+                </div>
                 <h3>Explain why the model fits</h3>
                 <p>Clarify what the sector actually needs from recruitment, documents, logistics, and startup support.</p>
               </article>
             
               <article class="industries-framework-card">
-                <span class="industries-framework-card__index">03</span>
+                <div class="industries-framework-card__top">
+                  <span class="industries-framework-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M12 4v16"/></svg></span>
+                  <span class="industries-framework-card__index">03</span>
+                </div>
                 <h3>Open the path to deeper pages</h3>
                 <p>Use this page as the parent for future vertical pages, case studies, and industry-specific CTAs.</p>
               </article>
@@ -434,28 +444,28 @@
     <section class="section section--muted industries-page-section" data-reveal>
       <div class="shell industries-fit">
         <div class="industries-fit__panel">
-          <p class="eyebrow">Industries</p>
-          <h2>Signals that the model is a fit</h2>
-          <p class="lead">These patterns usually indicate that a business should explore international recruitment instead of relying only on repeated local hiring.</p>
+          <div class="industries-fit__intro">
+            <h2>Signals that the model is a fit</h2>
+            <p class="lead">These patterns usually indicate that a business should explore international recruitment instead of relying only on repeated local hiring.</p>
+            <div class="industries-fit__summary">
+              <p class="industries-fit__summary-text">Сигнали, які зазвичай означають, що локальний найм уже не тримає темп вашої операції і потрібна більш системна модель комплектування команди.</p>
+            </div>
+          </div>
           <div class="industries-fit__items">
             
                 <div class="industries-fit__item">
-                  <span class="industries-fit__item-index">01</span>
                   <p>High turnover in line, warehouse, or support roles</p>
                 </div>
               
                 <div class="industries-fit__item">
-                  <span class="industries-fit__item-index">02</span>
                   <p>Seasonal peaks or expansion plans that local hiring cannot absorb</p>
                 </div>
               
                 <div class="industries-fit__item">
-                  <span class="industries-fit__item-index">03</span>
                   <p>Repeated launch delays because the team is never complete</p>
                 </div>
               
                 <div class="industries-fit__item">
-                  <span class="industries-fit__item-index">04</span>
                   <p>Need for a more predictable route from request to first shift</p>
                 </div>
               
@@ -467,43 +477,40 @@
     <section class="section industries-page-section" data-reveal>
       <div class="shell split split--hero industries-cta">
         <div class="industries-cta__copy">
-          <p class="eyebrow">Industries</p>
           <h2>Need a hiring plan built around your industry?</h2>
           <p class="lead">Tell us where staffing pressure is hurting operations most, and we will map the right hiring route, timing, and next step for your team.</p>
         </div>
         
-    <form class="stack card card--form" data-form data-form-type="lead">
-      
-          <div class="lead-form__brand" aria-hidden="true">
-            <img src="/logo-symbol.svg" alt="" loading="lazy" />
-            <span>VW Recruit</span>
-          </div>
+    <div class="report-form__card report-form__card--embedded">
+      <div class="report-form__card-inner">
+        <h3 class="report-form__card-title">Request hiring proposal</h3>
+        <form class="report-form__fields" data-form data-form-type="lead">
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <label class="report-form__field">
+            <span>Name *</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="report-form__field">
+            <span>Company *</span>
+            <input type="text" name="company" autocomplete="organization" required />
+          </label>
+          <label class="report-form__field">
+            <span>Email *</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="report-form__field">
+            <span>Phone</span>
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+          <button class="report-form__submit" type="submit">Send request</button>
+          <p class="form-status" data-form-status role="status" hidden></p>
+        </form>
         
-      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-      <label class="field">
-        <span>Name *</span>
-        <input type="text" name="name" autocomplete="name" required />
-      </label>
-      <label class="field">
-        <span>Company *</span>
-        <input type="text" name="company" autocomplete="organization" required />
-      </label>
-      <label class="field">
-        <span>Email *</span>
-        <input type="email" name="email" autocomplete="email" required />
-      </label>
-      <label class="field">
-        <span>Phone</span>
-        <input type="tel" name="phone" autocomplete="tel" />
-      </label>
-      <button class="button" type="submit">Send request</button>
-      <p class="form-status" data-form-status role="status" hidden></p>
-    </form>
+      </div>
+    </div>
   
       </div>
     </section>
-
-    
   
     </main>
     
@@ -541,8 +548,8 @@
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Book a callback</h3>
-        <form class="stack" data-form data-form-type="callback">
+        <h3 class="modal__title">Book a callback</h3>
+        <form class="modal__form" data-form data-form-type="callback">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -560,7 +567,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Request callback</button>
+          <button class="button modal__submit" type="submit">Request callback</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
@@ -570,8 +577,8 @@
     <div class="modal" data-modal="report">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Download the report</h3>
-        <form class="stack" data-form data-form-type="report">
+        <h3 class="modal__title">Download the report</h3>
+        <form class="modal__form" data-form data-form-type="report">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -589,7 +596,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Get report</button>
+          <button class="button modal__submit" type="submit">Get report</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>

@@ -33,6 +33,24 @@ function renderIndustryBentoIcon(title = '') {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M6 20v-9h12v9"/><path d="M9 8V5h6v3"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>`
 }
 
+function renderIndustryFrameworkIcon(title = '') {
+  const value = String(title).toLowerCase()
+
+  if (value.includes('мотивац')) {
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M6 15.5 10 11.5l3 3 5-6"/><path d="M14 8.5h4v4"/></svg>`
+  }
+
+  if (value.includes('дисцип')) {
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`
+  }
+
+  if (value.includes('довгострок')) {
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/><path d="M8 3v3"/><path d="M16 3v3"/></svg>`
+  }
+
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M12 4v16"/></svg>`
+}
+
 const INDUSTRY_SLIDE_VISUALS = [
   {
     match: /склади|логістик|warehouse|logistics/i,
@@ -138,6 +156,42 @@ function renderLeadForm(content, type = 'lead') {
       <button class="button" type="submit">${ui.sendRequest ?? 'Send request'}</button>
       <p class="form-status" data-form-status role="status" hidden></p>
     </form>
+  `
+}
+
+function renderReportStyleForm(content, { type = 'lead', title, buttonLabel, note = '' } = {}) {
+  const ui = content.ui ?? {}
+  const resolvedTitle = title ?? content.forms?.[type]?.title ?? content.forms?.lead?.title ?? 'Send request'
+  const resolvedButtonLabel = buttonLabel ?? ui.sendRequest ?? 'Send request'
+
+  return `
+    <div class="report-form__card report-form__card--embedded">
+      <div class="report-form__card-inner">
+        <h3 class="report-form__card-title">${resolvedTitle}</h3>
+        <form class="report-form__fields" data-form data-form-type="${type}">
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <label class="report-form__field">
+            <span>${ui.fieldName ?? 'Name'} *</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="report-form__field">
+            <span>${ui.fieldCompany ?? 'Company'} *</span>
+            <input type="text" name="company" autocomplete="organization" required />
+          </label>
+          <label class="report-form__field">
+            <span>${ui.fieldEmail ?? 'Email'} *</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="report-form__field">
+            <span>${ui.fieldPhone ?? 'Phone'}</span>
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+          <button class="report-form__submit" type="submit">${resolvedButtonLabel}</button>
+          <p class="form-status" data-form-status role="status" hidden></p>
+        </form>
+        ${note ? `<p class="report-form__note">${note}</p>` : ''}
+      </div>
+    </div>
   `
 }
 
@@ -626,10 +680,6 @@ function renderServicesPage(content, ui) {
               `,
             )}
           </div>
-          <div class="services-hero__panel-copy">
-            <strong>${ui.servicesHeroPanelTitle ?? 'Sourcing, documents, logistics, and team launch in one process'}</strong>
-            <p>${ui.servicesHeroPanelText ?? 'The route is designed so the business sees a predictable launch path and the candidate understands each step.'}</p>
-          </div>
         </div>
         ${services.intro ? `<p class="services-hero__intro">${services.intro}</p>` : ''}
       </div>
@@ -940,7 +990,6 @@ function renderCasesPage(content, ui) {
   return `
     <section class="page-hero cases-page-hero">
       <div class="shell">
-        <p class="cases-hero__label">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
         <h1 class="cases-hero__title">${cases.title}</h1>
         <p class="cases-hero__desc">${cases.lead}</p>
         ${
@@ -1012,13 +1061,39 @@ function renderCasesPage(content, ui) {
           ${renderCardList(
             framework,
             (item, index) => `
-              <div class="animated-list__item">
+              <article class="animated-list__item">
+                <div class="animated-list__step">Крок ${index + 1}</div>
+                <div class="animated-list__visual animated-list__visual--${index === 0 ? 'challenge' : index === 1 ? 'flow' : 'result'}" aria-hidden="true">
+                  <span class="animated-list__visual-orb animated-list__visual-orb--a"></span>
+                  <span class="animated-list__visual-orb animated-list__visual-orb--b"></span>
+                  ${
+                    index === 0
+                      ? `
+                        <span class="animated-list__visual-panel animated-list__visual-panel--tall"></span>
+                        <span class="animated-list__visual-panel animated-list__visual-panel--wide"></span>
+                        <span class="animated-list__visual-chip"></span>
+                      `
+                      : index === 1
+                        ? `
+                          <span class="animated-list__visual-line animated-list__visual-line--one"></span>
+                          <span class="animated-list__visual-line animated-list__visual-line--two"></span>
+                          <span class="animated-list__visual-node animated-list__visual-node--start"></span>
+                          <span class="animated-list__visual-node animated-list__visual-node--end"></span>
+                        `
+                        : `
+                          <span class="animated-list__visual-stack animated-list__visual-stack--back"></span>
+                          <span class="animated-list__visual-stack animated-list__visual-stack--front"></span>
+                          <span class="animated-list__visual-badge"></span>
+                        `
+                  }
+                  ${index < framework.length - 1 ? '<span class="animated-list__connector"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 7 6 5-6 5"></path></svg></span>' : ''}
+                </div>
                 <div class="animated-list__num">0${index + 1}</div>
                 <div class="animated-list__content">
                   <h3 class="animated-list__heading">${item.title}</h3>
                   <p class="animated-list__desc">${item.text}</p>
                 </div>
-              </div>
+              </article>
             `,
           )}
         </div>
@@ -1032,10 +1107,12 @@ function renderCasesPage(content, ui) {
             <h2 class="cases-cta__title">${cases.ctaTitle ?? content.forms.lead.title}</h2>
             <p class="cases-cta__desc">${cases.ctaLead ?? content.home.finalCta?.lead ?? ''}</p>
           </div>
-          <button class="cases-cta__btn" type="button" data-open-modal="callback">
-            ${ui.requestCallback ?? 'Обговорити підбір'}
-            <svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M8.146 3.146a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 8H2.5a.5.5 0 0 1 0-1h8.793L8.146 3.854a.5.5 0 0 1 0-.708z" fill="currentColor"/></svg>
-          </button>
+          ${renderReportStyleForm(content, {
+            type: 'lead',
+            title: content.forms?.lead?.title,
+            buttonLabel: ui.sendRequest ?? 'Send request',
+            note: cases.ctaLead ?? '',
+          })}
         </div>
       </div>
     </section>
@@ -1147,16 +1224,20 @@ function renderIndustriesPage(content, ui) {
     <section class="section industries-page-section" data-reveal>
       <div class="shell industries-framework">
         <div class="industries-framework__copy">
-          <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
-          <h2>${industries.frameworkTitle ?? ''}</h2>
-          <p class="lead">${industries.frameworkLead ?? ''}</p>
+          <div class="industries-framework__copy-inner">
+            <h2>${industries.frameworkTitle ?? ''}</h2>
+            <p class="lead">${industries.frameworkLead ?? ''}</p>
+          </div>
         </div>
         <div class="industries-framework__grid">
           ${renderCardList(
             framework,
             (item, index) => `
               <article class="industries-framework-card">
-                <span class="industries-framework-card__index">0${index + 1}</span>
+                <div class="industries-framework-card__top">
+                  <span class="industries-framework-card__icon">${renderIndustryFrameworkIcon(item.title)}</span>
+                  <span class="industries-framework-card__index">0${index + 1}</span>
+                </div>
                 <h3>${item.title}</h3>
                 <p>${item.text}</p>
               </article>
@@ -1169,15 +1250,18 @@ function renderIndustriesPage(content, ui) {
     <section class="section section--muted industries-page-section" data-reveal>
       <div class="shell industries-fit">
         <div class="industries-fit__panel">
-          <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
-          <h2>${industries.fitTitle ?? ''}</h2>
-          <p class="lead">${industries.fitLead ?? ''}</p>
+          <div class="industries-fit__intro">
+            <h2>${industries.fitTitle ?? ''}</h2>
+            <p class="lead">${industries.fitLead ?? ''}</p>
+            <div class="industries-fit__summary">
+              <p class="industries-fit__summary-text">Сигнали, які зазвичай означають, що локальний найм уже не тримає темп вашої операції і потрібна більш системна модель комплектування команди.</p>
+            </div>
+          </div>
           <div class="industries-fit__items">
             ${renderCardList(
               fitSignals,
-              (item, index) => `
+              (item) => `
                 <div class="industries-fit__item">
-                  <span class="industries-fit__item-index">0${index + 1}</span>
                   <p>${item}</p>
                 </div>
               `,
@@ -1190,29 +1274,17 @@ function renderIndustriesPage(content, ui) {
     <section class="section industries-page-section" data-reveal>
       <div class="shell split split--hero industries-cta">
         <div class="industries-cta__copy">
-          <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
           <h2>${industries.ctaTitle ?? content.forms.lead.title}</h2>
           <p class="lead">${industries.ctaLead ?? content.home.finalCta?.lead ?? ''}</p>
         </div>
-        ${renderLeadForm(content)}
+        ${renderReportStyleForm(content, {
+          type: 'lead',
+          title: content.forms?.lead?.title,
+          buttonLabel: ui.sendRequest ?? 'Send request',
+          note: content.forms?.lead?.success ? '' : industries.ctaLead ?? '',
+        })}
       </div>
     </section>
-
-    ${
-      industries.seoText
-        ? `
-          <section class="section section--muted industries-page-section" data-reveal>
-            <div class="shell industries-seo">
-              <div class="industries-seo__panel">
-                <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
-                <h2>${industries.seoTitle ?? industries.title}</h2>
-                <p>${industries.seoText}</p>
-              </div>
-            </div>
-          </section>
-        `
-        : ''
-    }
   `
 }
 
@@ -1254,7 +1326,6 @@ function renderReportPage(content, ui) {
     <section class="report-hero">
       <div class="report-hero__ripple">
         <div class="shell report-hero__content">
-          <p class="report-hero__label">${reportLabel}</p>
           <h1 class="report-hero__title">${report.title}</h1>
           <p class="report-hero__desc">${report.lead}</p>
           <a class="report-hero__button" href="#report-form">${reportButton}</a>
@@ -1297,7 +1368,6 @@ function renderReportPage(content, ui) {
 
     <section class="report-page-section report-why" data-reveal>
       <div class="shell">
-        <p class="report-section__label">${report.benefitsTitle ? reportLabel : ''}</p>
         <h2 class="report-section__title">${report.benefitsTitle ?? ''}</h2>
         ${report.benefitsLead ? `<p class="report-section__lead">${report.benefitsLead}</p>` : ''}
         <div class="report-why__grid">
@@ -1320,7 +1390,6 @@ function renderReportPage(content, ui) {
         ? `
           <section class="report-page-section report-faq-section" data-reveal>
             <div class="shell">
-              <p class="report-section__label">${reportLabel}</p>
               <h2 class="report-section__title">${report.faqTitle ?? ''}</h2>
               <div class="report-faq__list">
                 ${renderFaq(faqItems)}
@@ -1334,7 +1403,6 @@ function renderReportPage(content, ui) {
     <section class="report-page-section report-form-section" id="report-form" data-reveal>
       <div class="shell report-form">
         <div class="report-form__info">
-          <p class="report-section__label">${ui.downloadReport ?? 'Download report'}</p>
           <h2 class="report-section__title">${report.ctaTitle ?? content.forms.report.title}</h2>
           <p class="report-form__desc">${report.ctaLead ?? report.formLead ?? ''}</p>
           <div class="report-form__pdf">
@@ -1797,7 +1865,16 @@ export function renderPage(content, pageKey) {
           <div class="line-card">Ready for localized metadata and content expansion</div>
           <div class="line-card">Built as a separate SEO-friendly route per locale</div>
         </div>
-        ${includeForm ? renderLeadForm(content, pageKey === 'report' ? 'report' : 'contact') : `<div class="card"><p>${ui.legalPlaceholder ?? 'Legal copy placeholder. Replace with approved content before launch.'}</p></div>`}
+        ${
+          includeForm
+            ? renderReportStyleForm(content, {
+                type: pageKey === 'report' ? 'report' : 'contact',
+                title: content.forms?.[pageKey === 'report' ? 'report' : 'contact']?.title,
+                buttonLabel: ui.sendRequest ?? 'Send request',
+                note: page.lead ?? '',
+              })
+            : `<div class="card"><p>${ui.legalPlaceholder ?? 'Legal copy placeholder. Replace with approved content before launch.'}</p></div>`
+        }
       </div>
     </section>
     ${

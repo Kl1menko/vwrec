@@ -242,7 +242,6 @@
     <section class="report-hero">
       <div class="report-hero__ripple">
         <div class="shell report-hero__content">
-          <p class="report-hero__label">Report</p>
           <h1 class="report-hero__title">International hiring report for employers under staffing pressure</h1>
           <p class="report-hero__desc">Download a practical report that helps employers compare local hiring costs, staffing risk, and the real launch route for international recruitment.</p>
           <a class="report-hero__button" href="#report-form">Download the report</a>
@@ -373,7 +372,6 @@
 
     <section class="report-page-section report-why" data-reveal>
       <div class="shell">
-        <p class="report-section__label">Report</p>
         <h2 class="report-section__title">Why employers download it</h2>
         <p class="report-section__lead">The report works best when a business is already feeling staffing pressure and needs a more realistic decision model.</p>
         <div class="report-why__grid">
@@ -403,7 +401,6 @@
     
           <section class="report-page-section report-faq-section" data-reveal>
             <div class="shell">
-              <p class="report-section__label">Report</p>
               <h2 class="report-section__title">Questions before downloading</h2>
               <div class="report-faq__list">
                 
@@ -463,7 +460,6 @@
     <section class="report-page-section report-form-section" id="report-form" data-reveal>
       <div class="shell report-form">
         <div class="report-form__info">
-          <p class="report-section__label">Download report</p>
           <h2 class="report-section__title">Download the report and clarify your next hiring move</h2>
           <p class="report-form__desc">Leave your details and we will send the PDF while helping you understand whether this hiring model fits your current staffing gap.</p>
           <div class="report-form__pdf">
@@ -541,8 +537,8 @@
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Book a callback</h3>
-        <form class="stack" data-form data-form-type="callback">
+        <h3 class="modal__title">Book a callback</h3>
+        <form class="modal__form" data-form data-form-type="callback">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -560,7 +556,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Request callback</button>
+          <button class="button modal__submit" type="submit">Request callback</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
@@ -570,8 +566,8 @@
     <div class="modal" data-modal="report">
       <div class="modal__dialog">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3>Download the report</h3>
-        <form class="stack" data-form data-form-type="report">
+        <h3 class="modal__title">Download the report</h3>
+        <form class="modal__form" data-form data-form-type="report">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
@@ -589,7 +585,7 @@
             <span>Phone</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <button class="button" type="submit">Get report</button>
+          <button class="button modal__submit" type="submit">Get report</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
