@@ -64,7 +64,20 @@ export function renderHeader(content, locale, pageKey) {
                 <span class="language-switcher__caret" aria-hidden="true">▾</span>
               </button>
               <div class="language-switcher__menu" data-language-menu>
-                ${renderLanguageOptions(locale, pageKey)}
+                <div class="language-switcher__sheet-head">
+                  <strong class="language-switcher__sheet-title">${content.ui?.languagePickerTitle ?? 'Оберіть мову'}</strong>
+                  <button
+                    class="language-switcher__sheet-close"
+                    type="button"
+                    data-language-close
+                    aria-label="${content.ui?.modalClose ?? 'Закрити'}"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div class="language-switcher__sheet-body">
+                  ${renderLanguageOptions(locale, pageKey)}
+                </div>
               </div>
             </div>
             <button class="button button--ghost" type="button" data-open-modal="callback">

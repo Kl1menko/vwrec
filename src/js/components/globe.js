@@ -53,9 +53,11 @@ export function initHeroGlobe() {
 
   if (!canvas || !stage) return
 
+  const userAgent = window.navigator.userAgent
   const isIOS =
-    /iPad|iPhone|iPod/.test(window.navigator.userAgent) ||
+    /iPad|iPhone|iPod/.test(userAgent) ||
     (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1)
+  const isSafari = /Safari/.test(userAgent) && !/Chrome|CriOS|Chromium|Android|Edg\//.test(userAgent)
 
   let width = 0
   let globeSize = 0
@@ -68,6 +70,7 @@ export function initHeroGlobe() {
   let lastY = 0
   let frameId = 0
   let resizeFrameId = 0
+  let lastFrameTime = 0
   let isVisible = false
   let isAnimating = false
   let globe
@@ -75,16 +78,17 @@ export function initHeroGlobe() {
   const markers = mapMarkers()
   const arcs = mapArcs()
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const rotationPerMillisecond = isIOS ? 0.00021 : isSafari ? 0.000085 : 0.000069
 
   const getRenderConfig = (size) => {
     const isCompact = window.matchMedia('(max-width: 767px)').matches
-    const devicePixelRatio = Math.min(window.devicePixelRatio ?? 1, isIOS ? 1.05 : isCompact ? 1.25 : 1.6)
+    const devicePixelRatio = Math.min(window.devicePixelRatio ?? 1, isIOS ? 1 : isSafari ? 1.2 : isCompact ? 1.25 : 1.6)
     const canvasSize = Math.round(size * devicePixelRatio)
 
     return {
       devicePixelRatio,
       canvasSize,
-      mapSamples: isIOS ? 5200 : isCompact ? 7000 : 11000,
+      mapSamples: isIOS ? 4600 : isSafari ? (isCompact ? 5600 : 7800) : isCompact ? 7000 : 11000,
     }
   }
 
@@ -125,9 +129,12 @@ export function initHeroGlobe() {
     })
   }
 
-  const animate = () => {
+  const animate = (timestamp) => {
     if (globe && isVisible && !pointerActive && !prefersReducedMotion && !document.hidden) {
-      currentPhi += isIOS ? 0.0022 : 0.00115
+      if (!lastFrameTime) lastFrameTime = timestamp
+      const delta = Math.min(32, timestamp - lastFrameTime || 16.67)
+      lastFrameTime = timestamp
+      currentPhi += delta * rotationPerMillisecond
       globe.update({ phi: currentPhi, theta: currentTheta })
     }
 
@@ -142,11 +149,13 @@ export function initHeroGlobe() {
   const startAnimation = () => {
     if (isAnimating || prefersReducedMotion || document.hidden || !isVisible) return
     isAnimating = true
+    lastFrameTime = 0
     frameId = window.requestAnimationFrame(animate)
   }
 
   const stopAnimation = () => {
     isAnimating = false
+    lastFrameTime = 0
     if (frameId) {
       window.cancelAnimationFrame(frameId)
       frameId = 0

@@ -287,6 +287,35 @@ body[data-page='services'] .site-header__inner {
   contain: layout paint;
 }
 
+.language-switcher__sheet-head {
+  display: none;
+}
+
+.language-switcher__sheet-body {
+  display: contents;
+}
+
+.language-switcher__sheet-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.language-switcher__sheet-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--color-text);
+  font-size: 1.6rem;
+  line-height: 1;
+  box-shadow: 0 8px 18px rgba(17, 17, 17, 0.05);
+}
+
 .language-switcher.is-open .language-switcher__menu {
   display: grid;
   gap: 2px;
@@ -589,17 +618,60 @@ body[data-page='services'] .site-header__inner {
   }
 
   .language-switcher {
+    position: static;
     display: grid;
     gap: 8px;
   }
 
   .language-switcher__menu {
-    width: 100%;
-    border-radius: 20px;
+    position: fixed;
+    inset:
+      calc(env(safe-area-inset-top, 0px) + 10px)
+      10px
+      calc(env(safe-area-inset-bottom, 0px) + 10px)
+      10px;
+    left: 10px;
+    right: 10px;
+    top: calc(env(safe-area-inset-top, 0px) + 10px);
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+    z-index: 95;
+    width: auto;
+    margin-top: 0;
+    padding: 16px;
+    border-radius: 28px;
+    max-height: none;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 12px;
+    box-shadow: 0 24px 48px rgba(17, 17, 17, 0.12);
   }
 
   .language-switcher.is-open .language-switcher__menu {
     display: grid;
+  }
+
+  .language-switcher.is-open-up .language-switcher__menu {
+    top: auto;
+    bottom: auto;
+  }
+
+  .language-switcher__sheet-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .language-switcher__sheet-body {
+    display: grid;
+    gap: 4px;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 2px;
+  }
+
+  .language-switcher__option {
+    min-height: 60px;
   }
 
   .language-switcher__trigger,
@@ -623,5 +695,9 @@ body[data-page='services'] .site-header__inner {
     left: 0;
     right: 0;
     z-index: 80;
+  }
+
+  body.has-language-sheet-open .site-header__panel {
+    overflow: hidden;
   }
 }

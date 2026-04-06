@@ -1,8 +1,13 @@
 import { qsa } from '../utils/dom.js'
 
+function isMobileLanguageSheet() {
+  return window.matchMedia('(max-width: 767px)').matches
+}
+
 function closeSwitcher(switcher) {
   switcher.classList.remove('is-open', 'is-open-up')
   switcher.querySelector('[data-language-trigger]')?.setAttribute('aria-expanded', 'false')
+  document.body.classList.remove('has-language-sheet-open')
 }
 
 function updateMenuPosition(switcher) {
@@ -10,6 +15,12 @@ function updateMenuPosition(switcher) {
   const menu = switcher.querySelector('[data-language-menu]')
 
   if (!trigger || !menu || !switcher.classList.contains('is-open')) return
+
+  if (isMobileLanguageSheet()) {
+    switcher.classList.remove('is-open-up')
+    menu.style.removeProperty('--language-menu-max-height')
+    return
+  }
 
   const viewportPadding = 12
   const offset = 8
@@ -34,6 +45,8 @@ export function initLanguageSwitcher() {
 
   switchers.forEach((switcher) => {
     const trigger = switcher.querySelector('[data-language-trigger]')
+    const menu = switcher.querySelector('[data-language-menu]')
+    const closeButton = switcher.querySelector('[data-language-close]')
 
     trigger?.addEventListener('click', () => {
       const isOpen = switcher.classList.toggle('is-open')
@@ -41,6 +54,7 @@ export function initLanguageSwitcher() {
 
       if (!isOpen) {
         switcher.classList.remove('is-open-up')
+        document.body.classList.remove('has-language-sheet-open')
         return
       }
 
@@ -49,7 +63,26 @@ export function initLanguageSwitcher() {
         closeSwitcher(otherSwitcher)
       })
 
-      window.requestAnimationFrame(() => updateMenuPosition(switcher))
+      document.body.classList.toggle('has-language-sheet-open', isMobileLanguageSheet())
+
+      window.requestAnimationFrame(() => {
+        updateMenuPosition(switcher)
+
+        if (!menu) return
+
+        const activeOption = menu.querySelector('.language-switcher__option.is-active')
+        const scrollContainer = menu.querySelector('.language-switcher__sheet-body') ?? menu
+        scrollContainer.scrollTop = 0
+
+        if (activeOption instanceof HTMLElement) {
+          const offsetTop = activeOption.offsetTop - (scrollContainer instanceof HTMLElement ? scrollContainer.offsetTop : 0)
+          scrollContainer.scrollTop = Math.max(0, offsetTop - 8)
+        }
+      })
+    })
+
+    closeButton?.addEventListener('click', () => {
+      closeSwitcher(switcher)
     })
 
     switcher.querySelectorAll('a').forEach((link) => {

@@ -1820,7 +1820,7 @@ export function renderPage(content, pageKey) {
             <p>${content.home.finalCta.lead}</p>
           </div>
           <div class="cta-banner__actions">
-            <button class="button cta-banner__button cta-banner__button--pulse" type="button" data-open-modal="report">${ui.downloadReport ?? 'Download report'}</button>
+            <button class="button cta-banner__button cta-banner__button--pulse" type="button" data-open-modal="callback">${ui.bookCall ?? 'Book a call'}</button>
             <a class="button button--ghost cta-banner__button cta-banner__button--ghost" href="${buildPageUrl(content.locale.code, 'contacts')}">${ui.openContactsPage ?? 'Open contacts page'}</a>
           </div>
         </div>

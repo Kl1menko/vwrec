@@ -65,6 +65,23 @@ body[data-page='home'] .section--accent {
   margin-bottom: 28px;
 }
 
+body[data-page='home'] .comparison-heading h2 {
+  font-size: clamp(1.6rem, 3.6vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #1b1917;
+  max-width: 24ch;
+  margin-inline: auto;
+}
+
+body[data-page='home'] .lead {
+  max-width: 64ch;
+  font-size: 1.04rem;
+  line-height: 1.62;
+  color: #8b847d;
+}
+
 .comparison-section {
   display: grid;
   gap: 104px;

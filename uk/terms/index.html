@@ -154,7 +154,19 @@
                 <span class="language-switcher__caret" aria-hidden="true">▾</span>
               </button>
               <div class="language-switcher__menu" data-language-menu>
-                
+                <div class="language-switcher__sheet-head">
+                  <strong class="language-switcher__sheet-title">Оберіть мову</strong>
+                  <button
+                    class="language-switcher__sheet-close"
+                    type="button"
+                    data-language-close
+                    aria-label="Закрити модальне вікно"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div class="language-switcher__sheet-body">
+                  
         <a class="language-switcher__option is-active" href="/uk/terms/">
           <span class="language-switcher__code">UA</span>
           <span class="language-switcher__flag" aria-hidden="true"><img src="/flags/ua.svg" alt="" loading="lazy" /></span>
@@ -227,6 +239,7 @@
           <span class="language-switcher__label">Български</span>
         </a>
       
+                </div>
               </div>
             </div>
             <button class="button button--ghost" type="button" data-open-modal="callback">
