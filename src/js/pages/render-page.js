@@ -1510,7 +1510,8 @@ export function renderPage(content, pageKey) {
                   <video
                     class="hero-video__media"
                     playsinline
-                    preload="metadata"
+                    webkit-playsinline
+                    preload="auto"
                     ${content.home.hero.video.src ? `src="${content.home.hero.video.src}"` : ''}
                     ${content.home.hero.video.poster ? `poster="${content.home.hero.video.poster}"` : ''}
                   >

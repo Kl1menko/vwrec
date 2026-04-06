@@ -53,6 +53,10 @@ export function initHeroGlobe() {
 
   if (!canvas || !stage) return
 
+  const isIOS =
+    /iPad|iPhone|iPod/.test(window.navigator.userAgent) ||
+    (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1)
+
   let width = 0
   let globeSize = 0
   let currentPhi = 1.12
@@ -74,13 +78,13 @@ export function initHeroGlobe() {
 
   const getRenderConfig = (size) => {
     const isCompact = window.matchMedia('(max-width: 767px)').matches
-    const devicePixelRatio = Math.min(window.devicePixelRatio ?? 1, isCompact ? 1.25 : 1.6)
+    const devicePixelRatio = Math.min(window.devicePixelRatio ?? 1, isIOS ? 1.05 : isCompact ? 1.25 : 1.6)
     const canvasSize = Math.round(size * devicePixelRatio)
 
     return {
       devicePixelRatio,
       canvasSize,
-      mapSamples: isCompact ? 7000 : 11000,
+      mapSamples: isIOS ? 5200 : isCompact ? 7000 : 11000,
     }
   }
 
@@ -123,7 +127,7 @@ export function initHeroGlobe() {
 
   const animate = () => {
     if (globe && isVisible && !pointerActive && !prefersReducedMotion && !document.hidden) {
-      currentPhi += 0.00115
+      currentPhi += isIOS ? 0.0022 : 0.00115
       globe.update({ phi: currentPhi, theta: currentTheta })
     }
 

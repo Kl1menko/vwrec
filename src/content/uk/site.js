@@ -44,7 +44,7 @@ ukContent.home = {
     ],
     video: {
       src: '/videos/international-recruitment-overview.mp4',
-      poster: '',
+      poster: '/video-poster-home.svg',
       type: 'video/mp4',
     },
   },
@@ -276,7 +276,7 @@ ukContent.home = {
         video: {
           src: '/videos/international-recruitment-overview.mp4',
           type: 'video/mp4',
-          poster: '',
+          poster: '/video-poster-home.svg',
         },
       },
       {
@@ -287,7 +287,7 @@ ukContent.home = {
         video: {
           src: '/videos/international-recruitment-overview.mp4',
           type: 'video/mp4',
-          poster: '',
+          poster: '/video-poster-home.svg',
         },
       },
       {
@@ -298,7 +298,7 @@ ukContent.home = {
         video: {
           src: '/videos/international-recruitment-overview.mp4',
           type: 'video/mp4',
-          poster: '',
+          poster: '/video-poster-home.svg',
         },
       },
     ],
