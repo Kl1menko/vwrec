@@ -573,6 +573,8 @@ body[data-page='services'] .site-header__inner {
     z-index: 3;
     gap: 14px;
     padding: 14px;
+    max-height: min(70dvh, 520px);
+    overflow-y: auto;
     border-radius: 20px;
     box-shadow: 0 14px 28px rgba(17, 17, 17, 0.08);
   }
@@ -626,5 +628,9 @@ body[data-page='services'] .site-header__inner {
 
   .site-header .button {
     box-shadow: 0 10px 20px rgba(242, 122, 36, 0.18);
+  }
+
+  body.has-mobile-menu-open .site-header {
+    z-index: 80;
   }
 }

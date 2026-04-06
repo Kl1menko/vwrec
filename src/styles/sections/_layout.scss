@@ -123,6 +123,30 @@
   gap: 16px;
 }
 
+@media (max-width: 767px) {
+  .page-hero {
+    padding-top: 24px;
+  }
+
+  .split--hero {
+    gap: 18px;
+  }
+
+  .process-flow {
+    gap: 20px;
+  }
+
+  .process-flow__intro {
+    gap: 10px;
+  }
+
+  .process-flow__board {
+    gap: 18px;
+    padding: 18px 14px;
+    border-radius: 24px;
+  }
+}
+
 @media (min-width: 768px) {
   .process-flow {
     gap: 34px;

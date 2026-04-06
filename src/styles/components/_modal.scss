@@ -210,9 +210,17 @@
 
 @media (max-width: 767px) {
   .modal {
-    align-items: start;
-    padding: 10px;
+    align-items: end;
+    padding: 8px;
     overflow-y: auto;
+  }
+
+  .modal[data-modal='callback'],
+  .modal[data-modal='report'],
+  .modal[data-modal='form-success'],
+  .modal[data-modal='report-success'] {
+    align-items: center;
+    padding: 16px;
   }
 
   .modal--quiz-success {
@@ -222,19 +230,21 @@
 
   .modal__dialog {
     width: 100%;
-    margin: 10px 0;
-    padding: 24px 14px 14px;
-    border-radius: 22px;
+    margin: 0;
+    padding: 22px 14px 14px;
+    border-radius: 22px 22px 18px 18px;
+    max-height: calc(100dvh - 16px);
+    overflow-y: auto;
   }
 
   .modal__dialog--quiz {
-    height: calc(100dvh - 20px);
-    padding: 22px 14px 14px;
-    border-radius: 24px;
+    height: calc(100dvh - 16px);
+    padding: 20px 14px 14px;
+    border-radius: 24px 24px 18px 18px;
   }
 
   .modal__dialog--success {
-    padding: 28px 16px 20px;
+    padding: 26px 16px 20px;
   }
 
   .modal__dialog--video {
@@ -253,33 +263,32 @@
   }
 
   .modal__dialog--success h3 {
-    font-size: 1.7rem;
+    font-size: 1.52rem;
   }
 
   .success-modal__headline {
     max-width: 15ch;
-    font-size: 1.85rem;
+    font-size: 1.82rem;
   }
 
-  .modal__dialog--success p {
+  .modal__dialog--success p,
+  .modal__dialog--quiz > p:not(.eyebrow) {
     max-width: none;
     font-size: 0.94rem;
-    line-height: 1.42;
+    line-height: 1.45;
   }
 
   .modal__dialog--quiz > h3 {
     max-width: none;
     margin-bottom: 10px;
-    padding-right: 40px;
-    font-size: 1.56rem;
+    padding-right: 42px;
+    font-size: 1.72rem;
     line-height: 1;
   }
 
   .modal__dialog--quiz > p:not(.eyebrow) {
     margin-bottom: 16px;
     max-width: none;
-    font-size: 0.92rem;
-    line-height: 1.36;
   }
 
   .modal__dialog--quiz [data-quiz] {
@@ -287,10 +296,11 @@
   }
 
   .modal__close {
-    top: 10px;
-    right: 10px;
-    width: 34px;
-    height: 34px;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
   }
 
   .modal__dialog--quiz.is-success {

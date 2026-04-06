@@ -91,6 +91,14 @@ body[data-page='industries'] .section--muted {
   letter-spacing: -0.05em;
 }
 
+.industries-page-hero__copy .lead {
+  max-width: 72ch;
+  margin: 0 auto;
+  color: #6b655f;
+  font-size: clamp(0.98rem, 1.6vw, 1.14rem);
+  line-height: 1.56;
+}
+
 .industries-page-hero__intro {
   max-width: 68ch;
   color: var(--color-text-soft);
@@ -113,16 +121,24 @@ body[data-page='industries'] .section--muted {
   min-height: 100%;
   text-align: center;
   justify-items: center;
+  padding-inline: 18px;
 }
 
 .industries-stat-card p {
   text-align: center;
+  max-width: 18ch;
+  font-size: 0.92rem;
+  line-height: 1.3;
+  text-wrap: balance;
 }
 
 .industries-page__head {
   display: grid;
   gap: 12px;
   max-width: 68ch;
+  justify-items: center;
+  text-align: center;
+  margin-inline: auto;
 }
 
 .industries-page__head p {
@@ -134,104 +150,176 @@ body[data-page='industries'] .section--muted {
   gap: 20px;
 }
 
-.industry-sector-card {
-  display: grid;
-  gap: 20px;
-  padding: clamp(20px, 3vw, 28px);
-  border-radius: 30px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 240, 235, 0.95) 100%);
+.bento-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  min-height: 340px;
+  border-radius: 16px;
+  background: #ffffff;
   border: 1px solid rgba(17, 17, 17, 0.06);
   box-shadow:
-    0 16px 34px rgba(17, 17, 17, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.04);
 }
 
-.industry-sector-card__copy {
-  display: grid;
-  gap: 14px;
+.bento-card--col-1 {
+  grid-column: span 1;
 }
 
-.industry-sector-card__copy h3 {
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
+.bento-card--col-2 {
+  grid-column: span 2;
 }
 
-.industry-sector-card__text {
-  color: #4a443f;
-  font-size: 1rem;
-  line-height: 1.55;
-}
-
-.industry-sector-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.industry-sector-card__tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(17, 17, 17, 0.04);
-  color: #5e5750;
-  font-size: 0.86rem;
-  font-weight: 700;
-}
-
-.industry-sector-card__points {
-  display: grid;
-  gap: 10px;
-}
-
-.industry-sector-card__point {
-  display: grid;
-  grid-template-columns: 14px minmax(0, 1fr);
-  gap: 12px;
-  align-items: start;
-}
-
-.industry-sector-card__point span {
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  margin-top: 5px;
-  background: rgba(242, 122, 36, 0.16);
-  position: relative;
-}
-
-.industry-sector-card__point span::before {
-  content: '';
+.bento-card__bg {
   position: absolute;
-  left: 50%;
-  top: 48%;
-  width: 6px;
-  height: 3px;
-  border-left: 2px solid var(--color-accent-deep);
-  border-bottom: 2px solid var(--color-accent-deep);
-  translate: -50% -50%;
-  rotate: -45deg;
+  inset: 0;
+  z-index: 0;
 }
 
-.industry-sector-card__point p {
-  color: #4a443f;
-}
-
-.industry-sector-card__media {
-  min-height: 240px;
-  border-radius: 24px;
-  overflow: hidden;
-  background: rgba(17, 17, 17, 0.04);
-}
-
-.industry-sector-card__media img {
-  display: block;
+.bento-card__bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.bento-card__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.35) 40%, rgba(0, 0, 0, 0.05) 100%);
+  z-index: 1;
+}
+
+.bento-card__body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  min-height: 100%;
+  padding: 24px;
+  transition: transform 0.3s ease;
+}
+
+.bento-card__icon {
+  width: 36px;
+  height: 36px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.bento-card__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+  transform-origin: left center;
+}
+
+.bento-card__eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.bento-card__name {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.95rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.bento-card__desc {
+  margin: 0;
+  max-width: 380px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.5;
+}
+
+.bento-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.bento-card__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.7rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+}
+
+.bento-card__cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease, margin-top 0.3s ease;
+}
+
+.bento-card__cta a,
+.bento-card__cta .button-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bento-card__cta .button-link {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff8a1c 0%, #f27a24 100%);
+  color: #fff7ef;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 8px 18px rgba(242, 122, 36, 0.28);
+}
+
+.bento-card__cta a:hover,
+.bento-card__cta .button-link:hover {
+  text-decoration: underline;
+}
+
+.bento-card__cta .button-link:hover {
+  text-decoration: none;
+  background: linear-gradient(135deg, #ff962d 0%, #f57f22 100%);
+}
+
+.bento-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: transparent;
+  transition: background 0.3s ease;
+  pointer-events: none;
 }
 
 .industries-framework {
@@ -334,13 +422,53 @@ body[data-page='industries'] .section--muted {
   gap: 14px;
 }
 
+.industries-seo__panel {
+  display: grid;
+  gap: 14px;
+  padding: clamp(22px, 3vw, 32px);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 241, 234, 0.96) 100%);
+  border: 1px solid rgba(17, 17, 17, 0.06);
+}
+
+.industries-seo__panel p:last-child {
+  color: #5a534c;
+  line-height: 1.72;
+}
+
 @media (min-width: 768px) {
   .industries-page__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 340px;
   }
 
   .industries-framework__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (hover: hover) {
+    .bento-card:hover .bento-card__bg img {
+      transform: scale(1.05);
+    }
+
+    .bento-card:hover .bento-card__body {
+      transform: translateY(-6px);
+    }
+
+    .bento-card:hover .bento-card__icon svg {
+      transform: scale(0.85);
+    }
+
+    .bento-card:hover .bento-card__cta {
+      opacity: 1;
+      max-height: 40px;
+      margin-top: 12px;
+    }
+
+    .bento-card:hover .bento-card__overlay {
+      background: rgba(0, 0, 0, 0.03);
+    }
   }
 }
 
@@ -356,6 +484,11 @@ body[data-page='industries'] .section--muted {
     gap: 12px;
   }
 
+  .industries-page-hero__copy .lead {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
   .industries-page-hero__intro {
     font-size: 0.95rem;
   }
@@ -365,8 +498,41 @@ body[data-page='industries'] .section--muted {
     max-width: 420px;
   }
 
-  .industry-sector-card__media {
-    min-height: 190px;
+  .industries-stat-card p {
+    max-width: none;
+    font-size: 0.82rem;
+    line-height: 1.22;
+  }
+
+  .industries-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card {
+    min-height: 320px;
+  }
+
+  .bento-card--col-1,
+  .bento-card--col-2 {
+    grid-column: span 1;
+  }
+
+  .bento-card__body {
+    padding: 18px;
+  }
+
+  .bento-card__name {
+    font-size: 1.3rem;
+  }
+
+  .bento-card__desc {
+    font-size: 0.82rem;
+  }
+
+  .bento-card__cta {
+    opacity: 1;
+    max-height: none;
+    margin-top: 12px;
   }
 
   .industries-fit__item {
@@ -382,5 +548,10 @@ body[data-page='industries'] .section--muted {
   .industries-cta {
     padding: 18px;
     border-radius: 24px;
+  }
+
+  .industries-seo__panel {
+    padding: 18px;
+    border-radius: 22px;
   }
 }

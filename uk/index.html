@@ -390,7 +390,7 @@
         </div>
       </section>
 
-      <section class="section section--muted" data-reveal>
+      <section class="section section--muted" data-reveal data-report-prompt-trigger>
         <div class="shell industries-showcase">
           <div class="industries-showcase__head">
             <h2>ДЛЯ ЯКИХ СФЕР ПІДХОДИТЬ ТАКА МОДЕЛЬ НАЙМУ</h2>
@@ -464,74 +464,80 @@
                 <div class="cases-section__head">
                   <h2>Наші проєкти підбору працівників</h2>
                 </div>
-                <div class="cases-list">
-                  
-                      <article class="case-card">
-                        <div class="case-card__content">
-                          <p class="eyebrow">Кейс</p>
-                          <h3>Delta Pack</h3>
-                          <p class="case-card__subtitle">Виробниче підприємство, Центральна Європа</p>
-                          <p class="case-card__problem">Закрили дефіцит 32 працівників на лінію пакування після затяжного локального найму та високої плинності.</p>
-                          <div class="button-row">
-                            <a class="button button--ghost case-card__button" href="/uk/cases/">
-                              <span>Дивитися кейс</span>
-                              <span class="case-card__button-icon" aria-hidden="true">→</span>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="case-card__media">
-                          <img
-                            src="/images/industry-manufacturing.jpg"
-                            alt="Працівники на виробничій лінії"
-                            loading="lazy"
-                          />
-                        </div>
-                      </article>
+                <div class="cases-slider" data-cases-slider>
+                  <div class="cases-slider__controls">
+                    <button class="cases-slider__button" type="button" data-cases-slider-prev aria-label="Previous case">←</button>
+                    <button class="cases-slider__button" type="button" data-cases-slider-next aria-label="Next case">→</button>
+                  </div>
+                  <div class="cases-slider__track" data-cases-slider-track>
                     
-                      <article class="case-card">
-                        <div class="case-card__content">
-                          <p class="eyebrow">Кейс</p>
-                          <h3>Nord Cargo Hub</h3>
-                          <p class="case-card__subtitle">Складський комплекс та логістика</p>
-                          <p class="case-card__problem">Сформували змінну команду для комплектації та сортування, коли бізнес не встигав покривати пікові навантаження.</p>
-                          <div class="button-row">
-                            <a class="button button--ghost case-card__button" href="/uk/cases/">
-                              <span>Дивитися кейс</span>
-                              <span class="case-card__button-icon" aria-hidden="true">→</span>
-                            </a>
+                        <article class="case-card">
+                          <div class="case-card__content">
+                            <p class="eyebrow">Кейс</p>
+                            <h3>Delta Pack</h3>
+                            <p class="case-card__subtitle">Виробниче підприємство, Центральна Європа</p>
+                            <p class="case-card__problem">Закрили дефіцит 32 працівників на лінію пакування після затяжного локального найму та високої плинності.</p>
+                            <div class="button-row">
+                              <a class="button button--ghost case-card__button" href="/uk/cases/">
+                                <span>Дивитися кейс</span>
+                                <span class="case-card__button-icon" aria-hidden="true">→</span>
+                              </a>
+                            </div>
                           </div>
-                        </div>
-                        <div class="case-card__media">
-                          <img
-                            src="/images/industry-logistics.jpg"
-                            alt="Працівники на складі та в логістиці"
-                            loading="lazy"
-                          />
-                        </div>
-                      </article>
-                    
-                      <article class="case-card">
-                        <div class="case-card__content">
-                          <p class="eyebrow">Кейс</p>
-                          <h3>Urban Build Group</h3>
-                          <p class="case-card__subtitle">Будівельний підрядник</p>
-                          <p class="case-card__problem">Підсилили об’єкти монтажниками та підсобними працівниками, щоб не зривати строки запуску нового етапу будівництва.</p>
-                          <div class="button-row">
-                            <a class="button button--ghost case-card__button" href="/uk/cases/">
-                              <span>Дивитися кейс</span>
-                              <span class="case-card__button-icon" aria-hidden="true">→</span>
-                            </a>
+                          <div class="case-card__media">
+                            <img
+                              src="/images/industry-manufacturing.jpg"
+                              alt="Працівники на виробничій лінії"
+                              loading="lazy"
+                            />
                           </div>
-                        </div>
-                        <div class="case-card__media">
-                          <img
-                            src="/images/industry-construction.jpg"
-                            alt="Працівники на будівельному майданчику"
-                            loading="lazy"
-                          />
-                        </div>
-                      </article>
-                    
+                        </article>
+                      
+                        <article class="case-card">
+                          <div class="case-card__content">
+                            <p class="eyebrow">Кейс</p>
+                            <h3>Nord Cargo Hub</h3>
+                            <p class="case-card__subtitle">Складський комплекс та логістика</p>
+                            <p class="case-card__problem">Сформували змінну команду для комплектації та сортування, коли бізнес не встигав покривати пікові навантаження.</p>
+                            <div class="button-row">
+                              <a class="button button--ghost case-card__button" href="/uk/cases/">
+                                <span>Дивитися кейс</span>
+                                <span class="case-card__button-icon" aria-hidden="true">→</span>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="case-card__media">
+                            <img
+                              src="/images/industry-logistics.jpg"
+                              alt="Працівники на складі та в логістиці"
+                              loading="lazy"
+                            />
+                          </div>
+                        </article>
+                      
+                        <article class="case-card">
+                          <div class="case-card__content">
+                            <p class="eyebrow">Кейс</p>
+                            <h3>Urban Build Group</h3>
+                            <p class="case-card__subtitle">Будівельний підрядник</p>
+                            <p class="case-card__problem">Підсилили об’єкти монтажниками та підсобними працівниками, щоб не зривати строки запуску нового етапу будівництва.</p>
+                            <div class="button-row">
+                              <a class="button button--ghost case-card__button" href="/uk/cases/">
+                                <span>Дивитися кейс</span>
+                                <span class="case-card__button-icon" aria-hidden="true">→</span>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="case-card__media">
+                            <img
+                              src="/images/industry-construction.jpg"
+                              alt="Працівники на будівельному майданчику"
+                              loading="lazy"
+                            />
+                          </div>
+                        </article>
+                      
+                  </div>
                 </div>
               </div>
             </section>
@@ -789,22 +795,22 @@
       <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
       <label class="field">
         <span>Ім’я *</span>
-        <input type="text" name="name" required />
+        <input type="text" name="name" autocomplete="name" required />
       </label>
       <label class="field">
         <span>Компанія *</span>
-        <input type="text" name="company" required />
+        <input type="text" name="company" autocomplete="organization" required />
       </label>
       <label class="field">
         <span>Email *</span>
-        <input type="email" name="email" required />
+        <input type="email" name="email" autocomplete="email" required />
       </label>
       <label class="field">
         <span>Телефон</span>
-        <input type="text" name="phone" />
+        <input type="tel" name="phone" autocomplete="tel" />
       </label>
       <button class="button report-capture__submit" type="submit">Завантажити звіт у PDF</button>
-      <p class="form-status" data-form-status></p>
+      <p class="form-status" data-form-status role="status" hidden></p>
     </form>
   
                 </div>
@@ -1098,22 +1104,22 @@
       <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
       <label class="field">
         <span>Ім’я *</span>
-        <input type="text" name="name" required />
+        <input type="text" name="name" autocomplete="name" required />
       </label>
       <label class="field">
         <span>Компанія *</span>
-        <input type="text" name="company" required />
+        <input type="text" name="company" autocomplete="organization" required />
       </label>
       <label class="field">
         <span>Email *</span>
-        <input type="email" name="email" required />
+        <input type="email" name="email" autocomplete="email" required />
       </label>
       <label class="field">
         <span>Телефон</span>
-        <input type="text" name="phone" />
+        <input type="tel" name="phone" autocomplete="tel" />
       </label>
       <button class="button" type="submit">Надіслати запит</button>
-      <p class="form-status" data-form-status></p>
+      <p class="form-status" data-form-status role="status" hidden></p>
     </form>
   
         </div>
@@ -1127,31 +1133,49 @@
           <div class="stack">
             
         <article class="faq-item" data-accordion-item>
-          <button class="faq-item__trigger" type="button" data-accordion-trigger aria-expanded="false">
+          <button
+            class="faq-item__trigger"
+            type="button"
+            data-accordion-trigger
+            aria-expanded="false"
+            aria-controls="faq-answer-1"
+          >
             <span class="faq-item__question">Як вирішується питання з мовним бар’єром?</span>
             <span class="faq-item__icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-item__content">
+          <div class="faq-item__content" id="faq-answer-1" data-accordion-content hidden>
             <p>Ми закладаємо адаптацію, базову підготовку та комунікацію через координатора або бригадира, щоб команда швидко включилася в роботу.</p>
           </div>
         </article>
       
         <article class="faq-item" data-accordion-item>
-          <button class="faq-item__trigger" type="button" data-accordion-trigger aria-expanded="false">
+          <button
+            class="faq-item__trigger"
+            type="button"
+            data-accordion-trigger
+            aria-expanded="false"
+            aria-controls="faq-answer-2"
+          >
             <span class="faq-item__question">Хто займається пошуком житла для працівників?</span>
             <span class="faq-item__icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-item__content">
+          <div class="faq-item__content" id="faq-answer-2" data-accordion-content hidden>
             <p>Модель може включати координацію житла, логістики та прибуття, залежно від формату співпраці та країни запуску.</p>
           </div>
         </article>
       
         <article class="faq-item" data-accordion-item>
-          <button class="faq-item__trigger" type="button" data-accordion-trigger aria-expanded="false">
+          <button
+            class="faq-item__trigger"
+            type="button"
+            data-accordion-trigger
+            aria-expanded="false"
+            aria-controls="faq-answer-3"
+          >
             <span class="faq-item__question">Що робити, якщо працівник захворів або не вийшов на зміну?</span>
             <span class="faq-item__icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-item__content">
+          <div class="faq-item__content" id="faq-answer-3" data-accordion-content hidden>
             <p>На старті проєкту погоджується резерв, гарантійні умови заміни та процедура оперативної комунікації з вашою стороною.</p>
           </div>
         </article>
@@ -1218,22 +1242,22 @@
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Ім’я *</span>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
             <span>Компанія *</span>
-            <input type="text" name="company" required />
+            <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
             <span>Email *</span>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
           <label class="field">
             <span>Телефон</span>
-            <input type="text" name="phone" />
+            <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <button class="button" type="submit">Забронювати дзвінок</button>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
     </div>
@@ -1247,22 +1271,22 @@
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Ім’я *</span>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
             <span>Компанія *</span>
-            <input type="text" name="company" required />
+            <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
             <span>Email *</span>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
           <label class="field">
             <span>Телефон</span>
-            <input type="text" name="phone" />
+            <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <button class="button" type="submit">Отримати звіт</button>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
     </div>

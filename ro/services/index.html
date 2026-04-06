@@ -300,7 +300,6 @@
         <div class="services-pillars">
           <div class="services-pillars__head">
             <div class="services-pillars__heading">
-              <p class="eyebrow">What we cover</p>
               <h2>The service is built not as a resume search, but as a full route to launch people into work</h2>
             </div>
           </div>
@@ -779,23 +778,23 @@
         <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
         <label class="field">
           <span>Name *</span>
-          <input type="text" name="name" required />
+          <input type="text" name="name" autocomplete="name" required />
         </label>
         <label class="field">
           <span>Company *</span>
-          <input type="text" name="company" required />
+          <input type="text" name="company" autocomplete="organization" required />
         </label>
         <label class="field">
           <span>Email *</span>
-          <input type="email" name="email" required />
+          <input type="email" name="email" autocomplete="email" required />
         </label>
         <label class="field">
           <span>Phone</span>
-          <input type="text" name="phone" />
+          <input type="tel" name="phone" autocomplete="tel" />
         </label>
         <button class="button services-form-card__button" type="submit">Send request</button>
         <p class="services-form-card__note"></p>
-        <p class="form-status" data-form-status></p>
+        <p class="form-status" data-form-status role="status" hidden></p>
       </form>
     </div>
   
@@ -843,22 +842,22 @@
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
             <span>Company *</span>
-            <input type="text" name="company" required />
+            <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
             <span>Email *</span>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
           <label class="field">
             <span>Phone</span>
-            <input type="text" name="phone" />
+            <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <button class="button" type="submit">Request callback</button>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
     </div>
@@ -872,22 +871,22 @@
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
             <span>Company *</span>
-            <input type="text" name="company" required />
+            <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
             <span>Email *</span>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
           <label class="field">
             <span>Phone</span>
-            <input type="text" name="phone" />
+            <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <button class="button" type="submit">Get report</button>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
     </div>

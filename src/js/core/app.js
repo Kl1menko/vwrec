@@ -7,6 +7,7 @@ import { initModals } from '../components/modal.js'
 import { initQuiz } from '../components/quiz.js'
 import { initRevealAnimations } from '../components/animations.js'
 import { initCounters } from '../components/counters.js'
+import { initCasesSlider } from '../components/cases-slider.js'
 import { initHeroVideo } from '../components/hero-video.js'
 import { initIndustrySlider } from '../components/industry-slider.js'
 import { initReviewsSlider } from '../components/reviews-slider.js'
@@ -40,6 +41,7 @@ export async function initApp() {
   }
   initRevealAnimations()
   initCounters()
+  initCasesSlider()
   initHeroVideo()
   initIndustrySlider()
   initReviewsSlider()

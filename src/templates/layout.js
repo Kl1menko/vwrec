@@ -11,22 +11,22 @@ function renderModal(content, title, formType, buttonLabel) {
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>${content.ui?.fieldName ?? 'Name'} *</span>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
             <span>${content.ui?.fieldCompany ?? 'Company'} *</span>
-            <input type="text" name="company" required />
+            <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
             <span>${content.ui?.fieldEmail ?? 'Email'} *</span>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
           <label class="field">
             <span>${content.ui?.fieldPhone ?? 'Phone'}</span>
-            <input type="text" name="phone" />
+            <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <button class="button" type="submit">${buttonLabel}</button>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
     </div>

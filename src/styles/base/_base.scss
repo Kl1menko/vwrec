@@ -19,13 +19,14 @@ body {
 
 body.has-modal-open {
   overflow: hidden;
-  height: 100vh;
   touch-action: none;
   overscroll-behavior: none;
 }
 
 body.has-mobile-menu-open {
   overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 img {

@@ -346,15 +346,18 @@
 
   .hero__headline {
     width: min(100%, 360px);
-    gap: 8px;
-    margin-top: 108px;
+    gap: 6px;
+    margin-top: 96px;
   }
 
   .hero__line {
-    font-size: clamp(1.72rem, 8.8vw, 3rem);
+    max-width: 12ch;
+    margin-inline: auto;
+    font-size: clamp(1.72rem, 8.4vw, 2.8rem);
     line-height: 0.92;
     letter-spacing: -0.07em;
-    white-space: nowrap;
+    white-space: normal;
+    text-wrap: balance;
   }
 
   .hero__highlight {
@@ -368,9 +371,9 @@
 
   .hero__lead {
     max-width: 340px;
-    margin-top: 18px;
-    font-size: 1.15rem;
-    line-height: 1.16;
+    margin-top: 16px;
+    font-size: 1.05rem;
+    line-height: 1.22;
   }
 
   .hero__cta {
@@ -382,14 +385,14 @@
 
   .hero__cta .button {
     width: 100%;
-    min-height: 58px;
-    padding-inline: 24px;
-    font-size: 1.04rem;
+    min-height: 54px;
+    padding-inline: 20px;
+    font-size: 0.98rem;
   }
 
   .hero__stats {
-    gap: 16px;
-    margin-top: 68px;
+    gap: 14px;
+    margin-top: 44px;
   }
 
   .hero-stat-card {
@@ -412,9 +415,10 @@
 
   .hero-stat-card p {
     max-width: none;
-    font-size: 0.82rem;
-    line-height: 1.12;
-    white-space: nowrap;
+    font-size: 0.84rem;
+    line-height: 1.2;
+    white-space: normal;
+    text-wrap: balance;
   }
 
   .hero-video {

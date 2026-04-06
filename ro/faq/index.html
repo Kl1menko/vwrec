@@ -261,22 +261,22 @@
       <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
       <label class="field">
         <span>Name *</span>
-        <input type="text" name="name" required />
+        <input type="text" name="name" autocomplete="name" required />
       </label>
       <label class="field">
         <span>Company *</span>
-        <input type="text" name="company" required />
+        <input type="text" name="company" autocomplete="organization" required />
       </label>
       <label class="field">
         <span>Email *</span>
-        <input type="email" name="email" required />
+        <input type="email" name="email" autocomplete="email" required />
       </label>
       <label class="field">
         <span>Phone</span>
-        <input type="text" name="phone" />
+        <input type="tel" name="phone" autocomplete="tel" />
       </label>
       <button class="button" type="submit">Send request</button>
-      <p class="form-status" data-form-status></p>
+      <p class="form-status" data-form-status role="status" hidden></p>
     </form>
   
       </div>
@@ -286,31 +286,49 @@
             <div class="shell stack">
               
         <article class="faq-item" data-accordion-item>
-          <button class="faq-item__trigger" type="button" data-accordion-trigger aria-expanded="false">
+          <button
+            class="faq-item__trigger"
+            type="button"
+            data-accordion-trigger
+            aria-expanded="false"
+            aria-controls="faq-answer-1"
+          >
             <span class="faq-item__question">How fast can a hiring project start?</span>
             <span class="faq-item__icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-item__content">
+          <div class="faq-item__content" id="faq-answer-1" data-accordion-content hidden>
             <p>Once the staffing need, role profile, and timing are clear, the first candidate flow can typically start within days rather than weeks.</p>
           </div>
         </article>
       
         <article class="faq-item" data-accordion-item>
-          <button class="faq-item__trigger" type="button" data-accordion-trigger aria-expanded="false">
+          <button
+            class="faq-item__trigger"
+            type="button"
+            data-accordion-trigger
+            aria-expanded="false"
+            aria-controls="faq-answer-2"
+          >
             <span class="faq-item__question">Can legal support be highlighted on every page?</span>
             <span class="faq-item__icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-item__content">
+          <div class="faq-item__content" id="faq-answer-2" data-accordion-content hidden>
             <p>Yes. Legal support, permits, visas, and onboarding coordination can be explained consistently across the homepage, service page, and sector pages.</p>
           </div>
         </article>
       
         <article class="faq-item" data-accordion-item>
-          <button class="faq-item__trigger" type="button" data-accordion-trigger aria-expanded="false">
+          <button
+            class="faq-item__trigger"
+            type="button"
+            data-accordion-trigger
+            aria-expanded="false"
+            aria-controls="faq-answer-3"
+          >
             <span class="faq-item__question">Will every locale have separate SEO URLs?</span>
             <span class="faq-item__icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-item__content">
+          <div class="faq-item__content" id="faq-answer-3" data-accordion-content hidden>
             <p>Yes. Each language version uses its own route structure, which supports localized SEO pages and future content scaling.</p>
           </div>
         </article>
@@ -360,22 +378,22 @@
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
             <span>Company *</span>
-            <input type="text" name="company" required />
+            <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
             <span>Email *</span>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
           <label class="field">
             <span>Phone</span>
-            <input type="text" name="phone" />
+            <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <button class="button" type="submit">Request callback</button>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
     </div>
@@ -389,22 +407,22 @@
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Name *</span>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
             <span>Company *</span>
-            <input type="text" name="company" required />
+            <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
             <span>Email *</span>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
           <label class="field">
             <span>Phone</span>
-            <input type="text" name="phone" />
+            <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <button class="button" type="submit">Get report</button>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
     </div>

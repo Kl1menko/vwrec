@@ -15,6 +15,24 @@ function renderBeamIcon(type) {
   return icons[type] ?? icons.brief
 }
 
+function renderIndustryBentoIcon(title = '') {
+  const value = String(title).toLowerCase()
+
+  if (value.includes('вироб')) {
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 11h.01"/><path d="M12 11h.01"/><path d="M15 11h.01"/><path d="M9 15h.01"/><path d="M12 15h.01"/><path d="M15 15h.01"/></svg>`
+  }
+
+  if (value.includes('буд')) {
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9h14v12"/><path d="M9 9V5h6v4"/><path d="M9 13h.01"/><path d="M15 13h.01"/><path d="M9 17h.01"/><path d="M15 17h.01"/></svg>`
+  }
+
+  if (value.includes('склад') || value.includes('логіст')) {
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5-9 4.5-9-4.5Z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5 12 21l9-4.5"/></svg>`
+  }
+
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M6 20v-9h12v9"/><path d="M9 8V5h6v3"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>`
+}
+
 const INDUSTRY_SLIDE_VISUALS = [
   {
     match: /склади|логістик|warehouse|logistics/i,
@@ -103,22 +121,22 @@ function renderLeadForm(content, type = 'lead') {
       <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
       <label class="field">
         <span>${ui.fieldName ?? 'Name'} *</span>
-        <input type="text" name="name" required />
+        <input type="text" name="name" autocomplete="name" required />
       </label>
       <label class="field">
         <span>${ui.fieldCompany ?? 'Company'} *</span>
-        <input type="text" name="company" required />
+        <input type="text" name="company" autocomplete="organization" required />
       </label>
       <label class="field">
         <span>${ui.fieldEmail ?? 'Email'} *</span>
-        <input type="email" name="email" required />
+        <input type="email" name="email" autocomplete="email" required />
       </label>
       <label class="field">
         <span>${ui.fieldPhone ?? 'Phone'}</span>
-        <input type="text" name="phone" />
+        <input type="tel" name="phone" autocomplete="tel" />
       </label>
       <button class="button" type="submit">${ui.sendRequest ?? 'Send request'}</button>
-      <p class="form-status" data-form-status></p>
+      <p class="form-status" data-form-status role="status" hidden></p>
     </form>
   `
 }
@@ -137,23 +155,23 @@ function renderServicesLeadForm(content) {
         <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
         <label class="field">
           <span>${ui.fieldName ?? 'Name'} *</span>
-          <input type="text" name="name" required />
+          <input type="text" name="name" autocomplete="name" required />
         </label>
         <label class="field">
           <span>${ui.fieldCompany ?? 'Company'} *</span>
-          <input type="text" name="company" required />
+          <input type="text" name="company" autocomplete="organization" required />
         </label>
         <label class="field">
           <span>${ui.fieldEmail ?? 'Email'} *</span>
-          <input type="email" name="email" required />
+          <input type="email" name="email" autocomplete="email" required />
         </label>
         <label class="field">
           <span>${ui.fieldPhone ?? 'Phone'}</span>
-          <input type="text" name="phone" />
+          <input type="tel" name="phone" autocomplete="tel" />
         </label>
         <button class="button services-form-card__button" type="submit">${servicesForm.button ?? ui.sendRequest ?? 'Send request'}</button>
         <p class="services-form-card__note">${servicesForm.note ?? ''}</p>
-        <p class="form-status" data-form-status></p>
+        <p class="form-status" data-form-status role="status" hidden></p>
       </form>
     </div>
   `
@@ -167,22 +185,22 @@ function renderReportCaptureForm(content) {
       <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
       <label class="field">
         <span>${ui.fieldName ?? 'Name'} *</span>
-        <input type="text" name="name" required />
+        <input type="text" name="name" autocomplete="name" required />
       </label>
       <label class="field">
         <span>${ui.fieldCompany ?? 'Company'} *</span>
-        <input type="text" name="company" required />
+        <input type="text" name="company" autocomplete="organization" required />
       </label>
       <label class="field">
         <span>${ui.fieldEmail ?? 'Email'} *</span>
-        <input type="email" name="email" required />
+        <input type="email" name="email" autocomplete="email" required />
       </label>
       <label class="field">
         <span>${ui.fieldPhone ?? 'Phone'}</span>
-        <input type="text" name="phone" />
+        <input type="tel" name="phone" autocomplete="tel" />
       </label>
       <button class="button report-capture__submit" type="submit">${content.home.reportBlock.cta}</button>
-      <p class="form-status" data-form-status></p>
+      <p class="form-status" data-form-status role="status" hidden></p>
     </form>
   `
 }
@@ -206,13 +224,19 @@ function renderSimplePage(title, lead, pageKey) {
 function renderFaq(items) {
   return items
     .map(
-      (item) => `
+      (item, index) => `
         <article class="faq-item" data-accordion-item>
-          <button class="faq-item__trigger" type="button" data-accordion-trigger aria-expanded="false">
+          <button
+            class="faq-item__trigger"
+            type="button"
+            data-accordion-trigger
+            aria-expanded="false"
+            aria-controls="faq-answer-${index + 1}"
+          >
             <span class="faq-item__question">${item.q}</span>
             <span class="faq-item__icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-item__content">
+          <div class="faq-item__content" id="faq-answer-${index + 1}" data-accordion-content hidden>
             <p>${item.a}</p>
           </div>
         </article>
@@ -607,7 +631,7 @@ function renderServicesPage(content, ui) {
             <p>${ui.servicesHeroPanelText ?? 'The route is designed so the business sees a predictable launch path and the candidate understands each step.'}</p>
           </div>
         </div>
-        <p class="services-hero__intro">${services.intro ?? ''}</p>
+        ${services.intro ? `<p class="services-hero__intro">${services.intro}</p>` : ''}
       </div>
     </section>
 
@@ -632,7 +656,6 @@ function renderServicesPage(content, ui) {
         <div class="services-pillars">
           <div class="services-pillars__head">
             <div class="services-pillars__heading">
-              <p class="eyebrow">${ui.servicesPillarsEyebrow ?? 'What we cover'}</p>
               <h2>${ui.servicesPillarsTitle ?? 'The service is built not as a resume search, but as a full route to launch people into work'}</h2>
             </div>
           </div>
@@ -899,28 +922,38 @@ function renderCasesPage(content, ui) {
   const stats = cases.stats ?? []
   const featured = cases.featured ?? content.home.casesSection?.items ?? []
   const framework = cases.framework ?? []
-  const checklist = cases.checklist ?? []
+  const timelineSteps = ['Бриф', 'Пошук', 'Погодження', 'Документи', 'Приїзд']
+
+  const renderTimeline = () =>
+    renderCardList(
+      timelineSteps,
+      (step, index) => `
+        <span class="tl-step">${step}</span>
+        ${
+          index < timelineSteps.length - 1
+            ? '<span class="tl-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>'
+            : ''
+        }
+      `,
+    )
 
   return `
     <section class="page-hero cases-page-hero">
-      <div class="shell cases-page-hero__grid">
-        <div class="cases-page-hero__copy">
-          <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
-          <h1>${cases.title}</h1>
-          <p class="lead">${cases.lead}</p>
-          <p class="cases-page-hero__intro">${cases.intro ?? ''}</p>
-        </div>
+      <div class="shell">
+        <p class="cases-hero__label">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
+        <h1 class="cases-hero__title">${cases.title}</h1>
+        <p class="cases-hero__desc">${cases.lead}</p>
         ${
           stats.length
             ? `
-              <div class="cases-page-hero__stats">
+              <div class="cases-hero__stats">
                 ${renderCardList(
                   stats,
-                  (item, index) => `
-                    <article class="cases-stat-card cases-stat-card--${index + 1}">
-                      <strong>${item.value}</strong>
-                      <span>${item.label}</span>
-                    </article>
+                  (item) => `
+                    <div class="cases-hero__stat">
+                      <span class="cases-hero__stat-num">${item.value}${item.suffix ?? ''}</span>
+                      <span class="cases-hero__stat-label">${item.label}</span>
+                    </div>
                   `,
                 )}
               </div>
@@ -931,31 +964,20 @@ function renderCasesPage(content, ui) {
     </section>
 
     <section class="section section--muted cases-page-section" data-reveal>
-      <div class="shell cases-page__featured">
-        <div class="cases-section__head cases-section__head--left">
-          <h2>${cases.title}</h2>
-          <p>${cases.lead}</p>
-        </div>
-        <div class="cases-list">
+      <div class="shell">
+        <div class="cases-grid">
           ${renderCardList(
             featured,
             (item) => `
-              <article class="case-card case-card--seo">
-                <div class="case-card__content">
-                  <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case study'}</p>
-                  <h3>${item.title}</h3>
-                  <p class="case-card__subtitle">${item.subtitle ?? ''}</p>
-                  <p class="case-card__problem">${item.problem ?? ''}</p>
-                  <div class="case-card__insights">
-                    <div class="case-card__insight">
-                      <span>${cases.routeLabel ?? 'Route'}</span>
-                      <p>${item.solution ?? ''}</p>
-                    </div>
-                    <div class="case-card__insight">
-                      <span>${cases.outcomeLabel ?? 'Outcome'}</span>
-                      <p>${item.result ?? ''}</p>
-                    </div>
-                  </div>
+              <article class="case-card case-card--col-${item.colSpan ?? 1}">
+                <div class="case-card__media">
+                  <img src="${item.image}" alt="${item.alt ?? item.title}" loading="lazy" />
+                </div>
+                <div class="case-card__body">
+                  <span class="case-card__category">${item.category ?? cases.eyebrow ?? ui.caseStudy ?? 'Case study'}</span>
+                  <h3 class="case-card__name">${item.title}</h3>
+                  <p class="case-card__sub">${item.subtitle ?? ''}</p>
+                  <p class="case-card__desc">${item.problem ?? ''}</p>
                   ${
                     item.metrics?.length
                       ? `
@@ -964,8 +986,8 @@ function renderCasesPage(content, ui) {
                             item.metrics,
                             (metric) => `
                               <div class="case-card__metric">
-                                <span>${metric.label}</span>
-                                <strong>${metric.value}</strong>
+                                <span class="case-card__metric-val">${metric.value}</span>
+                                <span class="case-card__metric-label">${metric.label}</span>
                               </div>
                             `,
                           )}
@@ -973,10 +995,7 @@ function renderCasesPage(content, ui) {
                       `
                       : ''
                   }
-                  ${item.timeline ? `<div class="case-card__timeline">${item.timeline}</div>` : ''}
-                </div>
-                <div class="case-card__media">
-                  <img src="${item.image}" alt="${item.alt ?? item.title}" loading="lazy" />
+                  <div class="case-card__timeline">${renderTimeline()}</div>
                 </div>
               </article>
             `,
@@ -986,55 +1005,38 @@ function renderCasesPage(content, ui) {
     </section>
 
     <section class="section cases-page-section" data-reveal>
-      <div class="shell cases-framework">
-        <div class="cases-framework__copy">
-          <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
-          <h2>${cases.frameworkTitle ?? ''}</h2>
-          <p class="lead">${cases.frameworkLead ?? ''}</p>
-        </div>
-        <div class="cases-framework__grid">
+      <div class="shell convincing-section">
+        <p class="convincing-section__label">${ui.whyItWorks ?? 'Чому це працює'}</p>
+        <h2 class="convincing-section__title">${cases.convincingTitle ?? cases.frameworkTitle ?? ''}</h2>
+        <div class="animated-list">
           ${renderCardList(
             framework,
             (item, index) => `
-              <article class="cases-framework-card">
-                <span class="cases-framework-card__index">0${index + 1}</span>
-                <h3>${item.title}</h3>
-                <p>${item.text}</p>
-              </article>
+              <div class="animated-list__item">
+                <div class="animated-list__num">0${index + 1}</div>
+                <div class="animated-list__content">
+                  <h3 class="animated-list__heading">${item.title}</h3>
+                  <p class="animated-list__desc">${item.text}</p>
+                </div>
+              </div>
             `,
           )}
         </div>
       </div>
     </section>
 
-    <section class="section section--muted cases-page-section" data-reveal>
-      <div class="shell cases-checklist">
-        <div class="cases-checklist__panel">
-          <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
-          <h2>${cases.checklistTitle ?? ''}</h2>
-          <div class="cases-checklist__items">
-            ${renderCardList(
-              checklist,
-              (item, index) => `
-                <div class="cases-checklist__item">
-                  <span class="cases-checklist__item-index">0${index + 1}</span>
-                  <p>${item}</p>
-                </div>
-              `,
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section cases-page-section" data-reveal>
-      <div class="shell split split--hero cases-cta">
-        <div class="cases-cta__copy">
-          <p class="eyebrow">${cases.eyebrow ?? ui.caseStudy ?? 'Case studies'}</p>
-          <h2>${cases.ctaTitle ?? content.forms.lead.title}</h2>
-          <p class="lead">${cases.ctaLead ?? content.home.finalCta?.lead ?? ''}</p>
+      <div class="shell">
+        <div class="cases-cta">
+          <div class="cases-cta__text">
+            <h2 class="cases-cta__title">${cases.ctaTitle ?? content.forms.lead.title}</h2>
+            <p class="cases-cta__desc">${cases.ctaLead ?? content.home.finalCta?.lead ?? ''}</p>
+          </div>
+          <button class="cases-cta__btn" type="button" data-open-modal="callback">
+            ${ui.requestCallback ?? 'Обговорити підбір'}
+            <svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M8.146 3.146a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 8H2.5a.5.5 0 0 1 0-1h8.793L8.146 3.854a.5.5 0 0 1 0-.708z" fill="currentColor"/></svg>
+          </button>
         </div>
-        ${renderLeadForm(content)}
       </div>
     </section>
   `
@@ -1050,9 +1052,6 @@ function renderIndustriesPage(content, ui) {
   return `
     <section class="page-hero industries-page-hero">
       <div class="shell">
-        <div class="industries-page-hero__copy">
-          <h1>${industries.title}</h1>
-        </div>
         <div
           class="industries-hero-ripple"
           data-ripple
@@ -1061,6 +1060,11 @@ function renderIndustriesPage(content, ui) {
           data-ripple-count="6"
         >
           <p class="industries-hero-ripple__text">VW Recruit</p>
+        </div>
+        <div class="industries-page-hero__copy">
+          <h1>${industries.title}</h1>
+          <p class="lead">${industries.lead ?? ''}</p>
+          ${industries.intro ? `<p class="industries-page-hero__intro">${industries.intro}</p>` : ''}
         </div>
         ${
           stats.length
@@ -1087,55 +1091,52 @@ function renderIndustriesPage(content, ui) {
     <section class="section section--muted industries-page-section" data-reveal>
       <div class="shell industries-page__sectors">
         <div class="industries-page__head">
-          <h2>${industries.title}</h2>
-          <p>${industries.lead}</p>
+          <h2>${industries.sectorsTitle ?? industries.title}</h2>
+          <p>${industries.sectorsLead ?? industries.lead ?? ''}</p>
         </div>
         <div class="industries-page__grid">
           ${renderCardList(
             sectors,
-            (item) => `
-              <article class="industry-sector-card">
-                <div class="industry-sector-card__copy">
-                  <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
-                  <h3>${typeof item === 'string' ? item : item.title}</h3>
-                  <p class="industry-sector-card__text">${typeof item === 'string' ? item : item.text ?? ''}</p>
-                  ${
-                    item.tags?.length
-                      ? `
-                        <div class="industry-sector-card__tags">
-                          ${renderCardList(
-                            item.tags,
-                            (tag) => `<span class="industry-sector-card__tag">${tag}</span>`,
-                          )}
-                        </div>
-                      `
-                      : ''
-                  }
-                  ${
-                    item.points?.length
-                      ? `
-                        <div class="industry-sector-card__points">
-                          ${renderCardList(
-                            item.points,
-                            (point) => `
-                              <div class="industry-sector-card__point">
-                                <span aria-hidden="true"></span>
-                                <p>${point}</p>
-                              </div>
-                            `,
-                          )}
-                        </div>
-                      `
-                      : ''
-                  }
-                </div>
-                <div class="industry-sector-card__media">
+            (item, index) => `
+              <article class="bento-card bento-card--col-${typeof item === 'string' ? (index === 0 || index === 3 ? 2 : 1) : item.colSpan ?? (index === 0 || index === 3 ? 2 : 1)}">
+                <div class="bento-card__bg">
                   <img
                     src="${typeof item === 'string' ? getIndustryVisual(item, ui).image : item.image ?? getIndustryVisual(item, ui).image}"
                     alt="${typeof item === 'string' ? getIndustryVisual(item, ui).alt : item.alt ?? item.title}"
                     loading="lazy"
                   />
                 </div>
+                <div class="bento-card__body">
+                  <div class="bento-card__icon">${renderIndustryBentoIcon(typeof item === 'string' ? item : item.title)}</div>
+                  <p class="bento-card__eyebrow">${industries.eyebrow ?? 'Industries'}</p>
+                  <h3 class="bento-card__name">${typeof item === 'string' ? item : item.title}</h3>
+                  <p class="bento-card__desc">${typeof item === 'string' ? item : item.text ?? ''}</p>
+                  ${
+                    item.tags?.length
+                      ? `
+                        <div class="bento-card__tags">
+                          ${renderCardList(
+                            item.tags,
+                            (tag) => `<span class="bento-card__tag">${tag}</span>`,
+                          )}
+                        </div>
+                      `
+                      : ''
+                  }
+                  <div class="bento-card__cta">
+                    ${
+                      item.caseLabel && item.caseHref
+                        ? `<a href="${buildPageUrl(content.locale.code, item.caseHref.startsWith('/') ? item.caseHref.slice(1) : item.caseHref)}">${item.caseLabel}</a>`
+                        : ''
+                    }
+                    ${
+                      item.cta
+                        ? `<button class="button-link" type="button" data-open-modal="callback">${item.cta}</button>`
+                        : ''
+                    }
+                  </div>
+                </div>
+                <div class="bento-card__overlay"></div>
               </article>
             `,
           )}
@@ -1196,6 +1197,22 @@ function renderIndustriesPage(content, ui) {
         ${renderLeadForm(content)}
       </div>
     </section>
+
+    ${
+      industries.seoText
+        ? `
+          <section class="section section--muted industries-page-section" data-reveal>
+            <div class="shell industries-seo">
+              <div class="industries-seo__panel">
+                <p class="eyebrow">${industries.eyebrow ?? 'Industries'}</p>
+                <h2>${industries.seoTitle ?? industries.title}</h2>
+                <p>${industries.seoText}</p>
+              </div>
+            </div>
+          </section>
+        `
+        : ''
+    }
   `
 }
 
@@ -1204,101 +1221,93 @@ function renderReportPage(content, ui) {
   const stats = report.stats ?? []
   const points = report.points ?? content.home.reportBlock?.points ?? []
   const benefits = report.benefits ?? []
-  const trustPoints = report.trustPoints ?? []
   const faqItems = report.faq ?? []
+  const reportLabel = report.eyebrow ?? 'Report'
+  const reportButton = report.formTitle ?? content.forms.report.title
+  const reportPdfTitle = ui.reportPanelReportTitle ?? 'Labor market 2026'
+  const reportPdfText = ui.reportPanelReportText ?? 'International workforce integration for businesses facing labor shortages'
+  const reportPdfMeta = report.stats?.[1]?.value ? `${ui.reportPanelKicker ?? 'VW Recruit / Insight'} - ${report.stats[1].value} ${report.stats[1].label}` : ui.reportPanelKicker ?? 'VW Recruit / Insight'
+  const pointIcons = [
+    '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>',
+    '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>',
+    '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>',
+    '<circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>',
+    '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline>',
+  ]
+
+  const renderReportMarquee = () =>
+    renderCardList(
+      points.concat(points),
+      (item, index) => `
+        <div class="report-marquee__item">
+          <span class="report-marquee__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              ${pointIcons[index % pointIcons.length]}
+            </svg>
+          </span>
+          <span class="report-marquee__text">${item}</span>
+        </div>
+      `,
+    )
 
   return `
-    <section class="page-hero report-page-hero">
-      <div class="shell report-page-hero__grid">
-        <div class="report-page-hero__copy">
-          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
-          <h1>${report.title}</h1>
-          <p class="lead">${report.lead}</p>
-          <p class="report-page-hero__intro">${report.intro ?? ''}</p>
-        </div>
-        ${
-          stats.length
-            ? `
-              <div class="report-page-hero__stats">
-                ${renderCardList(
-                  stats,
-                  (item, index) => `
-                    <article class="report-stat-card report-stat-card--${index + 1}">
-                      <strong>${item.value}</strong>
-                      <span>${item.label}</span>
-                    </article>
-                  `,
-                )}
-              </div>
-            `
-            : ''
-        }
-      </div>
-    </section>
+    <section class="report-hero">
+      <div class="report-hero__ripple">
+        <div class="shell report-hero__content">
+          <p class="report-hero__label">${reportLabel}</p>
+          <h1 class="report-hero__title">${report.title}</h1>
+          <p class="report-hero__desc">${report.lead}</p>
+          <a class="report-hero__button" href="#report-form">${reportButton}</a>
+          ${
+            stats.length
+              ? `
+                <div class="report-stats">
+                  ${renderCardList(
+                    stats,
+                    (item) => {
+                      const numericValue = Number.parseInt(item.value, 10)
+                      const isCounter = Number.isFinite(numericValue)
 
-    <section class="section section--muted report-page-section" data-reveal>
-      <div class="shell report-capture">
-        <div class="report-capture__content">
-          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
-          <h2>${report.pointsTitle ?? report.title}</h2>
-          <p class="lead">${report.lead}</p>
-          <div class="report-capture__points">
-            ${renderCardList(
-              points,
-              (item, index) => `
-                <article class="report-capture__point">
-                  <span class="report-capture__point-index">0${index + 1}</span>
-                  <p>${item}</p>
-                </article>
-              `,
-            )}
-          </div>
-        </div>
-        <div class="report-capture__panel">
-          <div class="report-capture__panel-copy">
-            <strong>${report.formTitle ?? ui.reportPanelTitle ?? 'Get the report'}</strong>
-            <p>${report.formLead ?? ui.reportPanelText ?? ''}</p>
-          </div>
-          <div class="report-capture__panel-card" aria-hidden="true">
-            <div class="report-capture__panel-card-sheet">
-              <span class="report-capture__panel-card-kicker">${ui.reportPanelKicker ?? 'VW Recruit / Insight'}</span>
-              <strong>${ui.reportPanelReportTitle ?? 'Labor market 2026'}</strong>
-              <p>${ui.reportPanelReportText ?? 'International workforce integration for businesses facing labor shortages'}</p>
-            </div>
-            <div class="report-capture__panel-card-badge">
-              <span>${ui.reportPanelGuide ?? 'Guide'}</span>
-            </div>
-          </div>
-          ${renderReportCaptureForm({
-            ...content,
-            home: {
-              ...content.home,
-              reportBlock: {
-                ...(content.home?.reportBlock ?? {}),
-                cta: report.formTitle ?? content.forms.report.title,
-              },
-            },
-          })}
-          ${report.formNote ? `<p class="report-page-form-note">${report.formNote}</p>` : ''}
+                      return `
+                        <div class="report-stat">
+                          <span class="report-stat__num"${isCounter ? ` data-counter-target="${numericValue}"` : ''}>${isCounter ? '0' : item.value}</span>
+                          <span class="report-stat__label">${item.label}</span>
+                        </div>
+                      `
+                    },
+                  )}
+                </div>
+              `
+              : ''
+          }
         </div>
       </div>
     </section>
 
-    <section class="section report-page-section" data-reveal>
-      <div class="shell report-benefits">
-        <div class="report-benefits__copy">
-          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
-          <h2>${report.benefitsTitle ?? ''}</h2>
-          <p class="lead">${report.benefitsLead ?? ''}</p>
+    <section class="report-page-section report-marquee-section" data-reveal>
+      <div class="shell">
+        <p class="report-marquee__label">${report.pointsTitle ?? 'What is inside'}</p>
+      </div>
+      <div class="report-marquee">
+        <div class="report-marquee__track">
+          ${renderReportMarquee()}
         </div>
-        <div class="report-benefits__grid">
+      </div>
+    </section>
+
+    <section class="report-page-section report-why" data-reveal>
+      <div class="shell">
+        <p class="report-section__label">${report.benefitsTitle ? reportLabel : ''}</p>
+        <h2 class="report-section__title">${report.benefitsTitle ?? ''}</h2>
+        ${report.benefitsLead ? `<p class="report-section__lead">${report.benefitsLead}</p>` : ''}
+        <div class="report-why__grid">
           ${renderCardList(
             benefits,
             (item, index) => `
-              <article class="report-benefit-card">
-                <span class="report-benefit-card__index">0${index + 1}</span>
-                <h3>${item.title}</h3>
-                <p>${item.text}</p>
+              <article class="report-why-card">
+                <span class="report-why-card__index">0${index + 1}</span>
+                <h3 class="report-why-card__title">${item.title}</h3>
+                <p class="report-why-card__desc">${item.text}</p>
               </article>
             `,
           )}
@@ -1306,37 +1315,14 @@ function renderReportPage(content, ui) {
       </div>
     </section>
 
-    <section class="section section--muted report-page-section" data-reveal>
-      <div class="shell report-trust">
-        <div class="report-trust__panel">
-          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
-          <h2>${report.trustTitle ?? ''}</h2>
-          <p class="lead">${report.trustLead ?? ''}</p>
-          <div class="report-trust__items">
-            ${renderCardList(
-              trustPoints,
-              (item, index) => `
-                <div class="report-trust__item">
-                  <span class="report-trust__item-index">0${index + 1}</span>
-                  <p>${item}</p>
-                </div>
-              `,
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-
     ${
       faqItems.length
         ? `
-          <section class="section report-page-section" data-reveal>
-            <div class="shell report-faq">
-              <div class="report-faq__copy">
-                <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
-                <h2>${report.faqTitle ?? ''}</h2>
-              </div>
-              <div class="stack">
+          <section class="report-page-section report-faq-section" data-reveal>
+            <div class="shell">
+              <p class="report-section__label">${reportLabel}</p>
+              <h2 class="report-section__title">${report.faqTitle ?? ''}</h2>
+              <div class="report-faq__list">
                 ${renderFaq(faqItems)}
               </div>
             </div>
@@ -1345,14 +1331,48 @@ function renderReportPage(content, ui) {
         : ''
     }
 
-    <section class="section report-page-section" data-reveal>
-      <div class="shell split split--hero report-cta">
-        <div class="report-cta__copy">
-          <p class="eyebrow">${report.eyebrow ?? 'Report'}</p>
-          <h2>${report.ctaTitle ?? content.forms.report.title}</h2>
-          <p class="lead">${report.ctaLead ?? ''}</p>
+    <section class="report-page-section report-form-section" id="report-form" data-reveal>
+      <div class="shell report-form">
+        <div class="report-form__info">
+          <p class="report-section__label">${ui.downloadReport ?? 'Download report'}</p>
+          <h2 class="report-section__title">${report.ctaTitle ?? content.forms.report.title}</h2>
+          <p class="report-form__desc">${report.ctaLead ?? report.formLead ?? ''}</p>
+          <div class="report-form__pdf">
+            <div class="report-form__pdf-icon">${ui.reportPanelGuide ?? 'PDF'}</div>
+            <div class="report-form__pdf-meta">
+              <span class="report-form__pdf-title">${reportPdfTitle}</span>
+              <span class="report-form__pdf-sub">${reportPdfMeta}</span>
+            </div>
+          </div>
         </div>
-        ${renderLeadForm(content, 'report')}
+
+        <div class="report-form__card">
+          <div class="report-form__card-inner">
+            <h3 class="report-form__card-title">${report.formTitle ?? ui.reportPanelTitle ?? 'Get the report by email'}</h3>
+            <form class="report-form__fields" data-form data-form-type="report">
+              <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+              <label class="report-form__field">
+                <span>${ui.fieldName ?? 'Name'} *</span>
+                <input type="text" name="name" autocomplete="name" required />
+              </label>
+              <label class="report-form__field">
+                <span>${ui.fieldCompany ?? 'Company'} *</span>
+                <input type="text" name="company" autocomplete="organization" required />
+              </label>
+              <label class="report-form__field">
+                <span>${ui.fieldEmail ?? 'Email'} *</span>
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+              <label class="report-form__field">
+                <span>${ui.fieldPhone ?? 'Phone'}</span>
+                <input type="tel" name="phone" autocomplete="tel" />
+              </label>
+              <button class="report-form__submit" type="submit">${reportButton}</button>
+              <p class="form-status" data-form-status role="status" hidden></p>
+            </form>
+            <p class="report-form__note">${report.formNote ?? reportPdfText}</p>
+          </div>
+        </div>
       </div>
     </section>
   `
@@ -1452,7 +1472,7 @@ export function renderPage(content, pageKey) {
         </div>
       </section>
 
-      <section class="section section--muted" data-reveal>
+      <section class="section section--muted" data-reveal data-report-prompt-trigger>
         <div class="shell industries-showcase">
           <div class="industries-showcase__head">
             <h2>${ui.industriesSectionTitle ?? 'WHICH INDUSTRIES THIS HIRING MODEL FITS'}</h2>
@@ -1488,33 +1508,39 @@ export function renderPage(content, pageKey) {
                 <div class="cases-section__head">
                   <h2>${content.home.casesSection.title}</h2>
                 </div>
-                <div class="cases-list">
-                  ${renderCardList(
-                    caseItems,
-                    (item) => `
-                      <article class="case-card">
-                        <div class="case-card__content">
-                          <p class="eyebrow">${ui.caseStudy ?? 'Case study'}</p>
-                          <h3>${typeof item === 'string' ? item : item.title}</h3>
-                          <p class="case-card__subtitle">${typeof item === 'string' ? ui.caseSubtitlePlaceholder ?? 'Short case summary' : item.subtitle}</p>
-                          <p class="case-card__problem">${typeof item === 'string' ? ui.caseProblemPlaceholder ?? 'Separate SEO-friendly URL for the case, results, timing, and CTA.' : item.problem}</p>
-                          <div class="button-row">
-                            <a class="button button--ghost case-card__button" href="${buildPageUrl(content.locale.code, 'cases')}">
-                              <span>${ui.caseViewLabel ?? 'View case'}</span>
-                              <span class="case-card__button-icon" aria-hidden="true">→</span>
-                            </a>
+                <div class="cases-slider" data-cases-slider>
+                  <div class="cases-slider__controls">
+                    <button class="cases-slider__button" type="button" data-cases-slider-prev aria-label="${ui.caseSliderPrev ?? 'Previous case'}">←</button>
+                    <button class="cases-slider__button" type="button" data-cases-slider-next aria-label="${ui.caseSliderNext ?? 'Next case'}">→</button>
+                  </div>
+                  <div class="cases-slider__track" data-cases-slider-track>
+                    ${renderCardList(
+                      caseItems,
+                      (item) => `
+                        <article class="case-card">
+                          <div class="case-card__content">
+                            <p class="eyebrow">${ui.caseStudy ?? 'Case study'}</p>
+                            <h3>${typeof item === 'string' ? item : item.title}</h3>
+                            <p class="case-card__subtitle">${typeof item === 'string' ? ui.caseSubtitlePlaceholder ?? 'Short case summary' : item.subtitle}</p>
+                            <p class="case-card__problem">${typeof item === 'string' ? ui.caseProblemPlaceholder ?? 'Separate SEO-friendly URL for the case, results, timing, and CTA.' : item.problem}</p>
+                            <div class="button-row">
+                              <a class="button button--ghost case-card__button" href="${buildPageUrl(content.locale.code, 'cases')}">
+                                <span>${ui.caseViewLabel ?? 'View case'}</span>
+                                <span class="case-card__button-icon" aria-hidden="true">→</span>
+                              </a>
+                            </div>
                           </div>
-                        </div>
-                        <div class="case-card__media">
-                          <img
-                            src="${typeof item === 'string' ? '/images/industry-logistics.jpg' : item.image}"
-                            alt="${typeof item === 'string' ? item : item.alt ?? item.title}"
-                            loading="lazy"
-                          />
-                        </div>
-                      </article>
-                    `,
-                  )}
+                          <div class="case-card__media">
+                            <img
+                              src="${typeof item === 'string' ? '/images/industry-logistics.jpg' : item.image}"
+                              alt="${typeof item === 'string' ? item : item.alt ?? item.title}"
+                              loading="lazy"
+                            />
+                          </div>
+                        </article>
+                      `,
+                    )}
+                  </div>
                 </div>
               </div>
             </section>

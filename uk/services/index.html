@@ -290,7 +290,7 @@
             <p>Весь маршрут побудований так, щоб бізнес бачив прогнозовані етапи запуску, а кандидат розумів, що відбувається на кожному кроці.</p>
           </div>
         </div>
-        <p class="services-hero__intro">Для роботодавця це означає <strong>прогнозований запуск команди</strong> без хаосу між рекрутингом, документами й логістикою. Для кандидата — <strong>зрозумілий і легальний маршрут працевлаштування</strong> без сірих схем і втрати контролю над процесом.</p>
+        
       </div>
     </section>
 
@@ -319,7 +319,6 @@
         <div class="services-pillars">
           <div class="services-pillars__head">
             <div class="services-pillars__heading">
-              <p class="eyebrow">Що ми закриваємо</p>
               <h2>Послуга побудована не як "пошук резюме", а як повний маршрут запуску людей у роботу</h2>
             </div>
           </div>
@@ -823,23 +822,23 @@
         <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
         <label class="field">
           <span>Ім’я *</span>
-          <input type="text" name="name" required />
+          <input type="text" name="name" autocomplete="name" required />
         </label>
         <label class="field">
           <span>Компанія *</span>
-          <input type="text" name="company" required />
+          <input type="text" name="company" autocomplete="organization" required />
         </label>
         <label class="field">
           <span>Email *</span>
-          <input type="email" name="email" required />
+          <input type="email" name="email" autocomplete="email" required />
         </label>
         <label class="field">
           <span>Телефон</span>
-          <input type="text" name="phone" />
+          <input type="tel" name="phone" autocomplete="tel" />
         </label>
         <button class="button services-form-card__button" type="submit">Отримати консультацію</button>
         <p class="services-form-card__note">Зазвичай відповідаємо протягом робочого дня.</p>
-        <p class="form-status" data-form-status></p>
+        <p class="form-status" data-form-status role="status" hidden></p>
       </form>
     </div>
   
@@ -887,22 +886,22 @@
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Ім’я *</span>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
             <span>Компанія *</span>
-            <input type="text" name="company" required />
+            <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
             <span>Email *</span>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
           <label class="field">
             <span>Телефон</span>
-            <input type="text" name="phone" />
+            <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <button class="button" type="submit">Забронювати дзвінок</button>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
     </div>
@@ -916,22 +915,22 @@
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span>Ім’я *</span>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
             <span>Компанія *</span>
-            <input type="text" name="company" required />
+            <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
             <span>Email *</span>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
           <label class="field">
             <span>Телефон</span>
-            <input type="text" name="phone" />
+            <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <button class="button" type="submit">Отримати звіт</button>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
       </div>
     </div>

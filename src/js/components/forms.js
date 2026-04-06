@@ -5,7 +5,9 @@ import { openModalByName } from './modal.js'
 
 function buildPayload(form) {
   const data = new FormData(form)
-  const payload = Object.fromEntries(data.entries())
+  const payload = Object.fromEntries(
+    [...data.entries()].map(([key, value]) => [key, typeof value === 'string' ? value.trim() : value]),
+  )
 
   delete payload.website
 
@@ -20,8 +22,10 @@ function buildPayload(form) {
 function setStatus(form, message, state = 'success') {
   const status = form.querySelector('[data-form-status]')
   if (!status) return
+
   status.textContent = message
   status.dataset.state = state
+  status.hidden = !message
 }
 
 function openFormSuccessModal(content, formType) {
@@ -29,11 +33,23 @@ function openFormSuccessModal(content, formType) {
   if (!modal) return
 
   const message = modal.querySelector('[data-form-success-message]')
-  const formContent = content.forms?.[formType]
+  const formContent = content.forms?.[formType] ?? content.forms?.lead
 
   if (message) message.textContent = formContent?.success ?? ''
 
   openModalByName('form-success')
+}
+
+function hasEmptyRequiredFields(form) {
+  return [...form.elements].some((field) => {
+    if (!(field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement)) {
+      return false
+    }
+
+    if (field.disabled || !field.required) return false
+
+    return typeof field.value === 'string' ? !field.value.trim() : !field.value
+  })
 }
 
 export function initForms(content) {
@@ -42,13 +58,19 @@ export function initForms(content) {
   qsa('[data-form]').forEach((form) => {
     form.setAttribute('novalidate', 'true')
 
+    const status = form.querySelector('[data-form-status]')
+    if (status) {
+      status.hidden = true
+      status.setAttribute('aria-live', 'polite')
+    }
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault()
 
       const honeypot = form.querySelector('input[name="website"]')
       if (honeypot?.value) return
 
-      if (!form.checkValidity()) {
+      if (!form.checkValidity() || hasEmptyRequiredFields(form)) {
         form.reportValidity()
         setStatus(form, ui.formRequiredError ?? 'Please complete the required form fields.', 'error')
         return
