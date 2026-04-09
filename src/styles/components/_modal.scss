@@ -273,6 +273,11 @@
     overflow-y: auto;
   }
 
+  .modal[data-modal='video'] {
+    align-items: center;
+    padding: 16px;
+  }
+
   .modal[data-modal='callback'],
   .modal[data-modal='report'],
   .modal[data-modal='form-success'],

@@ -2,10 +2,11 @@ const endpoint = import.meta.env.VITE_GOOGLE_SCRIPT_URL
 
 export async function submitLead(payload) {
   if (!endpoint) {
-    if (import.meta.env.DEV) {
-      console.info('[forms] demo submit', payload)
+    if (!import.meta.env.DEV) {
+      throw new Error('Form endpoint is not configured')
     }
 
+    console.info('[forms] demo submit', payload)
     await new Promise((resolve) => window.setTimeout(resolve, 450))
     return { ok: true, mode: 'demo' }
   }

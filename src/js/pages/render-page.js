@@ -143,12 +143,12 @@ function renderReportStyleForm(content, { type = 'lead', title, buttonLabel, not
             <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="report-form__field">
-            <span>${ui.fieldEmail ?? 'Email'} *</span>
-            <input type="email" name="email" autocomplete="email" required />
+            <span>${ui.fieldEmail ?? 'Email'}</span>
+            <input type="email" name="email" autocomplete="email" />
           </label>
           <label class="report-form__field">
-            <span>${ui.fieldPhone ?? 'Phone'}</span>
-            <input type="tel" name="phone" autocomplete="tel" />
+            <span>${ui.fieldPhone ?? 'Phone'} *</span>
+            <input type="tel" name="phone" autocomplete="tel" required />
           </label>
           <button class="report-form__submit" type="submit">${resolvedButtonLabel}</button>
           <p class="form-status" data-form-status role="status" hidden></p>
@@ -185,12 +185,12 @@ function renderReportCaptureForm(content) {
         <input type="text" name="company" autocomplete="organization" required />
       </label>
       <label class="field">
-        <span>${ui.fieldEmail ?? 'Email'} *</span>
-        <input type="email" name="email" autocomplete="email" required />
+        <span>${ui.fieldEmail ?? 'Email'}</span>
+        <input type="email" name="email" autocomplete="email" />
       </label>
       <label class="field">
-        <span>${ui.fieldPhone ?? 'Phone'}</span>
-        <input type="tel" name="phone" autocomplete="tel" />
+        <span>${ui.fieldPhone ?? 'Phone'} *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
       </label>
       <button class="button report-capture__submit" type="submit">${content.home.reportBlock.cta}</button>
       <p class="form-status" data-form-status role="status" hidden></p>
@@ -202,13 +202,79 @@ function renderCardList(items, mapper) {
   return items.map(mapper).join('')
 }
 
-function renderSimplePage(title, lead, pageKey) {
+function resolveGenericPageEyebrow(content, pageKey) {
+  const ui = content.ui ?? {}
+  const labels = {
+    about: ui.aboutEyebrow ?? 'About',
+    faq: ui.faqEyebrow ?? 'FAQ',
+    contacts: ui.contactsEyebrow ?? 'Contacts',
+    report: ui.reportEyebrow ?? 'Report',
+    'privacy-policy': ui.privacyEyebrow ?? 'Privacy policy',
+    terms: ui.termsEyebrow ?? 'Terms & conditions',
+    'thank-you-report': ui.thankYouEyebrow ?? 'Thank you',
+  }
+
+  return labels[pageKey] ?? 'VW Recruit'
+}
+
+function renderSimplePage(content, title, lead, pageKey) {
   return `
     <section class="page-hero">
       <div class="shell">
-        <p class="eyebrow">VW Recruit / ${pageKey}</p>
+        <p class="eyebrow">VW Recruit / ${resolveGenericPageEyebrow(content, pageKey)}</p>
         <h1>${title}</h1>
-        <p class="lead">${lead}</p>
+        ${lead ? `<p class="lead">${lead}</p>` : ''}
+      </div>
+    </section>
+  `
+}
+
+function renderLegalSections(sections = []) {
+  if (!sections.length) {
+    return ''
+  }
+
+  return `
+    <section class="section legal-page-section">
+      <div class="shell legal-page__stack">
+        ${sections
+          .map(
+            (section) => `
+              <article class="legal-section">
+                <h2>${section.title ?? ''}</h2>
+                ${(section.paragraphs ?? []).map((paragraph) => `<p>${paragraph}</p>`).join('')}
+                ${
+                  section.items?.length
+                    ? `
+                      <ul class="legal-list">
+                        ${section.items.map((item) => `<li>${item}</li>`).join('')}
+                      </ul>
+                    `
+                    : ''
+                }
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
+    </section>
+  `
+}
+
+function renderThankYouReportPage(content) {
+  const page = content.thankYouReport ?? {}
+
+  return `
+    <section class="page-hero">
+      <div class="shell split split--hero">
+        <div class="stack" style="justify-items:center;text-align:center;width:100%;">
+          <h1>${page.title ?? 'Thank you. Your report request was received.'}</h1>
+          <p class="lead">${page.lead ?? ''}</p>
+          <div class="button-row" style="justify-content:center;">
+            <a class="button" href="${buildPageUrl(content.locale.code, 'home')}">${page.ctaLabel ?? 'Back to homepage'}</a>
+            <a class="button button--ghost" href="${buildPageUrl(content.locale.code, 'contacts')}">${page.secondaryCtaLabel ?? 'Open contacts page'}</a>
+          </div>
+        </div>
       </div>
     </section>
   `
@@ -631,12 +697,12 @@ function renderHomeReportBlock(content, ui = {}) {
                 </div>
                 <div class="home-report-form__row">
                   <label class="home-report-form__field">
-                    <span>${ui.fieldEmail ?? 'Email'} *</span>
-                    <input type="email" name="email" autocomplete="email" required />
+                    <span>${ui.fieldEmail ?? 'Email'}</span>
+                    <input type="email" name="email" autocomplete="email" />
                   </label>
                   <label class="home-report-form__field">
-                    <span>${ui.fieldPhone ?? 'Phone'}</span>
-                    <input type="tel" name="phone" autocomplete="tel" />
+                    <span>${ui.fieldPhone ?? 'Phone'} *</span>
+                    <input type="tel" name="phone" autocomplete="tel" required />
                   </label>
                 </div>
                 <button class="home-report-form__submit" type="submit">${reportBlock.cta ?? ui.getReport ?? 'Get report'}</button>
@@ -1684,12 +1750,12 @@ function renderReportPage(content, ui) {
                 <input type="text" name="company" autocomplete="organization" required />
               </label>
               <label class="report-form__field">
-                <span>${ui.fieldEmail ?? 'Email'} *</span>
-                <input type="email" name="email" autocomplete="email" required />
+                <span>${ui.fieldEmail ?? 'Email'}</span>
+                <input type="email" name="email" autocomplete="email" />
               </label>
               <label class="report-form__field">
-                <span>${ui.fieldPhone ?? 'Phone'}</span>
-                <input type="tel" name="phone" autocomplete="tel" />
+                <span>${ui.fieldPhone ?? 'Phone'} *</span>
+                <input type="tel" name="phone" autocomplete="tel" required />
               </label>
               <button class="report-form__submit" type="submit">${reportButton}</button>
               <p class="form-status" data-form-status role="status" hidden></p>
@@ -2026,12 +2092,17 @@ export function renderPage(content, pageKey) {
     return renderReportPage(content, ui)
   }
 
+  if (pageKey === 'thank-you-report') {
+    return renderThankYouReportPage(content)
+  }
+
   if (pageKey === 'contacts') {
     return renderContactsPage(content, ui)
   }
 
   const contentMap = {
     report: content.report,
+    'thank-you-report': content.thankYouReport,
     about: content.about,
     contacts: content.contacts,
     faq: content.faqPage,
@@ -2042,15 +2113,23 @@ export function renderPage(content, pageKey) {
   const page = contentMap[pageKey] ?? content.about
   const includeForm = !['privacy-policy', 'terms'].includes(pageKey)
   const includeFaq = pageKey === 'faq'
+  const legalSections = page.sections ?? []
+
+  if ((pageKey === 'privacy-policy' || pageKey === 'terms') && legalSections.length) {
+    return `
+      ${renderSimplePage(content, page.title, page.lead, pageKey)}
+      ${renderLegalSections(legalSections)}
+    `
+  }
 
   return `
-    ${renderSimplePage(page.title, page.lead, pageKey)}
+    ${renderSimplePage(content, page.title, page.lead, pageKey)}
     <section class="section">
       <div class="shell split">
         <div class="stack">
-          <div class="line-card">Starter page template for <strong>${pageKey}</strong></div>
-          <div class="line-card">Ready for localized metadata and content expansion</div>
-          <div class="line-card">Built as a separate SEO-friendly route per locale</div>
+          <div class="line-card">${ui.genericPageCardOne ?? 'Base page prepared for localized content'} <strong>${page.title ?? pageKey}</strong></div>
+          <div class="line-card">${ui.genericPageCardTwo ?? 'Metadata and structure are ready for further expansion'}</div>
+          <div class="line-card">${ui.genericPageCardThree ?? 'Each route is generated separately for every locale'}</div>
         </div>
         ${
           includeForm

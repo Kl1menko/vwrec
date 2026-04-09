@@ -10,6 +10,12 @@ const DEFAULT_LOCALE = 'uk'
 const APP_ENTRY = '/src/main.js'
 const SITE_NAME = 'VW Recruit'
 const META_GENERATOR = 'VW Recruit Starter'
+const SITE_URL = (process.env.SITE_URL ?? 'https://www.vw-recruit.com').replace(/\/$/, '')
+const SITE_LOGO_URL = `${SITE_URL}/apple-touch-icon.png`
+const OG_IMAGE_PATH = '/og.png'
+const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`
+const OG_IMAGE_WIDTH = '1200'
+const OG_IMAGE_HEIGHT = '630'
 
 function escapeJsonForHtml(value) {
   return JSON.stringify(value).replace(/</g, '\\u003c')
@@ -42,10 +48,19 @@ function getPageDescription(content, pageKey) {
   return page?.meta?.description ?? page?.description ?? page?.lead ?? content.site.description ?? ''
 }
 
+function getPageRobots(pageKey) {
+  if (pageKey === 'thank-you-report') {
+    return 'noindex, nofollow'
+  }
+
+  return ''
+}
+
 function getPageMeta(content, pageKey) {
   return {
     title: getPageTitle(content, pageKey),
     description: getPageDescription(content, pageKey),
+    robots: getPageRobots(pageKey),
   }
 }
 
@@ -146,15 +161,114 @@ function renderPageLoaderScript() {
   `
 }
 
-function renderPageHead({ title, description }) {
+function buildAbsoluteUrl(pathname) {
+  return SITE_URL ? `${SITE_URL}${pathname}` : pathname
+}
+
+function buildPageHrefPath(locale, pageKey) {
+  const page = PAGE_DEFINITIONS.find((entry) => entry.key === pageKey)
+  const pathSuffix = page?.slug ? `/${page.slug}/` : '/'
+
+  return `/${locale}${pathSuffix}`
+}
+
+function renderAlternateLanguageLinks(pageKey) {
+  const links = LOCALES.map((locale) => {
+    const href = buildAbsoluteUrl(buildPageHrefPath(locale, pageKey))
+    return `<link rel="alternate" hreflang="${locale}" href="${escapeHtmlAttribute(href)}" />`
+  })
+
+  links.push(
+    `<link rel="alternate" hreflang="x-default" href="${escapeHtmlAttribute(buildAbsoluteUrl(buildPageHrefPath(DEFAULT_LOCALE, pageKey)))}" />`,
+  )
+
+  return links.join('\n    ')
+}
+
+function renderCanonicalLink(locale, pageKey) {
+  return `<link rel="canonical" href="${escapeHtmlAttribute(buildAbsoluteUrl(buildPageHrefPath(locale, pageKey)))}" />`
+}
+
+function buildOrganizationSchema(content) {
+  return escapeJsonForHtml({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: content.site.title ?? SITE_NAME,
+    url: SITE_URL,
+    logo: SITE_LOGO_URL,
+    description: content.site.description ?? '',
+  })
+}
+
+function buildWebSiteSchema(content, locale) {
+  return escapeJsonForHtml({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: content.site.title ?? SITE_NAME,
+    url: buildAbsoluteUrl(buildPageHrefPath(locale, 'home')),
+    inLanguage: locale,
+    description: content.site.description ?? '',
+  })
+}
+
+function renderPageHead({ title, description, robots, locale, pageKey }) {
+  const content = CONTENT[locale] ?? CONTENT.en
+  const organizationSchema = buildOrganizationSchema(content)
+  const websiteSchema = buildWebSiteSchema(content, locale)
+  const pageUrl = buildAbsoluteUrl(buildPageHrefPath(locale, pageKey))
+
   return `
     ${renderCommonHeadTags()}
     <title>${title}</title>
     <meta name="description" content="${escapeHtmlAttribute(description)}" />
+    <meta property="og:site_name" content="${escapeHtmlAttribute(content.site.title ?? SITE_NAME)}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="${escapeHtmlAttribute(title)}" />
+    <meta property="og:description" content="${escapeHtmlAttribute(description)}" />
+    <meta property="og:url" content="${escapeHtmlAttribute(pageUrl)}" />
+    <meta property="og:image" content="${escapeHtmlAttribute(OG_IMAGE_URL)}" />
+    <meta property="og:image:width" content="${OG_IMAGE_WIDTH}" />
+    <meta property="og:image:height" content="${OG_IMAGE_HEIGHT}" />
+    <meta property="og:image:alt" content="${escapeHtmlAttribute(title)}" />
+    <meta property="og:locale" content="${escapeHtmlAttribute(locale)}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeHtmlAttribute(title)}" />
+    <meta name="twitter:description" content="${escapeHtmlAttribute(description)}" />
+    <meta name="twitter:image" content="${escapeHtmlAttribute(OG_IMAGE_URL)}" />
+    ${robots ? `<meta name="robots" content="${escapeHtmlAttribute(robots)}" />` : ''}
+    ${renderCanonicalLink(locale, pageKey)}
+    ${renderAlternateLanguageLinks(pageKey)}
+    <script type="application/ld+json">${organizationSchema}</script>
+    <script type="application/ld+json">${websiteSchema}</script>
     ${renderPageLoaderStyles()}
     ${renderPageLoaderScript()}
     <script type="module" src="${APP_ENTRY}"></script>
   `
+}
+
+function buildFaqSchema(content, pageKey) {
+  if (pageKey !== 'faq') {
+    return ''
+  }
+
+  const faqItems = content.home?.faq?.items ?? []
+
+  if (!faqItems.length) {
+    return ''
+  }
+
+  return escapeJsonForHtml({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  })
 }
 
 function renderHtmlDocument({ lang, head, body, bodyAttributes = '' }) {
@@ -192,6 +306,7 @@ function buildEmbeddedPageContent(content) {
 const createHtml = ({ locale, pageKey }) => {
   const content = CONTENT[locale] ?? CONTENT.en
   const meta = getPageMeta(content, pageKey)
+  const faqSchema = buildFaqSchema(content, pageKey)
   const appMarkup = renderLayout({
     content,
     locale,
@@ -202,7 +317,7 @@ const createHtml = ({ locale, pageKey }) => {
 
   return renderHtmlDocument({
     lang: locale,
-    head: renderPageHead(meta),
+    head: renderPageHead({ ...meta, locale, pageKey }),
     bodyAttributes: buildPageBodyAttributes(locale, pageKey),
     body: `
       <a class="skip-link" href="#main-content">Skip to content</a>
@@ -212,6 +327,7 @@ const createHtml = ({ locale, pageKey }) => {
         </div>
       </div>
       <div id="app">${appMarkup}</div>
+      ${faqSchema ? `<script type="application/ld+json">${faqSchema}</script>` : ''}
       <script id="page-content" type="application/json">${escapeJsonForHtml(pageContent)}</script>
       <div id="portal-root"></div>
     `,
@@ -290,7 +406,30 @@ const ensureFile = (filePath, content) => {
   writeFileSync(filePath, content)
 }
 
+function isIndexablePage(pageKey) {
+  return getPageRobots(pageKey) !== 'noindex, nofollow'
+}
+
+function buildSitemapXml() {
+  const urls = []
+
+  for (const locale of LOCALES) {
+    for (const page of PAGE_DEFINITIONS) {
+      if (!isIndexablePage(page.key)) continue
+
+      urls.push(`  <url>\n    <loc>${buildAbsoluteUrl(buildPageHrefPath(locale, page.key))}</loc>\n  </url>`)
+    }
+  }
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join('\n')}
+</urlset>
+`
+}
+
 ensureFile(resolve(rootDir, 'index.html'), createRedirectHtml())
+ensureFile(resolve(rootDir, 'public/sitemap.xml'), buildSitemapXml())
 
 for (const locale of LOCALES) {
   for (const page of PAGE_DEFINITIONS) {

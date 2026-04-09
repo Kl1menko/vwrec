@@ -18,6 +18,45 @@ function isStepValid(step, value) {
   return step.fields.every((field) => !field.required || value[field.name])
 }
 
+function getFieldType(field) {
+  if (field.type) return field.type
+  if (field.name === 'email') return 'email'
+  if (field.name === 'phone') return 'tel'
+  return 'text'
+}
+
+function getFieldAutocomplete(field) {
+  const map = {
+    name: 'name',
+    company: 'organization',
+    phone: 'tel',
+    email: 'email',
+    country: 'country-name',
+    city: 'address-level2',
+  }
+
+  return map[field.name] ?? 'off'
+}
+
+function validateStepFields(step, container) {
+  if (step.type === 'options') {
+    return Boolean(container.querySelector('input:checked'))
+  }
+
+  const inputs = step.fields
+    .map((field) => container.querySelector(`[name="${field.name}"]`))
+    .filter(Boolean)
+
+  const invalidInput = inputs.find((input) => !input.checkValidity() || (input.required && !input.value.trim()))
+
+  if (invalidInput) {
+    invalidInput.reportValidity()
+    return false
+  }
+
+  return true
+}
+
 function renderOptions(step, state) {
   return `
     <div class="quiz-options">
@@ -43,7 +82,14 @@ function renderFields(step, state) {
           (field) => `
             <label class="field">
               <span>${field.label}${field.required ? ' *' : ''}</span>
-              <input name="${field.name}" type="${field.name === 'email' ? 'email' : 'text'}" value="${state[step.id]?.[field.name] ?? ''}" ${field.required ? 'required' : ''} />
+              <input
+                name="${field.name}"
+                type="${getFieldType(field)}"
+                inputmode="${getFieldType(field) === 'tel' ? 'tel' : getFieldType(field) === 'email' ? 'email' : 'text'}"
+                autocomplete="${getFieldAutocomplete(field)}"
+                value="${state[step.id]?.[field.name] ?? ''}"
+                ${field.required ? 'required' : ''}
+              />
             </label>
           `,
         )
@@ -96,7 +142,7 @@ function initQuizInstance(root, content) {
     qs('[data-quiz-next]', root)?.addEventListener('click', async () => {
       const value = getStepValue(step, root)
 
-      if (!isStepValid(step, value)) {
+      if (!isStepValid(step, value) || !validateStepFields(step, root)) {
         qs('[data-quiz-status]', root).textContent = ui.quizValidationError ?? 'Please complete the current step.'
         return
       }

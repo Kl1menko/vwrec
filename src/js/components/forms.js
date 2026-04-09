@@ -1,5 +1,6 @@
 import { submitLead } from '../services/forms.js'
 import { trackEvent } from '../services/analytics.js'
+import { buildPageUrl } from '../core/site-config.js'
 import { qsa } from '../utils/dom.js'
 import { openModalByName } from './modal.js'
 
@@ -91,7 +92,7 @@ export function initForms(content) {
 
         if (form.dataset.formType === 'report') {
           window.setTimeout(() => {
-            openModalByName('report-success')
+            window.location.assign(buildPageUrl(document.body.dataset.locale ?? 'uk', 'thank-you-report'))
           }, 120)
         } else {
           window.setTimeout(() => {

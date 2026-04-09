@@ -18,12 +18,12 @@ function renderModal(content, title, formType, buttonLabel) {
             <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
-            <span>${content.ui?.fieldEmail ?? 'Email'} *</span>
-            <input type="email" name="email" autocomplete="email" required />
+            <span>${content.ui?.fieldEmail ?? 'Email'}</span>
+            <input type="email" name="email" autocomplete="email" />
           </label>
           <label class="field">
-            <span>${content.ui?.fieldPhone ?? 'Phone'}</span>
-            <input type="tel" name="phone" autocomplete="tel" />
+            <span>${content.ui?.fieldPhone ?? 'Phone'} *</span>
+            <input type="tel" name="phone" autocomplete="tel" required />
           </label>
           <button class="button modal__submit" type="submit">${buttonLabel}</button>
           <p class="form-status" data-form-status role="status" hidden></p>

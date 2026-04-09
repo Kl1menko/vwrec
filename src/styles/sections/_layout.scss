@@ -12,6 +12,11 @@
   pointer-events: none;
 }
 
+body[data-page='privacy-policy'] .page-hero::before,
+body[data-page='terms'] .page-hero::before {
+  display: none;
+}
+
 .page-hero .shell,
 .section .shell {
   position: relative;
@@ -103,9 +108,77 @@
   gap: 16px;
 }
 
+.legal-page__stack {
+  gap: 28px !important;
+  max-width: 940px;
+  margin-inline: auto;
+}
+
+.legal-page-section {
+  background: #fafafa;
+}
+
+.legal-page-section .shell,
+body[data-page='privacy-policy'] .page-hero .shell,
+body[data-page='terms'] .page-hero .shell {
+  max-width: 940px;
+  margin-inline: auto;
+}
+
+.legal-section {
+  display: grid;
+  gap: 14px;
+}
+
+.legal-section h2 {
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.legal-section p,
+.legal-list li {
+  color: #5f5b57;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+
+.legal-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 10px;
+}
+
 @media (max-width: 767px) {
   .page-hero {
     padding-top: 24px;
+  }
+
+  body[data-page='privacy-policy'] .page-hero,
+  body[data-page='terms'] .page-hero {
+    padding-top: 12px;
+  }
+
+  body[data-page='privacy-policy'] .page-hero .shell,
+  body[data-page='terms'] .page-hero .shell {
+    gap: 14px;
+  }
+
+  body[data-page='privacy-policy'] .page-hero h1,
+  body[data-page='terms'] .page-hero h1 {
+    max-width: 12ch;
+    margin-inline: auto;
+    text-align: center;
+    font-size: clamp(2rem, 9vw, 2.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  body[data-page='privacy-policy'] .page-hero .eyebrow,
+  body[data-page='terms'] .page-hero .eyebrow {
+    width: 100%;
+    text-align: center;
   }
 
   .split--hero {
@@ -124,6 +197,34 @@
     gap: 18px;
     padding: 18px 14px;
     border-radius: 24px;
+  }
+
+  .legal-page__stack {
+    gap: 20px !important;
+  }
+
+  .legal-page-section {
+    padding-top: 10px;
+  }
+
+  .legal-section {
+    gap: 12px;
+  }
+
+  .legal-section h2 {
+    font-size: 1.12rem;
+    line-height: 1.18;
+  }
+
+  .legal-section p,
+  .legal-list li {
+    font-size: 0.96rem;
+    line-height: 1.62;
+  }
+
+  .legal-list {
+    padding-left: 1rem;
+    gap: 8px;
   }
 }
 
