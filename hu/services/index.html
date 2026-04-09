@@ -778,33 +778,32 @@
           <h2>Request hiring proposal</h2>
         </div>
         
-    <div class="services-form-card card card--form">
-      <div class="services-form-card__head">
-        <h3>Request hiring proposal</h3>
-        <p></p>
+    <div class="report-form__card report-form__card--embedded">
+      <div class="report-form__card-inner">
+        <h3 class="report-form__card-title">Request hiring proposal</h3>
+        <form class="report-form__fields" data-form data-form-type="lead">
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <label class="report-form__field">
+            <span>Name *</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="report-form__field">
+            <span>Company *</span>
+            <input type="text" name="company" autocomplete="organization" required />
+          </label>
+          <label class="report-form__field">
+            <span>Email *</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="report-form__field">
+            <span>Phone</span>
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+          <button class="report-form__submit" type="submit">Send request</button>
+          <p class="form-status" data-form-status role="status" hidden></p>
+        </form>
+        
       </div>
-      <form class="stack" data-form data-form-type="lead">
-        <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-        <label class="field">
-          <span>Name *</span>
-          <input type="text" name="name" autocomplete="name" required />
-        </label>
-        <label class="field">
-          <span>Company *</span>
-          <input type="text" name="company" autocomplete="organization" required />
-        </label>
-        <label class="field">
-          <span>Email *</span>
-          <input type="email" name="email" autocomplete="email" required />
-        </label>
-        <label class="field">
-          <span>Phone</span>
-          <input type="tel" name="phone" autocomplete="tel" />
-        </label>
-        <button class="button services-form-card__button" type="submit">Send request</button>
-        <p class="services-form-card__note"></p>
-        <p class="form-status" data-form-status role="status" hidden></p>
-      </form>
     </div>
   
       </div>
@@ -937,7 +936,6 @@
     <div class="modal" data-modal="video">
       <div class="modal__dialog modal__dialog--video">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3 data-video-modal-title>Презентація VW Recruit</h3>
         <div class="video-modal__player">
           <video
             class="video-modal__media"

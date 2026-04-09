@@ -491,7 +491,76 @@ export function createLocaleContent({
     },
     contacts: {
       title: 'Talk to the VW Recruit team',
-      lead: 'Add contact channels, quick lead form, messenger links, and call booking options.',
+      lead: 'Get a clear next step on hiring model, timing, documents, and launch format for your team.',
+      intro:
+        'Use this page to start the conversation about staffing needs, replacement hiring, or expansion. The goal is simple: help the employer quickly understand whether the route fits the current hiring gap.',
+      summary: [
+        {
+          label: 'Response time',
+          value: 'Within one business day',
+        },
+        {
+          label: 'Format',
+          value: 'Call, Zoom, or email follow-up',
+        },
+        {
+          label: 'Focus',
+          value: 'Employers with operational hiring needs',
+        },
+      ],
+      channelsTitle: 'How to start the conversation',
+      channelsLead:
+        'Choose the simplest format for your current stage. If the project is still being scoped, the team can start from a short call and then move to detailed planning.',
+      channels: [
+        {
+          icon: 'brief',
+          label: 'Hiring request',
+          title: 'Share your staffing need',
+          text: 'The best option when you already know the role, approximate team size, or launch timing and want a concrete next step.',
+          actionLabel: 'Open request form',
+          actionType: 'anchor',
+          actionTarget: '#contact-form',
+        },
+        {
+          icon: 'call',
+          label: 'Quick alignment',
+          title: 'Book a callback with the team',
+          text: 'Useful when you want to quickly align on model fit, staffing geography, or whether international hiring makes sense for your case.',
+          actionLabel: 'Book a call',
+          actionType: 'modal',
+          actionTarget: 'callback',
+        },
+        {
+          icon: 'documents',
+          label: 'Route clarity',
+          title: 'Clarify documents, timing, and launch logic',
+          text: 'The team can explain the process from sourcing and approvals to arrival, adaptation, and first shift launch.',
+        },
+      ],
+      checklistTitle: 'What is useful to prepare before reaching out',
+      checklistLead:
+        'You do not need a perfect brief. Even approximate numbers make the first conversation faster and more practical.',
+      checklist: [
+        'Which roles or departments need reinforcement',
+        'Approximate number of workers and preferred start timing',
+        'Country and city where the team will work',
+        'Whether you need support only with sourcing or with full launch coordination',
+      ],
+      supportTitle: 'What the team can clarify on the first contact',
+      supportLead:
+        'The first conversation is meant to reduce uncertainty and show whether the route is operationally realistic for your situation.',
+      support: [
+        'How quickly candidate flow can start',
+        'Which sourcing geographies fit the role profile',
+        'How documents, permits, and arrival coordination are structured',
+        'What launch rhythm and communication format to expect after approval',
+      ],
+      form: {
+        title: 'Leave a request and we will get back to you',
+        lead:
+          'Leave your details and the team will come back with the most practical next step for your hiring situation.',
+        note: 'Best suited for employers who need sourcing, replacement, or launch support.',
+      },
     },
     faqPage: {
       title: 'FAQ for employers',

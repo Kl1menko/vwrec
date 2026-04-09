@@ -25,6 +25,17 @@
   pointer-events: none;
 }
 
+.report-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #fafafa 0%, rgba(250, 250, 250, 0) 10%, rgba(250, 250, 250, 0) 90%, #fafafa 100%),
+    linear-gradient(180deg, rgba(250, 250, 250, 0) 72%, #fafafa 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .report-hero__ripple {
   position: relative;
   min-height: 560px;

@@ -160,39 +160,14 @@ function renderReportStyleForm(content, { type = 'lead', title, buttonLabel, not
 }
 
 function renderServicesLeadForm(content) {
-  const ui = content.ui ?? {}
   const servicesForm = content.services?.form ?? {}
 
-  return `
-    <div class="services-form-card card card--form">
-      <div class="services-form-card__head">
-        <h3>${servicesForm.title ?? content.forms.lead.title}</h3>
-        <p>${servicesForm.lead ?? ''}</p>
-      </div>
-      <form class="stack" data-form data-form-type="lead">
-        <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-        <label class="field">
-          <span>${ui.fieldName ?? 'Name'} *</span>
-          <input type="text" name="name" autocomplete="name" required />
-        </label>
-        <label class="field">
-          <span>${ui.fieldCompany ?? 'Company'} *</span>
-          <input type="text" name="company" autocomplete="organization" required />
-        </label>
-        <label class="field">
-          <span>${ui.fieldEmail ?? 'Email'} *</span>
-          <input type="email" name="email" autocomplete="email" required />
-        </label>
-        <label class="field">
-          <span>${ui.fieldPhone ?? 'Phone'}</span>
-          <input type="tel" name="phone" autocomplete="tel" />
-        </label>
-        <button class="button services-form-card__button" type="submit">${servicesForm.button ?? ui.sendRequest ?? 'Send request'}</button>
-        <p class="services-form-card__note">${servicesForm.note ?? ''}</p>
-        <p class="form-status" data-form-status role="status" hidden></p>
-      </form>
-    </div>
-  `
+  return renderReportStyleForm(content, {
+    type: 'lead',
+    title: servicesForm.title ?? content.forms?.lead?.title,
+    buttonLabel: servicesForm.button ?? content.ui?.sendRequest ?? 'Send request',
+    note: servicesForm.note ?? servicesForm.lead ?? '',
+  })
 }
 
 function renderReportCaptureForm(content) {
@@ -235,6 +210,122 @@ function renderSimplePage(title, lead, pageKey) {
         <h1>${title}</h1>
         <p class="lead">${lead}</p>
       </div>
+    </section>
+  `
+}
+
+function renderContactIcon(type = 'brief') {
+  const icons = {
+    brief: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8"/><path d="M9 3v3"/><path d="M15 3v3"/><rect x="4" y="6" width="16" height="14" rx="3"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>`,
+    call: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.8 2.6a2 2 0 0 1-.5 2.3L8 10a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2.3-.5c.8.4 1.7.7 2.6.8A2 2 0 0 1 22 16.9Z"/></svg>`,
+    documents: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>`,
+  }
+
+  return icons[type] ?? icons.brief
+}
+
+function renderContactAction(item = {}, ui = {}) {
+  if (!item.actionLabel) {
+    return ''
+  }
+
+  if (item.actionType === 'modal') {
+    return `<button class="contacts-card__action" type="button" data-open-modal="${item.actionTarget ?? 'callback'}">${item.actionLabel}</button>`
+  }
+
+  return `<a class="contacts-card__action" href="${item.actionTarget ?? '#contact-form'}">${item.actionLabel}</a>`
+}
+
+function renderContactsPage(content, ui) {
+  const contacts = content.contacts ?? {}
+  const summary = contacts.summary ?? []
+  const channels = contacts.channels ?? []
+  const checklist = contacts.checklist ?? []
+  const support = contacts.support ?? []
+  const form = contacts.form ?? {}
+
+  return `
+    <section class="contacts-page">
+      <section class="contacts-page-hero">
+        <div class="shell contacts-page-hero__layout">
+          <div class="contacts-page-hero__copy">
+            <h1>${contacts.title ?? 'Talk to the VW Recruit team'}</h1>
+            <div class="contacts-page-hero__actions">
+              <a class="button" href="#contact-form">${ui.sendRequest ?? 'Send request'}</a>
+              <button class="button button--ghost" type="button" data-open-modal="callback">${ui.bookCall ?? 'Book a call'}</button>
+            </div>
+          </div>
+          <div class="contacts-page-hero__summary">
+            ${summary
+              .map(
+                (item) => `
+                  <article class="contacts-summary-card">
+                    <span class="contacts-summary-card__label">${item.label}</span>
+                    <strong class="contacts-summary-card__value">${item.value}</strong>
+                  </article>
+                `,
+              )
+              .join('')}
+          </div>
+        </div>
+      </section>
+
+      <section class="section contacts-page-section">
+        <div class="shell">
+          <div class="contacts-page__section-head">
+            <h2>${contacts.channelsTitle ?? 'How to start the conversation'}</h2>
+            <p>${contacts.channelsLead ?? ''}</p>
+          </div>
+          <div class="contacts-grid">
+            ${channels
+              .map(
+                (item) => `
+                  <article class="contacts-card">
+                    <div class="contacts-card__icon">${renderContactIcon(item.icon)}</div>
+                    <h3>${item.title ?? ''}</h3>
+                    <p>${item.text ?? ''}</p>
+                    ${renderContactAction(item, ui)}
+                  </article>
+                `,
+              )
+              .join('')}
+          </div>
+        </div>
+      </section>
+
+      <section class="section contacts-page-section contacts-page-section--soft">
+        <div class="shell contacts-page__info-grid">
+          <article class="contacts-panel">
+            <h2>${contacts.checklistTitle ?? 'What is useful to prepare before reaching out'}</h2>
+            <p class="contacts-panel__lead">${contacts.checklistLead ?? ''}</p>
+            <ul class="contacts-list">
+              ${checklist.map((item) => `<li>${item}</li>`).join('')}
+            </ul>
+          </article>
+          <article class="contacts-panel">
+            <h2>${contacts.supportTitle ?? 'What the team can clarify on the first contact'}</h2>
+            <p class="contacts-panel__lead">${contacts.supportLead ?? ''}</p>
+            <ul class="contacts-list">
+              ${support.map((item) => `<li>${item}</li>`).join('')}
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section contacts-page-form-section" id="contact-form">
+        <div class="shell contacts-page-form">
+          <div class="contacts-page__section-head contacts-page__section-head--compact">
+            <h2>${form.title ?? content.forms?.contact?.title ?? 'Send a message'}</h2>
+            <p>${form.lead ?? contacts.lead ?? ''}</p>
+          </div>
+          ${renderReportStyleForm(content, {
+            type: 'contact',
+            title: form.title ?? content.forms?.contact?.title,
+            buttonLabel: ui.sendRequest ?? 'Send request',
+            note: form.note ?? '',
+          })}
+        </div>
+      </section>
     </section>
   `
 }
@@ -1221,7 +1312,6 @@ function renderCasesPage(content, ui) {
 
     <section class="section cases-page-section" data-reveal>
       <div class="shell convincing-section">
-        <p class="convincing-section__label">${ui.whyItWorks ?? 'Чому це працює'}</p>
         <h2 class="convincing-section__title">${cases.convincingTitle ?? cases.frameworkTitle ?? ''}</h2>
         <div class="animated-list">
           ${renderCardList(
@@ -1672,19 +1762,19 @@ export function renderPage(content, pageKey) {
           ${
             content.home.hero.video
               ? `
-                <div class="hero-video" data-hero-video-player>
-                  <video
-                    class="hero-video__media"
-                    playsinline
-                    webkit-playsinline
-                    preload="auto"
-                    ${content.home.hero.video.src ? `src="${content.home.hero.video.src}"` : ''}
-                    ${content.home.hero.video.poster ? `poster="${content.home.hero.video.poster}"` : ''}
-                  >
-                    ${content.home.hero.video.src ? `<source src="${content.home.hero.video.src}" type="${content.home.hero.video.type ?? 'video/mp4'}" />` : ''}
-                  </video>
-                  <button class="hero-video__play" type="button" aria-label="${ui.videoPlay ?? 'Play video'}" data-hero-video-trigger></button>
-                </div>
+                <button
+                  class="hero-video"
+                  type="button"
+                  aria-label="${ui.videoPlay ?? 'Play video'}"
+                  aria-haspopup="dialog"
+                  data-video-trigger
+                  ${content.home.hero.video.src ? `data-video-src="${content.home.hero.video.src}"` : ''}
+                  ${content.home.hero.video.poster ? `data-video-poster="${content.home.hero.video.poster}"` : ''}
+                >
+                  <span class="hero-video__media" aria-hidden="true"></span>
+                  <span class="hero-video__play" aria-hidden="true"></span>
+                  <span class="sr-only">${ui.videoPlay ?? 'Play video'}</span>
+                </button>
               `
               : ''
           }
@@ -1934,6 +2024,10 @@ export function renderPage(content, pageKey) {
 
   if (pageKey === 'report') {
     return renderReportPage(content, ui)
+  }
+
+  if (pageKey === 'contacts') {
+    return renderContactsPage(content, ui)
   }
 
   const contentMap = {

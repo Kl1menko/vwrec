@@ -294,19 +294,19 @@
                 </div>
               
           
-                <div class="hero-video" data-hero-video-player>
-                  <video
-                    class="hero-video__media"
-                    playsinline
-                    webkit-playsinline
-                    preload="auto"
-                    src="/videos/international-recruitment-overview.mp4"
-                    poster="/video-poster-home.svg"
-                  >
-                    <source src="/videos/international-recruitment-overview.mp4" type="video/mp4" />
-                  </video>
-                  <button class="hero-video__play" type="button" aria-label="Відтворити відео" data-hero-video-trigger></button>
-                </div>
+                <button
+                  class="hero-video"
+                  type="button"
+                  aria-label="Відтворити відео"
+                  aria-haspopup="dialog"
+                  data-video-trigger
+                  data-video-src="/videos/international-recruitment-overview.mp4"
+                  data-video-poster="/video-poster-home.svg"
+                >
+                  <span class="hero-video__media" aria-hidden="true"></span>
+                  <span class="hero-video__play" aria-hidden="true"></span>
+                  <span class="sr-only">Відтворити відео</span>
+                </button>
               
         </div>
       </section>
@@ -1679,7 +1679,6 @@
     <div class="modal" data-modal="video">
       <div class="modal__dialog modal__dialog--video">
         <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">×</button>
-        <h3 data-video-modal-title>Презентація VW Recruit</h3>
         <div class="video-modal__player">
           <video
             class="video-modal__media"

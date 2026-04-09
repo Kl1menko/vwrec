@@ -104,12 +104,9 @@ export function initModals() {
     trigger.addEventListener('click', () => {
       const modal = document.querySelector('[data-modal="video"]')
       const video = modal?.querySelector('[data-video-modal-media]')
-      const title = modal?.querySelector('[data-video-modal-title]')
       const src = trigger.dataset.videoSrc
 
-      if (!modal || !video || !title || !src) return
-
-      title.textContent = trigger.dataset.videoTitle || 'Video'
+      if (!modal || !video || !src) return
       video.src = src
 
       if (trigger.dataset.videoPoster) {

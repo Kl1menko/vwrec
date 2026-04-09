@@ -639,6 +639,8 @@ body[data-page='services'] .site-header__inner {
     bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
     z-index: 95;
     width: auto;
+    height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 20px);
+    min-height: calc(100vh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 20px);
     margin-top: 0;
     padding: 16px;
     border-radius: 28px;
@@ -701,6 +703,7 @@ body[data-page='services'] .site-header__inner {
   }
 
   body.has-language-sheet-open .site-header__panel {
-    overflow: hidden;
+    max-height: none;
+    overflow: visible;
   }
 }

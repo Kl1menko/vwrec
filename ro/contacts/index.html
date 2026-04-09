@@ -13,7 +13,7 @@
     <link rel="manifest" href="/site.webmanifest" />
   
     <title>VW Recruit | Talk to the VW Recruit team</title>
-    <meta name="description" content="Add contact channels, quick lead form, messenger links, and call booking options." />
+    <meta name="description" content="Get a clear next step on hiring model, timing, documents, and launch format for your team." />
     
     <style>
       html.page-loading {
@@ -252,26 +252,99 @@
   
     <main id="main-content">
       
-    
-    <section class="page-hero">
-      <div class="shell">
-        <p class="eyebrow">VW Recruit / contacts</p>
-        <h1>Talk to the VW Recruit team</h1>
-        <p class="lead">Add contact channels, quick lead form, messenger links, and call booking options.</p>
-      </div>
-    </section>
-  
-    <section class="section">
-      <div class="shell split">
-        <div class="stack">
-          <div class="line-card">Starter page template for <strong>contacts</strong></div>
-          <div class="line-card">Ready for localized metadata and content expansion</div>
-          <div class="line-card">Built as a separate SEO-friendly route per locale</div>
+    <section class="contacts-page">
+      <section class="contacts-page-hero">
+        <div class="shell contacts-page-hero__layout">
+          <div class="contacts-page-hero__copy">
+            <h1>Talk to the VW Recruit team</h1>
+            <div class="contacts-page-hero__actions">
+              <a class="button" href="#contact-form">Send request</a>
+              <button class="button button--ghost" type="button" data-open-modal="callback">Book a call</button>
+            </div>
+          </div>
+          <div class="contacts-page-hero__summary">
+            
+                  <article class="contacts-summary-card">
+                    <span class="contacts-summary-card__label">Response time</span>
+                    <strong class="contacts-summary-card__value">Within one business day</strong>
+                  </article>
+                
+                  <article class="contacts-summary-card">
+                    <span class="contacts-summary-card__label">Format</span>
+                    <strong class="contacts-summary-card__value">Call, Zoom, or email follow-up</strong>
+                  </article>
+                
+                  <article class="contacts-summary-card">
+                    <span class="contacts-summary-card__label">Focus</span>
+                    <strong class="contacts-summary-card__value">Employers with operational hiring needs</strong>
+                  </article>
+                
+          </div>
         </div>
-        
+      </section>
+
+      <section class="section contacts-page-section">
+        <div class="shell">
+          <div class="contacts-page__section-head">
+            <h2>How to start the conversation</h2>
+            <p>Choose the simplest format for your current stage. If the project is still being scoped, the team can start from a short call and then move to detailed planning.</p>
+          </div>
+          <div class="contacts-grid">
+            
+                  <article class="contacts-card">
+                    <div class="contacts-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8"/><path d="M9 3v3"/><path d="M15 3v3"/><rect x="4" y="6" width="16" height="14" rx="3"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></div>
+                    <h3>Share your staffing need</h3>
+                    <p>The best option when you already know the role, approximate team size, or launch timing and want a concrete next step.</p>
+                    <a class="contacts-card__action" href="#contact-form">Open request form</a>
+                  </article>
+                
+                  <article class="contacts-card">
+                    <div class="contacts-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.8 2.6a2 2 0 0 1-.5 2.3L8 10a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2.3-.5c.8.4 1.7.7 2.6.8A2 2 0 0 1 22 16.9Z"/></svg></div>
+                    <h3>Book a callback with the team</h3>
+                    <p>Useful when you want to quickly align on model fit, staffing geography, or whether international hiring makes sense for your case.</p>
+                    <button class="contacts-card__action" type="button" data-open-modal="callback">Book a call</button>
+                  </article>
+                
+                  <article class="contacts-card">
+                    <div class="contacts-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></div>
+                    <h3>Clarify documents, timing, and launch logic</h3>
+                    <p>The team can explain the process from sourcing and approvals to arrival, adaptation, and first shift launch.</p>
+                    
+                  </article>
+                
+          </div>
+        </div>
+      </section>
+
+      <section class="section contacts-page-section contacts-page-section--soft">
+        <div class="shell contacts-page__info-grid">
+          <article class="contacts-panel">
+            <h2>What is useful to prepare before reaching out</h2>
+            <p class="contacts-panel__lead">You do not need a perfect brief. Even approximate numbers make the first conversation faster and more practical.</p>
+            <ul class="contacts-list">
+              <li>Which roles or departments need reinforcement</li><li>Approximate number of workers and preferred start timing</li><li>Country and city where the team will work</li><li>Whether you need support only with sourcing or with full launch coordination</li>
+            </ul>
+          </article>
+          <article class="contacts-panel">
+            <h2>What the team can clarify on the first contact</h2>
+            <p class="contacts-panel__lead">The first conversation is meant to reduce uncertainty and show whether the route is operationally realistic for your situation.</p>
+            <ul class="contacts-list">
+              <li>How quickly candidate flow can start</li><li>Which sourcing geographies fit the role profile</li><li>How documents, permits, and arrival coordination are structured</li><li>What launch rhythm and communication format to expect after approval</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section contacts-page-form-section" id="contact-form">
+        <div class="shell contacts-page-form">
+          <div class="contacts-page__section-head contacts-page__section-head--compact">
+            <h2>Leave a request and we will get back to you</h2>
+            <p>Leave your details and the team will come back with the most practical next step for your hiring situation.</p>
+          </div>
+          
     <div class="report-form__card report-form__card--embedded">
       <div class="report-form__card-inner">
-        <h3 class="report-form__card-title">Send a message</h3>
+        <h3 class="report-form__card-title">Leave a request and we will get back to you</h3>
         <form class="report-form__fields" data-form data-form-type="contact">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="report-form__field">
@@ -293,13 +366,13 @@
           <button class="report-form__submit" type="submit">Send request</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
-        <p class="report-form__note">Add contact channels, quick lead form, messenger links, and call booking options.</p>
+        <p class="report-form__note">Best suited for employers who need sourcing, replacement, or launch support.</p>
       </div>
     </div>
   
-      </div>
+        </div>
+      </section>
     </section>
-    
   
     </main>
     
@@ -428,7 +501,6 @@
     <div class="modal" data-modal="video">
       <div class="modal__dialog modal__dialog--video">
         <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3 data-video-modal-title>Презентація VW Recruit</h3>
         <div class="video-modal__player">
           <video
             class="video-modal__media"

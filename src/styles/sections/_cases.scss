@@ -90,14 +90,17 @@
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
+  background: #1a1917;
   border-radius: 16px;
   cursor: pointer;
-  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  transition:
+    box-shadow 220ms ease,
+    transform 220ms ease;
 }
 
 .case-card:hover {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .case-card--col-2 {
@@ -122,11 +125,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 280ms ease;
 }
 
 .case-card:hover .case-card__media img {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
 .case-card__media::after {
@@ -135,6 +138,11 @@
   inset: 0;
   background: linear-gradient(to top, rgba(20, 18, 15, 0.88) 0%, rgba(20, 18, 15, 0.5) 35%, rgba(20, 18, 15, 0.08) 100%);
   z-index: 1;
+  transition: opacity 220ms ease;
+}
+
+.case-card:hover .case-card__media::after {
+  opacity: 0.92;
 }
 
 .case-card__body {
@@ -144,11 +152,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 32px 30px 30px;
-  transition: transform 0.3s ease;
-}
-
-.case-card:hover .case-card__body {
-  transform: translateY(-6px);
+  transition: opacity 220ms ease;
 }
 
 .case-card__category {
@@ -216,13 +220,19 @@
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 0.4s ease, max-height 0.4s ease, margin-top 0.4s ease;
+  transform: translateY(6px);
+  transition:
+    opacity 220ms ease,
+    max-height 220ms ease,
+    margin-top 220ms ease,
+    transform 220ms ease;
 }
 
 .case-card:hover .case-card__timeline {
   opacity: 1;
   max-height: 50px;
   margin-top: 16px;
+  transform: translateY(0);
 }
 
 .tl-step {
@@ -298,7 +308,7 @@
 }
 
 .animated-list__step {
-  color: var(--color-accent);
+  color: #111111;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
