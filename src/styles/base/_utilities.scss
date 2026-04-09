@@ -77,9 +77,43 @@ body[data-page='home'] .comparison-heading h2 {
 
 body[data-page='home'] .lead {
   max-width: 64ch;
-  font-size: 1.04rem;
-  line-height: 1.62;
+  font-size: 1rem;
+  line-height: 1.56;
+  font-weight: 400;
   color: #8b847d;
+}
+
+body[data-page='home'] .eyebrow,
+body[data-page='home'] .reviews-section__label,
+body[data-page='home'] .benefits-section__label,
+body[data-page='home'] .home-report-block__label {
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+body[data-page='home'] h2 {
+  letter-spacing: -0.025em;
+}
+
+body[data-page='home'] h3 {
+  letter-spacing: -0.02em;
+}
+
+body[data-page='home'] p:not(.hero__line):not(.hero__highlight) {
+  font-weight: 400;
+}
+
+body[data-page='home'] .comparison-heading h2,
+body[data-page='home'] .process-flow__intro h2,
+body[data-page='home'] .benefits-section__title,
+body[data-page='home'] .home-report-block__title,
+body[data-page='home'] .reviews-section h2,
+body[data-page='home'] .report-section__title,
+body[data-page='home'] .final-lead-section__copy h2,
+body[data-page='home'] .cta-banner__copy h2 {
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
 .comparison-section {

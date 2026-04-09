@@ -132,6 +132,9 @@ ukContent.home = {
   casesSection: {
     eyebrow: 'Наші проєкти',
     title: 'Наші проєкти підбору працівників',
+    lead:
+      'Показуємо, як виглядає підбір у реальних проєктах: від виробництва й складів до сервісу та операційних команд.',
+    cta: 'Усі проєкти',
     items: [
       {
         title: 'Delta Pack',
@@ -393,6 +396,23 @@ ukContent.ui.guaranteesReplacementDelta = 'Швидка заміна в гара
 ukContent.ui.guaranteesSupportMetric = 'Під ключ'
 ukContent.ui.guaranteesSupportDelta = 'Від відбору до зміни'
 ukContent.ui.guaranteesFallbackDelta = 'Перевага VW Recruit'
+ukContent.ui.guaranteesReplacementLabel = 'Гарантія на старті'
+ukContent.ui.guaranteesReplacementUnit = 'грн'
+ukContent.ui.guaranteesReplacementWarrantyDays = 30
+ukContent.ui.guaranteesReplacementWarrantyLabel = 'днів гарантія'
+ukContent.ui.guaranteesReplacementReplyHours = 48
+ukContent.ui.guaranteesReplacementReplyLabel = 'годин відповідь'
+ukContent.ui.guaranteesSupportBadge = 'Одна команда на весь процес'
+ukContent.ui.guaranteesCandidatesDays = 10
+ukContent.ui.guaranteesCandidatesDaysLabel = 'днів до кандидатів'
+ukContent.ui.guaranteesSupportPercentLabel = '% супровід'
+ukContent.ui.guaranteesOneTeamCount = 1
+ukContent.ui.guaranteesOneTeamLabel = 'команда'
+ukContent.ui.guaranteeTimelineStepOne = 'Відбір'
+ukContent.ui.guaranteeTimelineStepTwo = 'Документи'
+ukContent.ui.guaranteeTimelineStepThree = 'Логістика'
+ukContent.ui.guaranteeTimelineStepFour = 'Приїзд'
+ukContent.ui.guaranteeTimelineStepFive = 'Зміна'
 ukContent.ui.guaranteeSupportStepOne = 'Відбір'
 ukContent.ui.guaranteeSupportStepTwo = 'Приїзд'
 ukContent.ui.guaranteeSupportNote = 'Старт зміни'

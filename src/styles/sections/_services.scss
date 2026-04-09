@@ -1414,6 +1414,14 @@
 
 .services-form-card__button {
   width: 100%;
+  min-height: 56px;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  box-shadow: none;
+}
+
+.services-form-card__button:hover {
+  box-shadow: none;
 }
 
 .services-form-card__note {

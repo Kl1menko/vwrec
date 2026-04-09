@@ -32,6 +32,9 @@
   display: grid;
   gap: 14px;
   max-width: 74ch;
+  margin-inline: auto;
+  justify-items: center;
+  text-align: center;
 }
 
 .process-flow__board {

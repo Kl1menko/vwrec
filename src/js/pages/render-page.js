@@ -123,42 +123,6 @@ function buildServicesFitCards(roles, ui = {}) {
   })
 }
 
-function renderLeadForm(content, type = 'lead') {
-  const ui = content.ui ?? {}
-
-  return `
-    <form class="stack card card--form" data-form data-form-type="${type}">
-      ${type === 'lead'
-        ? `
-          <div class="lead-form__brand" aria-hidden="true">
-            <img src="${logoSymbol}" alt="" loading="lazy" />
-            <span>VW Recruit</span>
-          </div>
-        `
-        : ''}
-      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-      <label class="field">
-        <span>${ui.fieldName ?? 'Name'} *</span>
-        <input type="text" name="name" autocomplete="name" required />
-      </label>
-      <label class="field">
-        <span>${ui.fieldCompany ?? 'Company'} *</span>
-        <input type="text" name="company" autocomplete="organization" required />
-      </label>
-      <label class="field">
-        <span>${ui.fieldEmail ?? 'Email'} *</span>
-        <input type="email" name="email" autocomplete="email" required />
-      </label>
-      <label class="field">
-        <span>${ui.fieldPhone ?? 'Phone'}</span>
-        <input type="tel" name="phone" autocomplete="tel" />
-      </label>
-      <button class="button" type="submit">${ui.sendRequest ?? 'Send request'}</button>
-      <p class="form-status" data-form-status role="status" hidden></p>
-    </form>
-  `
-}
-
 function renderReportStyleForm(content, { type = 'lead', title, buttonLabel, note = '' } = {}) {
   const ui = content.ui ?? {}
   const resolvedTitle = title ?? content.forms?.[type]?.title ?? content.forms?.lead?.title ?? 'Send request'
@@ -371,138 +335,228 @@ function renderIndustrySlide(item, ui = {}) {
   `
 }
 
-function getGuaranteeCardMeta(item, index, ui = {}) {
-  const title = item.title ?? ''
-
-  if (/легаль|legal/i.test(title)) {
-    return {
-      label: 'Legal shield',
-      metric: '100%',
-      delta: ui.guaranteesLegalDelta ?? 'Quotas, permits, visas',
-      variant: 'compliance',
-    }
-  }
-
-  if (/заміна|replace/i.test(title)) {
-    return {
-      label: 'Replacement',
-      metric: ui.guaranteesReplacementMetric ?? 'No fee',
-      delta: ui.guaranteesReplacementDelta ?? 'Fast replacement under guarantee',
-      variant: 'replacement',
-    }
-  }
-
-  if (/супровід|support|ключ/i.test(title)) {
-    return {
-      label: 'Full support',
-      metric: ui.guaranteesSupportMetric ?? 'Turnkey',
-      delta: ui.guaranteesSupportDelta ?? 'From sourcing to first shift',
-      variant: 'support',
-    }
-  }
-
-  return {
-    label: `Benefit 0${index + 1}`,
-    metric: `${index + 1}00%`,
-    delta: ui.guaranteesFallbackDelta ?? 'VW Recruit advantage',
-    variant: 'compliance',
-  }
-}
-
-function renderGuaranteeVisual(variant, ui = {}) {
-  if (variant === 'replacement') {
-    return `
-      <div class="guarantee-card__replacement-scene" aria-hidden="true">
-        <div class="guarantee-card__replacement-card guarantee-card__replacement-card--old">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="guarantee-card__replacement-loop">
-          <svg class="guarantee-card__replacement-loop-svg" viewBox="0 0 88 88" aria-hidden="true">
-            <defs>
-              <marker
-                id="replacement-loop-arrowhead"
-                markerWidth="6"
-                markerHeight="6"
-                refX="5"
-                refY="3"
-                markerUnits="userSpaceOnUse"
-                orient="auto"
-              >
-                <path d="M0 0L6 3L0 6Z" fill="#5a6bf8" />
-              </marker>
-            </defs>
-            <circle class="guarantee-card__replacement-loop-ring" cx="44" cy="44" r="39" />
-            <g class="guarantee-card__replacement-loop-rotor">
-              <path class="guarantee-card__replacement-loop-arc" d="M28 24 A24 24 0 0 1 63 31" marker-end="url(#replacement-loop-arrowhead)" />
-              <path class="guarantee-card__replacement-loop-arc" d="M60 64 A24 24 0 0 1 25 57" marker-end="url(#replacement-loop-arrowhead)" />
-            </g>
-          </svg>
-        </div>
-        <div class="guarantee-card__replacement-card guarantee-card__replacement-card--new">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    `
-  }
-
-  if (variant === 'support') {
-    return `
-      <div class="guarantee-card__support-scene" aria-hidden="true">
-        <div class="guarantee-card__support-step">
-          <strong>01</strong>
-          <span>${ui.guaranteeSupportStepOne ?? 'Selection'}</span>
-        </div>
-        <div class="guarantee-card__support-path">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="guarantee-card__support-step guarantee-card__support-step--accent">
-          <strong>02</strong>
-          <span>${ui.guaranteeSupportStepTwo ?? 'Arrival'}</span>
-        </div>
-        <div class="guarantee-card__support-note">${ui.guaranteeSupportNote ?? 'First shift start'}</div>
-      </div>
-    `
-  }
-
+function renderBenefitCheck(text) {
   return `
-    <div class="guarantee-card__compliance-scene" aria-hidden="true">
-      <div class="guarantee-card__doc">
-        <span class="guarantee-card__doc-line"></span>
-        <span class="guarantee-card__doc-line guarantee-card__doc-line--short"></span>
-        <span class="guarantee-card__doc-line guarantee-card__doc-line--medium"></span>
-      </div>
-      <div class="guarantee-card__checklist">
-        <span class="guarantee-card__checklist-item is-done">${ui.guaranteeChecklistQuota ?? 'Quotas'}</span>
-        <span class="guarantee-card__checklist-item is-done">${ui.guaranteeChecklistPermit ?? 'Permit'}</span>
-        <span class="guarantee-card__checklist-item is-done">${ui.guaranteeChecklistVisa ?? 'Visa'}</span>
-      </div>
+    <div class="benefit-check">
+      <span class="benefit-check__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </span>
+      <span class="benefit-check__text">${text}</span>
     </div>
   `
 }
 
-function renderGuaranteeCard(item, index, ui = {}) {
-  const meta = getGuaranteeCardMeta(item, index, ui)
+function renderBenefitsTimeline(ui = {}) {
+  const steps = [
+    { label: ui.guaranteeTimelineStepOne ?? 'Selection', style: 'filled' },
+    { label: ui.guaranteeTimelineStepTwo ?? 'Documents', style: 'filled' },
+    { label: ui.guaranteeTimelineStepThree ?? 'Logistics', style: 'accent' },
+    { label: ui.guaranteeTimelineStepFour ?? 'Arrival', style: 'accent' },
+    { label: ui.guaranteeTimelineStepFive ?? 'Shift', style: 'outline' },
+  ]
+
+  return steps
+    .map((step, index) => {
+      const number = String(index + 1).padStart(2, '0')
+      const connector =
+        index < steps.length - 1
+          ? `
+            <div class="bt-connector" aria-hidden="true">
+              <div class="bt-connector__track"></div>
+              <div class="bt-connector__beam"></div>
+            </div>
+          `
+          : ''
+
+      return `
+        <div class="bt-node">
+          <div class="bt-node__dot bt-node__dot--${step.style}">${number}</div>
+          <span class="bt-node__label">${step.label}</span>
+        </div>
+        ${connector}
+      `
+    })
+    .join('')
+}
+
+function renderBenefitsSection(content, ui = {}) {
+  const guarantees = content.home.guarantees ?? {}
+  const items = guarantees.items ?? []
+
+  if (!items.length) return ''
+
+  const [legal = {}, replacement = {}, support = {}] = items
 
   return `
-    <article class="guarantee-card guarantee-card--${meta.variant}">
-      <div class="guarantee-card__head">
-        <h3 class="guarantee-card__title">${item.title}</h3>
+    <section class="section benefits-section-wrap" data-reveal>
+      <div class="shell benefits-section">
+        <h2 class="benefits-section__title">${guarantees.title}</h2>
+
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <div class="benefit-card__inner">
+              <div class="benefit-card__tag">
+                <span class="benefit-card__tag-dot"></span>
+                ${ui.guaranteesLegalDelta ?? 'Quotas, permits, visas'}
+              </div>
+              <h3 class="benefit-card__title">${legal.title ?? ''}</h3>
+              <div class="benefit-card__metric">
+                <span class="benefit-card__metric-val" data-counter-target="100">0</span>
+                <span class="benefit-card__metric-unit">%</span>
+              </div>
+              <p class="benefit-card__desc">${legal.text ?? ''}</p>
+              <div class="benefit-checks">
+                ${renderBenefitCheck(ui.guaranteeChecklistQuota ?? 'Quotas')}
+                ${renderBenefitCheck(ui.guaranteeChecklistPermit ?? 'Permit')}
+                ${renderBenefitCheck(ui.guaranteeChecklistVisa ?? 'Visa')}
+              </div>
+            </div>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-card__inner">
+              <div class="benefit-card__tag">
+                <span class="benefit-card__tag-dot"></span>
+                ${ui.guaranteesReplacementLabel ?? 'Launch guarantee'}
+              </div>
+              <h3 class="benefit-card__title">${replacement.title ?? ''}</h3>
+              <div class="benefit-card__metric">
+                <span class="benefit-card__metric-val">0</span>
+                <span class="benefit-card__metric-unit">${ui.guaranteesReplacementUnit ?? 'fee'}</span>
+              </div>
+              <p class="benefit-card__desc">${replacement.text ?? ''}</p>
+
+              <div class="counter-row">
+                <div class="counter-item">
+                  <span class="counter-item__val" data-counter-target="${ui.guaranteesReplacementWarrantyDays ?? 30}">0</span>
+                  <span class="counter-item__label">${ui.guaranteesReplacementWarrantyLabel ?? 'days warranty'}</span>
+                </div>
+                <div class="counter-item">
+                  <span class="counter-item__val" data-counter-target="${ui.guaranteesReplacementReplyHours ?? 48}">0</span>
+                  <span class="counter-item__label">${ui.guaranteesReplacementReplyLabel ?? 'hours reply'}</span>
+                </div>
+              </div>
+
+              <span class="benefit-badge benefit-badge--green">
+                <span class="benefit-badge__dot"></span>
+                ${ui.guaranteesReplacementDelta ?? 'Fast replacement under guarantee'}
+              </span>
+            </div>
+          </article>
+
+          <article class="benefit-card benefit-card--full benefits-grid__full">
+            <div class="benefit-card__inner">
+              <div class="benefit-card__text-col">
+                <div class="benefit-card__tag">
+                  <span class="benefit-card__tag-dot"></span>
+                  ${ui.guaranteesSupportDelta ?? 'From sourcing to first shift'}
+                </div>
+                <h3 class="benefit-card__title">${support.title ?? ''}</h3>
+                <p class="benefit-card__desc benefit-card__desc--spaced">${support.text ?? ''}</p>
+                <span class="benefit-badge benefit-badge--accent">
+                  <span class="benefit-badge__dot"></span>
+                  ${ui.guaranteesSupportBadge ?? 'One team across the whole process'}
+                </span>
+              </div>
+              <div class="benefit-timeline-col">
+                <div class="benefit-timeline">
+                  ${renderBenefitsTimeline(ui)}
+                </div>
+                <div class="counter-row">
+                  <div class="counter-item">
+                    <span class="counter-item__val" data-counter-target="${ui.guaranteesCandidatesDays ?? 10}">0</span>
+                    <span class="counter-item__label">${ui.guaranteesCandidatesDaysLabel ?? 'days to candidates'}</span>
+                  </div>
+                  <div class="counter-item">
+                    <span class="counter-item__val" data-counter-target="100">0</span>
+                    <span class="counter-item__label">${ui.guaranteesSupportPercentLabel ?? '% support'}</span>
+                  </div>
+                  <div class="counter-item">
+                    <span class="counter-item__val" data-counter-target="${ui.guaranteesOneTeamCount ?? 1}">0</span>
+                    <span class="counter-item__label">${ui.guaranteesOneTeamLabel ?? 'team'}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="guarantee-card__metric">${meta.metric}</div>
-      <div class="guarantee-card__delta">${meta.delta}</div>
-      <div class="guarantee-card__visual">
-        ${renderGuaranteeVisual(meta.variant, ui)}
+    </section>
+  `
+}
+
+function renderHomeReportBlock(content, ui = {}) {
+  const reportBlock = content.home.reportBlock ?? {}
+  const points = reportBlock.points ?? []
+
+  if (!reportBlock.title) return ''
+
+  return `
+    <section class="section home-report-block-wrap" data-reveal>
+      <div class="shell">
+        <div class="home-report-block">
+          <div class="home-report-block__left">
+            <h2 class="home-report-block__title">${reportBlock.title}</h2>
+            <p class="home-report-block__desc">${reportBlock.lead ?? ''}</p>
+
+            <div class="home-insights-list">
+              ${renderCardList(
+                points,
+                (item, index) => `
+                  <div class="home-insight-item">
+                    <span class="home-insight-item__num">0${index + 1}</span>
+                    <span class="home-insight-item__text">${item}</span>
+                  </div>
+                `,
+              )}
+            </div>
+          </div>
+
+          <div class="home-report-block__right">
+            <div class="home-pdf-card" aria-hidden="true">
+              <div class="home-pdf-card__icon">${ui.reportPanelGuide ?? 'PDF'}</div>
+              <div class="home-pdf-card__meta">
+                <span class="home-pdf-card__prefix">${ui.reportPanelKicker ?? 'VW Recruit / Insight'}</span>
+                <span class="home-pdf-card__title">${ui.reportPanelReportTitle ?? 'Labor market 2026'}</span>
+                <span class="home-pdf-card__sub">${ui.reportPanelReportText ?? 'International workforce integration for businesses facing labor shortages'}</span>
+              </div>
+            </div>
+
+            <div class="home-report-form">
+              <p class="home-report-form__title">${ui.reportPanelTitle ?? 'Get the material by email'}</p>
+              <form class="home-report-form__fields" data-form data-form-type="report">
+                <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+                <div class="home-report-form__row">
+                  <label class="home-report-form__field">
+                    <span>${ui.fieldName ?? 'Name'} *</span>
+                    <input type="text" name="name" autocomplete="name" required />
+                  </label>
+                  <label class="home-report-form__field">
+                    <span>${ui.fieldCompany ?? 'Company'} *</span>
+                    <input type="text" name="company" autocomplete="organization" required />
+                  </label>
+                </div>
+                <div class="home-report-form__row">
+                  <label class="home-report-form__field">
+                    <span>${ui.fieldEmail ?? 'Email'} *</span>
+                    <input type="email" name="email" autocomplete="email" required />
+                  </label>
+                  <label class="home-report-form__field">
+                    <span>${ui.fieldPhone ?? 'Phone'}</span>
+                    <input type="tel" name="phone" autocomplete="tel" />
+                  </label>
+                </div>
+                <button class="home-report-form__submit" type="submit">${reportBlock.cta ?? ui.getReport ?? 'Get report'}</button>
+                <p class="form-status" data-form-status role="status" hidden></p>
+              </form>
+              <p class="home-report-form__note">${ui.reportPanelText ?? 'Leave your details and we will send the material.'}</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="guarantee-card__copy">
-        <p>${item.text}</p>
-      </div>
-    </article>
+    </section>
   `
 }
 
@@ -624,6 +678,118 @@ function renderMediaInsightCard(item, index, ui) {
         </button>
       </div>
     </article>
+  `
+}
+
+function buildReviewInitials(name = '') {
+  const parts = String(name)
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+
+  if (!parts.length) return 'VW'
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase()
+
+  return `${parts[0][0] ?? ''}${parts[1][0] ?? ''}`.toUpperCase()
+}
+
+function renderReviewStars() {
+  return Array.from({ length: 5 }, () => `
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>
+  `).join('')
+}
+
+function getStatsStripIcon(icon) {
+  if (icon === 'shield') {
+    return `
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+    `
+  }
+
+  if (icon === 'speed') {
+    return `
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 6v6l4 2"/>
+      </svg>
+    `
+  }
+
+  if (icon === 'support') {
+    return `
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    `
+  }
+
+  return `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+      <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+      <path d="M12 12v.01"/>
+    </svg>
+  `
+}
+
+function parseStatsStripMetricValue(rawValue = '') {
+  const value = String(rawValue).trim()
+  const match = value.match(/^(\d+)\s*(.*)$/)
+
+  if (!match) {
+    return { kind: 'text', text: value }
+  }
+
+  return {
+    kind: 'number',
+    number: Number(match[1]),
+    unit: match[2]?.trim() ?? '',
+  }
+}
+
+function renderHomeStatsStrip(metrics, ui = {}) {
+  if (!metrics.length) return ''
+
+  return `
+    <section class="section home-stats-strip-wrap" data-reveal>
+      <div class="shell">
+        <div class="home-stats-strip">
+          ${renderCardList(metrics, (item, index) => {
+            const meta = getReviewMetricMeta(item, index, ui)
+            const parsed = parseStatsStripMetricValue(meta.value)
+            const valueMarkup =
+              parsed.kind === 'number'
+                ? `
+                  <span class="home-stat-cell__num" data-counter-target="${parsed.number}">0</span>
+                  ${parsed.unit ? `<span class="home-stat-cell__unit">${parsed.unit}</span>` : ''}
+                `
+                : `<span class="home-stat-cell__num home-stat-cell__num--text">${parsed.text}</span>`
+
+            return `
+              <article class="home-stat-cell">
+                <div class="home-stat-cell__icon" aria-hidden="true">
+                  ${getStatsStripIcon(meta.icon)}
+                </div>
+                <div class="home-stat-cell__body">
+                  <div class="home-stat-cell__value">
+                    ${valueMarkup}
+                  </div>
+                  <span class="home-stat-cell__label">${meta.label ?? ''}</span>
+                </div>
+              </article>
+            `
+          })}
+        </div>
+      </div>
+    </section>
   `
 }
 
@@ -1576,6 +1742,10 @@ export function renderPage(content, pageKey) {
               <div class="shell">
                 <div class="cases-section__head">
                   <h2>${content.home.casesSection.title}</h2>
+                  <p class="lead">${content.home.casesSection.lead ?? ui.casesSectionLead ?? 'Показуємо приклади запуску підбору для виробництва, логістики, готелів та інших операційних команд.'}</p>
+                  <div class="button-row cases-section__actions">
+                    <a class="button" href="${buildPageUrl(content.locale.code, 'cases')}">${content.home.casesSection.cta ?? ui.projectsExamples ?? 'Project examples'}</a>
+                  </div>
                 </div>
                 <div class="cases-slider" data-cases-slider>
                   <div class="cases-slider__controls">
@@ -1605,6 +1775,10 @@ export function renderPage(content, pageKey) {
                               alt="${typeof item === 'string' ? item : item.alt ?? item.title}"
                               loading="lazy"
                             />
+                            <div class="case-card__media-copy">
+                              <strong>${typeof item === 'string' ? item : item.title}</strong>
+                              <span>${typeof item === 'string' ? ui.caseSubtitlePlaceholder ?? 'Short case summary' : item.subtitle}</span>
+                            </div>
                           </div>
                         </article>
                       `,
@@ -1660,62 +1834,13 @@ export function renderPage(content, pageKey) {
 
       ${
         guaranteeItems.length
-          ? `
-            <section class="section" data-reveal>
-              <div class="shell">
-                <h2 class="guarantees-title">${content.home.guarantees.title}</h2>
-                <div class="card-grid guarantees-grid">
-                  ${renderCardList(
-                    guaranteeItems,
-                    (item, index) => renderGuaranteeCard(item, index, ui),
-                  )}
-                </div>
-              </div>
-            </section>
-          `
+          ? renderBenefitsSection(content, ui)
           : ''
       }
 
       ${
         content.home.reportBlock
-          ? `
-            <section class="section section--muted" data-reveal>
-              <div class="shell report-capture">
-                <div class="report-capture__content">
-                  <h2>${content.home.reportBlock.title}</h2>
-                  <p class="lead">${content.home.reportBlock.lead}</p>
-                  <div class="report-capture__points">
-                    ${renderCardList(
-                      content.home.reportBlock.points,
-                      (item, index) => `
-                        <article class="report-capture__point">
-                          <span class="report-capture__point-index">0${index + 1}</span>
-                          <p>${item}</p>
-                        </article>
-                      `,
-                    )}
-                  </div>
-                </div>
-                <div class="report-capture__panel">
-                  <div class="report-capture__panel-copy">
-                    <strong>${ui.reportPanelTitle ?? 'Get the material by email'}</strong>
-                    <p>${ui.reportPanelText ?? 'Leave your contact details and we will send a useful resource about international hiring and payroll optimization.'}</p>
-                  </div>
-                  <div class="report-capture__panel-card" aria-hidden="true">
-                    <div class="report-capture__panel-card-sheet">
-                      <span class="report-capture__panel-card-kicker">${ui.reportPanelKicker ?? 'VW Recruit / Insight'}</span>
-                      <strong>${ui.reportPanelReportTitle ?? 'Labor market 2026'}</strong>
-                      <p>${ui.reportPanelReportText ?? 'International workforce integration for businesses facing labor shortages'}</p>
-                    </div>
-                    <div class="report-capture__panel-card-badge">
-                      <span>${ui.reportPanelGuide ?? 'Guide'}</span>
-                    </div>
-                  </div>
-                  ${renderReportCaptureForm(content)}
-                </div>
-              </div>
-            </section>
-          `
+          ? renderHomeReportBlock(content, ui)
           : ''
       }
 
@@ -1725,44 +1850,28 @@ export function renderPage(content, pageKey) {
             <section class="section reviews-section" data-reveal>
               <div class="shell">
                 <h2>${content.home.reviews.title}</h2>
-                <div class="reviews-slider" data-reviews-slider>
-                  <div class="reviews-slider__controls">
-                    <button class="reviews-slider__button" type="button" data-reviews-slider-prev aria-label="${ui.reviewsPrev ?? 'Previous review'}">←</button>
-                    <button class="reviews-slider__button" type="button" data-reviews-slider-next aria-label="${ui.reviewsNext ?? 'Next review'}">→</button>
-                  </div>
-                  <div class="reviews-slider__track" data-reviews-slider-track>
-                    ${renderCardList(
-                      reviewItems,
-                      (item) => `
+              </div>
+              <div class="reviews-marquee">
+                <div class="reviews-marquee__track">
+                  ${renderCardList(
+                    [...reviewItems, ...reviewItems],
+                    (item) => `
+                      <div class="reviews-marquee__card-wrap">
                         <article class="testimonial-card">
+                          <div class="testimonial-card__stars">
+                            ${renderReviewStars()}
+                          </div>
                           <p class="testimonial-card__text">${item.text}</p>
                           <div class="testimonial-card__footer">
-                            <strong class="testimonial-card__name">${item.name ?? item.title}</strong>
-                            <span class="testimonial-card__company">${item.company ?? ''}</span>
+                            <div class="testimonial-card__avatar">${buildReviewInitials(item.name ?? item.title)}</div>
+                            <div class="testimonial-card__author-copy">
+                              <strong class="testimonial-card__name">${item.name ?? item.title}</strong>
+                              <span class="testimonial-card__company">${item.company ?? ''}</span>
+                            </div>
                           </div>
                         </article>
-                      `,
-                    )}
-                  </div>
-                </div>
-                <div class="reviews-facts">
-                  ${renderCardList(
-                    reviewMetrics,
-                    (item, index) => {
-                      const meta = getReviewMetricMeta(item, index, ui)
-
-                      return `
-                        <article class="reviews-fact reviews-fact--${meta.icon}">
-                          <div class="reviews-fact__icon" aria-hidden="true">
-                            ${renderReviewMetricIcon(meta.icon)}
-                          </div>
-                          <div class="reviews-fact__copy">
-                            <strong>${meta.value ?? ui.reviewFallbackValue ?? '7 YEARS'}</strong>
-                            <span>${meta.label ?? ''}</span>
-                          </div>
-                        </article>
-                      `
-                    },
+                      </div>
+                    `,
                   )}
                 </div>
               </div>
@@ -1771,22 +1880,7 @@ export function renderPage(content, pageKey) {
           : ''
       }
 
-      ${
-        reelItems.length
-          ? `
-            <section class="section section--muted media-answers-section" data-reveal>
-              <div class="shell media-answers">
-                <div class="media-answers__head">
-                  <h2>${content.home.media.title}</h2>
-                </div>
-                <div class="media-answers__grid">
-                  ${renderCardList(reelItems, (item, index) => renderMediaInsightCard(item, index, ui))}
-                </div>
-              </div>
-            </section>
-          `
-          : ''
-      }
+      ${reviewMetrics.length ? renderHomeStatsStrip(reviewMetrics, ui) : ''}
 
       <section class="section final-lead-mobile-center" data-reveal>
         <div class="shell split final-lead-section">
@@ -1794,16 +1888,18 @@ export function renderPage(content, pageKey) {
             <h2>${content.forms.lead.title}</h2>
             <p class="lead">${content.home.finalCta.lead}</p>
           </div>
-          ${renderLeadForm(content)}
+          ${renderReportStyleForm(content, {
+            type: 'lead',
+            title: content.forms?.lead?.title,
+            buttonLabel: ui.sendRequest ?? 'Send request',
+          })}
         </div>
       </section>
 
-      <section class="section section--muted faq-section" data-reveal>
-        <div class="shell split">
-          <div>
-            <h2>${content.home.faq.title}</h2>
-          </div>
-          <div class="stack">
+      <section class="report-page-section report-faq-section" data-reveal>
+        <div class="shell">
+          <h2 class="report-section__title">${content.home.faq.title}</h2>
+          <div class="report-faq__list">
             ${renderFaq(content.home.faq.items)}
           </div>
         </div>
@@ -1812,15 +1908,11 @@ export function renderPage(content, pageKey) {
       <section class="section" data-reveal>
         <div class="shell cta-banner">
           <div class="cta-banner__copy">
-            <div class="cta-banner__brand" aria-hidden="true">
-              <img src="${logoSymbol}" alt="" loading="lazy" />
-              <span>VW Recruit</span>
-            </div>
             <h2>${content.home.finalCta.title}</h2>
             <p>${content.home.finalCta.lead}</p>
           </div>
           <div class="cta-banner__actions">
-            <button class="button cta-banner__button cta-banner__button--pulse" type="button" data-open-modal="callback">${ui.bookCall ?? 'Book a call'}</button>
+            <button class="button cta-banner__button cta-banner__button--primary" type="button" data-open-modal="callback">${ui.bookCall ?? 'Book a call'}</button>
             <a class="button button--ghost cta-banner__button cta-banner__button--ghost" href="${buildPageUrl(content.locale.code, 'contacts')}">${ui.openContactsPage ?? 'Open contacts page'}</a>
           </div>
         </div>

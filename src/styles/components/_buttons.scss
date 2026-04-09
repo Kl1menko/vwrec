@@ -19,6 +19,12 @@
     border-color var(--transition);
 }
 
+body[data-page='home'] .button {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
 .button:hover {
   transform: translateY(-1px);
   background: var(--color-accent-deep);

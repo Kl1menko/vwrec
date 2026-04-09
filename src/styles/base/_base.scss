@@ -17,6 +17,12 @@ body {
   overflow-x: clip;
 }
 
+body[data-page='home'] {
+  --font-body: 'Outfit', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
 body.has-modal-open {
   overflow: hidden;
   touch-action: none;
@@ -92,6 +98,22 @@ h3 {
 p {
   margin: 0;
   line-height: 1.65;
+}
+
+body[data-page='home'] h1,
+body[data-page='home'] h2,
+body[data-page='home'] h3 {
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+body[data-page='home'] p,
+body[data-page='home'] li,
+body[data-page='home'] label,
+body[data-page='home'] input,
+body[data-page='home'] textarea,
+body[data-page='home'] button {
+  letter-spacing: -0.01em;
 }
 
 ul {
