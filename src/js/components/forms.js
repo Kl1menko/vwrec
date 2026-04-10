@@ -73,15 +73,15 @@ export function initForms(content) {
 
       if (!form.checkValidity() || hasEmptyRequiredFields(form)) {
         form.reportValidity()
-        setStatus(form, ui.formRequiredError ?? 'Please complete the required form fields.', 'error')
+        setStatus(form, ui.formRequiredError, 'error')
         return
       }
 
       const submitButton = form.querySelector('button[type="submit"]')
       const initialButtonLabel = submitButton?.textContent ?? ''
       submitButton?.setAttribute('disabled', 'true')
-      if (submitButton) submitButton.textContent = ui.formSubmittingButton ?? 'Sending...'
-      setStatus(form, ui.formSubmittingStatus ?? 'Sending form...', 'loading')
+      if (submitButton) submitButton.textContent = ui.formSubmittingButton
+      setStatus(form, ui.formSubmittingStatus, 'loading')
 
       try {
         const payload = buildPayload(form)
@@ -101,7 +101,7 @@ export function initForms(content) {
         }
       } catch (error) {
         console.error(error)
-        setStatus(form, ui.formSubmitError ?? 'Submission failed. Please try again.', 'error')
+        setStatus(form, ui.formSubmitError, 'error')
       } finally {
         submitButton?.removeAttribute('disabled')
         if (submitButton) submitButton.textContent = initialButtonLabel

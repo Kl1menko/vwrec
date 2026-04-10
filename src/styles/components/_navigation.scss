@@ -286,6 +286,7 @@ body[data-page='services'] .site-header__inner {
   overflow-y: auto;
   overscroll-behavior: contain;
   contain: layout paint;
+  -webkit-overflow-scrolling: touch;
 }
 
 .language-switcher__sheet-head {
@@ -307,7 +308,10 @@ body[data-page='services'] .site-header__inner {
   align-items: center;
   justify-content: center;
   width: 42px;
+  min-width: 42px;
   height: 42px;
+  min-height: 42px;
+  flex: 0 0 42px;
   border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 999px;
   background: #ffffff;
@@ -639,15 +643,17 @@ body[data-page='services'] .site-header__inner {
     bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
     z-index: 95;
     width: auto;
-    height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 20px);
-    min-height: calc(100vh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 20px);
+    height: auto;
+    min-height: 0;
+    max-height: calc(var(--app-height, 100dvh) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 20px);
     margin-top: 0;
     padding: 16px;
     border-radius: 28px;
-    max-height: none;
     grid-template-rows: auto minmax(0, 1fr);
     gap: 12px;
+    overflow: hidden;
     box-shadow: 0 24px 48px rgba(17, 17, 17, 0.12);
+    -webkit-overflow-scrolling: touch;
   }
 
   .language-switcher.is-open .language-switcher__menu {
@@ -670,9 +676,12 @@ body[data-page='services'] .site-header__inner {
     display: grid;
     gap: 4px;
     min-height: 0;
+    max-height: 100%;
     overflow-y: auto;
     overscroll-behavior: contain;
     padding-right: 2px;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 
   .language-switcher__option {

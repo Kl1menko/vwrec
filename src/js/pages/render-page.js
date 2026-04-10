@@ -79,33 +79,29 @@ function buildServicesFitCards(roles, ui = {}) {
     {
       score: 96,
       metrics: [94, 92, 97],
-      text:
-        'Найсильніше працює там, де важливі повторювані зміни, дисципліна виходу і швидке масштабування без провалів у запуску.',
+      text: ui.servicesFitCardTextOne,
     },
     {
       score: 93,
       metrics: [91, 89, 95],
-      text:
-        'Добре заходить для сезонних піків, зростання обсягів і операцій, де бізнесу критично потрібен ритмічний запуск людей.',
+      text: ui.servicesFitCardTextTwo,
     },
     {
       score: 89,
       metrics: [84, 88, 90],
-      text:
-        'Підходить для проєктів із жорсткими дедлайнами, де потрібно поєднати рекрутинг, документи та прибуття без хаосу.',
+      text: ui.servicesFitCardTextThree,
     },
     {
       score: 87,
       metrics: [86, 83, 92],
-      text:
-        'Показує хороший результат у сервісних командах, де критичні зрозумілий маршрут, швидка адаптація і стабільність старту.',
+      text: ui.servicesFitCardTextFour,
     },
   ]
 
   const metricLabels = [
-    ui.servicesFitMetricOne ?? 'Launch speed',
-    ui.servicesFitMetricTwo ?? 'Retention',
-    ui.servicesFitMetricThree ?? 'Process clarity',
+    ui.servicesFitMetricOne,
+    ui.servicesFitMetricTwo,
+    ui.servicesFitMetricThree,
   ]
 
   return (roles ?? []).map((item, index) => {
@@ -125,8 +121,8 @@ function buildServicesFitCards(roles, ui = {}) {
 
 function renderReportStyleForm(content, { type = 'lead', title, buttonLabel, note = '' } = {}) {
   const ui = content.ui ?? {}
-  const resolvedTitle = title ?? content.forms?.[type]?.title ?? content.forms?.lead?.title ?? 'Send request'
-  const resolvedButtonLabel = buttonLabel ?? ui.sendRequest ?? 'Send request'
+  const resolvedTitle = title ?? content.forms?.[type]?.title ?? content.forms?.lead?.title
+  const resolvedButtonLabel = buttonLabel ?? ui.sendRequest
 
   return `
     <div class="report-form__card report-form__card--embedded">
@@ -135,19 +131,19 @@ function renderReportStyleForm(content, { type = 'lead', title, buttonLabel, not
         <form class="report-form__fields" data-form data-form-type="${type}">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="report-form__field">
-            <span>${ui.fieldName ?? 'Name'} *</span>
+            <span>${ui.fieldName} *</span>
             <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="report-form__field">
-            <span>${ui.fieldCompany ?? 'Company'} *</span>
+            <span>${ui.fieldCompany} *</span>
             <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="report-form__field">
-            <span>${ui.fieldEmail ?? 'Email'}</span>
+            <span>${ui.fieldEmail}</span>
             <input type="email" name="email" autocomplete="email" />
           </label>
           <label class="report-form__field">
-            <span>${ui.fieldPhone ?? 'Phone'} *</span>
+            <span>${ui.fieldPhone} *</span>
             <input type="tel" name="phone" autocomplete="tel" required />
           </label>
           <button class="report-form__submit" type="submit">${resolvedButtonLabel}</button>
@@ -165,7 +161,7 @@ function renderServicesLeadForm(content) {
   return renderReportStyleForm(content, {
     type: 'lead',
     title: servicesForm.title ?? content.forms?.lead?.title,
-    buttonLabel: servicesForm.button ?? content.ui?.sendRequest ?? 'Send request',
+    buttonLabel: servicesForm.button ?? content.ui.sendRequest,
     note: servicesForm.note ?? servicesForm.lead ?? '',
   })
 }
@@ -177,19 +173,19 @@ function renderReportCaptureForm(content) {
     <form class="report-capture__form" data-form data-form-type="report">
       <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
       <label class="field">
-        <span>${ui.fieldName ?? 'Name'} *</span>
+        <span>${ui.fieldName} *</span>
         <input type="text" name="name" autocomplete="name" required />
       </label>
       <label class="field">
-        <span>${ui.fieldCompany ?? 'Company'} *</span>
+        <span>${ui.fieldCompany} *</span>
         <input type="text" name="company" autocomplete="organization" required />
       </label>
       <label class="field">
-        <span>${ui.fieldEmail ?? 'Email'}</span>
+        <span>${ui.fieldEmail}</span>
         <input type="email" name="email" autocomplete="email" />
       </label>
       <label class="field">
-        <span>${ui.fieldPhone ?? 'Phone'} *</span>
+        <span>${ui.fieldPhone} *</span>
         <input type="tel" name="phone" autocomplete="tel" required />
       </label>
       <button class="button report-capture__submit" type="submit">${content.home.reportBlock.cta}</button>
@@ -205,23 +201,23 @@ function renderCardList(items, mapper) {
 function resolveGenericPageEyebrow(content, pageKey) {
   const ui = content.ui ?? {}
   const labels = {
-    about: ui.aboutEyebrow ?? 'About',
-    faq: ui.faqEyebrow ?? 'FAQ',
-    contacts: ui.contactsEyebrow ?? 'Contacts',
-    report: ui.reportEyebrow ?? 'Report',
-    'privacy-policy': ui.privacyEyebrow ?? 'Privacy policy',
-    terms: ui.termsEyebrow ?? 'Terms & conditions',
-    'thank-you-report': ui.thankYouEyebrow ?? 'Thank you',
+    about: ui.aboutEyebrow,
+    faq: ui.faqEyebrow,
+    contacts: ui.contactsEyebrow,
+    report: ui.reportEyebrow,
+    'privacy-policy': ui.privacyEyebrow,
+    terms: ui.termsEyebrow,
+    'thank-you-report': ui.thankYouEyebrow,
   }
 
-  return labels[pageKey] ?? 'VW Recruit'
+  return labels[pageKey] ?? content.site.title
 }
 
 function renderSimplePage(content, title, lead, pageKey) {
   return `
     <section class="page-hero">
       <div class="shell">
-        <p class="eyebrow">VW Recruit / ${resolveGenericPageEyebrow(content, pageKey)}</p>
+        <p class="eyebrow">${content.site.title} / ${resolveGenericPageEyebrow(content, pageKey)}</p>
         <h1>${title}</h1>
         ${lead ? `<p class="lead">${lead}</p>` : ''}
       </div>
@@ -268,11 +264,11 @@ function renderThankYouReportPage(content) {
     <section class="page-hero">
       <div class="shell split split--hero">
         <div class="stack" style="justify-items:center;text-align:center;width:100%;">
-          <h1>${page.title ?? 'Thank you. Your report request was received.'}</h1>
+          <h1>${page.title}</h1>
           <p class="lead">${page.lead ?? ''}</p>
           <div class="button-row" style="justify-content:center;">
-            <a class="button" href="${buildPageUrl(content.locale.code, 'home')}">${page.ctaLabel ?? 'Back to homepage'}</a>
-            <a class="button button--ghost" href="${buildPageUrl(content.locale.code, 'contacts')}">${page.secondaryCtaLabel ?? 'Open contacts page'}</a>
+            <a class="button" href="${buildPageUrl(content.locale.code, 'home')}">${page.ctaLabel}</a>
+            <a class="button button--ghost" href="${buildPageUrl(content.locale.code, 'contacts')}">${page.secondaryCtaLabel}</a>
           </div>
         </div>
       </div>
@@ -315,10 +311,10 @@ function renderContactsPage(content, ui) {
       <section class="contacts-page-hero">
         <div class="shell contacts-page-hero__layout">
           <div class="contacts-page-hero__copy">
-            <h1>${contacts.title ?? 'Talk to the VW Recruit team'}</h1>
+            <h1>${contacts.title}</h1>
             <div class="contacts-page-hero__actions">
-              <a class="button" href="#contact-form">${ui.sendRequest ?? 'Send request'}</a>
-              <button class="button button--ghost" type="button" data-open-modal="callback">${ui.bookCall ?? 'Book a call'}</button>
+              <a class="button" href="#contact-form">${ui.sendRequest}</a>
+              <button class="button button--ghost" type="button" data-open-modal="callback">${ui.bookCall}</button>
             </div>
           </div>
           <div class="contacts-page-hero__summary">
@@ -339,7 +335,7 @@ function renderContactsPage(content, ui) {
       <section class="section contacts-page-section">
         <div class="shell">
           <div class="contacts-page__section-head">
-            <h2>${contacts.channelsTitle ?? 'How to start the conversation'}</h2>
+            <h2>${contacts.channelsTitle}</h2>
             <p>${contacts.channelsLead ?? ''}</p>
           </div>
           <div class="contacts-grid">
@@ -362,14 +358,14 @@ function renderContactsPage(content, ui) {
       <section class="section contacts-page-section contacts-page-section--soft">
         <div class="shell contacts-page__info-grid">
           <article class="contacts-panel">
-            <h2>${contacts.checklistTitle ?? 'What is useful to prepare before reaching out'}</h2>
+            <h2>${contacts.checklistTitle}</h2>
             <p class="contacts-panel__lead">${contacts.checklistLead ?? ''}</p>
             <ul class="contacts-list">
               ${checklist.map((item) => `<li>${item}</li>`).join('')}
             </ul>
           </article>
           <article class="contacts-panel">
-            <h2>${contacts.supportTitle ?? 'What the team can clarify on the first contact'}</h2>
+            <h2>${contacts.supportTitle}</h2>
             <p class="contacts-panel__lead">${contacts.supportLead ?? ''}</p>
             <ul class="contacts-list">
               ${support.map((item) => `<li>${item}</li>`).join('')}
@@ -381,13 +377,13 @@ function renderContactsPage(content, ui) {
       <section class="section contacts-page-form-section" id="contact-form">
         <div class="shell contacts-page-form">
           <div class="contacts-page__section-head contacts-page__section-head--compact">
-            <h2>${form.title ?? content.forms?.contact?.title ?? 'Send a message'}</h2>
+            <h2>${form.title ?? content.forms?.contact?.title}</h2>
             <p>${form.lead ?? contacts.lead ?? ''}</p>
           </div>
           ${renderReportStyleForm(content, {
             type: 'contact',
             title: form.title ?? content.forms?.contact?.title,
-            buttonLabel: ui.sendRequest ?? 'Send request',
+            buttonLabel: ui.sendRequest,
             note: form.note ?? '',
           })}
         </div>
@@ -426,7 +422,7 @@ function renderComparisonCard(card, content) {
   const amount = card.amount ? `<div class="comparison-card__price"><strong>${card.amount}</strong>${card.period ? `<span>${card.period}</span>` : ''}</div>` : ''
   const note = card.note ? `<p class="comparison-card__note">${card.note}</p>` : ''
   const cta = isBrand
-    ? `<div class="comparison-card__actions"><a class="button" href="#quiz">${content.home.comparison.cta ?? content.ui?.comparisonCardCta ?? 'Calculate hiring cost'}</a></div>`
+    ? `<div class="comparison-card__actions"><a class="button" href="#quiz">${content.home.comparison.cta ?? content.ui.comparisonCardCta}</a></div>`
     : ''
   const rows = renderCardList(
     card.rows,
@@ -445,7 +441,7 @@ function renderComparisonCard(card, content) {
     <article class="comparison-card comparison-card--${variant}">
       <div class="comparison-card__brand">
         <span class="comparison-card__brand-mark${isBrand ? ' comparison-card__brand-mark--logo' : ''}">
-          ${isBrand ? `<img src="${logoSymbol}" alt="" loading="lazy" />` : '<span>IN</span>'}
+          ${isBrand ? `<img src="${logoSymbol}" alt="" loading="lazy" />` : `<span>${content.ui.comparisonOtherMark}</span>`}
         </span>
         <div class="comparison-card__brand-copy">
           <strong>${card.title}</strong>
@@ -467,7 +463,7 @@ function getIndustryVisual(item, ui = {}) {
 
   return {
     image: visual?.image ?? '/images/industry-logistics.jpg',
-    alt: visual ? ui[visual.altKey] ?? title : title,
+    alt: visual ? ui[visual.altKey] : title,
   }
 }
 
@@ -475,7 +471,7 @@ function renderIndustrySlide(item, ui = {}) {
   const title = typeof item === 'string' ? item : item.title
   const text =
     typeof item === 'string'
-      ? ui.industrySlidePlaceholder ?? 'This vertical can be expanded into SEO pages, quiz paths, and personalized CTAs.'
+      ? ui.industrySlidePlaceholder
       : item.text
   const visual = getIndustryVisual(item, ui)
 
@@ -507,11 +503,11 @@ function renderBenefitCheck(text) {
 
 function renderBenefitsTimeline(ui = {}) {
   const steps = [
-    { label: ui.guaranteeTimelineStepOne ?? 'Selection', style: 'filled' },
-    { label: ui.guaranteeTimelineStepTwo ?? 'Documents', style: 'filled' },
-    { label: ui.guaranteeTimelineStepThree ?? 'Logistics', style: 'accent' },
-    { label: ui.guaranteeTimelineStepFour ?? 'Arrival', style: 'accent' },
-    { label: ui.guaranteeTimelineStepFive ?? 'Shift', style: 'outline' },
+    { label: ui.guaranteeTimelineStepOne, style: 'filled' },
+    { label: ui.guaranteeTimelineStepTwo, style: 'filled' },
+    { label: ui.guaranteeTimelineStepThree, style: 'accent' },
+    { label: ui.guaranteeTimelineStepFour, style: 'accent' },
+    { label: ui.guaranteeTimelineStepFive, style: 'outline' },
   ]
 
   return steps
@@ -556,7 +552,7 @@ function renderBenefitsSection(content, ui = {}) {
             <div class="benefit-card__inner">
               <div class="benefit-card__tag">
                 <span class="benefit-card__tag-dot"></span>
-                ${ui.guaranteesLegalDelta ?? 'Quotas, permits, visas'}
+                ${ui.guaranteesLegalDelta}
               </div>
               <h3 class="benefit-card__title">${legal.title ?? ''}</h3>
               <div class="benefit-card__metric">
@@ -565,9 +561,9 @@ function renderBenefitsSection(content, ui = {}) {
               </div>
               <p class="benefit-card__desc">${legal.text ?? ''}</p>
               <div class="benefit-checks">
-                ${renderBenefitCheck(ui.guaranteeChecklistQuota ?? 'Quotas')}
-                ${renderBenefitCheck(ui.guaranteeChecklistPermit ?? 'Permit')}
-                ${renderBenefitCheck(ui.guaranteeChecklistVisa ?? 'Visa')}
+                ${renderBenefitCheck(ui.guaranteeChecklistQuota)}
+                ${renderBenefitCheck(ui.guaranteeChecklistPermit)}
+                ${renderBenefitCheck(ui.guaranteeChecklistVisa)}
               </div>
             </div>
           </article>
@@ -576,29 +572,29 @@ function renderBenefitsSection(content, ui = {}) {
             <div class="benefit-card__inner">
               <div class="benefit-card__tag">
                 <span class="benefit-card__tag-dot"></span>
-                ${ui.guaranteesReplacementLabel ?? 'Launch guarantee'}
+                ${ui.guaranteesReplacementLabel}
               </div>
               <h3 class="benefit-card__title">${replacement.title ?? ''}</h3>
               <div class="benefit-card__metric">
                 <span class="benefit-card__metric-val">0</span>
-                <span class="benefit-card__metric-unit">${ui.guaranteesReplacementUnit ?? 'fee'}</span>
+                <span class="benefit-card__metric-unit">${ui.guaranteesReplacementUnit}</span>
               </div>
               <p class="benefit-card__desc">${replacement.text ?? ''}</p>
 
               <div class="counter-row">
                 <div class="counter-item">
                   <span class="counter-item__val" data-counter-target="${ui.guaranteesReplacementWarrantyDays ?? 30}">0</span>
-                  <span class="counter-item__label">${ui.guaranteesReplacementWarrantyLabel ?? 'days warranty'}</span>
+                  <span class="counter-item__label">${ui.guaranteesReplacementWarrantyLabel}</span>
                 </div>
                 <div class="counter-item">
                   <span class="counter-item__val" data-counter-target="${ui.guaranteesReplacementReplyHours ?? 48}">0</span>
-                  <span class="counter-item__label">${ui.guaranteesReplacementReplyLabel ?? 'hours reply'}</span>
+                  <span class="counter-item__label">${ui.guaranteesReplacementReplyLabel}</span>
                 </div>
               </div>
 
               <span class="benefit-badge benefit-badge--green">
                 <span class="benefit-badge__dot"></span>
-                ${ui.guaranteesReplacementDelta ?? 'Fast replacement under guarantee'}
+                ${ui.guaranteesReplacementDelta}
               </span>
             </div>
           </article>
@@ -608,13 +604,13 @@ function renderBenefitsSection(content, ui = {}) {
               <div class="benefit-card__text-col">
                 <div class="benefit-card__tag">
                   <span class="benefit-card__tag-dot"></span>
-                  ${ui.guaranteesSupportDelta ?? 'From sourcing to first shift'}
+                  ${ui.guaranteesSupportDelta}
                 </div>
                 <h3 class="benefit-card__title">${support.title ?? ''}</h3>
                 <p class="benefit-card__desc benefit-card__desc--spaced">${support.text ?? ''}</p>
                 <span class="benefit-badge benefit-badge--accent">
                   <span class="benefit-badge__dot"></span>
-                  ${ui.guaranteesSupportBadge ?? 'One team across the whole process'}
+                  ${ui.guaranteesSupportBadge}
                 </span>
               </div>
               <div class="benefit-timeline-col">
@@ -624,15 +620,15 @@ function renderBenefitsSection(content, ui = {}) {
                 <div class="counter-row">
                   <div class="counter-item">
                     <span class="counter-item__val" data-counter-target="${ui.guaranteesCandidatesDays ?? 10}">0</span>
-                    <span class="counter-item__label">${ui.guaranteesCandidatesDaysLabel ?? 'days to candidates'}</span>
+                    <span class="counter-item__label">${ui.guaranteesCandidatesDaysLabel}</span>
                   </div>
                   <div class="counter-item">
                     <span class="counter-item__val" data-counter-target="100">0</span>
-                    <span class="counter-item__label">${ui.guaranteesSupportPercentLabel ?? '% support'}</span>
+                    <span class="counter-item__label">${ui.guaranteesSupportPercentLabel}</span>
                   </div>
                   <div class="counter-item">
                     <span class="counter-item__val" data-counter-target="${ui.guaranteesOneTeamCount ?? 1}">0</span>
-                    <span class="counter-item__label">${ui.guaranteesOneTeamLabel ?? 'team'}</span>
+                    <span class="counter-item__label">${ui.guaranteesOneTeamLabel}</span>
                   </div>
                 </div>
               </div>
@@ -673,42 +669,42 @@ function renderHomeReportBlock(content, ui = {}) {
 
           <div class="home-report-block__right">
             <div class="home-pdf-card" aria-hidden="true">
-              <div class="home-pdf-card__icon">${ui.reportPanelGuide ?? 'PDF'}</div>
+              <div class="home-pdf-card__icon">${ui.reportPanelGuide}</div>
               <div class="home-pdf-card__meta">
-                <span class="home-pdf-card__prefix">${ui.reportPanelKicker ?? 'VW Recruit / Insight'}</span>
-                <span class="home-pdf-card__title">${ui.reportPanelReportTitle ?? 'Labor market 2026'}</span>
-                <span class="home-pdf-card__sub">${ui.reportPanelReportText ?? 'International workforce integration for businesses facing labor shortages'}</span>
+                <span class="home-pdf-card__prefix">${ui.reportPanelKicker}</span>
+                <span class="home-pdf-card__title">${ui.reportPanelReportTitle}</span>
+                <span class="home-pdf-card__sub">${ui.reportPanelReportText}</span>
               </div>
             </div>
 
             <div class="home-report-form">
-              <p class="home-report-form__title">${ui.reportPanelTitle ?? 'Get the material by email'}</p>
+              <p class="home-report-form__title">${ui.reportPanelTitle}</p>
               <form class="home-report-form__fields" data-form data-form-type="report">
                 <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
                 <div class="home-report-form__row">
                   <label class="home-report-form__field">
-                    <span>${ui.fieldName ?? 'Name'} *</span>
+                    <span>${ui.fieldName} *</span>
                     <input type="text" name="name" autocomplete="name" required />
                   </label>
                   <label class="home-report-form__field">
-                    <span>${ui.fieldCompany ?? 'Company'} *</span>
+                    <span>${ui.fieldCompany} *</span>
                     <input type="text" name="company" autocomplete="organization" required />
                   </label>
                 </div>
                 <div class="home-report-form__row">
                   <label class="home-report-form__field">
-                    <span>${ui.fieldEmail ?? 'Email'}</span>
+                    <span>${ui.fieldEmail}</span>
                     <input type="email" name="email" autocomplete="email" />
                   </label>
                   <label class="home-report-form__field">
-                    <span>${ui.fieldPhone ?? 'Phone'} *</span>
+                    <span>${ui.fieldPhone} *</span>
                     <input type="tel" name="phone" autocomplete="tel" required />
                   </label>
                 </div>
-                <button class="home-report-form__submit" type="submit">${reportBlock.cta ?? ui.getReport ?? 'Get report'}</button>
+                <button class="home-report-form__submit" type="submit">${reportBlock.cta ?? ui.getReport}</button>
                 <p class="form-status" data-form-status role="status" hidden></p>
               </form>
-              <p class="home-report-form__note">${ui.reportPanelText ?? 'Leave your details and we will send the material.'}</p>
+              <p class="home-report-form__note">${ui.reportPanelText}</p>
             </div>
           </div>
         </div>
@@ -720,7 +716,7 @@ function renderHomeReportBlock(content, ui = {}) {
 function getReviewMetricMeta(item, index, ui = {}) {
   const source =
     typeof item === 'string'
-      ? { value: ui.reviewFallbackValue ?? '7 YEARS', label: item.replace(ui.reviewLabelPrefix ?? '7 years ', '') }
+      ? { value: ui.reviewFallbackValue, label: item.replace(ui.reviewLabelPrefix, '') }
       : item
   const text = `${source.value ?? ''} ${source.label ?? ''}`.toLowerCase()
 
@@ -785,10 +781,10 @@ function renderMediaInsightCard(item, index, ui) {
   const title = typeof item === 'string' ? item : item.title
   const text =
     typeof item === 'string'
-      ? ui.reelPlaceholder ?? 'Space for a reel or video in a popup modal after connecting the sources.'
+      ? ui.reelPlaceholder
       : item.text
-  const meta = typeof item === 'string' ? `${ui.video ?? 'Video'} insight` : item.meta
-  const duration = typeof item === 'string' ? '02:00' : item.duration ?? '02:00'
+  const meta = typeof item === 'string' ? ui.videoInsightLabel : item.meta
+  const duration = typeof item === 'string' ? ui.mediaDefaultDuration : item.duration ?? ui.mediaDefaultDuration
   const videoSrc = typeof item === 'string' ? '' : item.video?.src ?? ''
   const videoType = typeof item === 'string' ? 'video/mp4' : item.video?.type ?? 'video/mp4'
   const videoPoster = typeof item === 'string' ? '' : item.video?.poster ?? ''
@@ -808,7 +804,7 @@ function renderMediaInsightCard(item, index, ui) {
           data-video-src="${videoSrc}"
           data-video-type="${videoType}"
           data-video-poster="${videoPoster}"
-          aria-label="${ui.videoPlay ?? 'Play video'}"
+          aria-label="${ui.videoPlay}"
         >
           <span></span>
         </button>
@@ -831,7 +827,7 @@ function renderMediaInsightCard(item, index, ui) {
           data-video-type="${videoType}"
           data-video-poster="${videoPoster}"
         >
-          ${ui.videoPlay ?? 'Play video'}
+          ${ui.videoPlay}
         </button>
       </div>
     </article>
@@ -972,7 +968,7 @@ function renderServicesPage(content, ui) {
           <p class="lead">${services.lead}</p>
           <div class="button-row services-hero__actions">
             <button class="button" type="button" data-open-modal="callback">${services.cta ?? content.navigation.secondaryCta}</button>
-            <a class="button button--ghost" href="#services-form">${ui.servicesHeroGhostCta ?? 'View service terms'}</a>
+            <a class="button button--ghost" href="#services-form">${ui.servicesHeroGhostCta}</a>
           </div>
         </div>
         <div class="services-hero__panel">
@@ -1014,7 +1010,7 @@ function renderServicesPage(content, ui) {
           segments,
           (item) => `
             <article class="services-segment-card services-segment-card--${item.variant === 'candidate' ? 'b2c' : 'b2b'}">
-              <span class="services-segment-card__label">${item.badge ?? (item.variant === 'candidate' ? 'B2C' : 'B2B')}</span>
+              <span class="services-segment-card__label">${item.badge ?? (item.variant === 'candidate' ? ui.servicesSegmentBadgeCandidate : ui.servicesSegmentBadgeBusiness)}</span>
               <h2>${item.title}</h2>
               <p>${item.text}</p>
               <button class="button${item.variant === 'candidate' ? ' button--ghost' : ' button--white'}" type="button" data-open-modal="callback">${item.cta}</button>
@@ -1029,7 +1025,7 @@ function renderServicesPage(content, ui) {
         <div class="services-pillars">
           <div class="services-pillars__head">
             <div class="services-pillars__heading">
-              <h2>${ui.servicesPillarsTitle ?? 'The service is built not as a resume search, but as a full route to launch people into work'}</h2>
+              <h2>${ui.servicesPillarsTitle}</h2>
             </div>
           </div>
           <div class="services-pillars__grid">
@@ -1061,18 +1057,18 @@ function renderServicesPage(content, ui) {
     <section class="section section--muted" data-reveal>
       <div class="shell services-offer">
         <div class="services-section-heading services-section-heading--wide">
-          <h2>${ui.servicesOfferTitle ?? 'A model where the business gets a managed result and the candidate sees a transparent process'}</h2>
+          <h2>${ui.servicesOfferTitle}</h2>
         </div>
         <div class="services-offer__layout">
           <div class="services-offer-visual" aria-hidden="true">
             <div class="services-offer-visual__glow"></div>
             <div class="services-offer-visual__chips">
-              <span class="services-offer-visual__chip services-offer-visual__chip--top">${ui.servicesOfferVisualPrimary ?? 'Employer route'}</span>
-              <span class="services-offer-visual__chip services-offer-visual__chip--bottom">${ui.servicesOfferVisualSecondary ?? 'Candidate route'}</span>
+              <span class="services-offer-visual__chip services-offer-visual__chip--top">${ui.servicesOfferVisualPrimary}</span>
+              <span class="services-offer-visual__chip services-offer-visual__chip--bottom">${ui.servicesOfferVisualSecondary}</span>
             </div>
             <div class="services-offer-visual__panel">
               <div class="services-offer-visual__panel-head">
-                <span class="services-offer-visual__panel-label">${ui.servicesOfferVisualLabel ?? 'VW Recruit flow'}</span>
+                <span class="services-offer-visual__panel-label">${ui.servicesOfferVisualLabel}</span>
                 <div class="services-offer-visual__panel-status">
                   <span></span>
                   <span></span>
@@ -1158,7 +1154,7 @@ function renderServicesPage(content, ui) {
                 <div class="services-beam-core__mark" data-beam-anchor>
                   <img src="${logoSymbol}" alt="" loading="lazy" />
                 </div>
-                <span class="services-beam-core__label">${beam.centerLabel ?? 'Processing'}</span>
+                <span class="services-beam-core__label">${beam.centerLabel}</span>
               </div>
             </div>
             <div class="services-beam__column services-beam__column--output">
@@ -1166,7 +1162,7 @@ function renderServicesPage(content, ui) {
                 <div class="services-beam-output__circle" data-beam-anchor>
                   ${renderBeamIcon('user')}
                 </div>
-                <span class="services-beam-output__label">${beam.outputLabel ?? 'Team launch'}</span>
+                <span class="services-beam-output__label">${beam.outputLabel}</span>
               </div>
             </div>
           </div>
@@ -1178,7 +1174,7 @@ function renderServicesPage(content, ui) {
       <div class="shell services-route">
         <div class="services-route__board">
           <div class="services-route__intro">
-            <h2>${ui.servicesRouteTitle ?? 'A transparent route from request to workers starting their shifts'}</h2>
+            <h2>${ui.servicesRouteTitle}</h2>
             <p class="lead">${ui.servicesRouteLead ?? services.promise?.text ?? ''}</p>
           </div>
           <div class="services-route__grid">
@@ -1206,7 +1202,7 @@ function renderServicesPage(content, ui) {
         <div class="shell services-proof">
         <div class="services-proof__board">
           <div class="services-proof__copy">
-            <h2>${ui.servicesProofTitle ?? 'Not just sourcing, but a managed service with a clear result at every stage'}</h2>
+            <h2>${ui.servicesProofTitle}</h2>
             <div class="services-proof__trust">
               ${renderCardList(
                 trust,
@@ -1237,7 +1233,7 @@ function renderServicesPage(content, ui) {
     <section class="section section--accent" data-reveal>
       <div class="shell services-fit">
         <div class="services-fit__copy">
-          <h2>${ui.servicesFitTitle ?? 'Roles and niches where international recruitment delivers the strongest operational impact'}</h2>
+          <h2>${ui.servicesFitTitle}</h2>
           <p class="lead">${ui.servicesFitLead ?? services.promise?.title ?? ''}</p>
         </div>
         <div class="services-fit__grid">
@@ -1295,7 +1291,7 @@ function renderCasesPage(content, ui) {
   const stats = cases.stats ?? []
   const featured = cases.featured ?? content.home.casesSection?.items ?? []
   const framework = cases.framework ?? []
-  const timelineSteps = ['Бриф', 'Пошук', 'Погодження', 'Документи', 'Приїзд']
+  const timelineSteps = ui.casesTimelineSteps
 
   const renderTimeline = () =>
     renderCardList(
@@ -1346,7 +1342,7 @@ function renderCasesPage(content, ui) {
                   <img src="${item.image}" alt="${item.alt ?? item.title}" loading="lazy" />
                 </div>
                 <div class="case-card__body">
-                  <span class="case-card__category">${item.category ?? cases.eyebrow ?? ui.caseStudy ?? 'Case study'}</span>
+                  <span class="case-card__category">${item.category ?? cases.eyebrow ?? ui.caseStudy}</span>
                   <h3 class="case-card__name">${item.title}</h3>
                   <p class="case-card__sub">${item.subtitle ?? ''}</p>
                   <p class="case-card__desc">${item.problem ?? ''}</p>
@@ -1384,7 +1380,7 @@ function renderCasesPage(content, ui) {
             framework,
             (item, index) => `
               <article class="animated-list__item">
-                <div class="animated-list__step">Крок ${index + 1}</div>
+                <div class="animated-list__step">${ui.processStepLabel} ${index + 1}</div>
                 <div class="animated-list__visual animated-list__visual--${index === 0 ? 'challenge' : index === 1 ? 'flow' : 'result'}" aria-hidden="true">
                   <span class="animated-list__visual-orb animated-list__visual-orb--a"></span>
                   <span class="animated-list__visual-orb animated-list__visual-orb--b"></span>
@@ -1432,7 +1428,7 @@ function renderCasesPage(content, ui) {
           ${renderReportStyleForm(content, {
             type: 'lead',
             title: content.forms?.lead?.title,
-            buttonLabel: ui.sendRequest ?? 'Send request',
+            buttonLabel: ui.sendRequest,
             note: cases.ctaLead ?? '',
           })}
         </div>
@@ -1507,7 +1503,7 @@ function renderIndustriesPage(content, ui) {
                 </div>
                 <div class="bento-card__body">
                   <div class="bento-card__icon">${renderIndustryBentoIcon(typeof item === 'string' ? item : item.title)}</div>
-                  <p class="bento-card__eyebrow">${industries.eyebrow ?? 'Industries'}</p>
+                  <p class="bento-card__eyebrow">${industries.eyebrow}</p>
                   <h3 class="bento-card__name">${typeof item === 'string' ? item : item.title}</h3>
                   <p class="bento-card__desc">${typeof item === 'string' ? item : item.text ?? ''}</p>
                   ${
@@ -1576,7 +1572,7 @@ function renderIndustriesPage(content, ui) {
             <h2>${industries.fitTitle ?? ''}</h2>
             <p class="lead">${industries.fitLead ?? ''}</p>
             <div class="industries-fit__summary">
-              <p class="industries-fit__summary-text">Сигнали, які зазвичай означають, що локальний найм уже не тримає темп вашої операції і потрібна більш системна модель комплектування команди.</p>
+              <p class="industries-fit__summary-text">${ui.industriesFitSummary}</p>
             </div>
           </div>
           <div class="industries-fit__items">
@@ -1603,7 +1599,7 @@ function renderIndustriesPage(content, ui) {
           type: 'lead',
           title: content.forms?.lead?.title,
           buttonLabel: ui.sendRequest ?? 'Send request',
-          note: content.forms?.lead?.success ? '' : industries.ctaLead ?? '',
+          note: '',
         })}
       </div>
     </section>
@@ -1616,11 +1612,10 @@ function renderReportPage(content, ui) {
   const points = report.points ?? content.home.reportBlock?.points ?? []
   const benefits = report.benefits ?? []
   const faqItems = report.faq ?? []
-  const reportLabel = report.eyebrow ?? 'Report'
   const reportButton = report.formTitle ?? content.forms.report.title
-  const reportPdfTitle = ui.reportPanelReportTitle ?? 'Labor market 2026'
-  const reportPdfText = ui.reportPanelReportText ?? 'International workforce integration for businesses facing labor shortages'
-  const reportPdfMeta = report.stats?.[1]?.value ? `${ui.reportPanelKicker ?? 'VW Recruit / Insight'} - ${report.stats[1].value} ${report.stats[1].label}` : ui.reportPanelKicker ?? 'VW Recruit / Insight'
+  const reportPdfTitle = ui.reportPanelReportTitle
+  const reportPdfText = ui.reportPanelReportText
+  const reportPdfMeta = report.stats?.[1]?.value ? `${ui.reportPanelKicker} - ${report.stats[1].value} ${report.stats[1].label}` : ui.reportPanelKicker
   const pointIcons = [
     '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>',
     '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>',
@@ -1679,7 +1674,7 @@ function renderReportPage(content, ui) {
 
     <section class="report-page-section report-marquee-section" data-reveal>
       <div class="shell">
-        <p class="report-marquee__label">${report.pointsTitle ?? 'What is inside'}</p>
+        <p class="report-marquee__label">${report.pointsTitle}</p>
       </div>
       <div class="report-marquee">
         <div class="report-marquee__track">
@@ -1728,7 +1723,7 @@ function renderReportPage(content, ui) {
           <h2 class="report-section__title">${report.ctaTitle ?? content.forms.report.title}</h2>
           <p class="report-form__desc">${report.ctaLead ?? report.formLead ?? ''}</p>
           <div class="report-form__pdf">
-            <div class="report-form__pdf-icon">${ui.reportPanelGuide ?? 'PDF'}</div>
+            <div class="report-form__pdf-icon">${ui.reportPanelGuide}</div>
             <div class="report-form__pdf-meta">
               <span class="report-form__pdf-title">${reportPdfTitle}</span>
               <span class="report-form__pdf-sub">${reportPdfMeta}</span>
@@ -1738,23 +1733,23 @@ function renderReportPage(content, ui) {
 
         <div class="report-form__card">
           <div class="report-form__card-inner">
-            <h3 class="report-form__card-title">${report.formTitle ?? ui.reportPanelTitle ?? 'Get the report by email'}</h3>
+            <h3 class="report-form__card-title">${report.formTitle ?? ui.reportPanelTitle}</h3>
             <form class="report-form__fields" data-form data-form-type="report">
               <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
               <label class="report-form__field">
-                <span>${ui.fieldName ?? 'Name'} *</span>
+                <span>${ui.fieldName} *</span>
                 <input type="text" name="name" autocomplete="name" required />
               </label>
               <label class="report-form__field">
-                <span>${ui.fieldCompany ?? 'Company'} *</span>
+                <span>${ui.fieldCompany} *</span>
                 <input type="text" name="company" autocomplete="organization" required />
               </label>
               <label class="report-form__field">
-                <span>${ui.fieldEmail ?? 'Email'}</span>
+                <span>${ui.fieldEmail}</span>
                 <input type="email" name="email" autocomplete="email" />
               </label>
               <label class="report-form__field">
-                <span>${ui.fieldPhone ?? 'Phone'} *</span>
+                <span>${ui.fieldPhone} *</span>
                 <input type="tel" name="phone" autocomplete="tel" required />
               </label>
               <button class="report-form__submit" type="submit">${reportButton}</button>
@@ -1804,7 +1799,7 @@ export function renderPage(content, pageKey) {
           <p class="hero__lead">${content.home.hero.lead}</p>
           <div class="hero__cta">
             <button class="button" type="button" data-open-modal="hero-quiz">${content.navigation.primaryCta}</button>
-            <a class="button button--hero-secondary" href="${buildPageUrl(content.locale.code, 'cases')}">${ui.projectsExamples ?? 'Project examples'}</a>
+            <a class="button button--hero-secondary" href="${buildPageUrl(content.locale.code, 'cases')}">${ui.projectsExamples}</a>
           </div>
           ${
             content.home.hero.stats?.length
@@ -1831,7 +1826,7 @@ export function renderPage(content, pageKey) {
                 <button
                   class="hero-video"
                   type="button"
-                  aria-label="${ui.videoPlay ?? 'Play video'}"
+                  aria-label="${ui.videoPlay}"
                   aria-haspopup="dialog"
                   data-video-trigger
                   ${content.home.hero.video.src ? `data-video-src="${content.home.hero.video.src}"` : ''}
@@ -1839,7 +1834,7 @@ export function renderPage(content, pageKey) {
                 >
                   <span class="hero-video__media" aria-hidden="true"></span>
                   <span class="hero-video__play" aria-hidden="true"></span>
-                  <span class="sr-only">${ui.videoPlay ?? 'Play video'}</span>
+                  <span class="sr-only">${ui.videoPlay}</span>
                 </button>
               `
               : ''
@@ -1866,13 +1861,13 @@ export function renderPage(content, pageKey) {
       <section class="section section--muted" data-reveal data-report-prompt-trigger>
         <div class="shell industries-showcase">
           <div class="industries-showcase__head">
-            <h2>${ui.industriesSectionTitle ?? 'WHICH INDUSTRIES THIS HIRING MODEL FITS'}</h2>
-            <p class="lead">${ui.industriesLead ?? 'Companies most often use this hiring model for operational roles in manufacturing, warehouses, construction, and service.'}</p>
+            <h2>${ui.industriesSectionTitle}</h2>
+            <p class="lead">${ui.industriesLead}</p>
           </div>
           <div class="industries-slider" data-industry-slider>
             <div class="industries-slider__controls">
-              <button class="industries-slider__button" type="button" data-industry-slider-prev aria-label="${ui.industrySliderPrev ?? 'Previous slide'}">←</button>
-              <button class="industries-slider__button" type="button" data-industry-slider-next aria-label="${ui.industrySliderNext ?? 'Next slide'}">→</button>
+              <button class="industries-slider__button" type="button" data-industry-slider-prev aria-label="${ui.industrySliderPrev}">←</button>
+              <button class="industries-slider__button" type="button" data-industry-slider-next aria-label="${ui.industrySliderNext}">→</button>
             </div>
             <div class="industries-slider__track" data-industry-slider-track>
               ${renderCardList(industryItems, (item) => renderIndustrySlide(item, ui))}
@@ -1885,7 +1880,7 @@ export function renderPage(content, pageKey) {
         <div class="shell split split--hero">
           <div>
             <h2>${content.home.calculator?.title ?? content.quiz.title}</h2>
-            <p class="lead">${content.home.calculator?.lead ?? ui.quizSectionLead ?? 'Step-based mobile-friendly flow with analytics events and a single submission payload.'}</p>
+            <p class="lead">${content.home.calculator?.lead ?? ui.quizSectionLead}</p>
           </div>
           <div data-quiz data-quiz-source="page_quiz"></div>
         </div>
@@ -1898,15 +1893,15 @@ export function renderPage(content, pageKey) {
               <div class="shell">
                 <div class="cases-section__head">
                   <h2>${content.home.casesSection.title}</h2>
-                  <p class="lead">${content.home.casesSection.lead ?? ui.casesSectionLead ?? 'Показуємо приклади запуску підбору для виробництва, логістики, готелів та інших операційних команд.'}</p>
+                  <p class="lead">${content.home.casesSection.lead ?? ui.casesSectionLead}</p>
                   <div class="button-row cases-section__actions">
-                    <a class="button" href="${buildPageUrl(content.locale.code, 'cases')}">${content.home.casesSection.cta ?? ui.projectsExamples ?? 'Project examples'}</a>
+                    <a class="button" href="${buildPageUrl(content.locale.code, 'cases')}">${content.home.casesSection.cta ?? ui.projectsExamples}</a>
                   </div>
                 </div>
                 <div class="cases-slider" data-cases-slider>
                   <div class="cases-slider__controls">
-                    <button class="cases-slider__button" type="button" data-cases-slider-prev aria-label="${ui.caseSliderPrev ?? 'Previous case'}">←</button>
-                    <button class="cases-slider__button" type="button" data-cases-slider-next aria-label="${ui.caseSliderNext ?? 'Next case'}">→</button>
+                    <button class="cases-slider__button" type="button" data-cases-slider-prev aria-label="${ui.caseSliderPrev}">←</button>
+                    <button class="cases-slider__button" type="button" data-cases-slider-next aria-label="${ui.caseSliderNext}">→</button>
                   </div>
                   <div class="cases-slider__track" data-cases-slider-track>
                     ${renderCardList(
@@ -1914,13 +1909,13 @@ export function renderPage(content, pageKey) {
                       (item) => `
                         <article class="case-card">
                           <div class="case-card__content">
-                            <p class="eyebrow">${ui.caseStudy ?? 'Case study'}</p>
+                            <p class="eyebrow">${ui.caseStudy}</p>
                             <h3>${typeof item === 'string' ? item : item.title}</h3>
-                            <p class="case-card__subtitle">${typeof item === 'string' ? ui.caseSubtitlePlaceholder ?? 'Short case summary' : item.subtitle}</p>
-                            <p class="case-card__problem">${typeof item === 'string' ? ui.caseProblemPlaceholder ?? 'Separate SEO-friendly URL for the case, results, timing, and CTA.' : item.problem}</p>
+                            <p class="case-card__subtitle">${typeof item === 'string' ? ui.caseSubtitlePlaceholder : item.subtitle}</p>
+                            <p class="case-card__problem">${typeof item === 'string' ? ui.caseProblemPlaceholder : item.problem}</p>
                             <div class="button-row">
                               <a class="button button--ghost case-card__button" href="${buildPageUrl(content.locale.code, 'cases')}">
-                                <span>${ui.caseViewLabel ?? 'View case'}</span>
+                                <span>${ui.caseViewLabel}</span>
                                 <span class="case-card__button-icon" aria-hidden="true">→</span>
                               </a>
                             </div>
@@ -1933,7 +1928,7 @@ export function renderPage(content, pageKey) {
                             />
                             <div class="case-card__media-copy">
                               <strong>${typeof item === 'string' ? item : item.title}</strong>
-                              <span>${typeof item === 'string' ? ui.caseSubtitlePlaceholder ?? 'Short case summary' : item.subtitle}</span>
+                              <span>${typeof item === 'string' ? ui.caseSubtitlePlaceholder : item.subtitle}</span>
                             </div>
                           </div>
                         </article>
@@ -1960,7 +1955,7 @@ export function renderPage(content, pageKey) {
                 (step, index) => `
                   <div class="process-flow__rail-step${index === content.home.process.steps.length - 1 ? ' is-current' : ''}">
                     <span class="process-flow__rail-badge">${index + 1}</span>
-                    <span class="process-flow__rail-title">${typeof step === 'string' ? `${ui.processStepLabel ?? 'Step'} ${index + 1}` : step.title}</span>
+                    <span class="process-flow__rail-title">${typeof step === 'string' ? `${ui.processStepLabel} ${index + 1}` : step.title}</span>
                   </div>
                 `,
               )}
@@ -1978,7 +1973,7 @@ export function renderPage(content, pageKey) {
                       <span class="process-card__preview-line"></span>
                       <span class="process-card__preview-line process-card__preview-line--medium"></span>
                     </div>
-                    <h3>${typeof step === 'string' ? `${ui.processStepLabel ?? 'Step'} ${index + 1}` : step.title}</h3>
+                    <h3>${typeof step === 'string' ? `${ui.processStepLabel} ${index + 1}` : step.title}</h3>
                     <p>${typeof step === 'string' ? step : step.text}</p>
                   </article>
                 `,
@@ -2047,7 +2042,7 @@ export function renderPage(content, pageKey) {
           ${renderReportStyleForm(content, {
             type: 'lead',
             title: content.forms?.lead?.title,
-            buttonLabel: ui.sendRequest ?? 'Send request',
+            buttonLabel: ui.sendRequest,
           })}
         </div>
       </section>
@@ -2068,8 +2063,8 @@ export function renderPage(content, pageKey) {
             <p>${content.home.finalCta.lead}</p>
           </div>
           <div class="cta-banner__actions">
-            <button class="button cta-banner__button cta-banner__button--primary" type="button" data-open-modal="callback">${ui.bookCall ?? 'Book a call'}</button>
-            <a class="button button--ghost cta-banner__button cta-banner__button--ghost" href="${buildPageUrl(content.locale.code, 'contacts')}">${ui.openContactsPage ?? 'Open contacts page'}</a>
+            <button class="button cta-banner__button cta-banner__button--primary" type="button" data-open-modal="callback">${ui.bookCall}</button>
+            <a class="button button--ghost cta-banner__button cta-banner__button--ghost" href="${buildPageUrl(content.locale.code, 'contacts')}">${ui.openContactsPage}</a>
           </div>
         </div>
       </section>
@@ -2127,19 +2122,19 @@ export function renderPage(content, pageKey) {
     <section class="section">
       <div class="shell split">
         <div class="stack">
-          <div class="line-card">${ui.genericPageCardOne ?? 'Base page prepared for localized content'} <strong>${page.title ?? pageKey}</strong></div>
-          <div class="line-card">${ui.genericPageCardTwo ?? 'Metadata and structure are ready for further expansion'}</div>
-          <div class="line-card">${ui.genericPageCardThree ?? 'Each route is generated separately for every locale'}</div>
+          <div class="line-card">${ui.genericPageCardOne} <strong>${page.title ?? pageKey}</strong></div>
+          <div class="line-card">${ui.genericPageCardTwo}</div>
+          <div class="line-card">${ui.genericPageCardThree}</div>
         </div>
         ${
           includeForm
             ? renderReportStyleForm(content, {
                 type: pageKey === 'report' ? 'report' : 'contact',
                 title: content.forms?.[pageKey === 'report' ? 'report' : 'contact']?.title,
-                buttonLabel: ui.sendRequest ?? 'Send request',
+                buttonLabel: ui.sendRequest,
                 note: page.lead ?? '',
               })
-            : `<div class="card"><p>${ui.legalPlaceholder ?? 'Legal copy placeholder. Replace with approved content before launch.'}</p></div>`
+            : `<div class="card"><p>${ui.legalPlaceholder}</p></div>`
         }
       </div>
     </section>

@@ -335,12 +335,15 @@ const createHtml = ({ locale, pageKey }) => {
 }
 
 function createRedirectHtml() {
+  const supportedLocales = JSON.stringify(LOCALES)
+  const defaultLocale = JSON.stringify(DEFAULT_LOCALE)
+
   return renderHtmlDocument({
     lang: 'en',
     head: `
       ${renderCommonHeadTags()}
-      <meta http-equiv="refresh" content="0; url=/${DEFAULT_LOCALE}/" />
       <title>${SITE_NAME}</title>
+      <noscript><meta http-equiv="refresh" content="0; url=/${DEFAULT_LOCALE}/" /></noscript>
     `,
     body: `
       <style>
@@ -392,10 +395,63 @@ function createRedirectHtml() {
           }
         }
       </style>
+      <script>
+        (function () {
+          const supportedLocales = ${supportedLocales}
+          const defaultLocale = ${defaultLocale}
+          const preferredLocaleKey = 'preferred-locale'
+          const aliasMap = {
+            ua: 'uk',
+            cz: 'cs',
+          }
+
+          function normalizeLocale(value) {
+            if (!value) return null
+
+            const normalized = String(value).trim().toLowerCase().replace(/_/g, '-')
+            if (!normalized) return null
+
+            const [language] = normalized.split('-')
+            return aliasMap[language] ?? language
+          }
+
+          function resolveLocale() {
+            let storedLocale = null
+
+            try {
+              storedLocale = normalizeLocale(window.localStorage.getItem(preferredLocaleKey))
+            } catch {
+              storedLocale = null
+            }
+
+            if (storedLocale && supportedLocales.includes(storedLocale)) {
+              return storedLocale
+            }
+
+            const browserLocales = Array.isArray(window.navigator.languages) && window.navigator.languages.length
+              ? window.navigator.languages
+              : [window.navigator.language]
+
+            for (const locale of browserLocales) {
+              const normalizedLocale = normalizeLocale(locale)
+              if (normalizedLocale && supportedLocales.includes(normalizedLocale)) {
+                return normalizedLocale
+              }
+            }
+
+            return defaultLocale
+          }
+
+          const targetLocale = resolveLocale()
+          const targetPath = '/' + targetLocale + '/'
+
+          window.location.replace(targetPath)
+        })()
+      </script>
       <div class="redirect-loader" aria-live="polite">
         <img class="redirect-loader__logo" src="/logo-symbol-loader.svg" alt="" width="60" height="74" />
         <div class="redirect-loader__spinner" aria-hidden="true"></div>
-        <p class="redirect-loader__text">Redirecting to <a href="/${DEFAULT_LOCALE}/">/${DEFAULT_LOCALE}/</a>...</p>
+        <p class="redirect-loader__text">Selecting your language and redirecting. If nothing happens, open <a href="/${DEFAULT_LOCALE}/">/${DEFAULT_LOCALE}/</a>.</p>
       </div>
     `,
   })

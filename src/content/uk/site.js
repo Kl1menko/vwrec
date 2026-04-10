@@ -596,6 +596,7 @@ ukContent.ui.video = 'Відео'
 ukContent.ui.videoPlay = 'Відтворити відео'
 ukContent.ui.openMenu = 'Відкрити меню'
 ukContent.ui.primaryNav = 'Основна навігація'
+ukContent.ui.languagePickerTitle = 'Оберіть мову'
 ukContent.ui.fieldName = 'Ім’я'
 ukContent.ui.fieldCompany = 'Компанія'
 ukContent.ui.fieldEmail = 'Email'
@@ -647,6 +648,7 @@ ukContent.ui.industryVisualManufacturingAlt = 'Працівники на вир�
 ukContent.ui.industrySlidePlaceholder =
   'Окремий візуальний кейс для цієї вертикалі можна масштабувати під SEO-сторінки, квіз і персоналізовані CTA.'
 ukContent.ui.comparisonCardCta = 'Прорахувати підбір'
+ukContent.ui.comparisonOtherMark = 'ІН'
 ukContent.ui.guaranteesLegalDelta = 'Квоти, дозволи, візи'
 ukContent.ui.guaranteesReplacementMetric = '0 грн'
 ukContent.ui.guaranteesReplacementDelta = 'Швидка заміна в гарантії'
@@ -696,6 +698,8 @@ ukContent.ui.servicesOfferVisualSecondary = 'Для кандидатів'
 ukContent.ui.servicesBeamEyebrow = 'Карта процесу'
 ukContent.ui.servicesRouteEyebrow = 'Як працює співпраця'
 ukContent.ui.servicesRouteTitle = 'Прозорий маршрут від заявки до виходу працівників на зміну'
+ukContent.ui.servicesRouteLead =
+  'Бізнес бачить зрозумілий маршрут запуску з прогнозованими етапами від запиту до виходу людей на зміну.'
 ukContent.ui.servicesProofEyebrow = 'Чому це продає'
 ukContent.ui.servicesProofTitle =
   'Не просто підбір, а керований сервіс із чітким результатом на кожному етапі'
@@ -708,14 +712,31 @@ ukContent.ui.servicesFitScoreLabel = 'рівень відповідності'
 ukContent.ui.servicesFitMetricOne = 'Швидкість запуску'
 ukContent.ui.servicesFitMetricTwo = 'Стабільність'
 ukContent.ui.servicesFitMetricThree = 'Прозорість'
+ukContent.ui.servicesFitCardTextOne =
+  'Найсильніше працює там, де важливі повторювані зміни, дисципліна виходу і швидке масштабування без провалів у запуску.'
+ukContent.ui.servicesFitCardTextTwo =
+  'Добре заходить для сезонних піків, зростання обсягів і операцій, де бізнесу критично потрібен ритмічний запуск людей.'
+ukContent.ui.servicesFitCardTextThree =
+  'Підходить для проєктів із жорсткими дедлайнами, де потрібно поєднати рекрутинг, документи та прибуття без хаосу.'
+ukContent.ui.servicesFitCardTextFour =
+  'Показує хороший результат у сервісних командах, де критичні зрозумілий маршрут, швидка адаптація і стабільність старту.'
 ukContent.ui.servicesLeadEyebrow = 'Почати діалог'
 ukContent.ui.servicesLeadText =
   'Для роботодавців це швидкий спосіб зрозуміти, як запустити підбір. Для кандидатів — можливість отримати чесне пояснення по маршруту працевлаштування та документах.'
+ukContent.ui.servicesSegmentBadgeBusiness = 'B2B'
+ukContent.ui.servicesSegmentBadgeCandidate = 'B2C'
 ukContent.ui.industriesSectionTitle = 'ДЛЯ ЯКИХ СФЕР ПІДХОДИТЬ ТАКА МОДЕЛЬ НАЙМУ'
 ukContent.ui.industrySliderPrev = 'Попередній слайд'
 ukContent.ui.industrySliderNext = 'Наступний слайд'
 ukContent.ui.quizSectionLead =
   'Короткий покроковий квіз, який допомагає швидко зібрати запит і передати його в єдиному форматі.'
+ukContent.ui.casesSectionLead =
+  'Показуємо приклади запуску підбору для виробництва, логістики, готелів та інших операційних команд.'
+ukContent.ui.caseSliderPrev = 'Попередній кейс'
+ukContent.ui.caseSliderNext = 'Наступний кейс'
+ukContent.ui.casesTimelineSteps = ['Бриф', 'Пошук', 'Погодження', 'Документи', 'Приїзд']
+ukContent.ui.industriesFitSummary =
+  'Сигнали, які зазвичай означають, що локальний найм уже не тримає темп вашої операції і потрібна більш системна модель комплектування команди.'
 ukContent.ui.caseSubtitlePlaceholder = 'Короткий опис кейсу'
 ukContent.ui.caseProblemPlaceholder =
   'Окрема SEO-сторінка для кейсу з результатами, строками і цільовою дією.'
@@ -728,6 +749,8 @@ ukContent.ui.reportPanelReportTitle = 'Ринок праці 2026'
 ukContent.ui.reportPanelReportText =
   'Інтеграція міжнародного персоналу для бізнесу з дефіцитом кадрів'
 ukContent.ui.reportPanelGuide = 'PDF'
+ukContent.ui.videoInsightLabel = 'Відео-інсайт'
+ukContent.ui.mediaDefaultDuration = '02:00'
 ukContent.ui.reviewsPrev = 'Попередній відгук'
 ukContent.ui.reviewsNext = 'Наступний відгук'
 ukContent.ui.genericPageCardOne = 'Базова сторінка підготовлена для локалізованого контенту'

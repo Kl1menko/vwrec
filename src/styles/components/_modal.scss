@@ -254,7 +254,10 @@
   top: 18px;
   right: 18px;
   width: 42px;
+  min-width: 42px;
   height: 42px;
+  min-height: 42px;
+  flex: 0 0 42px;
   border: 0;
   border-radius: 50%;
   background: #f4f1ed;
@@ -264,6 +267,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  aspect-ratio: 1;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 @media (max-width: 767px) {

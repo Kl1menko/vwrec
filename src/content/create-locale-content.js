@@ -605,6 +605,7 @@ export function createLocaleContent({
       videoPlay: 'Play video',
       openMenu: 'Open menu',
       primaryNav: 'Primary',
+      languagePickerTitle: 'Choose language',
       fieldName: 'Name',
       fieldCompany: 'Company',
       fieldEmail: 'Email',
@@ -656,6 +657,7 @@ export function createLocaleContent({
       industrySlidePlaceholder:
         'This vertical can be expanded into SEO pages, quiz paths, and personalized CTAs.',
       comparisonCardCta: 'Calculate hiring cost',
+      comparisonOtherMark: 'IN',
       guaranteesLegalDelta: 'Quotas, permits, visas',
       guaranteesReplacementMetric: 'No fee',
       guaranteesReplacementDelta: 'Fast replacement under guarantee',
@@ -704,6 +706,8 @@ export function createLocaleContent({
       servicesBeamEyebrow: 'Process map',
       servicesRouteEyebrow: 'How cooperation works',
       servicesRouteTitle: 'A transparent route from request to workers starting their shifts',
+      servicesRouteLead:
+        'The employer sees a clear launch route with predictable steps from staffing brief to first shift.',
       servicesProofEyebrow: 'Why it converts',
       servicesProofTitle:
         'Not just candidate sourcing, but a managed service with a clear result at every stage',
@@ -716,14 +720,31 @@ export function createLocaleContent({
       servicesFitMetricOne: 'Launch speed',
       servicesFitMetricTwo: 'Retention',
       servicesFitMetricThree: 'Process clarity',
+      servicesFitCardTextOne:
+        'Strongest fit where repeatable shifts, attendance discipline, and fast scaling matter most.',
+      servicesFitCardTextTwo:
+        'Works especially well for seasonal peaks, volume growth, and operations that need a rhythmic team launch.',
+      servicesFitCardTextThree:
+        'Fits projects with hard deadlines where recruitment, documents, and arrival must stay aligned without chaos.',
+      servicesFitCardTextFour:
+        'Performs well in service teams where a clear route, quick adaptation, and stable start are critical.',
       servicesLeadEyebrow: 'Start the conversation',
       servicesLeadText:
         'For employers, this is a fast way to understand how to launch hiring. For candidates, it is a chance to get a clear explanation of the employment route and documents.',
+      servicesSegmentBadgeBusiness: 'B2B',
+      servicesSegmentBadgeCandidate: 'B2C',
       industriesSectionTitle: 'WHICH INDUSTRIES THIS HIRING MODEL FITS',
       industrySliderPrev: 'Previous slide',
       industrySliderNext: 'Next slide',
       quizSectionLead:
         'Step-based mobile-friendly flow with analytics events and a single submission payload.',
+      casesSectionLead:
+        'Examples of how hiring launches are built for manufacturing, logistics, hospitality, and other operational teams.',
+      caseSliderPrev: 'Previous case',
+      caseSliderNext: 'Next case',
+      casesTimelineSteps: ['Brief', 'Search', 'Approval', 'Documents', 'Arrival'],
+      industriesFitSummary:
+        'Signals that usually mean local hiring is no longer enough to maintain the operating pace and a more systematic team-building model is needed.',
       caseSubtitlePlaceholder: 'Short case summary',
       caseProblemPlaceholder:
         'Separate SEO-friendly URL for the case, results, timing, and CTA.',
@@ -736,6 +757,8 @@ export function createLocaleContent({
       reportPanelReportText:
         'International workforce integration for businesses facing labor shortages',
       reportPanelGuide: 'PDF',
+      videoInsightLabel: 'Video insight',
+      mediaDefaultDuration: '02:00',
       reviewsPrev: 'Previous review',
       reviewsNext: 'Next review',
       genericPageCardOne: 'Base page prepared for localized content',

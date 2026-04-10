@@ -1,10 +1,13 @@
-import { createLocaleContent } from '../create-locale-content.js'
+import { buildLocalizedContent } from '../build-localized-content.js'
+import { ukContent } from '../uk/site.js'
 
-export const bgContent = createLocaleContent({
-  code: 'bg',
-  name: 'Bulgarian',
-  nativeName: 'Български',
-  heroTitle: 'International recruitment website starter for Bulgarian-language expansion.',
-  heroLead:
-    'Locale structure, page generation, and reusable sections are prepared so the full translation layer can be filled in next.',
-})
+export const bgContent = buildLocalizedContent(
+  ukContent,
+  {
+    code: 'bg',
+    name: 'Bulgarian',
+    nativeName: 'Български',
+    translated: false,
+  },
+  {},
+)

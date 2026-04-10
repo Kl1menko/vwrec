@@ -2,27 +2,29 @@ import { renderFooter } from '../js/components/footer.js'
 import { renderHeader } from '../js/components/header.js'
 
 function renderModal(content, title, formType, buttonLabel) {
+  const ui = content.ui
+
   return `
     <div class="modal" data-modal="${formType}">
       <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
+        <button class="modal__close" type="button" data-close-modal aria-label="${ui.modalClose}">×</button>
         <h3 class="modal__title">${title}</h3>
         <form class="modal__form" data-form data-form-type="${formType}">
           <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
           <label class="field">
-            <span>${content.ui?.fieldName ?? 'Name'} *</span>
+            <span>${ui.fieldName} *</span>
             <input type="text" name="name" autocomplete="name" required />
           </label>
           <label class="field">
-            <span>${content.ui?.fieldCompany ?? 'Company'} *</span>
+            <span>${ui.fieldCompany} *</span>
             <input type="text" name="company" autocomplete="organization" required />
           </label>
           <label class="field">
-            <span>${content.ui?.fieldEmail ?? 'Email'}</span>
+            <span>${ui.fieldEmail}</span>
             <input type="email" name="email" autocomplete="email" />
           </label>
           <label class="field">
-            <span>${content.ui?.fieldPhone ?? 'Phone'} *</span>
+            <span>${ui.fieldPhone} *</span>
             <input type="tel" name="phone" autocomplete="tel" required />
           </label>
           <button class="button modal__submit" type="submit">${buttonLabel}</button>
@@ -37,7 +39,7 @@ function renderVideoModal(content) {
   return `
     <div class="modal" data-modal="video">
       <div class="modal__dialog modal__dialog--video">
-        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
+        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui.modalClose}">×</button>
         <div class="video-modal__player">
           <video
             class="video-modal__media"
@@ -56,9 +58,9 @@ function renderHeroQuizModal(content) {
   return `
     <div class="modal" data-modal="hero-quiz">
       <div class="modal__dialog modal__dialog--quiz">
-        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
+        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui.modalClose}">×</button>
         <h3>${content.home.calculator?.title ?? content.quiz.title}</h3>
-        <p>${content.home.calculator?.lead ?? 'Step-based mobile-friendly flow with analytics events and a single submission payload.'}</p>
+        <p>${content.home.calculator?.lead ?? content.ui.quizSectionLead}</p>
         <div data-quiz data-quiz-source="hero_quiz"></div>
       </div>
     </div>
@@ -69,7 +71,7 @@ function renderReportSuccessModal(content) {
   return `
     <div class="modal" data-modal="report-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
+        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui.modalClose}">×</button>
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -84,7 +86,7 @@ function renderFormSuccessModal(content) {
   return `
     <div class="modal" data-modal="form-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui?.modalClose ?? 'Close modal'}">×</button>
+        <button class="modal__close" type="button" data-close-modal aria-label="${content.ui.modalClose}">×</button>
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -101,8 +103,8 @@ export function renderLayout({ content, locale, pageKey, mainContent }) {
       ${mainContent}
     </main>
     ${renderFooter(content, locale)}
-    ${renderModal(content, content.forms.callback.title, 'callback', content.ui?.requestCallback ?? 'Request callback')}
-    ${renderModal(content, content.forms.report.title, 'report', content.ui?.getReport ?? 'Get report')}
+    ${renderModal(content, content.forms.callback.title, 'callback', content.ui.requestCallback)}
+    ${renderModal(content, content.forms.report.title, 'report', content.ui.getReport)}
     ${renderReportSuccessModal(content)}
     ${renderFormSuccessModal(content)}
     ${renderHeroQuizModal(content)}

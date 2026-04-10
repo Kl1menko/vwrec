@@ -127,8 +127,8 @@ function initQuizInstance(root, content) {
           ${step.type === 'options' ? renderOptions(step, state) : renderFields(step, state)}
         </div>
         <div class="quiz-actions">
-          <button class="button button--ghost" type="button" data-quiz-back ${currentStep === 0 ? 'disabled' : ''}>${ui.quizBack ?? 'Back'}</button>
-          <button class="button" type="button" data-quiz-next>${isLastStep ? ui.quizSubmit ?? 'Submit' : ui.quizContinue ?? 'Continue'}</button>
+          <button class="button button--ghost" type="button" data-quiz-back ${currentStep === 0 ? 'disabled' : ''}>${ui.quizBack}</button>
+          <button class="button" type="button" data-quiz-next>${isLastStep ? ui.quizSubmit : ui.quizContinue}</button>
         </div>
         <p class="form-status" data-quiz-status></p>
       </div>
@@ -143,7 +143,7 @@ function initQuizInstance(root, content) {
       const value = getStepValue(step, root)
 
       if (!isStepValid(step, value) || !validateStepFields(step, root)) {
-        qs('[data-quiz-status]', root).textContent = ui.quizValidationError ?? 'Please complete the current step.'
+        qs('[data-quiz-status]', root).textContent = ui.quizValidationError
         return
       }
 
@@ -180,7 +180,7 @@ function initQuizInstance(root, content) {
               <div class="quiz-card__success-icon" aria-hidden="true">
                 <span>✓</span>
               </div>
-              <p class="eyebrow">${ui.quizReady ?? 'Ready'}</p>
+              <p class="eyebrow">${ui.quizReady}</p>
               <h3>${content.quiz.completionTitle}</h3>
               <p>${content.quiz.completionLead}</p>
             </div>
@@ -188,7 +188,7 @@ function initQuizInstance(root, content) {
         )
       } catch (error) {
         console.error(error)
-        qs('[data-quiz-status]', root).textContent = ui.quizSubmitError ?? 'Submission failed. Please try again.'
+        qs('[data-quiz-status]', root).textContent = ui.quizSubmitError
       }
     })
   }

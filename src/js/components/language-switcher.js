@@ -1,7 +1,13 @@
 import { qsa } from '../utils/dom.js'
 
+const PREFERRED_LOCALE_KEY = 'preferred-locale'
+
 function isMobileLanguageSheet() {
   return window.matchMedia('(max-width: 767px)').matches
+}
+
+function syncViewportHeight() {
+  document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`)
 }
 
 function closeSwitcher(switcher) {
@@ -39,7 +45,10 @@ export function initLanguageSwitcher() {
   const switchers = qsa('[data-language-switcher]')
   if (!switchers.length) return
 
+  syncViewportHeight()
+
   const syncOpenMenus = () => {
+    syncViewportHeight()
     switchers.forEach((switcher) => updateMenuPosition(switcher))
   }
 
@@ -87,6 +96,16 @@ export function initLanguageSwitcher() {
 
     switcher.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
+        const localeMatch = link.getAttribute('href')?.match(/^\/([a-z]{2})(?:\/|$)/i)
+
+        if (localeMatch?.[1]) {
+          try {
+            window.localStorage.setItem(PREFERRED_LOCALE_KEY, localeMatch[1].toLowerCase())
+          } catch {
+            // Ignore storage failures and let navigation continue.
+          }
+        }
+
         closeSwitcher(switcher)
       })
     })
@@ -109,4 +128,5 @@ export function initLanguageSwitcher() {
   window.addEventListener('resize', syncOpenMenus, { passive: true })
   window.addEventListener('orientationchange', syncOpenMenus, { passive: true })
   window.addEventListener('scroll', syncOpenMenus, { passive: true, capture: true })
+  window.visualViewport?.addEventListener('resize', syncOpenMenus, { passive: true })
 }

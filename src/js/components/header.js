@@ -18,6 +18,7 @@ function renderLanguageOptions(currentLocale, pageKey) {
 
 export function renderHeader(content, locale, pageKey) {
   const currentLocaleMeta = LOCALE_META[locale] ?? LOCALE_META.en
+  const siteTitle = content.site.title
   const navLinks = content.navigation.items
     .map(
       (item) => `
@@ -29,15 +30,15 @@ export function renderHeader(content, locale, pageKey) {
   return `
     <header class="site-header">
       <div class="shell site-header__inner">
-        <a class="brand-mark" href="${buildPageUrl(locale, 'home')}" aria-label="${content.brand?.homeAriaLabel ?? 'VW Recruit home'}">
-          <img class="brand-mark__logo" src="${logoSymbol}" alt="VW Recruit logo" width="82" height="101" />
+        <a class="brand-mark" href="${buildPageUrl(locale, 'home')}" aria-label="${content.brand.homeAriaLabel}">
+          <img class="brand-mark__logo" src="${logoSymbol}" alt="${siteTitle} logo" width="82" height="101" />
           <span class="brand-mark__text">
-            <strong>VW Recruit</strong>
-            <small>${content.brand?.tagline ?? 'International hiring partner'}</small>
+            <strong>${siteTitle}</strong>
+            <small>${content.brand.tagline}</small>
           </span>
         </a>
 
-        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${content.ui?.openMenu ?? 'Open menu'}">
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${content.ui.openMenu}">
           <span class="menu-toggle__lines" aria-hidden="true">
             <span></span>
             <span></span>
@@ -46,7 +47,7 @@ export function renderHeader(content, locale, pageKey) {
         </button>
 
         <div class="site-header__panel" id="site-nav" data-menu-panel>
-          <nav class="site-nav" aria-label="${content.ui?.primaryNav ?? 'Primary'}">
+          <nav class="site-nav" aria-label="${content.ui.primaryNav}">
             ${navLinks}
           </nav>
 
@@ -65,12 +66,12 @@ export function renderHeader(content, locale, pageKey) {
               </button>
               <div class="language-switcher__menu" data-language-menu>
                 <div class="language-switcher__sheet-head">
-                  <strong class="language-switcher__sheet-title">${content.ui?.languagePickerTitle ?? 'Оберіть мову'}</strong>
+                  <strong class="language-switcher__sheet-title">${content.ui.languagePickerTitle}</strong>
                   <button
                     class="language-switcher__sheet-close"
                     type="button"
                     data-language-close
-                    aria-label="${content.ui?.modalClose ?? 'Закрити'}"
+                    aria-label="${content.ui.modalClose}"
                   >
                     ×
                   </button>

@@ -1,11 +1,13 @@
-import { createLocaleContent } from '../create-locale-content.js'
+import { buildLocalizedContent } from '../build-localized-content.js'
+import { ukContent } from '../uk/site.js'
 
-export const enContent = createLocaleContent({
-  code: 'en',
-  name: 'English',
-  nativeName: 'English',
-  translated: true,
-  heroTitle: 'Reduce staffing pressure and launch operational teams with international hiring support.',
-  heroLead:
-    'For employers in manufacturing, logistics, construction, and service operations, we build a clearer route to hiring, documents, arrival, and team launch.',
-})
+export const enContent = buildLocalizedContent(
+  ukContent,
+  {
+    code: 'en',
+    name: 'English',
+    nativeName: 'English',
+    translated: false,
+  },
+  {},
+)
