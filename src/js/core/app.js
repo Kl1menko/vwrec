@@ -12,6 +12,7 @@ import { initIndustrySlider } from '../components/industry-slider.js'
 import { initReviewsSlider } from '../components/reviews-slider.js'
 import { initRipple } from '../components/ripple.js'
 import { initServicesFit } from '../components/services-fit.js'
+import { initVideoTestimonials } from '../components/video-testimonials.js'
 
 function getEmbeddedContent() {
   const node = document.querySelector('#page-content')
@@ -46,6 +47,7 @@ export async function initApp() {
   initRipple()
   initAnimatedBeam()
   initServicesFit()
+  initVideoTestimonials()
 
   if (document.querySelector('[data-hero-globe-canvas]')) {
     const { initHeroGlobe } = await import('../components/globe.js')

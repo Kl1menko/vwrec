@@ -323,6 +323,22 @@ enContent.home = {
       },
     ],
   },
+  videoTestimonials: {
+    items: [
+      {
+        src: '/videos/review-1.mp4',
+        poster: '',
+        name: 'Candidate review',
+        role: 'Worker placed via VW Recruit',
+      },
+      {
+        src: '/videos/review-2.mp4',
+        poster: '',
+        name: 'Candidate review',
+        role: 'Worker placed via VW Recruit',
+      },
+    ],
+  },
   finalCta: {
     title: 'Ready to close the staffing shortage and scale your business?',
     lead: 'Book a free 30-minute Zoom session with our Head of Recruitment.',

@@ -323,6 +323,22 @@ ukContent.home = {
       },
     ],
   },
+  videoTestimonials: {
+    items: [
+      {
+        src: '/videos/review-1.mp4',
+        poster: '',
+        name: 'Відгук кандидата',
+        role: 'Працівник, направлений через VW Recruit',
+      },
+      {
+        src: '/videos/review-2.mp4',
+        poster: '',
+        name: 'Відгук кандидата',
+        role: 'Працівник, направлений через VW Recruit',
+      },
+    ],
+  },
   finalCta: {
     title: 'Готові закрити дефіцит кадрів та масштабувати бізнес?',
     lead: 'Забронюйте безкоштовну 30-хвилинну Zoom-сесію з нашим Head of Recruitment.',

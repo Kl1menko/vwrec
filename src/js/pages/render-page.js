@@ -2058,6 +2058,48 @@ export function renderPage(content, pageKey) {
           : ''
       }
 
+      ${
+        content.home.videoTestimonials?.items?.length
+          ? `
+            <section class="section video-testimonials-section" data-reveal>
+              <div class="shell">
+                <div class="video-testimonials__grid">
+                  ${content.home.videoTestimonials.items
+                    .map(
+                      (item) => `
+                    <div class="video-testimonial-card">
+                      <div class="video-testimonial-card__video-wrap">
+                        <video
+                          class="video-testimonial-card__video"
+                          src="${item.src}"
+                          poster="${item.poster ?? ''}"
+                          playsinline
+                          preload="metadata"
+                        ></video>
+                        <button class="video-testimonial-card__play" aria-label="${ui.videoPlay ?? 'Play video'}">
+                          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="24" fill="white" fill-opacity="0.92"/>
+                            <path d="M19 15.5L35 24L19 32.5V15.5Z" fill="#E07B2A"/>
+                          </svg>
+                        </button>
+                      </div>
+                      ${item.name ? `
+                        <div class="video-testimonial-card__meta">
+                          <strong class="video-testimonial-card__name">${item.name}</strong>
+                          ${item.role ? `<span class="video-testimonial-card__role">${item.role}</span>` : ''}
+                        </div>
+                      ` : ''}
+                    </div>
+                  `,
+                    )
+                    .join('')}
+                </div>
+              </div>
+            </section>
+          `
+          : ''
+      }
+
       ${reviewMetrics.length ? renderHomeStatsStrip(reviewMetrics, ui) : ''}
 
       <section class="section final-lead-mobile-center" data-reveal>
