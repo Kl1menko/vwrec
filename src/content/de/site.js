@@ -50,7 +50,7 @@ deContent.home = {
   },
   comparison: {
     eyebrow: 'Vergleich der Rekrutierungsmodelle',
-    title: 'Wie viel Unternehmen bei lokaler Personalbeschaffung draufzahlen',
+    title: 'Wie Unternehmen durch Fachkräftemangel im lokalen Markt verlieren',
     cards: [
       {
         title: 'Andere',
@@ -61,43 +61,43 @@ deContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Höhere Gehaltsbasis',
-            text: 'Durchschnittlich 1000–1400 $ pro Mitarbeiter bei lokaler Rekrutierung.',
+            title: 'Mangel an guten Kandidaten',
+            text: 'Dutzende von Unternehmen konkurrieren gleichzeitig um dieselben guten Mitarbeiter.',
           },
           {
-            title: 'Längere Team-Einarbeitung',
-            text: 'Die Auswahl der ersten Personen dauert 3–6 Wochen oder länger.',
+            title: 'Stellen bleiben länger offen',
+            text: 'Während die Suche andauert, arbeitet das Team überlastet.',
           },
           {
             title: 'Ständige Nachrekrutierung',
-            text: 'Aufgrund von Fluktuation und Saisonalität muss das Unternehmen immer wieder neu suchen.',
+            text: 'Aufgrund des Personalmangels kehrt das Unternehmen immer wieder zur Suche zurück.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'internationale Rekrutierung als Komplettlösung',
+        brandNote: 'systematische Lösung des Fachkräftemangels',
         amount: '$18.000',
         period: '/ Monat',
         note: 'für ein Team von 30 Mitarbeitern',
         variant: 'brand',
         rows: [
           {
-            title: 'Geringere Durchschnittskosten',
-            text: 'Durchschnittlich 400–700 $ pro Mitarbeiter je nach Rolle und Land.',
+            title: 'Zugang zu einem breiteren Kandidatenpool',
+            text: 'Wir arbeiten über die Grenzen des lokalen Personalmangels hinaus.',
           },
           {
-            title: 'Erste Kandidaten in 7–14 Tagen',
-            text: 'Schneller Rekrutierungsstart durch internationale Datenbank und Partnernetzwerk.',
+            title: 'Schneller Zugang zu Kandidaten',
+            text: 'Erste relevante Personen bereits in 7–14 Tagen.',
           },
           {
-            title: 'Stabileres Team',
-            text: 'Weniger Rekrutierungszyklen und bessere Planbarkeit für das Unternehmen.',
+            title: 'Fokus auf Geschäftskontinuität',
+            text: 'Sie besetzen Stellen schneller, während Konkurrenten noch suchen.',
           },
         ],
       },
     ],
-    cta: 'Personalbedarf berechnen',
+    cta: 'Fachkräftemangel schließen',
   },
   industries: {
     eyebrow: 'Für welche Branchen das Modell geeignet ist',
@@ -431,7 +431,7 @@ deContent.privacy = {
     {
       title: '9. Kontakt',
       paragraphs: [
-        'Wenn Sie Fragen zu dieser Datenschutzerklärung haben oder Ihre Rechte bezüglich personenbezogener Daten ausüben möchten, kontaktieren Sie uns bitte über das Kontaktformular auf der Website oder per E-Mail: [Ihre E-Mail, z.B.: hello@vwrecruit.com].',
+        'Wenn Sie Fragen zu dieser Datenschutzerklärung haben oder Ihre Rechte bezüglich personenbezogener Daten ausüben möchten, kontaktieren Sie uns bitte über das Kontaktformular auf der Website oder per E-Mail: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ deContent.terms = {
     {
       title: '8. Feedback',
       paragraphs: [
-        'Für alle Fragen bezüglich des Betriebs der Website oder der Bedingungen der Zusammenarbeit kontaktieren Sie uns bitte über das Formular auf der Seite „Kontakt“ oder unter: [Ihre E-Mail / Telefon].',
+        'Für alle Fragen bezüglich des Betriebs der Website oder der Bedingungen der Zusammenarbeit kontaktieren Sie uns bitte über das Formular auf der Seite „Kontakt“ oder unter: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ deContent.ui.fieldName = 'Name'
 deContent.ui.fieldCompany = 'Unternehmen'
 deContent.ui.fieldEmail = 'E-Mail'
 deContent.ui.fieldPhone = 'Telefon'
+deContent.ui.fieldIsBusiness = 'Sind Sie eine reale Agentur oder ein Unternehmen?'
+deContent.ui.fieldTargetCountries = 'Welche Länder interessieren Sie?'
+deContent.ui.fieldWorkersCount = 'Für wie viele Personen benötigen Sie Recruiting?'
+deContent.ui.fieldSelectOption = 'Option wählen'
+deContent.ui.optionYes = 'Ja'
+deContent.ui.optionNo = 'Nein'
 deContent.ui.sendRequest = 'Anfrage senden'
 deContent.ui.requestCallback = 'Gespräch buchen'
 deContent.ui.getReport = 'Bericht anfordern'

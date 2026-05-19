@@ -50,7 +50,7 @@ skContent.home = {
   },
   comparison: {
     eyebrow: 'Porovnanie modelu náboru',
-    title: 'Koľko firma prepláca za lokálny nábor',
+    title: 'Ako firmy strácajú kvôli nedostatku pracovníkov na lokálnom trhu',
     cards: [
       {
         title: 'Ostatní',
@@ -61,43 +61,43 @@ skContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Vyšší platový základ',
-            text: 'V priemere 1000 – 1400 $ na pracovníka pri lokálnom nábore.',
+            title: 'Nedostatok dobrých kandidátov',
+            text: 'Desiatky firiem súčasne súperia o rovnakých dobrých pracovníkov.',
           },
           {
-            title: 'Dlhšie spustenie tímu',
-            text: 'Výber prvých ľudí trvá 3 – 6 týždňov alebo dlhšie.',
+            title: 'Pozície zostávajú otvorené dlhšie',
+            text: 'Kým trvá hľadanie, tím pracuje preťažený.',
           },
           {
             title: 'Neustály opakovaný nábor',
-            text: 'Kvôli fluktuácii a sezónnosti sa firma neustále vracia k hľadaniu.',
+            text: 'Kvôli nedostatku ľudí sa firma neustále vracia k hľadaniu.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'medzinárodný nábor na kľúč',
+        brandNote: 'systematické riešenie nedostatku pracovníkov',
         amount: '$18 000',
         period: '/ mesiac',
         note: 'pre tím 30 pracovníkov',
         variant: 'brand',
         rows: [
           {
-            title: 'Nižšie priemerné náklady',
-            text: 'V priemere 400 – 700 $ na pracovníka v závislosti od roly a krajiny.',
+            title: 'Prístup k širšiemu fondu kandidátov',
+            text: 'Pracujeme nad rámec lokálneho nedostatku na trhu práce.',
           },
           {
-            title: 'Prví kandidáti za 7 – 14 dní',
-            text: 'Rýchle spustenie náboru cez medzinárodnú databázu a partnerskú sieť.',
+            title: 'Rýchly prístup ku kandidátom',
+            text: 'Prvé relevantné osoby už za 7 – 14 dní.',
           },
           {
-            title: 'Stabilnejší tím',
-            text: 'Menej cyklov opakovaného hľadania a lepšia predvídateľnosť pre firmu.',
+            title: 'Zameranie na kontinuitu podnikania',
+            text: 'Obsadzujete pozície rýchlejšie, kým konkurenti ešte hľadajú.',
           },
         ],
       },
     ],
-    cta: 'Vypočítať nábor',
+    cta: 'Uzavrieť nedostatok pracovníkov',
   },
   industries: {
     eyebrow: 'Pre ktoré odvetvia je model vhodný',
@@ -431,7 +431,7 @@ skContent.privacy = {
     {
       title: '9. Kontakty',
       paragraphs: [
-        'Ak máte otázky týkajúce sa týchto Zásad ochrany osobných údajov alebo chcete uplatniť svoje práva na ochranu osobných údajov, kontaktujte nás prostredníctvom kontaktného formulára na Webe alebo e-mailom: [Váš Email, napr.: hello@vwrecruit.com].',
+        'Ak máte otázky týkajúce sa týchto Zásad ochrany osobných údajov alebo chcete uplatniť svoje práva na ochranu osobných údajov, kontaktujte nás prostredníctvom kontaktného formulára na Webe alebo e-mailom: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ skContent.terms = {
     {
       title: '8. Spätná väzba',
       paragraphs: [
-        'Všetky otázky týkajúce sa prevádzky Webu alebo podmienok spolupráce smerujte na nás prostredníctvom formulára na stránke "Kontakty" alebo na adrese: [Váš Email / Telefón].',
+        'Všetky otázky týkajúce sa prevádzky Webu alebo podmienok spolupráce smerujte na nás prostredníctvom formulára na stránke "Kontakty" alebo na adrese: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ skContent.ui.fieldName = 'Meno'
 skContent.ui.fieldCompany = 'Spoločnosť'
 skContent.ui.fieldEmail = 'E-mail'
 skContent.ui.fieldPhone = 'Telefón'
+skContent.ui.fieldIsBusiness = 'Ste reálna agentúra alebo firma?'
+skContent.ui.fieldTargetCountries = 'Ktoré krajiny vás zaujímajú?'
+skContent.ui.fieldWorkersCount = 'Pre koľko ľudí potrebujete nábor?'
+skContent.ui.fieldSelectOption = 'Vyberte možnosť'
+skContent.ui.optionYes = 'Áno'
+skContent.ui.optionNo = 'Nie'
 skContent.ui.sendRequest = 'Odoslať dopyt'
 skContent.ui.requestCallback = 'Rezervovať hovor'
 skContent.ui.getReport = 'Získať report'

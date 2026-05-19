@@ -8,7 +8,8 @@
   font-weight: 700;
 }
 
-.field input {
+.field input,
+.field select {
   width: 100%;
   min-height: 52px;
   padding: 0 18px;
@@ -54,7 +55,8 @@
     font-size: 0.86rem;
   }
 
-  .field input {
+  .field input,
+  .field select {
     min-height: 48px;
     padding: 0 15px;
     font-size: 0.96rem;

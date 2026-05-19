@@ -1,6 +1,27 @@
 import { renderFooter } from '../js/components/footer.js'
 import { renderHeader } from '../js/components/header.js'
 
+function renderExtraLeadFields(ui) {
+  return `
+    <label class="field">
+      <span>${ui.fieldIsBusiness} *</span>
+      <select name="isBusiness" required>
+        <option value="" disabled selected>${ui.fieldSelectOption}</option>
+        <option value="yes">${ui.optionYes}</option>
+        <option value="no">${ui.optionNo}</option>
+      </select>
+    </label>
+    <label class="field">
+      <span>${ui.fieldTargetCountries} *</span>
+      <input type="text" name="targetCountries" autocomplete="off" required />
+    </label>
+    <label class="field">
+      <span>${ui.fieldWorkersCount} *</span>
+      <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
+    </label>
+  `
+}
+
 function renderModal(content, title, formType, buttonLabel) {
   const ui = content.ui
 
@@ -27,6 +48,7 @@ function renderModal(content, title, formType, buttonLabel) {
             <span>${ui.fieldPhone} *</span>
             <input type="tel" name="phone" autocomplete="tel" required />
           </label>
+          ${renderExtraLeadFields(ui)}
           <button class="button modal__submit" type="submit">${buttonLabel}</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>

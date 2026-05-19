@@ -50,7 +50,7 @@ etContent.home = {
   },
   comparison: {
     eyebrow: 'Värbamismudelite võrdlus',
-    title: 'Kui palju ettevõte kohaliku värbamisega üle maksab',
+    title: 'Kuidas ettevõtted kaotavad tööjõupuuduse tõttu kohalikul turul',
     cards: [
       {
         title: 'Teised',
@@ -61,43 +61,43 @@ etContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Kõrgem palgabaas',
-            text: 'Keskmiselt 1000–1400 $ töötaja kohta kohaliku värbamise puhul.',
+            title: 'Heade kandidaatide puudus',
+            text: 'Kümned ettevõtted võistlevad samaaegselt samade heade töötajate pärast.',
           },
           {
-            title: 'Pikem meeskonna käivitamine',
-            text: 'Esimeste inimeste valik võtab aega 3–6 nädalat või kauem.',
+            title: 'Vabad kohad jäävad kauemaks avatuks',
+            text: 'Kuni otsing kestab, töötab meeskond ülekoormuse all.',
           },
           {
             title: 'Pidev korduvvärbamine',
-            text: 'Voolavuse ja hooajalisuse tõttu otsib ettevõte pidevalt uusi töötajaid.',
+            text: 'Tööjõupuuduse tõttu pöördub ettevõte pidevalt tagasi otsingute juurde.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'rahvusvaheline värbamine "võtmed kätte"',
+        brandNote: 'tööjõupuuduse süstemaatiline lahendamine',
         amount: '$18 000',
         period: '/ kuu',
         note: '30 töötajaga meeskonnale',
         variant: 'brand',
         rows: [
           {
-            title: 'Madalamad keskmised kulud',
-            text: 'Keskmiselt 400–700 $ töötaja kohta sõltuvalt rollist ja riigist.',
+            title: 'Juurdepääs laiemale kandidaatide reservile',
+            text: 'Töötame väljaspool kohaliku turu tööjõupuuduse piire.',
           },
           {
-            title: 'Esimesed kandidaadid 7–14 päevaga',
-            text: 'Kiire värbamise algus tänu rahvusvahelisele andmebaasile ja partnerite võrgustikule.',
+            title: 'Kiire juurdepääs kandidaatidele',
+            text: 'Esimesed sobivad inimesed juba 7–14 päevaga.',
           },
           {
-            title: 'Stabiilsem meeskond',
-            text: 'Vähem korduvvärbamise tsükleid ja parem prognoositavus ettevõtte jaoks.',
+            title: 'Fookus äritegevuse järjepidevusele',
+            text: 'Täidate vabad kohad kiiremini, kuni konkurendid veel otsivad.',
           },
         ],
       },
     ],
-    cta: 'Arvuta värbamiskulu',
+    cta: 'Sulge tööjõupuudus',
   },
   industries: {
     eyebrow: 'Millistele valdkondadele see mudel sobib',
@@ -431,7 +431,7 @@ etContent.privacy = {
     {
       title: '9. Kontaktid',
       paragraphs: [
-        'Kui teil on küsimusi seoses käesoleva privaatsuspoliitikaga või soovite kasutada oma isikuandmetega seotud õigusi, võtke meiega ühendust Veebisaidi kontaktivormi kaudu või e-posti teel: [Teie e-post, nt: hello@vwrecruit.com].',
+        'Kui teil on küsimusi seoses käesoleva privaatsuspoliitikaga või soovite kasutada oma isikuandmetega seotud õigusi, võtke meiega ühendust Veebisaidi kontaktivormi kaudu või e-posti teel: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ etContent.terms = {
     {
       title: '8. Tagasiside',
       paragraphs: [
-        'Kõigi Veebisaidi toimimise või koostöötingimustega seotud küsimustega pöörduge meie poole lehel "Kontaktid" oleva vormi kaudu või aadressil: [Teie e-post / Telefon].',
+        'Kõigi Veebisaidi toimimise või koostöötingimustega seotud küsimustega pöörduge meie poole lehel "Kontaktid" oleva vormi kaudu või aadressil: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ etContent.ui.fieldName = 'Nimi'
 etContent.ui.fieldCompany = 'Ettevõte'
 etContent.ui.fieldEmail = 'E-post'
 etContent.ui.fieldPhone = 'Telefon'
+etContent.ui.fieldIsBusiness = 'Kas olete päris agentuur või ettevõte?'
+etContent.ui.fieldTargetCountries = 'Millised riigid teid huvitavad?'
+etContent.ui.fieldWorkersCount = 'Mitmele inimesele vajate värbamist?'
+etContent.ui.fieldSelectOption = 'Valige sobiv variant'
+etContent.ui.optionYes = 'Jah'
+etContent.ui.optionNo = 'Ei'
 etContent.ui.sendRequest = 'Saada päring'
 etContent.ui.requestCallback = 'Broneeri kõne'
 etContent.ui.getReport = 'Hankige raport'

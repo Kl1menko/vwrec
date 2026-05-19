@@ -50,7 +50,7 @@ ltContent.home = {
   },
   comparison: {
     eyebrow: 'Įdarbinimo modelių palyginimas',
-    title: 'Kiek verslas permoka už vietinį įdarbinimą',
+    title: 'Kaip verslas pralaimi dėl darbo jėgos trūkumo vietinėje rinkoje',
     cards: [
       {
         title: 'Kiti',
@@ -61,43 +61,43 @@ ltContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Didesnė atlyginimų bazė',
-            text: 'Vidutiniškai 1000–1400 $ vienam darbuotojui samdant vietinėje rinkoje.',
+            title: 'Gerų kandidatų trūkumas',
+            text: 'Dešimtys įmonių vienu metu varžosi dėl tų pačių gerų darbuotojų.',
           },
           {
-            title: 'Ilgesnis komandos formavimas',
-            text: 'Pirmųjų žmonių atranka trunka 3–6 savaites ar ilgiau.',
+            title: 'Pozicijos lieka atidarytos ilgiau',
+            text: 'Kol vyksta paieška, komanda dirba perkrauta.',
           },
           {
             title: 'Nuolatinė pakartotinė paieška',
-            text: 'Dėl kaitos ir sezoniškumo verslas nuolat grįžta prie darbuotojų paieškos.',
+            text: 'Dėl darbo jėgos trūkumo verslas nuolat grįžta prie paieškos.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'tarptautinis įdarbinimas „iki raktų“',
+        brandNote: 'sisteminis darbo jėgos trūkumo sprendimas',
         amount: '$18 000',
         period: '/ mėn.',
         note: '30 darbuotojų komandai',
         variant: 'brand',
         rows: [
           {
-            title: 'Mažesnės vidutinės išlaidos',
-            text: 'Vidutiniškai 400–700 $ vienam darbuotojui, priklausomai nuo pareigų ir šalies.',
+            title: 'Prieiga prie platesnio kandidatų rezervo',
+            text: 'Dirbame už vietinio darbo rinkos trūkumo ribų.',
           },
           {
-            title: 'Pirmi kandidatai per 7–14 dienų',
-            text: 'Greita atrankos pradžia naudojant tarptautinę duomenų bazę ir partnerių tinklą.',
+            title: 'Greita prieiga prie kandidatų',
+            text: 'Pirmieji tinkami žmonės jau per 7–14 dienų.',
           },
           {
-            title: 'Stabilesnė komanda',
-            text: 'Mažiau pakartotinės paieškos ciklų ir geresnis nuspėjamumas verslui.',
+            title: 'Dėmesys verslo tęstinumui',
+            text: 'Užpildote pozicijas greičiau, kol konkurentai dar ieško.',
           },
         ],
       },
     ],
-    cta: 'Apskaičiuoti įdarbinimą',
+    cta: 'Uždaryti darbo jėgos trūkumą',
   },
   industries: {
     eyebrow: 'Kurioms sferoms tinka šis modelis',
@@ -431,7 +431,7 @@ ltContent.privacy = {
     {
       title: '9. Kontaktai',
       paragraphs: [
-        'Jei turite klausimų dėl šios Privatumo politikos arba norite pasinaudoti savo teisėmis dėl asmens duomenų, susisiekite su mumis naudodami kontaktinę formą Svetainėje arba el. paštu: [Jūsų el. paštas, pvz.: hello@vwrecruit.com].',
+        'Jei turite klausimų dėl šios Privatumo politikos arba norite pasinaudoti savo teisėmis dėl asmens duomenų, susisiekite su mumis naudodami kontaktinę formą Svetainėje arba el. paštu: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ ltContent.terms = {
     {
       title: '8. Grįžtamasis ryšys',
       paragraphs: [
-        'Visais klausimais, susijusiais su Svetainės veikimu ar bendradarbiavimo sąlygomis, kreipkitės į mus per formą puslapyje „Kontaktai“ arba adresu: [Jūsų el. paštas / Telefonas].',
+        'Visais klausimais, susijusiais su Svetainės veikimu ar bendradarbiavimo sąlygomis, kreipkitės į mus per formą puslapyje „Kontaktai“ arba adresu: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ ltContent.ui.fieldName = 'Vardas'
 ltContent.ui.fieldCompany = 'Įmonė'
 ltContent.ui.fieldEmail = 'El. paštas'
 ltContent.ui.fieldPhone = 'Telefonas'
+ltContent.ui.fieldIsBusiness = 'Ar esate tikra agentūra ar verslas?'
+ltContent.ui.fieldTargetCountries = 'Kokios šalys jus domina?'
+ltContent.ui.fieldWorkersCount = 'Kiek žmonių jums reikia įdarbinti?'
+ltContent.ui.fieldSelectOption = 'Pasirinkite variantą'
+ltContent.ui.optionYes = 'Taip'
+ltContent.ui.optionNo = 'Ne'
 ltContent.ui.sendRequest = 'Siųsti užklausą'
 ltContent.ui.requestCallback = 'Užsakyti skambutį'
 ltContent.ui.getReport = 'Gauti ataskaitą'

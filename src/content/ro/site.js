@@ -50,7 +50,7 @@ roContent.home = {
   },
   comparison: {
     eyebrow: 'Comparația modelelor de recrutare',
-    title: 'Cât plătește în plus o companie la recrutarea locală',
+    title: 'Cum pierd companiile din cauza deficitului de personal pe piața locală',
     cards: [
       {
         title: 'Alții',
@@ -61,43 +61,43 @@ roContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Bază salarială mai mare',
-            text: 'În medie 1000–1400 $ pe angajat la recrutarea locală.',
+            title: 'Lipsă de candidați buni',
+            text: 'Zeci de companii concurează simultan pentru aceiași angajați buni.',
           },
           {
-            title: 'Formarea echipei durează mai mult',
-            text: 'Selecția primelor persoane durează 3–6 săptămâni sau mai mult.',
+            title: 'Posturile rămân deschise mai mult timp',
+            text: 'Cât timp durează căutarea, echipa lucrează suprasolicitată.',
           },
           {
             title: 'Recrutare repetată constantă',
-            text: 'Din cauza fluctuației și sezonalității, compania caută personal în mod constant.',
+            text: 'Din cauza deficitului de personal, compania revine constant la căutare.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'recrutare internațională „la cheie”',
+        brandNote: 'soluție sistematică pentru deficitul de personal',
         amount: '$18 000',
         period: '/ lună',
         note: 'pentru o echipă de 30 de muncitori',
         variant: 'brand',
         rows: [
           {
-            title: 'Cost mediu mai mic',
-            text: 'În medie 400–700 $ pe angajat, în funcție de rol și țară.',
+            title: 'Acces la un fond mai larg de candidați',
+            text: 'Lucrăm dincolo de limitele deficitului local de forță de muncă.',
           },
           {
-            title: 'Primii candidați în 7–14 zile',
-            text: 'Lansare rapidă datorită bazei de date internaționale și rețelei de parteneri.',
+            title: 'Acces rapid la candidați',
+            text: 'Primele persoane relevante deja în 7–14 zile.',
           },
           {
-            title: 'Echipă mai stabilă',
-            text: 'Mai puține cicluri de căutare și o predictibilitate mai bună pentru companie.',
+            title: 'Focalizare pe continuitatea afacerii',
+            text: 'Ocupați posturile mai rapid în timp ce concurenții încă caută.',
           },
         ],
       },
     ],
-    cta: 'Calculați recrutarea',
+    cta: 'Închide deficitul de personal',
   },
   industries: {
     eyebrow: 'Pentru care industrii este potrivit acest model',
@@ -431,7 +431,7 @@ roContent.privacy = {
     {
       title: '9. Contact',
       paragraphs: [
-        'Dacă aveți întrebări referitoare la această Politică de confidențialitate sau doriți să vă exercitați drepturile privind datele cu caracter personal, vă rugăm să ne contactați prin intermediul formularului de contact de pe Site sau prin e-mail: [E-mailul dvs., de ex.: hello@vwrecruit.com].',
+        'Dacă aveți întrebări referitoare la această Politică de confidențialitate sau doriți să vă exercitați drepturile privind datele cu caracter personal, vă rugăm să ne contactați prin intermediul formularului de contact de pe Site sau prin e-mail: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ roContent.terms = {
     {
       title: '8. Feedback',
       paragraphs: [
-        'Pentru toate întrebările privind funcționarea Site-ului sau condițiile de colaborare, vă rugăm să ne contactați prin intermediul formularului de pe pagina "Contacte" sau la adresa: [E-mailul / Telefonul dvs.].',
+        'Pentru toate întrebările privind funcționarea Site-ului sau condițiile de colaborare, vă rugăm să ne contactați prin intermediul formularului de pe pagina "Contacte" sau la adresa: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ roContent.ui.fieldName = 'Nume'
 roContent.ui.fieldCompany = 'Companie'
 roContent.ui.fieldEmail = 'E-mail'
 roContent.ui.fieldPhone = 'Telefon'
+roContent.ui.fieldIsBusiness = 'Sunteți o agenție reală sau o companie?'
+roContent.ui.fieldTargetCountries = 'Ce țări vă interesează?'
+roContent.ui.fieldWorkersCount = 'Pentru câte persoane aveți nevoie de recrutare?'
+roContent.ui.fieldSelectOption = 'Selectați o opțiune'
+roContent.ui.optionYes = 'Da'
+roContent.ui.optionNo = 'Nu'
 roContent.ui.sendRequest = 'Trimiteți cererea'
 roContent.ui.requestCallback = 'Rezervați un apel'
 roContent.ui.getReport = 'Obțineți raportul'

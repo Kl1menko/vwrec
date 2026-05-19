@@ -119,6 +119,27 @@ function buildServicesFitCards(roles, ui = {}) {
   })
 }
 
+function renderExtraLeadFields(ui, fieldClassName = 'field') {
+  return `
+    <label class="${fieldClassName}">
+      <span>${ui.fieldIsBusiness} *</span>
+      <select name="isBusiness" required>
+        <option value="" disabled selected>${ui.fieldSelectOption}</option>
+        <option value="yes">${ui.optionYes}</option>
+        <option value="no">${ui.optionNo}</option>
+      </select>
+    </label>
+    <label class="${fieldClassName}">
+      <span>${ui.fieldTargetCountries} *</span>
+      <input type="text" name="targetCountries" autocomplete="off" required />
+    </label>
+    <label class="${fieldClassName}">
+      <span>${ui.fieldWorkersCount} *</span>
+      <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
+    </label>
+  `
+}
+
 function renderReportStyleForm(content, { type = 'lead', title, buttonLabel, note = '' } = {}) {
   const ui = content.ui ?? {}
   const resolvedTitle = title ?? content.forms?.[type]?.title ?? content.forms?.lead?.title
@@ -146,6 +167,7 @@ function renderReportStyleForm(content, { type = 'lead', title, buttonLabel, not
             <span>${ui.fieldPhone} *</span>
             <input type="tel" name="phone" autocomplete="tel" required />
           </label>
+          ${renderExtraLeadFields(ui, 'report-form__field')}
           <button class="report-form__submit" type="submit">${resolvedButtonLabel}</button>
           <p class="form-status" data-form-status role="status" hidden></p>
         </form>
@@ -188,6 +210,7 @@ function renderReportCaptureForm(content) {
         <span>${ui.fieldPhone} *</span>
         <input type="tel" name="phone" autocomplete="tel" required />
       </label>
+      ${renderExtraLeadFields(ui)}
       <button class="button report-capture__submit" type="submit">${content.home.reportBlock.cta}</button>
       <p class="form-status" data-form-status role="status" hidden></p>
     </form>
@@ -700,6 +723,9 @@ function renderHomeReportBlock(content, ui = {}) {
                     <span>${ui.fieldPhone} *</span>
                     <input type="tel" name="phone" autocomplete="tel" required />
                   </label>
+                </div>
+                <div class="home-report-form__row">
+                  ${renderExtraLeadFields(ui, 'home-report-form__field')}
                 </div>
                 <button class="home-report-form__submit" type="submit">${reportBlock.cta ?? ui.getReport}</button>
                 <p class="form-status" data-form-status role="status" hidden></p>
@@ -1752,6 +1778,7 @@ function renderReportPage(content, ui) {
                 <span>${ui.fieldPhone} *</span>
                 <input type="tel" name="phone" autocomplete="tel" required />
               </label>
+              ${renderExtraLeadFields(ui, 'report-form__field')}
               <button class="report-form__submit" type="submit">${reportButton}</button>
               <p class="form-status" data-form-status role="status" hidden></p>
             </form>

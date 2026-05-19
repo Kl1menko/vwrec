@@ -50,7 +50,7 @@ hrContent.home = {
   },
   comparison: {
     eyebrow: 'Usporedba modela zapošljavanja',
-    title: 'Koliko tvrtka preplaćuje pri lokalnom zapošljavanju',
+    title: 'Kako tvrtke gube zbog nedostatka radne snage na lokalnom tržištu',
     cards: [
       {
         title: 'Ostali',
@@ -61,43 +61,43 @@ hrContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Viša osnovica plaće',
-            text: 'U prosjeku 1000 – 1400 $ po radniku pri lokalnom zapošljavanju.',
+            title: 'Nedostatak dobrih kandidata',
+            text: 'Desetke tvrtki natječu se za iste dobre radnike istovremeno.',
           },
           {
-            title: 'Dulje vrijeme formiranja tima',
-            text: 'Odabir prvih radnika traje 3 – 6 tjedana ili dulje.',
+            title: 'Pozicije ostaju otvorene dulje',
+            text: 'Dok traje potraga, tim radi preopterećen.',
           },
           {
-            title: 'Stalna fluktuacija i ponovno zapošljavanje',
-            text: 'Zbog fluktuacije i sezonskih oscilacija, tvrtka je stalno u potrazi za radnicima.',
+            title: 'Stalno ponovno zapošljavanje',
+            text: 'Zbog nedostatka radne snage tvrtka se stalno vraća na traženje.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'međunarodno zapošljavanje "ključ u ruke"',
+        brandNote: 'sustavno rješavanje nedostatka radne snage',
         amount: '$18 000',
         period: '/ mjesec',
         note: 'za tim od 30 radnika',
         variant: 'brand',
         rows: [
           {
-            title: 'Niži prosječni trošak',
-            text: 'U prosjeku 400 – 700 $ po radniku, ovisno o poziciji i državi.',
+            title: 'Pristup širem fondu kandidata',
+            text: 'Radimo izvan granica lokalnog nedostatka radne snage.',
           },
           {
-            title: 'Prvi kandidati za 7 – 14 dana',
-            text: 'Brz početak zapošljavanja zahvaljujući međunarodnoj bazi i partnerskoj mreži.',
+            title: 'Brz pristup kandidatima',
+            text: 'Prve relevantne osobe već za 7 – 14 dana.',
           },
           {
-            title: 'Stabilniji tim',
-            text: 'Manje ciklusa ponovnog traženja radnika i bolja predvidljivost za tvrtku.',
+            title: 'Fokus na kontinuitet poslovanja',
+            text: 'Popunjavate pozicije brže dok konkurenti još traže.',
           },
         ],
       },
     ],
-    cta: 'Izračunajte troškove',
+    cta: 'Zatvorite deficit radne snage',
   },
   industries: {
     eyebrow: 'Za koje sektore je ovaj model pogodan',
@@ -431,7 +431,7 @@ hrContent.privacy = {
     {
       title: '9. Kontakt',
       paragraphs: [
-        'Ako imate bilo kakvih pitanja o ovim Pravilima privatnosti ili želite ostvariti svoja prava u vezi s osobnim podacima, kontaktirajte nas putem kontakt obrasca na Web stranici ili e-mailom: [Vaš E-mail, npr.: hello@vwrecruit.com].',
+        'Ako imate bilo kakvih pitanja o ovim Pravilima privatnosti ili želite ostvariti svoja prava u vezi s osobnim podacima, kontaktirajte nas putem kontakt obrasca na Web stranici ili e-mailom: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ hrContent.terms = {
     {
       title: '8. Povratne informacije',
       paragraphs: [
-        'Za sva pitanja u vezi s radom Web stranice ili uvjetima suradnje kontaktirajte nas putem obrasca na stranici "Kontakt" ili na: [Vaš E-mail / Telefon].',
+        'Za sva pitanja u vezi s radom Web stranice ili uvjetima suradnje kontaktirajte nas putem obrasca na stranici "Kontakt" ili na: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ hrContent.ui.fieldName = 'Ime'
 hrContent.ui.fieldCompany = 'Tvrtka'
 hrContent.ui.fieldEmail = 'E-mail'
 hrContent.ui.fieldPhone = 'Telefon'
+hrContent.ui.fieldIsBusiness = 'Jeste li stvarna agencija ili tvrtka?'
+hrContent.ui.fieldTargetCountries = 'Koje zemlje vas zanimaju?'
+hrContent.ui.fieldWorkersCount = 'Za koliko osoba trebate zapošljavanje?'
+hrContent.ui.fieldSelectOption = 'Odaberite opciju'
+hrContent.ui.optionYes = 'Da'
+hrContent.ui.optionNo = 'Ne'
 hrContent.ui.sendRequest = 'Pošaljite upit'
 hrContent.ui.requestCallback = 'Rezervirajte poziv'
 hrContent.ui.getReport = 'Preuzmite izvješće'

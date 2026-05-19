@@ -50,7 +50,7 @@ csContent.home = {
   },
   comparison: {
     eyebrow: 'Porovnání modelu náboru',
-    title: 'Kolik firma přeplácí za lokální nábor',
+    title: 'Jak firmy ztrácejí kvůli nedostatku talentů na lokálním trhu',
     cards: [
       {
         title: 'Ostatní',
@@ -61,43 +61,43 @@ csContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Vyšší platový základ',
-            text: 'V průměru 1000–1400 $ na pracovníka při lokálním náboru.',
+            title: 'Nedostatek dobrých kandidátů',
+            text: 'O stejné dobré pracovníky soupeří desítky firem najednou.',
           },
           {
-            title: 'Delší spuštění týmu',
-            text: 'Výběr prvních lidí trvá 3–6 týdnů nebo déle.',
+            title: 'Pozice jsou otevřeny déle',
+            text: 'Dokud hledání trvá, tým pracuje přetížený.',
           },
           {
             title: 'Neustálý opakovaný nábor',
-            text: 'Kvůli fluktuaci a sezónnosti se firma neustále vrací k hledání.',
+            text: 'Kvůli nedostatku lidí se firma stále vrací k hledání.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'mezinárodní nábor na klíč',
+        brandNote: 'systematické řešení nedostatku pracovní síly',
         amount: '$18 000',
         period: '/ měsíc',
         note: 'pro tým 30 pracovníků',
         variant: 'brand',
         rows: [
           {
-            title: 'Nižší průměrné náklady',
-            text: 'V průměru 400–700 $ na pracovníka v závislosti na roli a zemi.',
+            title: 'Přístup k širšímu fondu kandidátů',
+            text: 'Nepracujeme pouze v rámci lokálního nedostatku na trhu.',
           },
           {
-            title: 'První kandidáti za 7–14 dní',
-            text: 'Rychlé spuštění náboru přes mezinárodní databázi a partnerskou síť.',
+            title: 'Rychlý přístup ke kandidátům',
+            text: 'První relevantní lidé již za 7–14 dní.',
           },
           {
-            title: 'Stabilnější tým',
-            text: 'Méně cyklů opakovaného hledání a lepší předvídatelnost pro firmu.',
+            title: 'Zaměření na kontinuitu podnikání',
+            text: 'Obsazujete pozice rychleji, zatímco konkurenti stále hledají.',
           },
         ],
       },
     ],
-    cta: 'Spočítat nábor',
+    cta: 'Řešit nedostatek pracovníků',
   },
   industries: {
     eyebrow: 'Pro která odvětví je model vhodný',
@@ -431,7 +431,7 @@ csContent.privacy = {
     {
       title: '9. Kontakty',
       paragraphs: [
-        'Pokud máte dotazy týkající se těchto Zásad ochrany osobních údajů nebo chcete uplatnit svá práva na ochranu osobních údajů, kontaktujte nás prostřednictvím kontaktního formuláře na Webu nebo e-mailem: [Váš Email, např.: hello@vwrecruit.com].',
+        'Pokud máte dotazy týkající se těchto Zásad ochrany osobních údajů nebo chcete uplatnit svá práva na ochranu osobních údajů, kontaktujte nás prostřednictvím kontaktního formuláře na Webu nebo e-mailem: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ csContent.terms = {
     {
       title: '8. Zpětná vazba',
       paragraphs: [
-        'Veškeré dotazy týkající se provozu Webu nebo podmínek spolupráce směřujte na nás prostřednictvím formuláře na stránce "Kontakty" nebo na adrese: [Váš Email / Telefon].',
+        'Veškeré dotazy týkající se provozu Webu nebo podmínek spolupráce směřujte na nás prostřednictvím formuláře na stránce "Kontakty" nebo na adrese: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ csContent.ui.fieldName = 'Jméno'
 csContent.ui.fieldCompany = 'Společnost'
 csContent.ui.fieldEmail = 'E-mail'
 csContent.ui.fieldPhone = 'Telefon'
+csContent.ui.fieldIsBusiness = 'Jste reálná agentura nebo firma?'
+csContent.ui.fieldTargetCountries = 'Které země vás zajímají?'
+csContent.ui.fieldWorkersCount = 'Pro kolik lidí potřebujete nábor?'
+csContent.ui.fieldSelectOption = 'Vyberte možnost'
+csContent.ui.optionYes = 'Ano'
+csContent.ui.optionNo = 'Ne'
 csContent.ui.sendRequest = 'Odeslat dotaz'
 csContent.ui.requestCallback = 'Rezervovat hovor'
 csContent.ui.getReport = 'Získat report'

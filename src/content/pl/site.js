@@ -50,7 +50,7 @@ plContent.home = {
   },
   comparison: {
     eyebrow: 'Porównanie modelu zatrudnienia',
-    title: 'Ile firma przepłaca za rekrutację lokalną',
+    title: 'Jak firmy tracą przez niedobór kadr na lokalnym rynku',
     cards: [
       {
         title: 'Inne',
@@ -61,43 +61,43 @@ plContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Wyższa baza płacowa',
-            text: 'Średnio 1000–1400 $ na pracownika przy rekrutacji lokalnej.',
+            title: 'Niedobór dobrych kandydatów',
+            text: 'Dziesiątki firm jednocześnie rywalizują o tych samych dobrych pracowników.',
           },
           {
-            title: 'Dłuższy proces budowania zespołu',
-            text: 'Wybór pierwszych osób zajmuje 3–6 tygodni lub dłużej.',
+            title: 'Wakaty pozostają otwarte dłużej',
+            text: 'Dopóki trwa poszukiwanie, zespół pracuje przeciążony.',
           },
           {
-            title: 'Ciągła rotacja i ponowna rekrutacja',
-            text: 'Z powodu rotacji i sezonowości, firma stale wraca do poszukiwań.',
+            title: 'Ciągła ponowna rekrutacja',
+            text: 'Z powodu niedoboru kadr firma nieustannie wraca do poszukiwań.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'międzynarodowa rekrutacja pod klucz',
+        brandNote: 'systemowe rozwiązanie niedoboru kadr',
         amount: '$18 000',
         period: '/ miesiąc',
         note: 'dla zespołu 30 pracowników',
         variant: 'brand',
         rows: [
           {
-            title: 'Niższy średni koszt',
-            text: 'Średnio 400–700 $ na pracownika w zależności od stanowiska i kraju.',
+            title: 'Dostęp do szerszej bazy kandydatów',
+            text: 'Działamy poza granicami lokalnego niedoboru na rynku pracy.',
           },
           {
-            title: 'Pierwsi kandydaci w 7–14 dni',
-            text: 'Szybkie rozpoczęcie rekrutacji dzięki międzynarodowej bazie i sieci partnerskiej.',
+            title: 'Szybki dostęp do kandydatów',
+            text: 'Pierwsze odpowiednie osoby już w 7–14 dni.',
           },
           {
-            title: 'Bardziej stabilny zespół',
-            text: 'Mniej cykli ponownych poszukiwań i lepsza przewidywalność dla biznesu.',
+            title: 'Fokus na ciągłość biznesu',
+            text: 'Obsadzasz stanowiska szybciej, podczas gdy konkurenci wciąż szukają.',
           },
         ],
       },
     ],
-    cta: 'Wyceń rekrutację',
+    cta: 'Zamknij niedobór kadr',
   },
   industries: {
     eyebrow: 'Dla jakich branż pasuje ten model',
@@ -431,7 +431,7 @@ plContent.privacy = {
     {
       title: '9. Kontakty',
       paragraphs: [
-        'Jeśli masz jakiekolwiek pytania dotyczące niniejszej Polityki prywatności lub chcesz zrealizować swoje prawa dotyczące danych osobowych, skontaktuj się z nami za pomocą formularza kontaktowego na Stronie lub pocztą elektroniczną: [Twój E-mail, np.: hello@vwrecruit.com].',
+        'Jeśli masz jakiekolwiek pytania dotyczące niniejszej Polityki prywatności lub chcesz zrealizować swoje prawa dotyczące danych osobowych, skontaktuj się z nami za pomocą formularza kontaktowego na Stronie lub pocztą elektroniczną: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ plContent.terms = {
     {
       title: '8. Informacje zwrotne',
       paragraphs: [
-        'We wszystkich sprawach dotyczących działania Strony lub warunków współpracy, prosimy o kontakt za pośrednictwem formularza na stronie "Kontakty" lub pod adresem: [Twój E-mail / Telefon].',
+        'We wszystkich sprawach dotyczących działania Strony lub warunków współpracy, prosimy o kontakt za pośrednictwem formularza na stronie "Kontakty" lub pod adresem: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ plContent.ui.fieldName = 'Imię'
 plContent.ui.fieldCompany = 'Firma'
 plContent.ui.fieldEmail = 'E-mail'
 plContent.ui.fieldPhone = 'Telefon'
+plContent.ui.fieldIsBusiness = 'Czy jesteś rzeczywistą agencją lub firmą?'
+plContent.ui.fieldTargetCountries = 'Które kraje Cię interesują?'
+plContent.ui.fieldWorkersCount = 'Dla ilu osób potrzebujesz rekrutacji?'
+plContent.ui.fieldSelectOption = 'Wybierz opcję'
+plContent.ui.optionYes = 'Tak'
+plContent.ui.optionNo = 'Nie'
 plContent.ui.sendRequest = 'Wyślij zapytanie'
 plContent.ui.requestCallback = 'Zarezerwuj rozmowę'
 plContent.ui.getReport = 'Odbierz raport'

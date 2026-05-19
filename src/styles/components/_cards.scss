@@ -705,7 +705,8 @@
   font-weight: 500;
 }
 
-.home-report-form__field input {
+.home-report-form__field input,
+.home-report-form__field select {
   min-height: 46px;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -722,7 +723,8 @@
   color: rgba(255, 255, 255, 0.2);
 }
 
-.home-report-form__field input:focus {
+.home-report-form__field input:focus,
+.home-report-form__field select:focus {
   border-color: #c2855a;
   box-shadow: 0 0 0 3px rgba(194, 133, 90, 0.15);
 }
@@ -1561,7 +1563,8 @@ body[data-page='home'] .report-capture__content .lead {
   gap: 7px;
 }
 
-.report-capture__form .field input {
+.report-capture__form .field input,
+.report-capture__form .field select {
   min-height: 54px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.98);

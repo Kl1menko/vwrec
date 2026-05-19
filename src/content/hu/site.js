@@ -50,7 +50,7 @@ huContent.home = {
   },
   comparison: {
     eyebrow: 'Toborzási modellek összehasonlítása',
-    title: 'Mennyit fizet túl egy cég a helyi toborzás során',
+    title: 'Hogyan veszítenek a vállalatok a munkaerőhiány miatt a helyi piacon',
     cards: [
       {
         title: 'Mások',
@@ -61,43 +61,43 @@ huContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Magasabb béralap',
-            text: 'Átlagosan 1000–1400 $ munkavállalónként helyi toborzás esetén.',
+            title: 'Jó jelöltek hiánya',
+            text: 'Tucatnyi vállalat verseng egyszerre ugyanazokért a jó munkavállalókért.',
           },
           {
-            title: 'Lassabb csapatépítés',
-            text: 'Az első munkatársak kiválasztása 3–6 hetet vagy még többet is igénybe vehet.',
+            title: 'A pozíciók tovább maradnak betöltetlenek',
+            text: 'Míg a keresés tart, a csapat túlterhelt körülmények között dolgozik.',
           },
           {
             title: 'Folyamatos újratoborzás',
-            text: 'A fluktuáció és a szezonalitás miatt a vállalat folyamatosan keresni kényszerül.',
+            text: 'A munkaerőhiány miatt a vállalat folyamatosan visszatér a kereséshez.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'kulcsrakész nemzetközi toborzás',
+        brandNote: 'a munkaerőhiány szisztematikus megoldása',
         amount: '$18 000',
         period: '/ hónap',
         note: 'egy 30 fős csapat számára',
         variant: 'brand',
         rows: [
           {
-            title: 'Alacsonyabb átlagköltség',
-            text: 'Átlagosan 400–700 $ munkavállalónként, pozíciótól és országtól függően.',
+            title: 'Hozzáférés szélesebb jelöltbázishoz',
+            text: 'A helyi munkaerőhiány határain túl is dolgozunk.',
           },
           {
-            title: 'Első jelöltek 7–14 napon belül',
-            text: 'Gyors toborzási indulás a nemzetközi adatbázis és partnerhálózat révén.',
+            title: 'Gyors hozzáférés a jelöltekhez',
+            text: 'Az első releváns személyek már 7–14 napon belül.',
           },
           {
-            title: 'Stabilabb csapat',
-            text: 'Kevesebb újrakeresési ciklus és jobb kiszámíthatóság a vállalat számára.',
+            title: 'Fókusz az üzletmenet folytonosságára',
+            text: 'Gyorsabban tölti be a pozíciókat, míg a versenytársak még keresnek.',
           },
         ],
       },
     ],
-    cta: 'Toborzás kiszámítása',
+    cta: 'Munkaerőhiány felszámolása',
   },
   industries: {
     eyebrow: 'Mely iparágak számára megfelelő ez a modell',
@@ -431,7 +431,7 @@ huContent.privacy = {
     {
       title: '9. Kapcsolat',
       paragraphs: [
-        'Ha bármilyen kérdése van a jelen Adatvédelmi irányelvekkel kapcsolatban, vagy gyakorolni szeretné adatvédelmi jogait, kérjük, vegye fel velünk a kapcsolatot a Weboldalon található kapcsolatfelvételi űrlapon vagy e-mailben: [Az Ön E-mailje, pl.: hello@vwrecruit.com].',
+        'Ha bármilyen kérdése van a jelen Adatvédelmi irányelvekkel kapcsolatban, vagy gyakorolni szeretné adatvédelmi jogait, kérjük, vegye fel velünk a kapcsolatot a Weboldalon található kapcsolatfelvételi űrlapon vagy e-mailben: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ huContent.terms = {
     {
       title: '8. Visszajelzés',
       paragraphs: [
-        'A Weboldal működésével vagy az együttműködési feltételekkel kapcsolatos minden kérdésével kérjük, forduljon hozzánk a "Kapcsolat" oldalon található űrlapon keresztül vagy az alábbi címen: [Az Ön E-mailje / Telefonszáma].',
+        'A Weboldal működésével vagy az együttműködési feltételekkel kapcsolatos minden kérdésével kérjük, forduljon hozzánk a "Kapcsolat" oldalon található űrlapon keresztül vagy az alábbi címen: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ huContent.ui.fieldName = 'Név'
 huContent.ui.fieldCompany = 'Vállalat'
 huContent.ui.fieldEmail = 'E-mail'
 huContent.ui.fieldPhone = 'Telefon'
+huContent.ui.fieldIsBusiness = 'Valós ügynökség vagy vállalkozás?'
+huContent.ui.fieldTargetCountries = 'Mely országok érdeklik?'
+huContent.ui.fieldWorkersCount = 'Hány főre van szüksége?'
+huContent.ui.fieldSelectOption = 'Válasszon lehetőséget'
+huContent.ui.optionYes = 'Igen'
+huContent.ui.optionNo = 'Nem'
 huContent.ui.sendRequest = 'Ajánlatkérés küldése'
 huContent.ui.requestCallback = 'Hívás foglalása'
 huContent.ui.getReport = 'Riport lekérése'

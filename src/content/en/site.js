@@ -50,7 +50,7 @@ enContent.home = {
   },
   comparison: {
     eyebrow: 'Hiring model comparison',
-    title: 'How much business overpays for local hiring',
+    title: 'How businesses lose to talent shortages in the local market',
     cards: [
       {
         title: 'Others',
@@ -61,43 +61,43 @@ enContent.home = {
         variant: 'other',
         rows: [
           {
-            title: 'Higher salary base',
-            text: 'On average $1000–1400 per worker with local hiring.',
+            title: 'Shortage of strong candidates',
+            text: 'Dozens of companies compete for the same good workers simultaneously.',
           },
           {
-            title: 'Longer team launch',
-            text: 'Selecting the first people takes 3–6 weeks or longer.',
+            title: 'Vacancies stay open longer',
+            text: 'While the search continues, the team operates under constant overload.',
           },
           {
             title: 'Constant re-hiring',
-            text: 'Due to turnover and seasonality, business returns to searching again.',
+            text: 'Due to talent shortages, business keeps returning to the search again and again.',
           },
         ],
       },
       {
         title: 'VW Recruit',
-        brandNote: 'turnkey international recruitment',
+        brandNote: 'systematic talent shortage solution',
         amount: '$18,000',
         period: '/ month',
         note: 'for a team of 30 workers',
         variant: 'brand',
         rows: [
           {
-            title: 'Lower average cost',
-            text: 'On average $400–700 per worker depending on role and country.',
+            title: 'Access to a wider talent pool',
+            text: 'We work beyond the boundaries of the local talent shortage.',
           },
           {
-            title: 'First candidates in 7–14 days',
-            text: 'Fast launch of recruitment through international database and partner network.',
+            title: 'Fast access to candidates',
+            text: 'First relevant people ready in just 7–14 days.',
           },
           {
-            title: 'More stable team',
-            text: 'Fewer cycles of repeated search and better predictability for business.',
+            title: 'Focus on business continuity',
+            text: 'You fill vacancies faster while competitors are still searching.',
           },
         ],
       },
     ],
-    cta: 'Calculate recruitment',
+    cta: 'Close the talent shortage',
   },
   industries: {
     eyebrow: 'Which industries the model suits',
@@ -431,7 +431,7 @@ enContent.privacy = {
     {
       title: '9. Contacts',
       paragraphs: [
-        'If you have questions regarding this Privacy Policy or wish to exercise your personal data rights, please contact us via the contact form on the Site or by email: [Your Email, e.g.: hello@vwrecruit.com].',
+        'If you have questions regarding this Privacy Policy or wish to exercise your personal data rights, please contact us via the contact form on the Site or by email: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -495,7 +495,7 @@ enContent.terms = {
     {
       title: '8. Feedback',
       paragraphs: [
-        'For all questions regarding the operation of the Site or conditions of cooperation, please contact us via the form on the "Contacts" page or at: [Your Email / Phone].',
+        'For all questions regarding the operation of the Site or conditions of cooperation, please contact us via the form on the "Contacts" page or at: partners.vizarecruting.com@gmail.com.',
       ],
     },
   ],
@@ -601,6 +601,12 @@ enContent.ui.fieldName = 'Name'
 enContent.ui.fieldCompany = 'Company'
 enContent.ui.fieldEmail = 'Email'
 enContent.ui.fieldPhone = 'Phone'
+enContent.ui.fieldIsBusiness = 'Are you a real agency or business?'
+enContent.ui.fieldTargetCountries = 'Which countries are you interested in?'
+enContent.ui.fieldWorkersCount = 'How many workers do you need?'
+enContent.ui.fieldSelectOption = 'Select an option'
+enContent.ui.optionYes = 'Yes'
+enContent.ui.optionNo = 'No'
 enContent.ui.sendRequest = 'Send request'
 enContent.ui.requestCallback = 'Book a call'
 enContent.ui.getReport = 'Get report'
