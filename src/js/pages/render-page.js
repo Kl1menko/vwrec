@@ -1882,20 +1882,19 @@ export function renderPage(content, pageKey) {
           <div class="comparison-heading">
             <h2>${content.home.comparison.title}</h2>
           </div>
-          <div class="comparison-grid-wrap">
-            <div class="comparison-grid">
-              ${comparisonCards
-                ? renderCardList(
-                    comparisonCards,
-                    (card) => renderComparisonCard(card, content),
-                  )
+          <div class="comparison-grid">
+            ${comparisonCards && comparisonCards.length === 2
+              ? `
+                ${renderComparisonCard(comparisonCards[0], content)}
+                <div class="comparison-savings-badge" aria-hidden="true">
+                  <strong class="comparison-savings-badge__value">−50%</strong>
+                  <span class="comparison-savings-badge__label">${content.ui.comparisonSavingsLabel ?? 'savings'}</span>
+                </div>
+                ${renderComparisonCard(comparisonCards[1], content)}
+              `
+              : comparisonCards
+                ? renderCardList(comparisonCards, (card) => renderComparisonCard(card, content))
                 : content.home.comparison.items.map((item) => `<div class="line-card">${item}</div>`).join('')}
-            </div>
-            <div class="comparison-savings-badge" aria-hidden="true">
-              <span class="comparison-savings-badge__arrow">→</span>
-              <strong class="comparison-savings-badge__value">−50%</strong>
-              <span class="comparison-savings-badge__label">${content.ui.comparisonSavingsLabel ?? 'savings'}</span>
-            </div>
           </div>
         </div>
       </section>

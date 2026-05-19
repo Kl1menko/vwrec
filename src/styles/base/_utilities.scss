@@ -126,9 +126,7 @@ body[data-page='home'] .cta-banner__copy h2 {
   justify-content: center;
 }
 
-/* 5. Обгортка з бейджем відносно гріду */
 .comparison-grid-wrap {
-  position: relative;
   display: flex;
   justify-content: center;
 }
@@ -140,33 +138,13 @@ body[data-page='home'] .cta-banner__copy h2 {
   gap: 16px;
 }
 
-/* 5. Бейдж "-50%" між картками */
+/* бейдж прихований на мобілі */
 .comparison-savings-badge {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  z-index: 2;
-  display: none; /* показується лише на >=768px */
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  background: #fff;
-  border: 2px solid rgba(242, 122, 36, 0.3);
-  border-radius: 999px;
-  padding: 10px 14px;
-  box-shadow: 0 4px 16px rgba(242, 122, 36, 0.14);
-  pointer-events: none;
-}
-
-.comparison-savings-badge__arrow {
-  font-size: 0.75rem;
-  color: #b37a3a;
-  line-height: 1;
+  display: none;
 }
 
 .comparison-savings-badge__value {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 800;
   color: var(--color-accent-deep, #c96a18);
   line-height: 1;
@@ -174,12 +152,16 @@ body[data-page='home'] .cta-banner__copy h2 {
 }
 
 .comparison-savings-badge__label {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 600;
   color: #b37a3a;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   line-height: 1;
+}
+
+.comparison-savings-badge__arrow {
+  display: none;
 }
 
 [data-reveal] {
@@ -217,15 +199,30 @@ body[data-page='home'] .cta-banner__copy h2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* на десктопі — три колонки: картка | бейдж | картка */
   .comparison-grid {
-    grid-template-columns: repeat(2, minmax(320px, 460px));
-    align-items: start;
+    grid-template-columns: minmax(300px, 440px) 80px minmax(300px, 440px);
+    align-items: center;
     justify-content: center;
   }
 
-  /* бейдж показуємо лише на десктопі де картки поруч */
   .comparison-savings-badge {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 72px;
+    height: 72px;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid rgba(242, 122, 36, 0.35);
+    border-radius: 50%;
+    box-shadow: 0 2px 16px rgba(242, 122, 36, 0.14);
+    z-index: 2;
+    pointer-events: none;
+    justify-self: center;
+    align-self: center;
   }
 
   .metric-grid {
@@ -254,5 +251,43 @@ body[data-page='home'] .cta-banner__copy h2 {
 
   .button-row {
     gap: 10px;
+  }
+
+  /* мобільний бейдж — горизонтальний рядок між картками */
+  .comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .comparison-savings-badge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+    height: auto;
+    border-radius: 999px;
+    padding: 8px 20px;
+    margin: -1px auto;
+    width: fit-content;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: rgba(242, 122, 36, 0.2);
+    box-shadow: none;
+    background: rgba(255, 248, 240, 0.9);
+  }
+
+  .comparison-savings-badge__value {
+    font-size: 1rem;
+  }
+
+  .comparison-savings-badge__label {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    font-weight: 500;
+    color: #b37a3a;
   }
 }
