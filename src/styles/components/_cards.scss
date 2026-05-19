@@ -2108,7 +2108,12 @@ body[data-page='home'] .report-capture__content .lead {
     0 22px 42px rgba(17, 17, 17, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.72);
   align-content: start;
-  min-height: 100%;
+}
+
+/* 1. Ліва картка — сірий фон + червона рамка для акценту "погана опція" */
+.comparison-card--other {
+  background: linear-gradient(180deg, #f7f5f3 0%, #f0ede9 100%);
+  border: 1.5px solid rgba(180, 60, 30, 0.18);
 }
 
 .comparison-card--brand {
@@ -2144,9 +2149,9 @@ body[data-page='home'] .report-capture__content .lead {
 }
 
 .comparison-card__brand-mark {
-  width: 54px;
-  height: 54px;
-  border-radius: 18px;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2154,6 +2159,11 @@ body[data-page='home'] .report-capture__content .lead {
   background: transparent;
   border: 0;
   box-shadow: none;
+}
+
+/* 2. Іконка X замість нечитабельного "ІН" */
+.comparison-card--other .comparison-card__brand-mark {
+  background: rgba(180, 60, 30, 0.08);
 }
 
 .comparison-card__brand-mark span {
@@ -2898,12 +2908,25 @@ body[data-page='home'] .report-capture__content .lead {
 .comparison-card__actions {
   margin-top: auto;
   padding-top: 10px;
+  display: grid;
+  gap: 10px;
 }
 
 .comparison-card__actions .button {
   min-height: 54px;
+  /* 3. Кнопка не на весь блок — трохи вужча */
   width: 100%;
+  max-width: 340px;
+  margin-inline: auto;
   border-radius: 18px;
+}
+
+/* 3. Мікротекст під кнопкою */
+.comparison-card__cta-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9a938d;
+  line-height: 1.3;
 }
 
 @media (max-width: 900px) {

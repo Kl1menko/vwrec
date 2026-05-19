@@ -445,7 +445,10 @@ function renderComparisonCard(card, content) {
   const amount = card.amount ? `<div class="comparison-card__price"><strong>${card.amount}</strong>${card.period ? `<span>${card.period}</span>` : ''}</div>` : ''
   const note = card.note ? `<p class="comparison-card__note">${card.note}</p>` : ''
   const cta = isBrand
-    ? `<div class="comparison-card__actions"><a class="button" href="#quiz">${content.home.comparison.cta ?? content.ui.comparisonCardCta}</a></div>`
+    ? `<div class="comparison-card__actions">
+        <a class="button" href="#quiz">${content.home.comparison.cta ?? content.ui.comparisonCardCta}</a>
+        <p class="comparison-card__cta-note">${content.ui.comparisonCtaNote ?? 'Free consultation · Reply within 1 business day'}</p>
+      </div>`
     : ''
   const rows = renderCardList(
     card.rows,
@@ -460,14 +463,19 @@ function renderComparisonCard(card, content) {
     `,
   )
 
+  const brandLabel = isBrand
+    ? ''
+    : `<span class="comparison-card__other-label">${card.title}</span>`
+
   return `
     <article class="comparison-card comparison-card--${variant}">
       <div class="comparison-card__brand">
         <span class="comparison-card__brand-mark${isBrand ? ' comparison-card__brand-mark--logo' : ''}">
-          ${isBrand ? `<img src="${logoSymbol}" alt="" loading="lazy" />` : `<span>${content.ui.comparisonOtherMark}</span>`}
+          ${isBrand ? `<img src="${logoSymbol}" alt="" loading="lazy" />` : `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 4L4 14M4 4L14 14" stroke="#b04a2a" stroke-width="2.2" stroke-linecap="round"/></svg>`}
         </span>
         <div class="comparison-card__brand-copy">
           <strong>${card.title}</strong>
+          ${card.brandNote ? `<span>${card.brandNote}</span>` : ''}
         </div>
       </div>
       ${amount}
@@ -1874,13 +1882,20 @@ export function renderPage(content, pageKey) {
           <div class="comparison-heading">
             <h2>${content.home.comparison.title}</h2>
           </div>
-          <div class="comparison-grid">
-            ${comparisonCards
-              ? renderCardList(
-                  comparisonCards,
-                  (card) => renderComparisonCard(card, content),
-                )
-              : content.home.comparison.items.map((item) => `<div class="line-card">${item}</div>`).join('')}
+          <div class="comparison-grid-wrap">
+            <div class="comparison-grid">
+              ${comparisonCards
+                ? renderCardList(
+                    comparisonCards,
+                    (card) => renderComparisonCard(card, content),
+                  )
+                : content.home.comparison.items.map((item) => `<div class="line-card">${item}</div>`).join('')}
+            </div>
+            <div class="comparison-savings-badge" aria-hidden="true">
+              <span class="comparison-savings-badge__arrow">→</span>
+              <strong class="comparison-savings-badge__value">−50%</strong>
+              <span class="comparison-savings-badge__label">${content.ui.comparisonSavingsLabel ?? 'savings'}</span>
+            </div>
           </div>
         </div>
       </section>

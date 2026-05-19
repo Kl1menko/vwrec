@@ -669,8 +669,10 @@ enContent.ui.industryVisualHospitalityAlt = 'Personnel in hospitality and servic
 enContent.ui.industryVisualManufacturingAlt = 'Workers in manufacturing'
 enContent.ui.industrySlidePlaceholder =
   'A separate visual case for this vertical can be scaled for SEO pages, quizzes, and personalized CTAs.'
-enContent.ui.comparisonCardCta = 'Calculate recruitment'
+enContent.ui.comparisonCardCta = 'Close the talent shortage'
 enContent.ui.comparisonOtherMark = 'IN'
+enContent.ui.comparisonCtaNote = 'Free consultation · Reply within 1 business day'
+enContent.ui.comparisonSavingsLabel = 'savings'
 enContent.ui.guaranteesLegalDelta = 'Quotas, permits, visas'
 enContent.ui.guaranteesReplacementMetric = '$0'
 enContent.ui.guaranteesReplacementDelta = 'Fast replacement under warranty'

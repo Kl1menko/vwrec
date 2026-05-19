@@ -669,8 +669,10 @@ ukContent.ui.industryVisualHospitalityAlt = 'Персонал у сфері го
 ukContent.ui.industryVisualManufacturingAlt = 'Працівники на виробництві'
 ukContent.ui.industrySlidePlaceholder =
   'Окремий візуальний кейс для цієї вертикалі можна масштабувати під SEO-сторінки, квіз і персоналізовані CTA.'
-ukContent.ui.comparisonCardCta = 'Прорахувати підбір'
+ukContent.ui.comparisonCardCta = 'Закрити дефіцит кадрів'
 ukContent.ui.comparisonOtherMark = 'ІН'
+ukContent.ui.comparisonCtaNote = 'Безкоштовна консультація · Відповідь протягом 1 дня'
+ukContent.ui.comparisonSavingsLabel = 'економія'
 ukContent.ui.guaranteesLegalDelta = 'Квоти, дозволи, візи'
 ukContent.ui.guaranteesReplacementMetric = '0 грн'
 ukContent.ui.guaranteesReplacementDelta = 'Швидка заміна в гарантії'
