@@ -13,11 +13,6 @@ function getStepValue(step, container) {
   }, {})
 }
 
-function isStepValid(step, value) {
-  if (step.type === 'options') return Boolean(value)
-  return step.fields.every((field) => !field.required || value[field.name])
-}
-
 function getFieldType(field) {
   if (field.type) return field.type
   if (field.name === 'email') return 'email'
@@ -142,21 +137,22 @@ function initQuizInstance(root, content) {
     qs('[data-quiz-next]', root)?.addEventListener('click', async () => {
       const value = getStepValue(step, root)
 
-      if (!isStepValid(step, value) || !validateStepFields(step, root)) {
+      if (!validateStepFields(step, root)) {
         qs('[data-quiz-status]', root).textContent = ui.quizValidationError
         return
+      }
+
+      if (currentStep === 0) {
+        trackEvent('quiz_start', {
+          locale: document.body.dataset.locale,
+          quizSource,
+        })
       }
 
       state[step.id] = value
       trackEvent(`quiz_step_${currentStep + 1}_complete`, { step: step.id, quizSource })
 
       if (!isLastStep) {
-        if (currentStep === 0) {
-          trackEvent('quiz_start', {
-            locale: document.body.dataset.locale,
-            quizSource,
-          })
-        }
         currentStep += 1
         draw()
         return

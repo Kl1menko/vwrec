@@ -18,15 +18,15 @@ function renderBeamIcon(type) {
 function renderIndustryBentoIcon(title = '') {
   const value = String(title).toLowerCase()
 
-  if (value.includes('вироб')) {
+  if (/вироб|manufactur|výrob|produkcj|výroba|herstellung|tootmis|gyártás|proizvod|producție|производ/i.test(value)) {
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 11h.01"/><path d="M12 11h.01"/><path d="M15 11h.01"/><path d="M9 15h.01"/><path d="M12 15h.01"/><path d="M15 15h.01"/></svg>`
   }
 
-  if (value.includes('буд')) {
+  if (/буд|construct|staveb|budow|stavba|bau|ehitus|építőip|građevin|construcț|строител/i.test(value)) {
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9h14v12"/><path d="M9 9V5h6v4"/><path d="M9 13h.01"/><path d="M15 13h.01"/><path d="M9 17h.01"/><path d="M15 17h.01"/></svg>`
   }
 
-  if (value.includes('склад') || value.includes('логіст')) {
+  if (/склад|логіст|warehou|logist|sklad|magazyn|lager|ladu|raktár|skladišt|depozit|склад/i.test(value)) {
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5-9 4.5-9-4.5Z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5 12 21l9-4.5"/></svg>`
   }
 
@@ -36,15 +36,15 @@ function renderIndustryBentoIcon(title = '') {
 function renderIndustryFrameworkIcon(title = '') {
   const value = String(title).toLowerCase()
 
-  if (value.includes('мотивац')) {
+  if (/мотивац|motivat|motivac|motywac|motiváci|motivierung|motivatsi|motiváci|motivacij|motivați|мотивац/i.test(value)) {
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M6 15.5 10 11.5l3 3 5-6"/><path d="M14 8.5h4v4"/></svg>`
   }
 
-  if (value.includes('дисцип')) {
+  if (/дисцип|discipl|kázeň|dyscypl|diszcipl|disciplin|distsiplin|diszcipl|disciplin/i.test(value)) {
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`
   }
 
-  if (value.includes('довгострок')) {
+  if (/довгострок|long.term|dlouhod|długoterm|dlhod|langfrist|pikaajaline|hosszú távú|dugoroč|termen lung|долгосроч/i.test(value)) {
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/><path d="M8 3v3"/><path d="M16 3v3"/></svg>`
   }
 

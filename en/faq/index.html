@@ -439,27 +439,32 @@
     
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3 class="modal__title">Book a call</h3>
-        <form class="modal__form" data-form data-form-type="callback">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Name *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Company *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Phone *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+        
+    <form class="modal__form" data-form data-form-type="callback">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Name *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Company *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Phone *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Are you a real agency or business? *</span>
       <select name="isBusiness" required>
@@ -477,36 +482,73 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Book a call</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Book a call</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
       </div>
     </div>
   
     
     <div class="modal" data-modal="report">
-      <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3 class="modal__title">Get the report</h3>
-        <form class="modal__form" data-form data-form-type="report">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Name *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Company *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Phone *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+      <div class="modal__dialog modal__dialog--report">
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
+        <div class="report-modal__layout">
+          <div class="report-modal__offer" aria-hidden="true">
+            <h3 class="report-modal__title">Why is local hiring losing efficiency?</h3>
+            <p class="report-modal__lead">Get the closed analytical report "Labor Market 2026: Integration of International Personnel".</p>
+            
+                  <ul class="report-modal__points" aria-label="What you will get">
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Cost comparison table: Local vs Expats</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>5 legal mistakes when hiring foreigners</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>How to overcome the language barrier in production</span>
+                      </li>
+                    
+                  </ul>
+                
+          </div>
+          <div class="report-modal__form-wrap">
+            
+    <form class="modal__form" data-form data-form-type="report">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Name *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Company *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Phone *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Are you a real agency or business? *</span>
       <select name="isBusiness" required>
@@ -524,16 +566,23 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Get report</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Download report in PDF</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
+          </div>
+        </div>
       </div>
     </div>
   
     
     <div class="modal" data-modal="report-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -545,7 +594,11 @@
     
     <div class="modal" data-modal="form-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -556,7 +609,11 @@
     
     <div class="modal" data-modal="hero-quiz">
       <div class="modal__dialog modal__dialog--quiz">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3>Calculate worker recruitment for your enterprise</h3>
         <p>Answer a few short questions and get a team recruitment calculation for your business.</p>
         <div data-quiz data-quiz-source="hero_quiz"></div>
@@ -566,7 +623,11 @@
     
     <div class="modal" data-modal="video">
       <div class="modal__dialog modal__dialog--video">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="video-modal__player">
           <video
             class="video-modal__media"
@@ -581,7 +642,7 @@
   
   </div>
       <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the language barrier resolved?","acceptedAnswer":{"@type":"Answer","text":"We incorporate adaptation, basic training, and communication through a coordinator or foreman so the team quickly gets involved in work."}},{"@type":"Question","name":"Who is looking for housing for workers?","acceptedAnswer":{"@type":"Answer","text":"The model can include coordination of housing, logistics, and arrival, depending on the cooperation format and launch country."}},{"@type":"Question","name":"What to do if a worker gets sick or does not show up for a shift?","acceptedAnswer":{"@type":"Answer","text":"At the project start, a reserve, guarantee conditions for replacement, and a rapid communication procedure with your side are agreed upon."}}]}</script>
-      <script id="page-content" type="application/json">{"forms":{"lead":{"title":"Get a recruitment calculation","success":"Thank you. Your request has been saved, and we will contact you regarding recruitment."},"callback":{"title":"Book a call","success":"Thank you. Your call request has been saved."},"report":{"title":"Get the report","success":"Thank you. We have received your request and will send the PDF document to your email shortly."},"contact":{"title":"Send a request","success":"Thank you. Your request has been received, and the VW Recruit team will contact you with the next step."}},"quiz":{"title":"Recruitment Calculation","progressLabel":"Step","completionTitle":"Your request is ready","completionLead":"We have received your answers. The next step is to contact you and prepare a consultation or a preliminary calculation.","steps":[{"id":"industry","label":"Which industry do you need workers for?","type":"options","options":["Manufacturing","Construction","Warehouses and Logistics","Hotels and Hospitality","Other"]},{"id":"teamSize","label":"How many workers do you need?","type":"options","options":["1–10","11–30","31–50","50+"]},{"id":"timeline","label":"When should the team start working?","type":"options","options":["Urgently","Within 2–4 weeks","Within 1–2 months","Just exploring options for now"]},{"id":"location","label":"Where is your business located?","type":"text","fields":[{"name":"country","label":"Country","required":true},{"name":"city","label":"City","required":false}]},{"id":"problem","label":"What is the biggest hiring problem right now?","type":"options","options":["High payroll costs","Staff shortages","Staff turnover","Seasonal peaks","Production scaling","Other"]},{"id":"contact","label":"Where to send the calculation?","type":"text","fields":[{"name":"name","label":"Name","required":true},{"name":"company","label":"Company","required":true},{"name":"phone","label":"Phone","required":true},{"name":"email","label":"Email","required":true}]}]},"ui":{"modalClose":"Close modal","leadCapture":"Lead capture","video":"Video","videoPlay":"Play video","openMenu":"Open menu","primaryNav":"Primary navigation","languagePickerTitle":"Choose language","fieldName":"Name","fieldCompany":"Company","fieldEmail":"Email","fieldPhone":"Phone","fieldIsBusiness":"Are you a real agency or business?","fieldTargetCountries":"Which countries are you interested in?","fieldWorkersCount":"How many workers do you need?","fieldSelectOption":"Select an option","optionYes":"Yes","optionNo":"No","sendRequest":"Send request","requestCallback":"Book a call","getReport":"Get report","bookCall":"Book a call","quizEyebrow":"Quiz","quizContinue":"Continue","quizBack":"Back","quizSubmit":"Submit","quizReady":"Ready","quizValidationError":"Please fill out the current step.","quizSubmitError":"Failed to submit the form. Please try again.","processEyebrow":"Process","caseStudy":"Case","caseViewLabel":"View case","leadCaptureEyebrow":"Lead capture","faqEyebrow":"FAQ","aboutEyebrow":"About us","contactsEyebrow":"Contacts","reportEyebrow":"Report","privacyEyebrow":"Privacy Policy","termsEyebrow":"Terms of Use","thankYouEyebrow":"Thank you","finalCtaEyebrow":"Final CTA","downloadReport":"Download report","openContactsPage":"Open contacts page","projectsExamples":"Project examples","reelPlaceholder":"Placeholder for reel or video in popup modal after connecting sources.","industriesLead":"Most often, enterprises use this model for operational work in manufacturing, warehouses, construction, and the service sector.","legalPlaceholder":"Legal text will be here. Replace it with the approved final version before launch.","footerDescription":"Turnkey recruitment of workers from Asia and Africa: from finding candidates and documents to arrival, adaptation, and the team going on shift.","footerCorePages":"Core pages","footerLegal":"Legal information","privacyPolicy":"Privacy Policy","termsAndConditions":"Terms of Use","formRequiredError":"Please fill in the required form fields.","formSubmittingButton":"Sending...","formSubmittingStatus":"Sending form...","formSubmitError":"Failed to submit the form. Please try again.","industryVisualLogisticsAlt":"Workers in warehouse and logistics","industryVisualConstructionAlt":"Workers on a construction site","industryVisualHospitalityAlt":"Personnel in hospitality and service","industryVisualManufacturingAlt":"Workers in manufacturing","industrySlidePlaceholder":"A separate visual case for this vertical can be scaled for SEO pages, quizzes, and personalized CTAs.","comparisonCardCta":"Calculate recruitment","comparisonOtherMark":"IN","guaranteesLegalDelta":"Quotas, permits, visas","guaranteesReplacementMetric":"$0","guaranteesReplacementDelta":"Fast replacement under warranty","guaranteesSupportMetric":"Turnkey","guaranteesSupportDelta":"From selection to shift","guaranteesFallbackDelta":"VW Recruit Advantage","guaranteesReplacementLabel":"Guarantee at launch","guaranteesReplacementUnit":"$","guaranteesReplacementWarrantyDays":30,"guaranteesReplacementWarrantyLabel":"days warranty","guaranteesReplacementReplyHours":48,"guaranteesReplacementReplyLabel":"hours reply","guaranteesSupportBadge":"One team for the entire process","guaranteesCandidatesDays":10,"guaranteesCandidatesDaysLabel":"days to candidates","guaranteesSupportPercentLabel":"% support","guaranteesOneTeamCount":1,"guaranteesOneTeamLabel":"team","guaranteeTimelineStepOne":"Selection","guaranteeTimelineStepTwo":"Documents","guaranteeTimelineStepThree":"Logistics","guaranteeTimelineStepFour":"Arrival","guaranteeTimelineStepFive":"Shift","guaranteeSupportStepOne":"Selection","guaranteeSupportStepTwo":"Arrival","guaranteeSupportNote":"Shift start","guaranteeChecklistQuota":"Quotas","guaranteeChecklistPermit":"Permit","guaranteeChecklistVisa":"Visa","reviewFallbackValue":"7 YEARS","reviewLabelPrefix":"7 years ","servicesShortRequestEyebrow":"Short request","servicesHeroGhostCta":"View service conditions","servicesHeroPanelTitle":"Recruitment, documents, logistics, and team launch in one process","servicesHeroPanelText":"The entire route is built so that the business sees predictable launch stages, and the candidate understands what happens at every step.","servicesPillarsEyebrow":"What we cover","servicesPillarsTitle":"The service is built not as \"resume search\", but as a complete route for launching people into work","servicesOfferEyebrow":"What both sides get","servicesOfferTitle":"A model where the business gets a managed result, and the candidate sees a transparent process","servicesOfferVisualLabel":"VW Recruit / route","servicesOfferVisualPrimary":"For business","servicesOfferVisualSecondary":"For candidates","servicesBeamEyebrow":"Process map","servicesRouteEyebrow":"How cooperation works","servicesRouteTitle":"Transparent route from request to workers going on shift","servicesRouteLead":"Business sees a clear launch route with predictable stages from the request to people going on shift.","servicesProofEyebrow":"Why this sells","servicesProofTitle":"Not just recruitment, but a managed service with a clear result at each stage","servicesFitEyebrow":"Where it works best","servicesFitTitle":"Roles and niches where international recruitment gives maximum operational effect","servicesFitLead":"Each card shows where the model provides the fastest operational result, the cleanest team launch, and the highest process stability.","servicesFitScoreLabel":"match level","servicesFitMetricOne":"Launch speed","servicesFitMetricTwo":"Stability","servicesFitMetricThree":"Transparency","servicesFitCardTextOne":"Works best where repetitive shifts, attendance discipline, and quick scaling without launch failures are important.","servicesFitCardTextTwo":"Works well for seasonal peaks, volume growth, and operations where business critically needs a rhythmic launch of people.","servicesFitCardTextThree":"Suitable for projects with strict deadlines, where recruitment, documents, and arrival need to be combined without chaos.","servicesFitCardTextFour":"Shows a good result in service teams where a clear route, fast adaptation, and launch stability are critical.","servicesLeadEyebrow":"Start dialogue","servicesLeadText":"For employers, it is a quick way to understand how to launch recruitment. For candidates, it is an opportunity to get an honest explanation of the employment route and documents.","servicesSegmentBadgeBusiness":"B2B","servicesSegmentBadgeCandidate":"B2C","industriesSectionTitle":"WHICH INDUSTRIES THIS HIRING MODEL SUITS","industrySliderPrev":"Previous slide","industrySliderNext":"Next slide","quizSectionLead":"A short step-by-step quiz that helps quickly collect a request and submit it in a unified format.","casesSectionLead":"We show examples of recruitment launches for manufacturing, logistics, hotels, and other operational teams.","caseSliderPrev":"Previous case","caseSliderNext":"Next case","casesTimelineSteps":["Brief","Search","Approval","Documents","Arrival"],"industriesFitSummary":"Signals that usually mean local hiring is no longer keeping up with your operation's pace and a more systematic team staffing model is needed.","caseSubtitlePlaceholder":"Short case description","caseProblemPlaceholder":"Separate SEO page for the case with results, deadlines, and a target action.","processStepLabel":"Step","reportPanelTitle":"Get material by email","reportPanelText":"Leave your contacts, and we will send useful material on international hiring and personnel cost optimization.","reportPanelKicker":"VW Recruit / Analytics","reportPanelReportTitle":"Labor Market 2026","reportPanelReportText":"Integration of international personnel for businesses with staff shortages","reportPanelGuide":"PDF","videoInsightLabel":"Video insight","mediaDefaultDuration":"02:00","reviewsPrev":"Previous review","reviewsNext":"Next review","genericPageCardOne":"Base page prepared for localized content","genericPageCardTwo":"Metadata and structure are ready for further filling","genericPageCardThree":"Each route is generated separately for each locale"}}</script>
+      <script id="page-content" type="application/json">{"forms":{"lead":{"title":"Get a recruitment calculation","success":"Thank you. Your request has been saved, and we will contact you regarding recruitment."},"callback":{"title":"Book a call","success":"Thank you. Your call request has been saved."},"report":{"title":"Get the report","success":"Thank you. We have received your request and will send the PDF document to your email shortly."},"contact":{"title":"Send a request","success":"Thank you. Your request has been received, and the VW Recruit team will contact you with the next step."}},"quiz":{"title":"Recruitment Calculation","progressLabel":"Step","completionTitle":"Your request is ready","completionLead":"We have received your answers. The next step is to contact you and prepare a consultation or a preliminary calculation.","steps":[{"id":"industry","label":"Which industry do you need workers for?","type":"options","options":["Manufacturing","Construction","Warehouses and Logistics","Hotels and Hospitality","Other"]},{"id":"teamSize","label":"How many workers do you need?","type":"options","options":["1–10","11–30","31–50","50+"]},{"id":"timeline","label":"When should the team start working?","type":"options","options":["Urgently","Within 2–4 weeks","Within 1–2 months","Just exploring options for now"]},{"id":"location","label":"Where is your business located?","type":"text","fields":[{"name":"country","label":"Country","required":true},{"name":"city","label":"City","required":false}]},{"id":"problem","label":"What is the biggest hiring problem right now?","type":"options","options":["High payroll costs","Staff shortages","Staff turnover","Seasonal peaks","Production scaling","Other"]},{"id":"contact","label":"Where to send the calculation?","type":"text","fields":[{"name":"name","label":"Name","required":true},{"name":"company","label":"Company","required":true},{"name":"phone","label":"Phone","required":true},{"name":"email","label":"Email","required":true}]}]},"ui":{"modalClose":"Close modal","leadCapture":"Lead capture","video":"Video","videoPlay":"Play video","openMenu":"Open menu","primaryNav":"Primary navigation","languagePickerTitle":"Choose language","fieldName":"Name","fieldCompany":"Company","fieldEmail":"Email","fieldPhone":"Phone","fieldIsBusiness":"Are you a real agency or business?","fieldTargetCountries":"Which countries are you interested in?","fieldWorkersCount":"How many workers do you need?","fieldSelectOption":"Select an option","optionYes":"Yes","optionNo":"No","sendRequest":"Send request","requestCallback":"Book a call","getReport":"Get report","bookCall":"Book a call","quizEyebrow":"Quiz","quizContinue":"Continue","quizBack":"Back","quizSubmit":"Submit","quizReady":"Ready","quizValidationError":"Please fill out the current step.","quizSubmitError":"Failed to submit the form. Please try again.","processEyebrow":"Process","caseStudy":"Case","caseViewLabel":"View case","leadCaptureEyebrow":"Lead capture","faqEyebrow":"FAQ","aboutEyebrow":"About us","contactsEyebrow":"Contacts","reportEyebrow":"Report","privacyEyebrow":"Privacy Policy","termsEyebrow":"Terms of Use","thankYouEyebrow":"Thank you","finalCtaEyebrow":"Final CTA","downloadReport":"Download report","openContactsPage":"Open contacts page","projectsExamples":"Project examples","reelPlaceholder":"Placeholder for reel or video in popup modal after connecting sources.","industriesLead":"Most often, enterprises use this model for operational work in manufacturing, warehouses, construction, and the service sector.","legalPlaceholder":"Legal text will be here. Replace it with the approved final version before launch.","footerDescription":"Turnkey recruitment of workers from Asia and Africa: from finding candidates and documents to arrival, adaptation, and the team going on shift.","footerCorePages":"Core pages","footerLegal":"Legal information","privacyPolicy":"Privacy Policy","termsAndConditions":"Terms of Use","formRequiredError":"Please fill in the required form fields.","formSubmittingButton":"Sending...","formSubmittingStatus":"Sending form...","formSubmitError":"Failed to submit the form. Please try again.","industryVisualLogisticsAlt":"Workers in warehouse and logistics","industryVisualConstructionAlt":"Workers on a construction site","industryVisualHospitalityAlt":"Personnel in hospitality and service","industryVisualManufacturingAlt":"Workers in manufacturing","industrySlidePlaceholder":"A separate visual case for this vertical can be scaled for SEO pages, quizzes, and personalized CTAs.","comparisonCardCta":"Close the talent shortage","comparisonOtherMark":"IN","guaranteesLegalDelta":"Quotas, permits, visas","guaranteesReplacementMetric":"$0","guaranteesReplacementDelta":"Fast replacement under warranty","guaranteesSupportMetric":"Turnkey","guaranteesSupportDelta":"From selection to shift","guaranteesFallbackDelta":"VW Recruit Advantage","guaranteesReplacementLabel":"Guarantee at launch","guaranteesReplacementUnit":"$","guaranteesReplacementWarrantyDays":30,"guaranteesReplacementWarrantyLabel":"days warranty","guaranteesReplacementReplyHours":48,"guaranteesReplacementReplyLabel":"hours reply","guaranteesSupportBadge":"One team for the entire process","guaranteesCandidatesDays":10,"guaranteesCandidatesDaysLabel":"days to candidates","guaranteesSupportPercentLabel":"% support","guaranteesOneTeamCount":1,"guaranteesOneTeamLabel":"team","guaranteeTimelineStepOne":"Selection","guaranteeTimelineStepTwo":"Documents","guaranteeTimelineStepThree":"Logistics","guaranteeTimelineStepFour":"Arrival","guaranteeTimelineStepFive":"Shift","guaranteeSupportStepOne":"Selection","guaranteeSupportStepTwo":"Arrival","guaranteeSupportNote":"Shift start","guaranteeChecklistQuota":"Quotas","guaranteeChecklistPermit":"Permit","guaranteeChecklistVisa":"Visa","reviewFallbackValue":"7 YEARS","reviewLabelPrefix":"7 years ","servicesShortRequestEyebrow":"Short request","servicesHeroGhostCta":"View service conditions","servicesHeroPanelTitle":"Recruitment, documents, logistics, and team launch in one process","servicesHeroPanelText":"The entire route is built so that the business sees predictable launch stages, and the candidate understands what happens at every step.","servicesPillarsEyebrow":"What we cover","servicesPillarsTitle":"The service is built not as \"resume search\", but as a complete route for launching people into work","servicesOfferEyebrow":"What both sides get","servicesOfferTitle":"A model where the business gets a managed result, and the candidate sees a transparent process","servicesOfferVisualLabel":"VW Recruit / route","servicesOfferVisualPrimary":"For business","servicesOfferVisualSecondary":"For candidates","servicesBeamEyebrow":"Process map","servicesRouteEyebrow":"How cooperation works","servicesRouteTitle":"Transparent route from request to workers going on shift","servicesRouteLead":"Business sees a clear launch route with predictable stages from the request to people going on shift.","servicesProofEyebrow":"Why this sells","servicesProofTitle":"Not just recruitment, but a managed service with a clear result at each stage","servicesFitEyebrow":"Where it works best","servicesFitTitle":"Roles and niches where international recruitment gives maximum operational effect","servicesFitLead":"Each card shows where the model provides the fastest operational result, the cleanest team launch, and the highest process stability.","servicesFitScoreLabel":"match level","servicesFitMetricOne":"Launch speed","servicesFitMetricTwo":"Stability","servicesFitMetricThree":"Transparency","servicesFitCardTextOne":"Works best where repetitive shifts, attendance discipline, and quick scaling without launch failures are important.","servicesFitCardTextTwo":"Works well for seasonal peaks, volume growth, and operations where business critically needs a rhythmic launch of people.","servicesFitCardTextThree":"Suitable for projects with strict deadlines, where recruitment, documents, and arrival need to be combined without chaos.","servicesFitCardTextFour":"Shows a good result in service teams where a clear route, fast adaptation, and launch stability are critical.","servicesLeadEyebrow":"Start dialogue","servicesLeadText":"For employers, it is a quick way to understand how to launch recruitment. For candidates, it is an opportunity to get an honest explanation of the employment route and documents.","servicesSegmentBadgeBusiness":"B2B","servicesSegmentBadgeCandidate":"B2C","industriesSectionTitle":"WHICH INDUSTRIES THIS HIRING MODEL SUITS","industrySliderPrev":"Previous slide","industrySliderNext":"Next slide","quizSectionLead":"A short step-by-step quiz that helps quickly collect a request and submit it in a unified format.","casesSectionLead":"We show examples of recruitment launches for manufacturing, logistics, hotels, and other operational teams.","caseSliderPrev":"Previous case","caseSliderNext":"Next case","casesTimelineSteps":["Brief","Search","Approval","Documents","Arrival"],"industriesFitSummary":"Signals that usually mean local hiring is no longer keeping up with your operation's pace and a more systematic team staffing model is needed.","caseSubtitlePlaceholder":"Short case description","caseProblemPlaceholder":"Separate SEO page for the case with results, deadlines, and a target action.","processStepLabel":"Step","reportPanelTitle":"Get material by email","reportPanelText":"Leave your contacts, and we will send useful material on international hiring and personnel cost optimization.","reportPanelKicker":"VW Recruit / Analytics","reportPanelReportTitle":"Labor Market 2026","reportPanelReportText":"Integration of international personnel for businesses with staff shortages","reportPanelGuide":"PDF","videoInsightLabel":"Video insight","mediaDefaultDuration":"02:00","reviewsPrev":"Previous review","reviewsNext":"Next review","genericPageCardOne":"Base page prepared for localized content","genericPageCardTwo":"Metadata and structure are ready for further filling","genericPageCardThree":"Each route is generated separately for each locale","comparisonCtaNote":"Free consultation · Reply within 1 business day","comparisonSavingsLabel":"savings"}}</script>
       <div id="portal-root"></div>
     
   </body>

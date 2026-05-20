@@ -385,27 +385,32 @@
     
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3 class="modal__title">Забронювати дзвінок</h3>
-        <form class="modal__form" data-form data-form-type="callback">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Ім’я *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Компанія *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Телефон *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+        
+    <form class="modal__form" data-form data-form-type="callback">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Ім’я *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Компанія *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Телефон *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Ви є реальним агентом або бізнесом? *</span>
       <select name="isBusiness" required>
@@ -423,36 +428,73 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Забронювати дзвінок</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Забронювати дзвінок</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
       </div>
     </div>
   
     
     <div class="modal" data-modal="report">
-      <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">×</button>
-        <h3 class="modal__title">Отримати звіт</h3>
-        <form class="modal__form" data-form data-form-type="report">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Ім’я *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Компанія *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Телефон *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+      <div class="modal__dialog modal__dialog--report">
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
+        <div class="report-modal__layout">
+          <div class="report-modal__offer" aria-hidden="true">
+            <h3 class="report-modal__title">Чому локальний найм втрачає ефективність?</h3>
+            <p class="report-modal__lead">Отримайте закритий аналітичний звіт "Ринок праці 2026: Інтеграція міжнародного персоналу".</p>
+            
+                  <ul class="report-modal__points" aria-label="What you will get">
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Порівняльна таблиця витрат: Україна vs експати</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>5 юридичних помилок при наймі іноземців</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Як подолати мовний бар’єр на виробництві</span>
+                      </li>
+                    
+                  </ul>
+                
+          </div>
+          <div class="report-modal__form-wrap">
+            
+    <form class="modal__form" data-form data-form-type="report">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Ім’я *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Компанія *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Телефон *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Ви є реальним агентом або бізнесом? *</span>
       <select name="isBusiness" required>
@@ -470,16 +512,23 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Отримати звіт</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Завантажити звіт у PDF</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
+          </div>
+        </div>
       </div>
     </div>
   
     
     <div class="modal" data-modal="report-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -491,7 +540,11 @@
     
     <div class="modal" data-modal="form-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -502,7 +555,11 @@
     
     <div class="modal" data-modal="hero-quiz">
       <div class="modal__dialog modal__dialog--quiz">
-        <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3>Розрахуйте підбір працівників для вашого підприємства</h3>
         <p>Відповідайте на кілька коротких питань і отримайте розрахунок підбору команди для вашого бізнесу.</p>
         <div data-quiz data-quiz-source="hero_quiz"></div>
@@ -512,7 +569,11 @@
     
     <div class="modal" data-modal="video">
       <div class="modal__dialog modal__dialog--video">
-        <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Закрити модальне вікно">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="video-modal__player">
           <video
             class="video-modal__media"
@@ -527,7 +588,7 @@
   
   </div>
       
-      <script id="page-content" type="application/json">{"forms":{"lead":{"title":"Отримати прорахунок підбору","success":"Дякуємо. Ваш запит збережено, і ми зв’яжемося з вами щодо підбору."},"callback":{"title":"Забронювати дзвінок","success":"Дякуємо. Ваш запит на дзвінок збережено."},"report":{"title":"Отримати звіт","success":"Дякуємо. Ми отримали ваш запит і надішлемо PDF-документ на вашу електронну пошту найближчим часом."},"contact":{"title":"Надіслати запит","success":"Дякуємо. Ваш запит отримано, і команда VW Recruit зв’яжеться з вами з наступним кроком."}},"quiz":{"title":"Розрахунок підбору","progressLabel":"Крок","completionTitle":"Ваш запит готовий","completionLead":"Ми отримали ваші відповіді. Наступний крок — зв’язатися з вами та підготувати консультацію або попередній прорахунок.","steps":[{"id":"industry","label":"Для якої сфери потрібні працівники?","type":"options","options":["Виробництво","Будівництво","Склади та логістика","Готелі та сервіс","Інше"]},{"id":"teamSize","label":"Скільки працівників вам потрібно?","type":"options","options":["1–10","11–30","31–50","50+"]},{"id":"timeline","label":"Коли команда має вийти на роботу?","type":"options","options":["Терміново","Протягом 2–4 тижнів","Протягом 1–2 місяців","Поки вивчаю варіанти"]},{"id":"location","label":"Де знаходиться ваш бізнес?","type":"text","fields":[{"name":"country","label":"Країна","required":true},{"name":"city","label":"Місто","required":false}]},{"id":"problem","label":"Яка найбільша проблема з наймом зараз?","type":"options","options":["Високі зарплатні витрати","Дефіцит персоналу","Плинність кадрів","Сезонні піки","Масштабування виробництва","Інше"]},{"id":"contact","label":"Куди надіслати розрахунок?","type":"text","fields":[{"name":"name","label":"Ім’я","required":true},{"name":"company","label":"Компанія","required":true},{"name":"phone","label":"Телефон","required":true},{"name":"email","label":"Email","required":true}]}]},"ui":{"modalClose":"Закрити модальне вікно","leadCapture":"Збір заявки","video":"Відео","videoPlay":"Відтворити відео","openMenu":"Відкрити меню","primaryNav":"Основна навігація","languagePickerTitle":"Оберіть мову","fieldName":"Ім’я","fieldCompany":"Компанія","fieldEmail":"Email","fieldPhone":"Телефон","fieldIsBusiness":"Ви є реальним агентом або бізнесом?","fieldTargetCountries":"Які країни вас цікавлять?","fieldWorkersCount":"Для скількох людей потрібен підбір?","fieldSelectOption":"Оберіть варіант","optionYes":"Так","optionNo":"Ні","sendRequest":"Надіслати запит","requestCallback":"Забронювати дзвінок","getReport":"Отримати звіт","bookCall":"Забронювати дзвінок","quizEyebrow":"Квіз","quizContinue":"Продовжити","quizBack":"Назад","quizSubmit":"Надіслати","quizReady":"Готово","quizValidationError":"Будь ласка, заповніть поточний крок.","quizSubmitError":"Не вдалося відправити форму. Спробуйте ще раз.","processEyebrow":"Процес","caseStudy":"Кейс","caseViewLabel":"Дивитися кейс","leadCaptureEyebrow":"Збір заявки","faqEyebrow":"Поширені запитання","aboutEyebrow":"Про нас","contactsEyebrow":"Контакти","reportEyebrow":"Звіт","privacyEyebrow":"Політика конфіденційності","termsEyebrow":"Умови використання","thankYouEyebrow":"Дякуємо","finalCtaEyebrow":"Фінальний CTA","downloadReport":"Завантажити звіт","openContactsPage":"Відкрити сторінку контактів","projectsExamples":"Приклади проєктів","reelPlaceholder":"Місце для reel або відео в popup-модалці після підключення джерел.","industriesLead":"Найчастіше підприємства використовують таку модель для операційної роботи на виробництві, складах, будівництві та у сфері сервісу.","legalPlaceholder":"Тут буде юридичний текст. Замініть його на погоджену фінальну версію перед запуском.","footerDescription":"Підбираємо працівників з Азії та Африки під ключ: від пошуку кандидатів і документів до приїзду, адаптації та виходу команди на зміну.","footerCorePages":"Основні сторінки","footerLegal":"Юридична інформація","privacyPolicy":"Політика конфіденційності","termsAndConditions":"Умови використання","formRequiredError":"Будь ласка, заповніть обов’язкові поля форми.","formSubmittingButton":"Відправляємо...","formSubmittingStatus":"Відправляємо форму...","formSubmitError":"Не вдалося відправити форму. Спробуйте ще раз.","industryVisualLogisticsAlt":"Працівники на складі та в логістиці","industryVisualConstructionAlt":"Працівники на будівельному об’єкті","industryVisualHospitalityAlt":"Персонал у сфері готелів та сервісу","industryVisualManufacturingAlt":"Працівники на виробництві","industrySlidePlaceholder":"Окремий візуальний кейс для цієї вертикалі можна масштабувати під SEO-сторінки, квіз і персоналізовані CTA.","comparisonCardCta":"Прорахувати підбір","comparisonOtherMark":"ІН","guaranteesLegalDelta":"Квоти, дозволи, візи","guaranteesReplacementMetric":"0 грн","guaranteesReplacementDelta":"Швидка заміна в гарантії","guaranteesSupportMetric":"Під ключ","guaranteesSupportDelta":"Від відбору до зміни","guaranteesFallbackDelta":"Перевага VW Recruit","guaranteesReplacementLabel":"Гарантія на старті","guaranteesReplacementUnit":"грн","guaranteesReplacementWarrantyDays":30,"guaranteesReplacementWarrantyLabel":"днів гарантія","guaranteesReplacementReplyHours":48,"guaranteesReplacementReplyLabel":"годин відповідь","guaranteesSupportBadge":"Одна команда на весь процес","guaranteesCandidatesDays":10,"guaranteesCandidatesDaysLabel":"днів до кандидатів","guaranteesSupportPercentLabel":"% супровід","guaranteesOneTeamCount":1,"guaranteesOneTeamLabel":"команда","guaranteeTimelineStepOne":"Відбір","guaranteeTimelineStepTwo":"Документи","guaranteeTimelineStepThree":"Логістика","guaranteeTimelineStepFour":"Приїзд","guaranteeTimelineStepFive":"Зміна","guaranteeSupportStepOne":"Відбір","guaranteeSupportStepTwo":"Приїзд","guaranteeSupportNote":"Старт зміни","guaranteeChecklistQuota":"Квоти","guaranteeChecklistPermit":"Дозвіл","guaranteeChecklistVisa":"Віза","reviewFallbackValue":"7 РОКІВ","reviewLabelPrefix":"7 років ","servicesShortRequestEyebrow":"Короткий запит","servicesHeroGhostCta":"Подивитися умови послуги","servicesHeroPanelTitle":"Підбір, документи, логістика та запуск команди в одному процесі","servicesHeroPanelText":"Весь маршрут побудований так, щоб бізнес бачив прогнозовані етапи запуску, а кандидат розумів, що відбувається на кожному кроці.","servicesPillarsEyebrow":"Що ми закриваємо","servicesPillarsTitle":"Послуга побудована не як \"пошук резюме\", а як повний маршрут запуску людей у роботу","servicesOfferEyebrow":"Що отримують обидві сторони","servicesOfferTitle":"Модель, у якій бізнес отримує керований результат, а кандидат бачить прозорий процес","servicesOfferVisualLabel":"VW Recruit / маршрут","servicesOfferVisualPrimary":"Для бізнесу","servicesOfferVisualSecondary":"Для кандидатів","servicesBeamEyebrow":"Карта процесу","servicesRouteEyebrow":"Як працює співпраця","servicesRouteTitle":"Прозорий маршрут від заявки до виходу працівників на зміну","servicesRouteLead":"Бізнес бачить зрозумілий маршрут запуску з прогнозованими етапами від запиту до виходу людей на зміну.","servicesProofEyebrow":"Чому це продає","servicesProofTitle":"Не просто підбір, а керований сервіс із чітким результатом на кожному етапі","servicesFitEyebrow":"Де це працює найкраще","servicesFitTitle":"Ролі й ніші, де міжнародний підбір дає максимальний операційний ефект","servicesFitLead":"Кожна картка показує, де модель дає найшвидший операційний результат, найчистіший запуск команди і найвищу стабільність процесу.","servicesFitScoreLabel":"рівень відповідності","servicesFitMetricOne":"Швидкість запуску","servicesFitMetricTwo":"Стабільність","servicesFitMetricThree":"Прозорість","servicesFitCardTextOne":"Найсильніше працює там, де важливі повторювані зміни, дисципліна виходу і швидке масштабування без провалів у запуску.","servicesFitCardTextTwo":"Добре заходить для сезонних піків, зростання обсягів і операцій, де бізнесу критично потрібен ритмічний запуск людей.","servicesFitCardTextThree":"Підходить для проєктів із жорсткими дедлайнами, де потрібно поєднати рекрутинг, документи та прибуття без хаосу.","servicesFitCardTextFour":"Показує хороший результат у сервісних командах, де критичні зрозумілий маршрут, швидка адаптація і стабільність старту.","servicesLeadEyebrow":"Почати діалог","servicesLeadText":"Для роботодавців це швидкий спосіб зрозуміти, як запустити підбір. Для кандидатів — можливість отримати чесне пояснення по маршруту працевлаштування та документах.","servicesSegmentBadgeBusiness":"B2B","servicesSegmentBadgeCandidate":"B2C","industriesSectionTitle":"ДЛЯ ЯКИХ СФЕР ПІДХОДИТЬ ТАКА МОДЕЛЬ НАЙМУ","industrySliderPrev":"Попередній слайд","industrySliderNext":"Наступний слайд","quizSectionLead":"Короткий покроковий квіз, який допомагає швидко зібрати запит і передати його в єдиному форматі.","casesSectionLead":"Показуємо приклади запуску підбору для виробництва, логістики, готелів та інших операційних команд.","caseSliderPrev":"Попередній кейс","caseSliderNext":"Наступний кейс","casesTimelineSteps":["Бриф","Пошук","Погодження","Документи","Приїзд"],"industriesFitSummary":"Сигнали, які зазвичай означають, що локальний найм уже не тримає темп вашої операції і потрібна більш системна модель комплектування команди.","caseSubtitlePlaceholder":"Короткий опис кейсу","caseProblemPlaceholder":"Окрема SEO-сторінка для кейсу з результатами, строками і цільовою дією.","processStepLabel":"Крок","reportPanelTitle":"Отримайте матеріал на email","reportPanelText":"Залиште контакти, і ми надішлемо корисний матеріал по темі міжнародного найму та оптимізації витрат на персонал.","reportPanelKicker":"VW Recruit / Аналітика","reportPanelReportTitle":"Ринок праці 2026","reportPanelReportText":"Інтеграція міжнародного персоналу для бізнесу з дефіцитом кадрів","reportPanelGuide":"PDF","videoInsightLabel":"Відео-інсайт","mediaDefaultDuration":"02:00","reviewsPrev":"Попередній відгук","reviewsNext":"Наступний відгук","genericPageCardOne":"Базова сторінка підготовлена для локалізованого контенту","genericPageCardTwo":"Метадані та структура вже готові для подальшого наповнення","genericPageCardThree":"Кожен маршрут генерується окремо для кожної локалі"}}</script>
+      <script id="page-content" type="application/json">{"forms":{"lead":{"title":"Отримати прорахунок підбору","success":"Дякуємо. Ваш запит збережено, і ми зв’яжемося з вами щодо підбору."},"callback":{"title":"Забронювати дзвінок","success":"Дякуємо. Ваш запит на дзвінок збережено."},"report":{"title":"Отримати звіт","success":"Дякуємо. Ми отримали ваш запит і надішлемо PDF-документ на вашу електронну пошту найближчим часом."},"contact":{"title":"Надіслати запит","success":"Дякуємо. Ваш запит отримано, і команда VW Recruit зв’яжеться з вами з наступним кроком."}},"quiz":{"title":"Розрахунок підбору","progressLabel":"Крок","completionTitle":"Ваш запит готовий","completionLead":"Ми отримали ваші відповіді. Наступний крок — зв’язатися з вами та підготувати консультацію або попередній прорахунок.","steps":[{"id":"industry","label":"Для якої сфери потрібні працівники?","type":"options","options":["Виробництво","Будівництво","Склади та логістика","Готелі та сервіс","Інше"]},{"id":"teamSize","label":"Скільки працівників вам потрібно?","type":"options","options":["1–10","11–30","31–50","50+"]},{"id":"timeline","label":"Коли команда має вийти на роботу?","type":"options","options":["Терміново","Протягом 2–4 тижнів","Протягом 1–2 місяців","Поки вивчаю варіанти"]},{"id":"location","label":"Де знаходиться ваш бізнес?","type":"text","fields":[{"name":"country","label":"Країна","required":true},{"name":"city","label":"Місто","required":false}]},{"id":"problem","label":"Яка найбільша проблема з наймом зараз?","type":"options","options":["Високі зарплатні витрати","Дефіцит персоналу","Плинність кадрів","Сезонні піки","Масштабування виробництва","Інше"]},{"id":"contact","label":"Куди надіслати розрахунок?","type":"text","fields":[{"name":"name","label":"Ім’я","required":true},{"name":"company","label":"Компанія","required":true},{"name":"phone","label":"Телефон","required":true},{"name":"email","label":"Email","required":true}]}]},"ui":{"modalClose":"Закрити модальне вікно","leadCapture":"Збір заявки","video":"Відео","videoPlay":"Відтворити відео","openMenu":"Відкрити меню","primaryNav":"Основна навігація","languagePickerTitle":"Оберіть мову","fieldName":"Ім’я","fieldCompany":"Компанія","fieldEmail":"Email","fieldPhone":"Телефон","fieldIsBusiness":"Ви є реальним агентом або бізнесом?","fieldTargetCountries":"Які країни вас цікавлять?","fieldWorkersCount":"Для скількох людей потрібен підбір?","fieldSelectOption":"Оберіть варіант","optionYes":"Так","optionNo":"Ні","sendRequest":"Надіслати запит","requestCallback":"Забронювати дзвінок","getReport":"Отримати звіт","bookCall":"Забронювати дзвінок","quizEyebrow":"Квіз","quizContinue":"Продовжити","quizBack":"Назад","quizSubmit":"Надіслати","quizReady":"Готово","quizValidationError":"Будь ласка, заповніть поточний крок.","quizSubmitError":"Не вдалося відправити форму. Спробуйте ще раз.","processEyebrow":"Процес","caseStudy":"Кейс","caseViewLabel":"Дивитися кейс","leadCaptureEyebrow":"Збір заявки","faqEyebrow":"Поширені запитання","aboutEyebrow":"Про нас","contactsEyebrow":"Контакти","reportEyebrow":"Звіт","privacyEyebrow":"Політика конфіденційності","termsEyebrow":"Умови використання","thankYouEyebrow":"Дякуємо","finalCtaEyebrow":"Фінальний CTA","downloadReport":"Завантажити звіт","openContactsPage":"Відкрити сторінку контактів","projectsExamples":"Приклади проєктів","reelPlaceholder":"Місце для reel або відео в popup-модалці після підключення джерел.","industriesLead":"Найчастіше підприємства використовують таку модель для операційної роботи на виробництві, складах, будівництві та у сфері сервісу.","legalPlaceholder":"Тут буде юридичний текст. Замініть його на погоджену фінальну версію перед запуском.","footerDescription":"Підбираємо працівників з Азії та Африки під ключ: від пошуку кандидатів і документів до приїзду, адаптації та виходу команди на зміну.","footerCorePages":"Основні сторінки","footerLegal":"Юридична інформація","privacyPolicy":"Політика конфіденційності","termsAndConditions":"Умови використання","formRequiredError":"Будь ласка, заповніть обов’язкові поля форми.","formSubmittingButton":"Відправляємо...","formSubmittingStatus":"Відправляємо форму...","formSubmitError":"Не вдалося відправити форму. Спробуйте ще раз.","industryVisualLogisticsAlt":"Працівники на складі та в логістиці","industryVisualConstructionAlt":"Працівники на будівельному об’єкті","industryVisualHospitalityAlt":"Персонал у сфері готелів та сервісу","industryVisualManufacturingAlt":"Працівники на виробництві","industrySlidePlaceholder":"Окремий візуальний кейс для цієї вертикалі можна масштабувати під SEO-сторінки, квіз і персоналізовані CTA.","comparisonCardCta":"Закрити дефіцит кадрів","comparisonOtherMark":"ІН","guaranteesLegalDelta":"Квоти, дозволи, візи","guaranteesReplacementMetric":"0 грн","guaranteesReplacementDelta":"Швидка заміна в гарантії","guaranteesSupportMetric":"Під ключ","guaranteesSupportDelta":"Від відбору до зміни","guaranteesFallbackDelta":"Перевага VW Recruit","guaranteesReplacementLabel":"Гарантія на старті","guaranteesReplacementUnit":"грн","guaranteesReplacementWarrantyDays":30,"guaranteesReplacementWarrantyLabel":"днів гарантія","guaranteesReplacementReplyHours":48,"guaranteesReplacementReplyLabel":"годин відповідь","guaranteesSupportBadge":"Одна команда на весь процес","guaranteesCandidatesDays":10,"guaranteesCandidatesDaysLabel":"днів до кандидатів","guaranteesSupportPercentLabel":"% супровід","guaranteesOneTeamCount":1,"guaranteesOneTeamLabel":"команда","guaranteeTimelineStepOne":"Відбір","guaranteeTimelineStepTwo":"Документи","guaranteeTimelineStepThree":"Логістика","guaranteeTimelineStepFour":"Приїзд","guaranteeTimelineStepFive":"Зміна","guaranteeSupportStepOne":"Відбір","guaranteeSupportStepTwo":"Приїзд","guaranteeSupportNote":"Старт зміни","guaranteeChecklistQuota":"Квоти","guaranteeChecklistPermit":"Дозвіл","guaranteeChecklistVisa":"Віза","reviewFallbackValue":"7 РОКІВ","reviewLabelPrefix":"7 років ","servicesShortRequestEyebrow":"Короткий запит","servicesHeroGhostCta":"Подивитися умови послуги","servicesHeroPanelTitle":"Підбір, документи, логістика та запуск команди в одному процесі","servicesHeroPanelText":"Весь маршрут побудований так, щоб бізнес бачив прогнозовані етапи запуску, а кандидат розумів, що відбувається на кожному кроці.","servicesPillarsEyebrow":"Що ми закриваємо","servicesPillarsTitle":"Послуга побудована не як \"пошук резюме\", а як повний маршрут запуску людей у роботу","servicesOfferEyebrow":"Що отримують обидві сторони","servicesOfferTitle":"Модель, у якій бізнес отримує керований результат, а кандидат бачить прозорий процес","servicesOfferVisualLabel":"VW Recruit / маршрут","servicesOfferVisualPrimary":"Для бізнесу","servicesOfferVisualSecondary":"Для кандидатів","servicesBeamEyebrow":"Карта процесу","servicesRouteEyebrow":"Як працює співпраця","servicesRouteTitle":"Прозорий маршрут від заявки до виходу працівників на зміну","servicesRouteLead":"Бізнес бачить зрозумілий маршрут запуску з прогнозованими етапами від запиту до виходу людей на зміну.","servicesProofEyebrow":"Чому це продає","servicesProofTitle":"Не просто підбір, а керований сервіс із чітким результатом на кожному етапі","servicesFitEyebrow":"Де це працює найкраще","servicesFitTitle":"Ролі й ніші, де міжнародний підбір дає максимальний операційний ефект","servicesFitLead":"Кожна картка показує, де модель дає найшвидший операційний результат, найчистіший запуск команди і найвищу стабільність процесу.","servicesFitScoreLabel":"рівень відповідності","servicesFitMetricOne":"Швидкість запуску","servicesFitMetricTwo":"Стабільність","servicesFitMetricThree":"Прозорість","servicesFitCardTextOne":"Найсильніше працює там, де важливі повторювані зміни, дисципліна виходу і швидке масштабування без провалів у запуску.","servicesFitCardTextTwo":"Добре заходить для сезонних піків, зростання обсягів і операцій, де бізнесу критично потрібен ритмічний запуск людей.","servicesFitCardTextThree":"Підходить для проєктів із жорсткими дедлайнами, де потрібно поєднати рекрутинг, документи та прибуття без хаосу.","servicesFitCardTextFour":"Показує хороший результат у сервісних командах, де критичні зрозумілий маршрут, швидка адаптація і стабільність старту.","servicesLeadEyebrow":"Почати діалог","servicesLeadText":"Для роботодавців це швидкий спосіб зрозуміти, як запустити підбір. Для кандидатів — можливість отримати чесне пояснення по маршруту працевлаштування та документах.","servicesSegmentBadgeBusiness":"B2B","servicesSegmentBadgeCandidate":"B2C","industriesSectionTitle":"ДЛЯ ЯКИХ СФЕР ПІДХОДИТЬ ТАКА МОДЕЛЬ НАЙМУ","industrySliderPrev":"Попередній слайд","industrySliderNext":"Наступний слайд","quizSectionLead":"Короткий покроковий квіз, який допомагає швидко зібрати запит і передати його в єдиному форматі.","casesSectionLead":"Показуємо приклади запуску підбору для виробництва, логістики, готелів та інших операційних команд.","caseSliderPrev":"Попередній кейс","caseSliderNext":"Наступний кейс","casesTimelineSteps":["Бриф","Пошук","Погодження","Документи","Приїзд"],"industriesFitSummary":"Сигнали, які зазвичай означають, що локальний найм уже не тримає темп вашої операції і потрібна більш системна модель комплектування команди.","caseSubtitlePlaceholder":"Короткий опис кейсу","caseProblemPlaceholder":"Окрема SEO-сторінка для кейсу з результатами, строками і цільовою дією.","processStepLabel":"Крок","reportPanelTitle":"Отримайте матеріал на email","reportPanelText":"Залиште контакти, і ми надішлемо корисний матеріал по темі міжнародного найму та оптимізації витрат на персонал.","reportPanelKicker":"VW Recruit / Аналітика","reportPanelReportTitle":"Ринок праці 2026","reportPanelReportText":"Інтеграція міжнародного персоналу для бізнесу з дефіцитом кадрів","reportPanelGuide":"PDF","videoInsightLabel":"Відео-інсайт","mediaDefaultDuration":"02:00","reviewsPrev":"Попередній відгук","reviewsNext":"Наступний відгук","genericPageCardOne":"Базова сторінка підготовлена для локалізованого контенту","genericPageCardTwo":"Метадані та структура вже готові для подальшого наповнення","genericPageCardThree":"Кожен маршрут генерується окремо для кожної локалі","comparisonCtaNote":"Безкоштовна консультація · Відповідь протягом 1 дня","comparisonSavingsLabel":"економія"}}</script>
       <div id="portal-root"></div>
     
   </body>

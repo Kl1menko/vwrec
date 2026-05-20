@@ -439,27 +439,32 @@
     
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3 class="modal__title">Rezervați un apel</h3>
-        <form class="modal__form" data-form data-form-type="callback">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Nume *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Companie *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>E-mail</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Telefon *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+        
+    <form class="modal__form" data-form data-form-type="callback">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Nume *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Companie *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>E-mail</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Telefon *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Sunteți o agenție reală sau o companie? *</span>
       <select name="isBusiness" required>
@@ -477,36 +482,73 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Rezervați un apel</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Rezervați un apel</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
       </div>
     </div>
   
     
     <div class="modal" data-modal="report">
-      <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">×</button>
-        <h3 class="modal__title">Obțineți raportul</h3>
-        <form class="modal__form" data-form data-form-type="report">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Nume *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Companie *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>E-mail</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Telefon *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+      <div class="modal__dialog modal__dialog--report">
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
+        <div class="report-modal__layout">
+          <div class="report-modal__offer" aria-hidden="true">
+            <h3 class="report-modal__title">De ce recrutarea locală își pierde din eficiență?</h3>
+            <p class="report-modal__lead">Obțineți raportul analitic exclusiv „Piața Muncii 2026: Integrarea personalului internațional”.</p>
+            
+                  <ul class="report-modal__points" aria-label="What you will get">
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Tabel de comparație a costurilor: Piața locală vs. Expiați</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>5 greșeli legale la angajarea străinilor</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Cum să depășiți bariera lingvistică în producție</span>
+                      </li>
+                    
+                  </ul>
+                
+          </div>
+          <div class="report-modal__form-wrap">
+            
+    <form class="modal__form" data-form data-form-type="report">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Nume *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Companie *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>E-mail</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Telefon *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Sunteți o agenție reală sau o companie? *</span>
       <select name="isBusiness" required>
@@ -524,16 +566,23 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Obțineți raportul</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Descărcați raportul în PDF</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
+          </div>
+        </div>
       </div>
     </div>
   
     
     <div class="modal" data-modal="report-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -545,7 +594,11 @@
     
     <div class="modal" data-modal="form-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -556,7 +609,11 @@
     
     <div class="modal" data-modal="hero-quiz">
       <div class="modal__dialog modal__dialog--quiz">
-        <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3>Calculați recrutarea personalului pentru compania dvs.</h3>
         <p>Răspundeți la câteva întrebări scurte și primiți o estimare pentru recrutarea echipei afacerii dvs.</p>
         <div data-quiz data-quiz-source="hero_quiz"></div>
@@ -566,7 +623,11 @@
     
     <div class="modal" data-modal="video">
       <div class="modal__dialog modal__dialog--video">
-        <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Închideți fereastra">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="video-modal__player">
           <video
             class="video-modal__media"

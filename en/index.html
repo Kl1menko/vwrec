@@ -1726,27 +1726,32 @@
     
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3 class="modal__title">Book a call</h3>
-        <form class="modal__form" data-form data-form-type="callback">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Name *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Company *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Phone *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+        
+    <form class="modal__form" data-form data-form-type="callback">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Name *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Company *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Phone *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Are you a real agency or business? *</span>
       <select name="isBusiness" required>
@@ -1764,36 +1769,73 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Book a call</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Book a call</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
       </div>
     </div>
   
     
     <div class="modal" data-modal="report">
-      <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
-        <h3 class="modal__title">Get the report</h3>
-        <form class="modal__form" data-form data-form-type="report">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Name *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Company *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Phone *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+      <div class="modal__dialog modal__dialog--report">
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
+        <div class="report-modal__layout">
+          <div class="report-modal__offer" aria-hidden="true">
+            <h3 class="report-modal__title">Why is local hiring losing efficiency?</h3>
+            <p class="report-modal__lead">Get the closed analytical report "Labor Market 2026: Integration of International Personnel".</p>
+            
+                  <ul class="report-modal__points" aria-label="What you will get">
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Cost comparison table: Local vs Expats</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>5 legal mistakes when hiring foreigners</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>How to overcome the language barrier in production</span>
+                      </li>
+                    
+                  </ul>
+                
+          </div>
+          <div class="report-modal__form-wrap">
+            
+    <form class="modal__form" data-form data-form-type="report">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Name *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Company *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Phone *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Are you a real agency or business? *</span>
       <select name="isBusiness" required>
@@ -1811,16 +1853,23 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Get report</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Download report in PDF</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
+          </div>
+        </div>
       </div>
     </div>
   
     
     <div class="modal" data-modal="report-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -1832,7 +1881,11 @@
     
     <div class="modal" data-modal="form-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -1843,7 +1896,11 @@
     
     <div class="modal" data-modal="hero-quiz">
       <div class="modal__dialog modal__dialog--quiz">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3>Calculate worker recruitment for your enterprise</h3>
         <p>Answer a few short questions and get a team recruitment calculation for your business.</p>
         <div data-quiz data-quiz-source="hero_quiz"></div>
@@ -1853,7 +1910,11 @@
     
     <div class="modal" data-modal="video">
       <div class="modal__dialog modal__dialog--video">
-        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="video-modal__player">
           <video
             class="video-modal__media"

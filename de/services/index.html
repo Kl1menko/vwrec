@@ -937,27 +937,32 @@
     
     <div class="modal" data-modal="callback">
       <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3 class="modal__title">Gespräch buchen</h3>
-        <form class="modal__form" data-form data-form-type="callback">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Name *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Unternehmen *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>E-Mail</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Telefon *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+        
+    <form class="modal__form" data-form data-form-type="callback">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Name *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Unternehmen *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>E-Mail</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Telefon *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Sind Sie eine reale Agentur oder ein Unternehmen? *</span>
       <select name="isBusiness" required>
@@ -975,36 +980,73 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Gespräch buchen</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Gespräch buchen</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
       </div>
     </div>
   
     
     <div class="modal" data-modal="report">
-      <div class="modal__dialog">
-        <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">×</button>
-        <h3 class="modal__title">Bericht anfordern</h3>
-        <form class="modal__form" data-form data-form-type="report">
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <label class="field">
-            <span>Name *</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span>Unternehmen *</span>
-            <input type="text" name="company" autocomplete="organization" required />
-          </label>
-          <label class="field">
-            <span>E-Mail</span>
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label class="field">
-            <span>Telefon *</span>
-            <input type="tel" name="phone" autocomplete="tel" required />
-          </label>
-          
+      <div class="modal__dialog modal__dialog--report">
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
+        <div class="report-modal__layout">
+          <div class="report-modal__offer" aria-hidden="true">
+            <h3 class="report-modal__title">Warum verliert die lokale Personalbeschaffung an Effizienz?</h3>
+            <p class="report-modal__lead">Erhalten Sie den exklusiven Analysebericht "Arbeitsmarkt 2026: Integration von internationalem Personal".</p>
+            
+                  <ul class="report-modal__points" aria-label="What you will get">
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Kostenvergleichstabelle: Lokaler Markt vs. Expats</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>5 rechtliche Fehler bei der Einstellung von Ausländern</span>
+                      </li>
+                    
+                      <li class="report-modal__point">
+                        <span class="report-modal__point-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>So überwinden Sie die Sprachbarriere in der Produktion</span>
+                      </li>
+                    
+                  </ul>
+                
+          </div>
+          <div class="report-modal__form-wrap">
+            
+    <form class="modal__form" data-form data-form-type="report">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span>Name *</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Unternehmen *</span>
+        <input type="text" name="company" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>E-Mail</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Telefon *</span>
+        <input type="tel" name="phone" autocomplete="tel" required />
+      </label>
+      
     <label class="field">
       <span>Sind Sie eine reale Agentur oder ein Unternehmen? *</span>
       <select name="isBusiness" required>
@@ -1022,16 +1064,23 @@
       <input type="number" name="workersNeeded" min="1" step="1" inputmode="numeric" required />
     </label>
   
-          <button class="button modal__submit" type="submit">Bericht anfordern</button>
-          <p class="form-status" data-form-status role="status" hidden></p>
-        </form>
+      <button class="button modal__submit" type="submit">Bericht als PDF herunterladen</button>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  
+          </div>
+        </div>
       </div>
     </div>
   
     
     <div class="modal" data-modal="report-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -1043,7 +1092,11 @@
     
     <div class="modal" data-modal="form-success">
       <div class="modal__dialog modal__dialog--success">
-        <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="success-modal__icon" aria-hidden="true">
           <span></span>
         </div>
@@ -1054,7 +1107,11 @@
     
     <div class="modal" data-modal="hero-quiz">
       <div class="modal__dialog modal__dialog--quiz">
-        <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <h3>Berechnen Sie den Personalbedarf für Ihr Unternehmen</h3>
         <p>Beantworten Sie ein paar kurze Fragen und erhalten Sie eine Kalkulation für die Rekrutierung Ihres Teams.</p>
         <div data-quiz data-quiz-source="hero_quiz"></div>
@@ -1064,7 +1121,11 @@
     
     <div class="modal" data-modal="video">
       <div class="modal__dialog modal__dialog--video">
-        <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">×</button>
+        
+    <button class="modal__close" type="button" data-close-modal aria-label="Modal schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  
         <div class="video-modal__player">
           <video
             class="video-modal__media"

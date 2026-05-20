@@ -52,7 +52,7 @@ export const PAGE_CONTENT_KEYS = {
 }
 
 export function resolvePageContentKey(pageKey) {
-  return PAGE_CONTENT_KEYS[pageKey] ?? 'about'
+  return PAGE_CONTENT_KEYS[pageKey] ?? pageKey
 }
 
 export function buildPageUrl(locale, pageKey) {

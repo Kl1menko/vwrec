@@ -15,3 +15,19 @@ export function setStorageValue(key, value) {
     // ignore storage limits in private browsing
   }
 }
+
+export function getSessionValue(key) {
+  try {
+    return window.sessionStorage.getItem(`${prefix}${key}`)
+  } catch {
+    return null
+  }
+}
+
+export function setSessionValue(key, value) {
+  try {
+    window.sessionStorage.setItem(`${prefix}${key}`, value)
+  } catch {
+    // ignore storage limits in private browsing
+  }
+}

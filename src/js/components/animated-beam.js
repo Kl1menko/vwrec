@@ -111,6 +111,8 @@ function renderBeams(instance) {
   const outputStart = lastInboundStart + inboundDuration + outputGap
   const cycleDuration = outputStart + outputDuration + cyclePause
 
+  const pendingAnimations = []
+
   nodes.forEach((node, index) => {
     const fromPoint = getAnchorPoint(node, containerRect)
     const direction = fromPoint.x < centerPoint.x ? 1 : -1
@@ -127,8 +129,10 @@ function renderBeams(instance) {
     basePaths.push(basePath)
     glowPaths.push(glowPath)
 
-    const length = glowPath.getTotalLength()
-    animateBeam(glowPath, length, index * inboundStagger, inboundDuration, cycleDuration)
+    pendingAnimations.push(() => {
+      const length = glowPath.getTotalLength()
+      animateBeam(glowPath, length, index * inboundStagger, inboundDuration, cycleDuration)
+    })
   })
 
   outputs.forEach((node, index) => {
@@ -148,11 +152,14 @@ function renderBeams(instance) {
     basePaths.push(basePath)
     glowPaths.push(glowPath)
 
-    const length = glowPath.getTotalLength()
-    animateBeam(glowPath, length, outputStart + index * 220, outputDuration, cycleDuration)
+    pendingAnimations.push(() => {
+      const length = glowPath.getTotalLength()
+      animateBeam(glowPath, length, outputStart + index * 220, outputDuration, cycleDuration)
+    })
   })
 
   svg.append(...basePaths, ...glowPaths)
+  pendingAnimations.forEach((fn) => fn())
 }
 
 export function initAnimatedBeam() {

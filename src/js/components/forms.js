@@ -29,7 +29,7 @@ function setStatus(form, message, state = 'success') {
   status.hidden = !message
 }
 
-function openFormSuccessModal(content, formType) {
+function openFormSuccessModal(content, formType, opener) {
   const modal = document.querySelector('[data-modal="form-success"]')
   if (!modal) return
 
@@ -38,7 +38,7 @@ function openFormSuccessModal(content, formType) {
 
   if (message) message.textContent = formContent?.success ?? ''
 
-  openModalByName('form-success')
+  openModalByName('form-success', opener)
 }
 
 function hasEmptyRequiredFields(form) {
@@ -96,7 +96,7 @@ export function initForms(content) {
           }, 120)
         } else {
           window.setTimeout(() => {
-            openFormSuccessModal(content, form.dataset.formType)
+            openFormSuccessModal(content, form.dataset.formType, submitButton ?? undefined)
           }, 120)
         }
       } catch (error) {

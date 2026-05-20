@@ -1,44 +1,74 @@
+// ─── Backdrop ────────────────────────────────────────────────────────────────
+
 .modal {
   position: fixed;
   inset: 0;
   display: none;
   place-items: center;
   padding: 20px;
-  background: rgba(17, 17, 17, 0.55);
+  background: rgba(10, 10, 10, 0.64);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   z-index: 50;
   overscroll-behavior: contain;
+
+  // enter transition
+  opacity: 0;
+  transition: opacity 220ms ease;
 }
 
 .modal.is-open {
   display: grid;
+  opacity: 1;
 }
+
+// ─── Base dialog ─────────────────────────────────────────────────────────────
 
 .modal__dialog {
   position: relative;
   width: min(100%, 520px);
-  padding: 28px;
-  border-radius: 28px;
+  padding: 32px;
+  border-radius: var(--radius-md);
   background: var(--color-surface);
-  box-shadow: 0 20px 80px rgba(17, 17, 17, 0.2);
+  box-shadow:
+    0 2px 4px rgba(17, 17, 17, 0.04),
+    0 8px 24px rgba(17, 17, 17, 0.1),
+    0 32px 64px rgba(17, 17, 17, 0.16);
+  overscroll-behavior: contain;
+
+  transform: translateY(12px) scale(0.98);
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease;
+  opacity: 0;
 }
 
-.modal[data-modal='callback'] .modal__dialog,
-.modal[data-modal='report'] .modal__dialog {
-  width: min(100%, 560px);
-  padding: 30px 28px 28px;
-  border-radius: 24px;
-  box-shadow: 0 28px 70px rgba(17, 17, 17, 0.18);
+.modal.is-open .modal__dialog {
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
+
+// ─── Form modals (callback / report) ─────────────────────────────────────────
+
+.modal[data-modal='callback'] .modal__dialog {
+  width: min(100%, 560px);
+  padding: 32px;
+  border-radius: var(--radius-md);
+}
+
+// ─── Modal title ──────────────────────────────────────────────────────────────
 
 .modal__title {
-  max-width: 12ch;
-  margin: 0 56px 20px 0;
-  color: #1a1917;
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  max-width: 14ch;
+  margin: 0 52px 22px 0;
+  color: var(--color-text);
+  font-size: clamp(1.55rem, 3vw, 2rem);
   font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
 }
+
+// ─── Modal form ───────────────────────────────────────────────────────────────
 
 .modal__form {
   display: grid;
@@ -50,33 +80,45 @@
 }
 
 .modal__form .field span {
-  color: #1a1917;
-  font-size: 0.88rem;
-  font-weight: 700;
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
   line-height: 1.3;
 }
 
 .modal__form .field input,
 .modal__form .field select {
   min-height: 50px;
-  padding: 0 18px;
-  border: 1px solid rgba(17, 17, 17, 0.1);
+  padding: 0 16px;
+  border: 1.5px solid rgba(17, 17, 17, 0.12);
   border-radius: 10px;
+  background: #fafafa;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.modal__form .field input:hover,
+.modal__form .field select:hover {
+  border-color: rgba(17, 17, 17, 0.22);
   background: #fff;
-  color: #1b1917;
-  font-size: 0.96rem;
 }
 
 .modal__form .field input:focus,
 .modal__form .field select:focus {
-  border-color: rgba(242, 122, 36, 0.6);
-  outline: 0;
-  box-shadow: 0 0 0 3px rgba(242, 122, 36, 0.12);
+  border-color: rgba(242, 122, 36, 0.7);
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(242, 122, 36, 0.14);
 }
 
 .modal__submit {
   margin-top: 4px;
-  border-radius: 12px;
+  width: 100%;
+  border-radius: var(--radius-pill);
 }
 
 .modal__form .form-status {
@@ -86,102 +128,115 @@
   line-height: 1.45;
 }
 
+// ─── Close button ─────────────────────────────────────────────────────────────
+
+.modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1.5px solid rgba(17, 17, 17, 0.1);
+  border-radius: 50%;
+  background: rgba(17, 17, 17, 0.04);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+  flex-shrink: 0;
+  aspect-ratio: 1;
+  appearance: none;
+  -webkit-appearance: none;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+}
+
+.modal__close:hover {
+  background: rgba(17, 17, 17, 0.08);
+  border-color: rgba(17, 17, 17, 0.18);
+  transform: scale(1.05);
+}
+
+.modal__close:focus-visible {
+  outline: none;
+  border-color: rgba(242, 122, 36, 0.7);
+  box-shadow: 0 0 0 3px rgba(242, 122, 36, 0.18);
+}
+
+.modal__close:active {
+  transform: scale(0.94);
+}
+
+// ─── Quiz modal ───────────────────────────────────────────────────────────────
+
 .modal__dialog--quiz {
   width: min(100%, 920px);
-  height: min(calc(100dvh - 40px), 940px);
-  padding: 32px;
+  height: min(calc(100dvh - 48px), 900px);
+  padding: 36px;
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
   align-content: start;
   overflow: hidden;
+  border-radius: var(--radius-lg);
 }
 
-.modal__dialog--success {
-  width: min(100%, 520px);
-  padding: 34px 30px 30px;
-  text-align: center;
-}
-
-.modal__dialog--video {
-  width: min(100%, 920px);
-}
-
-.video-modal__player {
-  border: 1px solid rgba(17, 17, 17, 0.08);
-  border-radius: 20px;
-  overflow: hidden;
-  background: #111111;
-  box-shadow: 0 12px 30px rgba(17, 17, 17, 0.14);
-}
-
-.video-modal__media {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #0f0f0f;
-}
-
-.success-modal__icon {
-  width: 84px;
-  height: 84px;
-  margin: 0 auto 18px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.96) 0%, rgba(247, 246, 243, 0.94) 60%, rgba(247, 246, 243, 0) 61%),
-    conic-gradient(from 210deg, rgba(242, 122, 36, 0.78), rgba(71, 120, 245, 0.9), rgba(242, 122, 36, 0.78));
-  box-shadow:
-    0 18px 34px rgba(17, 17, 17, 0.1),
-    inset 0 0 0 7px rgba(255, 255, 255, 0.92);
-}
-
-.success-modal__icon span {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  position: relative;
-  background: rgba(40, 191, 124, 0.12);
-  box-shadow: inset 0 0 0 2px rgba(40, 191, 124, 0.8);
-}
-
-.success-modal__icon span::before {
-  content: '';
-  position: absolute;
-  left: 10px;
-  top: 12px;
-  width: 12px;
-  height: 7px;
-  border-left: 3px solid #28bf7c;
-  border-bottom: 3px solid #28bf7c;
-  rotate: -45deg;
-}
-
-.modal__dialog--success h3 {
-  margin-bottom: 12px;
-  font-size: clamp(1.9rem, 3vw, 2.4rem);
+.modal__dialog--quiz > h3 {
+  max-width: 20ch;
+  margin-bottom: 10px;
+  padding-right: 52px;
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
   line-height: 0.98;
-}
-
-.success-modal__headline {
-  max-width: 18ch;
-  margin: 0 auto;
-  color: var(--color-text);
-  font-size: clamp(2.1rem, 3.8vw, 2.9rem);
-  font-weight: 800;
-  line-height: 1;
   letter-spacing: -0.05em;
-  text-align: center;
 }
 
-.modal__dialog--success p {
-  max-width: 34ch;
-  margin: 0 auto;
+.modal__dialog--quiz > p:not(.eyebrow) {
+  max-width: 54ch;
+  margin-bottom: 24px;
   color: var(--color-text-soft);
   font-size: 1rem;
   line-height: 1.5;
 }
 
+.modal__dialog--quiz [data-quiz] {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+  overscroll-behavior: contain;
+}
+
+.modal__dialog--quiz [data-quiz]::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal__dialog--quiz [data-quiz]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal__dialog--quiz [data-quiz]::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.1);
+}
+
+.modal__dialog--quiz [data-quiz]::-webkit-scrollbar-thumb:hover {
+  background: rgba(17, 17, 17, 0.2);
+}
+
+// Quiz success state (turns into centered card)
 .modal__dialog--quiz.is-success {
   width: min(100%, 560px);
   height: auto;
@@ -189,6 +244,14 @@
   background: transparent;
   overflow: visible;
   box-shadow: none;
+  border-radius: 0;
+}
+
+.modal--quiz-success {
+  padding: 24px;
+  background: rgba(8, 8, 8, 0.46);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .modal__dialog--quiz.is-success > h3,
@@ -198,130 +261,427 @@
 
 .modal__dialog--quiz.is-success [data-quiz] {
   width: 100%;
+  overflow: visible;
+  padding-right: 0;
 }
 
 .modal__dialog--quiz.is-success .modal__close {
-  top: 16px;
-  right: 16px;
-  z-index: 3;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  top: 14px;
+  right: 14px;
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal__dialog--quiz.is-success .modal__close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+// ─── Success modals ───────────────────────────────────────────────────────────
+
+.modal__dialog--success {
+  width: min(100%, 480px);
+  padding: 40px 32px 36px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.success-modal__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 40% 38%, rgba(255, 255, 255, 0.96) 0%, rgba(247, 246, 243, 0.92) 58%, transparent 60%),
+    conic-gradient(from 210deg, rgba(242, 122, 36, 0.72), rgba(71, 120, 245, 0.85), rgba(242, 122, 36, 0.72));
   box-shadow:
-    0 12px 24px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 12px 32px rgba(17, 17, 17, 0.1),
+    inset 0 0 0 6px rgba(255, 255, 255, 0.9);
 }
 
-.modal--quiz-success {
-  padding: 24px;
-  background: rgba(12, 12, 12, 0.38);
+.success-modal__icon span {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: relative;
+  background: rgba(40, 191, 124, 0.1);
+  box-shadow: inset 0 0 0 2px rgba(40, 191, 124, 0.75);
 }
 
-.modal__dialog--quiz > h3 {
-  max-width: 18ch;
-  margin-bottom: 12px;
-  padding-right: 48px;
-  font-size: clamp(1.9rem, 3.6vw, 3rem);
-  line-height: 0.98;
+.success-modal__icon span::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 11px;
+  width: 12px;
+  height: 7px;
+  border-left: 2.5px solid #28bf7c;
+  border-bottom: 2.5px solid #28bf7c;
+  rotate: -45deg;
+}
+
+.modal__dialog--success h3 {
+  margin-bottom: 10px;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.success-modal__headline {
+  max-width: 20ch;
+  margin: 0 auto;
+  color: var(--color-text);
+  font-size: clamp(1.9rem, 3.6vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1;
   letter-spacing: -0.05em;
 }
 
-.modal__dialog--quiz > p:not(.eyebrow) {
-  max-width: 56ch;
-  margin-bottom: 24px;
+.modal__dialog--success p:not(.success-modal__headline) {
+  max-width: 36ch;
+  margin: 0 auto;
   color: var(--color-text-soft);
-  font-size: 1.02rem;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+// ─── Video modal ──────────────────────────────────────────────────────────────
+
+.modal__dialog--video {
+  width: min(100%, 960px);
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  opacity: 0;
+  border-radius: 0;
+}
+
+.modal.is-open .modal__dialog--video {
+  opacity: 1;
+  transform: none;
+}
+
+.video-modal__player {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #0a0a0a;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+.video-modal__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0a0a0a;
+}
+
+// Video modal close button override (white on dark)
+.modal[data-modal='video'] .modal__close {
+  top: -52px;
+  right: 0;
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.modal[data-modal='video'] .modal__close:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+// ─── Report lead-magnet modal ─────────────────────────────────────────────────
+
+.modal__dialog--report {
+  width: min(100%, 860px);
+  padding: 0;
+  overflow: visible; // кнопка закрити виходить за межі без відсічення
+  border-radius: var(--radius-lg);
+}
+
+.report-modal__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 0;
+  border-radius: var(--radius-lg); // скруглення на layout, не на dialog
+  overflow: hidden;
+}
+
+// Left side — offer panel (dark)
+.report-modal__offer {
+  padding: 40px 36px;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(242, 122, 36, 0.16) 0%, transparent 55%),
+    linear-gradient(180deg, #141312 0%, #0f0e0d 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.report-modal__offer .eyebrow {
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.report-modal__title {
+  max-width: 18ch;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+}
+
+.report-modal__lead {
+  max-width: 32ch;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.report-modal__points {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.report-modal__point {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.875rem;
   line-height: 1.45;
 }
 
-.modal__dialog--quiz [data-quiz] {
-  min-height: 0;
-  overflow-y: auto;
-  padding-right: 6px;
-}
-
-.modal__dialog--quiz [data-quiz]::-webkit-scrollbar {
-  width: 8px;
-}
-
-.modal__dialog--quiz [data-quiz]::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: rgba(17, 17, 17, 0.12);
-}
-
-.modal__close {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 42px;
-  min-width: 42px;
-  height: 42px;
-  min-height: 42px;
-  flex: 0 0 42px;
-  border: 0;
-  border-radius: 50%;
-  background: #f4f1ed;
-  color: var(--color-text);
-  font-size: 1.65rem;
-  line-height: 1;
+.report-modal__point-icon {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1;
-  appearance: none;
-  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: rgba(242, 122, 36, 0.18);
+  border: 1px solid rgba(242, 122, 36, 0.3);
+
+  svg {
+    width: 11px;
+    height: 11px;
+    stroke: #f27a24;
+    stroke-width: 2.5;
+  }
 }
 
+// Right side — form panel (light)
+.report-modal__form-wrap {
+  padding: 40px 36px;
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.report-modal__form-wrap .modal__form {
+  gap: 12px;
+}
+
+.report-modal__form-wrap .modal__submit {
+  margin-top: 6px;
+}
+
+// ─── Reduced motion ───────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal__dialog {
+    transition: none;
+  }
+}
+
+// ─── Mobile (bottom sheet pattern) ───────────────────────────────────────────
+
 @media (max-width: 767px) {
+  // All modals align to bottom as sheets, except video and quiz-success
   .modal {
-    align-items: end;
-    padding: 8px;
-    overflow-y: auto;
+    align-items: flex-end;
+    padding: 0;
+    overflow: hidden;
   }
 
-  .modal[data-modal='video'] {
-    align-items: center;
-    padding: 16px;
+  .modal.is-open {
+    align-items: flex-end;
   }
 
-  .modal[data-modal='callback'],
-  .modal[data-modal='report'],
+  // Center a few specific modals
+  .modal[data-modal='video'],
   .modal[data-modal='form-success'],
-  .modal[data-modal='report-success'] {
-    align-items: center;
-    padding: 16px;
-  }
-
+  .modal[data-modal='report-success'],
   .modal--quiz-success {
     align-items: center;
     padding: 16px;
   }
 
+  // Base dialog as bottom sheet
   .modal__dialog {
     width: 100%;
-    margin: 0;
-    padding: 22px 14px 14px;
-    border-radius: 22px 22px 18px 18px;
     max-height: calc(100dvh - 16px);
+    padding: 24px 20px 20px;
+    border-radius: 24px 24px 16px 16px;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    // Sheet slides up instead of scaling
+    transform: translateY(20px);
   }
 
-  .modal[data-modal='callback'] .modal__dialog,
-  .modal[data-modal='report'] .modal__dialog {
-    padding: 24px 16px 18px;
-    border-radius: 22px;
+  .modal.is-open .modal__dialog {
+    transform: translateY(0);
   }
 
+  // Add safe area bottom padding for notched phones
+  .modal__dialog {
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+
+  // Callback form modal
+  .modal[data-modal='callback'] .modal__dialog {
+    padding: 24px 20px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    border-radius: 24px 24px 16px 16px;
+  }
+
+  // Report modal — compact header + scrollable form on mobile
+  .modal[data-modal='report'] {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal__dialog--report {
+    position: relative; // anchor для кнопки закрити
+    width: 100%;
+    max-height: calc(100dvh - 16px);
+    border-radius: 20px 20px 14px 14px;
+    overflow: visible; // кнопка не відсікається
+    display: flex;
+    flex-direction: column;
+  }
+
+  // кнопка закрити — завжди у верхньому правому куті sheet
+  .modal__dialog--report > .modal__close {
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    // на темній шапці — білий стиль
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  .modal__dialog--report > .modal__close:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .report-modal__layout {
+    grid-template-columns: 1fr;
+    border-radius: 20px 20px 14px 14px;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  // Compact dark header strip on mobile
+  .report-modal__offer {
+    flex-shrink: 0;
+    padding: 18px 20px 16px;
+    padding-right: 56px; // відступ від кнопки закрити
+    gap: 6px;
+  }
+
+  .report-modal__offer .eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+  }
+
+  .report-modal__title {
+    max-width: none;
+    font-size: 1.1rem;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  // Hide lead text and points — too long for mobile header
+  .report-modal__lead,
+  .report-modal__points {
+    display: none;
+  }
+
+  // Form panel — fills rest of sheet
+  .report-modal__form-wrap {
+    flex: 1;
+    padding: 20px 20px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    justify-content: flex-start;
+  }
+
+  // Quiz modal — full height sheet
   .modal__dialog--quiz {
     height: calc(100dvh - 16px);
-    padding: 20px 14px 14px;
-    border-radius: 24px 24px 18px 18px;
+    max-height: calc(100dvh - 16px);
+    padding: 20px 16px 0;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    border-radius: 24px 24px 16px 16px;
+    grid-template-rows: auto auto minmax(0, 1fr);
   }
 
+  .modal__dialog--quiz > h3 {
+    max-width: none;
+    margin-bottom: 8px;
+    padding-right: 44px;
+    font-size: 1.65rem;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+
+  .modal__dialog--quiz > p:not(.eyebrow) {
+    margin-bottom: 14px;
+    max-width: none;
+    font-size: 0.9375rem;
+  }
+
+  .modal__dialog--quiz [data-quiz] {
+    padding-right: 0;
+    padding-bottom: 4px;
+  }
+
+  // Success modals — centered card
   .modal__dialog--success {
-    padding: 26px 16px 20px;
+    width: calc(100% - 16px);
+    max-width: 400px;
+    padding: 32px 20px 28px;
+    border-radius: var(--radius-md);
+    max-height: none;
+    overflow: visible;
+  }
+
+  // Video modal
+  .modal[data-modal='video'] {
+    padding: 16px;
   }
 
   .modal__dialog--video {
@@ -329,38 +689,24 @@
   }
 
   .video-modal__player {
-    border-radius: 18px;
+    border-radius: 16px;
   }
 
-  .success-modal__icon {
-    width: 74px;
-    height: 74px;
-    margin-bottom: 16px;
+  .modal[data-modal='video'] .modal__close {
+    top: -48px;
+    right: 0;
   }
 
-  .modal__dialog--success h3 {
-    font-size: 1.52rem;
-  }
-
-  .success-modal__headline {
-    max-width: 15ch;
-    font-size: 1.82rem;
-  }
-
-  .modal__dialog--success p,
-  .modal__dialog--quiz > p:not(.eyebrow) {
-    max-width: none;
-    font-size: 0.94rem;
-    line-height: 1.45;
-  }
-
+  // Titles and text
   .modal__title {
     max-width: none;
-    margin: 0 44px 16px 0;
-    font-size: 1.72rem;
-    line-height: 1.02;
+    margin: 0 48px 18px 0;
+    font-size: 1.65rem;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
   }
 
+  // Form
   .modal__form {
     gap: 12px;
   }
@@ -370,54 +716,77 @@
   }
 
   .modal__form .field span {
-    font-size: 0.82rem;
+    font-size: 0.8125rem;
   }
 
   .modal__form .field input,
   .modal__form .field select {
-    min-height: 48px;
-    padding: 0 16px;
-    font-size: 0.94rem;
+    min-height: 50px;
+    padding: 0 15px;
+    font-size: 1rem; // avoids iOS auto-zoom
+    border-radius: 10px;
   }
 
   .modal__submit {
-    margin-top: 2px;
+    margin-top: 4px;
+    min-height: 52px;
   }
 
-  .modal__dialog--quiz > h3 {
-    max-width: none;
-    margin-bottom: 10px;
-    padding-right: 42px;
-    font-size: 1.72rem;
-    line-height: 1;
-  }
-
-  .modal__dialog--quiz > p:not(.eyebrow) {
-    margin-bottom: 16px;
-    max-width: none;
-  }
-
-  .modal__dialog--quiz [data-quiz] {
-    padding-right: 2px;
-  }
-
+  // Close button
   .modal__close {
-    top: 12px;
-    right: 12px;
-    width: 38px;
-    height: 38px;
-    font-size: 1.4rem;
+    top: 14px;
+    right: 14px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
   }
 
+  // Quiz success override
   .modal__dialog--quiz.is-success {
+    width: calc(100% - 16px);
+    max-width: 400px;
     margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    max-height: none;
+    overflow: visible;
   }
 
   .modal__dialog--quiz.is-success .modal__close {
     top: 12px;
     right: 12px;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  // Success icon
+  .success-modal__icon {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 16px;
+  }
+
+  .success-modal__icon span {
+    width: 28px;
+    height: 28px;
+  }
+
+  .modal__dialog--success h3 {
     font-size: 1.5rem;
+  }
+
+  .success-modal__headline {
+    max-width: none;
+    font-size: 1.75rem;
+  }
+
+  .modal__dialog--success p:not(.success-modal__headline) {
+    max-width: none;
+    font-size: 0.9375rem;
+    line-height: 1.5;
   }
 }
